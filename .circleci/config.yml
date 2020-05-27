@@ -26,9 +26,18 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo apt-get install -qy git libonig-dev libxml2-dev libzip-dev unzip zip libpng-dev libmagickwand-dev libjpeg-dev
-      - run: sudo docker-php-ext-install bcmath ctype json mbstring pdo_mysql tokenizer xml zip gd
+      - run:
+          name: Update synaptic
+          command: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run:
+          name: install OS dependancies
+          command: sudo apt-get install -qy git libonig-dev libxml2-dev libzip-dev unzip zip libpng-dev libmagickwand-dev libjpeg-dev
+      - run:
+          name: Install PHP extensions
+          command: sudo docker-php-ext-install bcmath ctype json mbstring pdo_mysql tokenizer xml zip gd
+      - run:
+          name: Install Composer
+          command: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
       # Download and cache dependencies
       - restore_cache:
@@ -38,12 +47,27 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: php artisan key:generate
-      - run: composer app-install
-      - run: composer run lint
-      - run: composer run phpcs
-      - run: php artisan serve
-      - run: sleep 5
+      - run:
+          name: Use testing environment variables
+          command: cp .env.testing .env
+      - run:
+          name: Install PHP project dependencies
+          command: composer install -n --prefer-dist
+      - run:
+          name: Use app installer setup Laravel & db seeds
+          command: composer app-install
+      - run:
+          name: Composer linter
+          command: composer run lint
+      - run:
+          name: Run code sniffer
+          command: composer run phpcs
+      - run:
+          name: Spin up built in webserver for testing
+          command: php artisan serve
+      - run:
+          name: Sleep to stop race condition
+          command: sleep 5
 
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
@@ -59,9 +83,4 @@ jobs:
           paths:
             - node_modules
 
-      # prepare the database
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --database=uk_restaurant_testing --force
-
-      # run tests with phpunit or codecept
       - run: ./vendor/bin/phpunit --testdox
