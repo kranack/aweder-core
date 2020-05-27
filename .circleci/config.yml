@@ -15,6 +15,11 @@ jobs:
       # Using the RAM variation mitigates I/O contention
       # for database intensive operations.
       - image: circleci/mysql:5.7-ram
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: uk_restaurant_testing
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
       #
       # - image: redis:2.8.19
 
@@ -33,12 +38,12 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run: php artisan key:generate
       - run: composer app-install
       - run: composer run lint
       - run: composer run phpcs
       - run: php artisan serve
       - run: sleep 5
-      - run: ./vendor/bin/phpunit --testdox
 
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
@@ -56,7 +61,7 @@ jobs:
 
       # prepare the database
       - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: php artisan migrate --database=uk_restaurant_testing --force
 
       # run tests with phpunit or codecept
       - run: ./vendor/bin/phpunit --testdox
