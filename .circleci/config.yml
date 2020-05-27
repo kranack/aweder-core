@@ -28,7 +28,7 @@ jobs:
 
       - run:
           name: Update synaptic
-          command: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+          command: sudo apt update
       - run:
           name: install OS dependancies
           command: sudo apt-get install -qy git libonig-dev libxml2-dev libzip-dev unzip zip libpng-dev libmagickwand-dev libjpeg-dev
@@ -36,8 +36,8 @@ jobs:
           name: Install PHP extensions
           command: sudo docker-php-ext-install bcmath ctype json mbstring pdo_mysql tokenizer xml zip gd
       - run:
-          name: Install Composer
-          command: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          name: Update composer
+          command: sudo composer self-update
 
       # Download and cache dependencies
       - restore_cache:
@@ -49,19 +49,19 @@ jobs:
 
       - run:
           name: Use testing environment variables
-          command: cp .env.testing .env
-      - run:
-          name: Install PHP project dependencies
-          command: composer install -n --prefer-dist
+          command: sudo cp .env.testing .env
+#      - run:
+#          name: Install PHP project dependencies
+#          command: sudo composer install -n --prefer-dist
       - run:
           name: Use app installer setup Laravel & db seeds
-          command: composer app-install
+          command: sudo composer app-install
       - run:
           name: Composer linter
-          command: composer run lint
+          command: sudo composer run lint
       - run:
           name: Run code sniffer
-          command: composer run phpcs
+          command: sudo composer run phpcs
       - run:
           name: Spin up built in webserver for testing
           command: php artisan serve
@@ -83,4 +83,6 @@ jobs:
           paths:
             - node_modules
 
-      - run: ./vendor/bin/phpunit --testdox
+      - run:
+          name: Run PHPUnit
+          command: ./vendor/bin/phpunit --testdox
