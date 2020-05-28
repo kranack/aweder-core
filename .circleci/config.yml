@@ -20,6 +20,7 @@ jobs:
           MYSQL_DATABASE: uk_restaurant_testing
           MYSQL_USER: laravel
           MYSQL_PASSWORD: password
+
       #
       # - image: redis:2.8.19
 
@@ -59,7 +60,7 @@ jobs:
           command: sudo composer run phpcs
       - run:
           name: Spin up built in webserver for testing
-          command: php artisan serve
+          command: php artisan serve &
       - run:
           name: Sleep to stop race condition
           command: sleep 5
