@@ -18,8 +18,8 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: rootpw
           MYSQL_DATABASE: uk_restaurant_testing
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root
+          MYSQL_USER: laravel
+          MYSQL_PASSWORD: password
       #
       # - image: redis:2.8.19
 
