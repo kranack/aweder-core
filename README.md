@@ -5,6 +5,8 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/awe-der/aweder-core)](https://github.com/awe-der/aweder-core/graphs/contributors/)
 [![GitHub issues](https://img.shields.io/github/issues/awe-der/aweder-core)](https://gitHub.com/awe-der/aweder-core/issues)
 
+You can find the hosted version of Awe-der from creators Jump24 at https://awe-der.net/
+
 An open source ordering platform written in Laravel for quickly
 enabling businesses to quickly move to online payments.
 
