@@ -25,7 +25,9 @@ jobs:
 
     steps:
       - checkout
-
+      - run:
+          name: Use testing environment variables
+          command: sudo cp .env.testing .env
       - run:
           name: Update synaptic
           command: sudo apt update
@@ -46,13 +48,6 @@ jobs:
             - v1-dependencies-{{ checksum "composer.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-      - run:
-          name: Use testing environment variables
-          command: sudo cp .env.testing .env
-#      - run:
-#          name: Install PHP project dependencies
-#          command: sudo composer install -n --prefer-dist
       - run:
           name: Use app installer setup Laravel & db seeds
           command: sudo composer app-install
