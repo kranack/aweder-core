@@ -1,5 +1,10 @@
 # Aweder (awe-der, like order, not ah-weder!)
 
+[![Awe-der](https://circleci.com/gh/awe-der/aweder-core.svg?style=shield)](https://app.circleci.com/pipelines/github/awe-der/aweder-core)
+[![GitHub license](https://img.shields.io/github/license/awe-der/aweder-core)](https://github.com/awe-der/aweder-core/blob/master/LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/awe-der/aweder-core)](https://github.com/awe-der/aweder-core/graphs/contributors/)
+[![GitHub issues](https://img.shields.io/github/issues/awe-der/aweder-core)](https://gitHub.com/awe-der/aweder-core/issues)
+
 An open source ordering platform written in Laravel for quickly
 enabling businesses to quickly move to online payments.
 
