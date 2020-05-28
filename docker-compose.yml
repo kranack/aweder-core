@@ -21,7 +21,7 @@ services:
         container_name: ukr_php
         build: ./docker/php
         environment:
-            PHP_MEMORY_LIMIT: '4G'
+            PHP_MEMORY_LIMIT: '128M'
             DB_HOST: 'mysql'
             DB_USER: 'root'
             DB_PASSWORD: 'root'

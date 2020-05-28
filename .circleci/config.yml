@@ -1,0 +1,84 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # Specify the version you desire here
+      - image: circleci/php:7.4-node-browsers
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # Using the RAM variation mitigates I/O contention
+      # for database intensive operations.
+      - image: circleci/mysql:5.7-ram
+        environment:
+          MYSQL_ROOT_PASSWORD: rootpw
+          MYSQL_DATABASE: uk_restaurant_testing
+          MYSQL_USER: laravel
+          MYSQL_PASSWORD: password
+
+      #
+      # - image: redis:2.8.19
+
+    steps:
+      - checkout
+      - run:
+          name: Use testing environment variables
+          command: sudo cp .env.testing .env
+      - run:
+          name: Update synaptic
+          command: sudo apt update
+      - run:
+          name: install OS dependancies
+          command: sudo apt-get install -qy git libonig-dev libxml2-dev libzip-dev unzip zip libpng-dev libmagickwand-dev libjpeg-dev
+      - run:
+          name: Install PHP extensions
+          command: sudo docker-php-ext-install bcmath ctype json mbstring pdo_mysql tokenizer xml zip gd
+      - run:
+          name: Update composer
+          command: sudo composer self-update
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: Use app installer setup Laravel & db seeds
+          command: sudo composer app-install
+      - run:
+          name: Composer linter
+          command: sudo composer run lint
+      - run:
+          name: Run code sniffer
+          command: sudo composer run phpcs
+      - run:
+          name: Spin up built in webserver for testing
+          command: php artisan serve &
+      - run:
+          name: Sleep to stop race condition
+          command: sleep 5
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package.json" }}
+            - node-v1-
+      - run: yarn install
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Run PHPUnit
+          command: ./vendor/bin/phpunit --testdox
