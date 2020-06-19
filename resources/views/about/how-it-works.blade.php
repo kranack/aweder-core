@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="how-it-works__image col col--lg-12-4 col--lg-offset-12-2 col--l-12-6 col--l-offset-12-1 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">
-                    <img src="images/signup.png" alt="easy signup" />
+                    <img src="images/menu-creation.png" alt="easy signup" />
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="how-it-works__image col col--lg-12-4 col--lg-offset-12-7 col--l-12-6 col--l-offset-12-7 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">
-                    <img src="images/order-confirmation.png" alt="orders" />
+                    <img src="images/simple-ordering.png" alt="orders" />
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="how-it-works__image col col--lg-12-4 col--lg-offset-12-2 col--l-12-6 col--l-offset-12-1 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">
-                    <img src="images/image2.png" alt="awe-der menu" />
+                    <img src="images/dashboard-benefits.png" alt="awe-der menu" />
                 </div>
             </div>
         </div>
