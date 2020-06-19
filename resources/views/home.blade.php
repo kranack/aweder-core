@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 <div class="how-it-works__image col col--lg-12-4 col--lg-offset-12-2 col--l-12-6 col--l-offset-12-1 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">
-                    <img src="images/image1.png" alt="awe-der menu" />
+                    <img src="images/simple-menu.png" alt="awe-der menu" />
                 </div>
             </div>
         </div>
@@ -54,8 +54,8 @@
                                 View and accept incoming orders from your dashboard.
                             </li>
                             <li class="spacer-bottom--40">
-                                <strong class="spacer-bottom--10">Online payment integration (coming soon)</strong>
-                                Support for Stripe and other payment providers to quickly and securely take online payments
+                                <strong class="spacer-bottom--10">Online payment integration</strong>
+                                Support for Stripe to quickly and securely take online payments at the point of order.
                             </li>
                             <li class="spacer-bottom--40">
                                 <strong class="spacer-bottom--10">Instant on-boarding and setup for businesses</strong>
@@ -68,7 +68,7 @@
                     </a>
                 </div>
                 <div class="here-to-help__image col col--lg-12-4 col--lg-offset-12-7 col--l-12-6 col--l-offset-12-7 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">
-                    <img src="images/image2.png" alt="orders" />
+                    <img src="images/dashboard-benefits.png" alt="orders" />
                 </div>
             </div>
         </div>
