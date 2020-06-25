@@ -51,13 +51,13 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapWebRoutes();
 
+        $this->mapAuthRoutes();
+
         $this->mapAdminRoutes();
 
         $this->mapTakeAwayRoutes();
 
         $this->mapTableOrderRoutes();
-
-        $this->mapAuthRoutes();
     }
 
     /**
