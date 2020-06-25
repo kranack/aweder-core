@@ -29,5 +29,10 @@ Route::get('/{merchant}/take-away/{order}/thanks', 'Store\\Orders\\ThankYouContr
 
 Route::post('/{merchant}/take-away/{order}/remove', 'Store\\Orders\\RemoveItemController')
     ->name('store.menu.remove-item');
+
 Route::get('/{merchant}/take-away/{order?}', 'Store\\Menu\\ViewController')
     ->name('store.menu.view');
+
+Route::get('/{merchant}', function ($merchant) {
+        return redirect()->route('store.menu.view', [$merchant]);
+});
