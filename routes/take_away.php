@@ -1,6 +1,5 @@
 <?php
 
-
 //This handles the magic for the stores
 Route::post('/{merchant}/take-away/add-to-order', 'Store\\Orders\\CreateController')
     ->name('store.order.add');
