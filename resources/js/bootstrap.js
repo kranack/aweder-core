@@ -1,15 +1,4 @@
-window._ = require('lodash');
-
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
-window.axios = require('axios');
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+import Vue from 'vue';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import NotificationBanner from './notification';
@@ -22,6 +11,18 @@ import OrderFilters from './order_filters';
 import AdminMenu from './admin-menu';
 
 import '@/sass/app.scss';
+
+window._ = require('lodash');
+
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 const banner = new NotificationBanner();
 banner.init();
@@ -48,3 +49,10 @@ orderFilters.init();
 
 const adminMenu = new AdminMenu();
 adminMenu.init();
+
+Vue.config.devtools = false;
+Vue.config.productionTip = false;
+Vue.config.silent = true;
+
+new Vue({
+}).$mount('#app');

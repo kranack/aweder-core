@@ -1,5 +1,4 @@
 const Upload = class Upload {
-
   uploadEls = document.querySelectorAll('.field--upload');
 
   getTargetEls = () => {
@@ -7,7 +6,7 @@ const Upload = class Upload {
       const input = upload.querySelectorAll('input')[0];
       const filename = upload.querySelectorAll('.upload-input-name')[0];
 
-      input.addEventListener( 'change', () => {
+      input.addEventListener('change', () => {
         this.showFileName(event, input, filename);
       });
     });
@@ -15,8 +14,8 @@ const Upload = class Upload {
 
   showFileName = (event, input, filename) => {
     input = event.srcElement;
-    let inputFilename = input.files[0].name;
-    filename.textContent = 'File name: ' + inputFilename;
+    const inputFilename = input.files[0].name;
+    filename.textContent = `File name: ${inputFilename}`;
   }
 
   init = () => {
@@ -24,7 +23,6 @@ const Upload = class Upload {
       this.getTargetEls();
     }
   }
-
-}
+};
 
 export default Upload;

@@ -14,7 +14,6 @@ const NotificationBanner = class Notification {
     clearTimeout(this.timeout);
   }
 
-
   init = () => {
     this.fixedElement = document.querySelector('.notification__message');
     if (this.fixedElement !== null) {
