@@ -12,6 +12,7 @@
     <exclude-pattern>_ide_helper_models.php$</exclude-pattern>
     <exclude-pattern>webpack.prod.js$</exclude-pattern>
     <exclude-pattern>babel.config.js$</exclude-pattern>
+    <exclude-pattern>vue.config.js$</exclude-pattern>
     <exclude-pattern>server.php</exclude-pattern>
     <exclude-pattern>*\.blade\.php$</exclude-pattern>
     <exclude-pattern>resources/*$</exclude-pattern>
