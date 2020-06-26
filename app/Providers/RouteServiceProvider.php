@@ -103,7 +103,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the routes for the take-away side of the application
+     * Define the routes for the table order side of the application
      *
      * These routes all receive session state, CSRF protection, etc.
      *
@@ -117,7 +117,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the routes for the take-away side of the application
+     * Define the routes for the auth side of the application
      *
      * These routes all receive session state, CSRF protection, etc.
      *
