@@ -10,9 +10,7 @@ const SlugChecker = class SlugChecker {
     }
   };
 
-  hasEnoughCharactersToLookup = (e) => {
-    return e.target.value.length > 3;
-  }
+  hasEnoughCharactersToLookup = (e) => e.target.value.length > 3
 
   init = () => {
     const element = document.getElementById('url-slug');

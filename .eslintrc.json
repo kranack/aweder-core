@@ -5,7 +5,13 @@
         "node": true,
         "jest": true
     },
-    "extends": "airbnb",
+    "parserOptions": {
+        "parser": "babel-eslint"
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:vue/recommended"
+    ],
     "plugins": [
     ],
     "rules": {

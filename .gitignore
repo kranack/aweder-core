@@ -1,7 +1,14 @@
 # OS
 .DS_Store
 
-# IDE
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 /.idea
 /.vscode
 /.vagrant
@@ -24,9 +31,13 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+/dist
 
 # Laravel Framework
 
 
 # Application Specific Files
-

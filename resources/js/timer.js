@@ -9,7 +9,7 @@ const Timer = class Timer {
         element.parentElement.classList.replace('order__status--new',
           'order__status--old');
       }
-      element.parentElement.querySelector('.timer').innerHTML = this.pad(minute)
+      element.parentElement.querySelector('.timer').innerHTML = this.pad(minute);
     }, 1000);
   }
 
@@ -27,7 +27,7 @@ const Timer = class Timer {
   }
 
   pad = (val) => {
-    const valString = val + '';
+    const valString = `${val}`;
     if (valString.length < 2) {
       return `0${valString}`;
     }
