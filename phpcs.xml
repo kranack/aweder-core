@@ -12,6 +12,7 @@
     <exclude-pattern>_ide_helper_models.php$</exclude-pattern>
     <exclude-pattern>webpack.prod.js$</exclude-pattern>
     <exclude-pattern>babel.config.js$</exclude-pattern>
+    <exclude-pattern>jest.config.js$</exclude-pattern>
     <exclude-pattern>vue.config.js$</exclude-pattern>
     <exclude-pattern>server.php</exclude-pattern>
     <exclude-pattern>*\.blade\.php$</exclude-pattern>
@@ -24,4 +25,5 @@
     <exclude-pattern>vendor/*$</exclude-pattern>
     <exclude-pattern>tests/*$</exclude-pattern>
     <exclude-pattern>__tests__/*$</exclude-pattern>
+    <exclude-pattern>*.js</exclude-pattern>
 </ruleset>
