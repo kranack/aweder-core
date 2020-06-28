@@ -103,7 +103,6 @@ module.exports = {
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './resources/'),
-      components: path.resolve(__dirname, './resources/js/components'),
     },
   },
 

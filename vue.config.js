@@ -2,7 +2,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  lintOnSave: false,
+  lintOnSave: 'default',
   configureWebpack: {
     optimization: {
       minimize: true,

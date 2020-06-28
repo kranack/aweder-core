@@ -17,12 +17,12 @@ module.exports = {
     'jest-serializer-vue',
   ],
   testMatch: [
-    '**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)|__tests__/unit/**/*.(js|jsx|ts|tsx)',
+    '<rootDir>/(tests/unit/**/*.spec.(js|jsx|ts|tsx)|__tests__/**/*.(js|jsx|ts|tsx))',
   ],
   testURL: 'http://localhost/',
   collectCoverage: false,
   collectCoverageFrom: [
-    'resources/**/*.{js,vue}',
+    '<rootDir>/resources/js/**/*.{js,vue}',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',

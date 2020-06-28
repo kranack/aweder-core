@@ -29,7 +29,8 @@
         "test:unit:debug": "node --inspect-brk node_modules/@vue/cli-service/bin/vue-cli-service.js test:unit --no-cache --runInBand",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint resources/js"
+        "lint": "vue-cli-service lint resources/js",
+        "jest:config": "jest --showConfig"
     },
     "devDependencies": {
         "@babel/cli": "^7.4.4",
