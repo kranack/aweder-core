@@ -1,11 +1,24 @@
+const path = require('path');
+
 module.exports = {
     root: true,
     env: {
         node: true,
         jest: true,
+        browser: true,
     },
     settings: {
       "import/resolver": {
+        webpack: {
+          config: {
+            resolve: {
+              alias: {
+                '@': path.resolve(__dirname, './resources/'),
+              },
+              extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
+            },
+          },
+        },
         node: {
           paths: ["resources/js"],
           extensions: [".js", ".jsx", ".ts", ".tsx", ".vue"]

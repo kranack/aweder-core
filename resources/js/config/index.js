@@ -1,6 +1,5 @@
 const config = {
-  apiUrl: process.env.AWE_DER_URL,
-  dansTesting: null,
+  apiUrl: process.env.APP_URL,
 };
 
 export default config;
