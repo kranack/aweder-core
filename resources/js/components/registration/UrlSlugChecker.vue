@@ -1,8 +1,8 @@
 <template>
   <div
     class="field col--lg-12-4 col--lg-offset-12-3 col--m-12-5 col--m-offset-12-4 col-sm-6-6 col--sm-offset-6-1"
+    :class="{ 'input-error': exists }"
   >
-    <!--@error('url-slug') input-error @enderror-->
     <label for="url-slug">The business's URL slug <abbr title="required">*</abbr></label>
     <input
       v-model="urlSlug"
@@ -15,10 +15,10 @@
       @keyup="doesUrlExist"
     />
     <p
-      v-if="validationError"
-      class="form__validation-error"
+      v-if="validationError || exists"
+      class="form__validation-error form__validation-error--slug"
     >
-      {{ validationMessage }}
+      {{ errorMessage }}
     </p>
     <p class="form__note">
       This will generate your url - for example - if you enter red-lion you will have https://aweder.net/red-lion
@@ -33,12 +33,13 @@ export default {
   props: {
     validationError: {
       type: Boolean,
-      required: true,
+      required: false,
+      default: false,
     },
     validationMessage: {
       type: String,
       required: false,
-      default: '',
+      default: 'The slug is already taken.',
     },
     urlValue: {
       type: String,
@@ -49,18 +50,25 @@ export default {
   data() {
     return {
       urlSlug: '',
+      exists: false,
     };
   },
+  computed: {
+    errorMessage() {
+      return this.validationMessage;
+    },
+  },
   mounted() {
+    if (this.validationError === true) {
+      this.exist = true;
+    }
   },
   methods: {
     doesUrlExist() {
-      console.log('here being pressed ' + this.urlSlug);
       if (this.urlSlug.length >= 3) {
         slugChecker.checkIfBusinessSlugExists(this.urlSlug).then((response) => {
-          console.log(response);
+          this.exists = response.data.exists === true;
         }).catch((error) => {
-          console.error(error);
         });
       }
     },

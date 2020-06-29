@@ -52,7 +52,7 @@ describe('UrlSlug Checker', () => {
     expect(failedWrapper.find('.form__validation-error').text()).toBe('The validation has failed');
   });
 
-  it('makes sure slug checker isnt called on first keydown', async () => {
+  it('makes sure slug checker isn\'t called on first keydown', async () => {
     mockAxios.get = jest.fn(() => Promise.resolve({
       status: 200,
       data: {
@@ -84,7 +84,7 @@ describe('UrlSlug Checker', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(0);
   });
 
-  it('makes sure slug checker isnt called on second keydown', async () => {
+  it('makes sure slug checker isn\'t called on second keydown', async () => {
     mockAxios.get = jest.fn(() => Promise.resolve({
       status: 200,
       data: {
@@ -150,5 +150,91 @@ describe('UrlSlug Checker', () => {
 
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(mockAxios.get).toHaveBeenCalledWith(uri);
+  });
+
+  it('validation error not shown when passed in', async () => {
+    const urlFailedWrapper = shallowMount(
+      UrlSlugChecker,
+      {
+        localVue,
+        propsData: {
+          validationError: false,
+          validationMessage: 'The slug is already taken.',
+          urlValue: '',
+        },
+      },
+    );
+
+    expect(urlFailedWrapper.find('.form__validation-error--slug').exists()).toBe(false);
+  });
+
+  it('does validation error show when api request returns url exists', async () => {
+    mockAxios.get = jest.fn(() => Promise.resolve({
+      status: 200,
+      data: {
+        exists: true,
+      },
+    }));
+
+    const urlFailedWrapper = shallowMount(
+      UrlSlugChecker,
+      {
+        localVue,
+        propsData: {
+          validationError: false,
+          validationMessage: 'The validation has failed',
+          urlValue: '',
+        },
+      },
+    );
+
+    const urlInput = urlFailedWrapper.find('#url-slug');
+
+    const uri = 'validate-slug/dan';
+
+    urlInput.setValue('dan');
+
+    urlInput.trigger('keyup');
+
+    await flushPromises();
+
+    expect(urlFailedWrapper.find('.form__validation-error--slug')
+      .exists())
+      .toBe(true);
+  });
+
+  it('validation error doesnt show when api request returns url doesnt exists', async () => {
+    mockAxios.get = jest.fn(() => Promise.resolve({
+      status: 200,
+      data: {
+        exists: false,
+      },
+    }));
+
+    const urlFailedWrapper = shallowMount(
+      UrlSlugChecker,
+      {
+        localVue,
+        propsData: {
+          validationError: false,
+          validationMessage: 'The validation has failed',
+          urlValue: '',
+        },
+      },
+    );
+
+    const urlInput = urlFailedWrapper.find('#url-slug');
+
+    const uri = 'validate-slug/dan';
+
+    urlInput.setValue('dan');
+
+    urlInput.trigger('keyup');
+
+    await flushPromises();
+
+    expect(urlFailedWrapper.find('.form__validation-error--slug')
+      .exists())
+      .toBe(false);
   });
 });

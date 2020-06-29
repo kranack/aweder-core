@@ -28,15 +28,7 @@
                         <p class="form__validation-error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <url-slug-checker :validation-error="false" validation-message="" url-value="{{ old('url-slug') }}"></url-slug-checker>
-{{--                    <div class="field col--lg-12-4 col--lg-offset-12-3 col--m-12-5 col--m-offset-12-4 col-sm-6-6 col--sm-offset-6-1 @error('url-slug') input-error @enderror">--}}
-{{--                        <label for="url-slug">The business's URL slug <abbr title="required">*</abbr></label>--}}
-{{--                        <input type="text" name="url-slug" id="url-slug" tabindex="5"  value="{{ old('url-slug') }}" placeholder="URL slug" />--}}
-{{--                        @error('url-slug')--}}
-{{--                        <p class="form__validation-error">{{ $message }}</p>--}}
-{{--                        @enderror--}}
-{{--                        <p class="form__note">This will generate your url - for example - if you enter red-lion you will have https://aweder.net/red-lion</p>--}}
-{{--                    </div>--}}
+                    <url-slug-checker @if ($errors->has('url-slug')) :validation-error="true" @endif @error('url-slug') validation-message="{{ $message }}" @enderror url-value="{{ old('url-slug') }}"></url-slug-checker>
                     <div class="field field--wrapper col col--lg-12-6 col--m-12-8 col-sm-6-6">
                         <label for="description">Enter a description about your business and/or state any notes for your order form e.g. ‘This is Thursdays menu’ <abbr title="required">*</abbr></label>
                         <textarea name="description" tabindex="6" id="description">{{ old('description') }}</textarea>
