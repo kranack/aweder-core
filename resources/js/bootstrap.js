@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import NotificationBanner from './notification';
 import SlugChecker from './slug-checker';
 import Upload from './upload';
@@ -11,8 +12,6 @@ import OrderFilters from './order_filters';
 import AdminMenu from './admin-menu';
 
 import '@/sass/app.scss';
-
-window._ = require('lodash');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -55,4 +54,7 @@ Vue.config.productionTip = false;
 Vue.config.silent = true;
 
 new Vue({
+  components: {
+    UrlSlugChecker
+  }
 }).$mount('#app');

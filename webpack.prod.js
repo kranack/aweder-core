@@ -2,6 +2,9 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 const buildPath = path.resolve(__dirname, 'public/');
 
 module.exports = {
@@ -31,6 +34,10 @@ module.exports = {
   // https://webpack.js.org/concepts/loaders/
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -94,13 +101,22 @@ module.exports = {
 
   // https://webpack.js.org/concepts/plugins/
   plugins: [
+    new Dotenv({
+      path: path.resolve(__dirname, './.env'),
+      safe: false,
+      systemvars: true,
+      allowEmptyValues: true,
+      silent: false,
+      defaults: false,
+    }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
       chunkFilename: 'style.css',
     }),
-
+    new VueLoaderPlugin(),
   ],
   resolve: {
+    extensions: ['.js', '.vue', '.json', '.sass'],
     alias: {
       '@': path.resolve(__dirname, './resources/'),
     },

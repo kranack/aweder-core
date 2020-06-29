@@ -6,6 +6,7 @@
     <input
       type="text"
       id="url-slug"
+      v-model="urlSlug"
       name="url-slug"
       value="urlValue"
       tabindex="5"
@@ -42,5 +43,18 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      urlSlug: '',
+    };
+  },
+  mounted() {
+
+  },
+  methods: {
+    doesUrlExist() {
+    },
+  },
+
 };
 </script>
