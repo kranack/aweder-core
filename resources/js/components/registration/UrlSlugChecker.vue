@@ -1,16 +1,18 @@
 <template>
   <div
-    class="field col--lg-12-4 col--lg-offset-12-3 col--m-12-5 col--m-offset-12-4 col-sm-6-6 col--sm-offset-6-1 @error('url-slug') input-error @enderror"
+    class="field col--lg-12-4 col--lg-offset-12-3 col--m-12-5 col--m-offset-12-4 col-sm-6-6 col--sm-offset-6-1"
   >
+    <!--@error('url-slug') input-error @enderror-->
     <label for="url-slug">The business's URL slug <abbr title="required">*</abbr></label>
     <input
+      v-model="urlSlug"
       type="text"
       id="url-slug"
-      v-model="urlSlug"
       name="url-slug"
       value="urlValue"
       tabindex="5"
       placeholder="URL slug"
+      @keyup="doesUrlExist"
     />
     <p
       v-if="validationError"
@@ -24,6 +26,8 @@
   </div>
 </template>
 <script>
+import slugChecker from '@/js/api/merchant/slug';
+
 export default {
   name: 'UrlSlugChecker',
   props: {
@@ -48,10 +52,17 @@ export default {
     };
   },
   mounted() {
-
   },
   methods: {
     doesUrlExist() {
+      console.log('here being pressed ' + this.urlSlug);
+      if (this.urlSlug.length >= 3) {
+        slugChecker.checkIfBusinessSlugExists(this.urlSlug).then((response) => {
+          console.log(response);
+        }).catch((error) => {
+          console.error(error);
+        });
+      }
     },
   },
 

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import 'core-js/stable';
+import 'core-js';
 import 'regenerator-runtime/runtime';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import NotificationBanner from './notification';
