@@ -7,6 +7,13 @@ nav_order: 5
 
 # Mission Statement
 
+At Awe-der, we believe in our free, no hassle platform that will allow small businesses to take control of online orders.
+
+No costs, no cuts, no middlemen. Here at Awe-der we believe in giving back, and allowing small businesses to transition to online ordering and contactless table ordering, with a no hassle simple to use platform.
+
+Awe-der core is a maintained Open Source project with defined standards and tooling,, and always will be - no vendor lock-in, no 3rd party proprietary code.
+
+
 # Leadership
 
 Awe-der core uses the BDFL (Benovolent Dictator for Life) model for leadership.
