@@ -12,7 +12,6 @@
       tabindex="5"
       placeholder="URL slug"
     />
-
     <p
       v-if="validationError"
       class="form__validation-error"

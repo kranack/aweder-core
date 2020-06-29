@@ -22,7 +22,7 @@
     </div>
 </div>
 @endif
-<div class="site-wrapper">
+<div class="site-wrapper" id="app">
     @include('global/header')
     @include('shared/notification')
     <main>
