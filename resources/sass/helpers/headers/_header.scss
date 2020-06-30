@@ -1,0 +1,10 @@
+@import 'mixins';
+
+.header-one {
+  @extend .font-gibson-semi
+}
+
+.header-two,
+.header-three {
+  @extend .font-gibson-med;
+}

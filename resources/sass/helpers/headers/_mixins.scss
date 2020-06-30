@@ -1,0 +1,12 @@
+@mixin borderAfter($width, $height, $marginTop, $marginBottom) {
+  &:after {
+    @extend .flex,
+    .justify-content-start;
+    content: "";
+    width:$width;
+    height:$height;
+    margin-top: $marginTop;
+    margin-bottom: $marginBottom;
+    background: $selective-yellow;
+  }
+}
