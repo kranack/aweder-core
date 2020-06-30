@@ -24,7 +24,7 @@
         "preview": "yarn run build && http-server dist",
         "test:unit": "./node_modules/jest/bin/jest.js",
         "lint": "vue-cli-service lint resources/js",
-        "jest:config": "jest --showConfig",
+        "jest:config": "jest --showConfig"
     },
     "devDependencies": {
         "@babel/cli": "^7.4.4",
