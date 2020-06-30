@@ -8,7 +8,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const buildPath = path.resolve(__dirname, 'public/');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   watch: true,
   // This option controls if and how source maps are generated.
   // https://webpack.js.org/configuration/devtool/
