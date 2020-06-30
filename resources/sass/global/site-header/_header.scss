@@ -1,0 +1,16 @@
+.site-header {
+  @extend .background-carnation,
+  .flex,
+  .align-items-center;
+  height: 80px;
+}
+
+.site-branding .icon--logo svg {
+  max-width: 159px;
+  width: 100%;
+}
+
+.site-branding .icon--logo-mobile svg {
+  max-width: 21px;
+  width: 100%;
+}

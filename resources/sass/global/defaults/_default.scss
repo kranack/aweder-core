@@ -21,12 +21,46 @@ html {
 
 body {
   @include rem2px(font-size, 1.6);
-  @extend .color-cloud-burst, .font-gibson-reg;
+  @extend .color-cloud-burst,
+  .font-gibson-reg;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .content {
-  @extend .width-xl;
+  @extend .width-xl,
+  .grid,
+  .col-gap,
+  .grid-cols-12;
+
+  @include mq(l) {
+    @include _(l-col-gap);
+  }
+  @include mq(m) {
+    @include _(m-col-gap);
+  }
+  @include mq(sm) {
+    @include _(sm-col-gap);
+  }
+  @include mq(s) {
+    @include _(s-col-gap);
+  }
+}
+
+.row {
+  @extend .container, .width-full;
+
+  @include mq(l) {
+    @include _(l-container);
+  }
+  @include mq(m) {
+    @include _(m-container);
+  }
+  @include mq(sm) {
+    @include _(sm-container);
+  }
+  @include mq(s) {
+    @include _(s-container);
+  }
 }

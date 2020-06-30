@@ -1,0 +1,13 @@
+.site-nav,
+.site-menu {
+  @extend .flex;
+}
+
+.site-nav {
+  @extend .justify-content-end;
+}
+
+.site-menu__item {
+  @extend .flex,
+  .align-items-center;
+}

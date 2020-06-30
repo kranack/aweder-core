@@ -3,9 +3,9 @@
 @include('global/head')
 <body @if (isset($bodyClass)) class="{{ $bodyClass }}" @endif>
 @if (app()->environment() === 'local')
-<div class="grid">
-    <div class="content">
-        <div class="row">
+<div class="grid-overlay">
+    <div class="row">
+        <div class="content">
             <div class="grid__item"></div>
             <div class="grid__item"></div>
             <div class="grid__item"></div>
