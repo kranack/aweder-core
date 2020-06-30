@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import 'core-js';
 import 'regenerator-runtime/runtime';
+import RegistrationForm from '@/js/compontent/registration/RegistrationForm';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import NotificationBanner from './notification';
-import SlugChecker from './slug-checker';
 import Upload from './upload';
 import MerchantRegistration from './merchant_registration';
 import Delivery from './delivery_cost';
@@ -25,9 +25,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 const banner = new NotificationBanner();
 banner.init();
-
-const slugChecker = new SlugChecker();
-slugChecker.init();
 
 const stripe = new StripeElements();
 if (document.getElementById('card-element')) {

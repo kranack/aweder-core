@@ -22,13 +22,8 @@
         "copy-images": "rm -rf public/images && cp -R resources/images public/images/",
         "prod": "webpack --config webpack.prod.js  && npm run copy-images",
         "preview": "yarn run build && http-server dist",
-        "test:e2e": "vue-cli-service test:e2e --use-selenium",
-        "test:unit": "vue-cli-service test:unit --no-cache",
-        "test:only": "vue-cli-service test:unit --testPathPattern=tests/unit/client/View.spec.js",
-        "test:unit:watch": "vue-cli-service test:unit --watch",
-        "test:unit:debug": "node --inspect-brk node_modules/@vue/cli-service/bin/vue-cli-service.js test:unit --no-cache --runInBand",
-        "lint": "vue-cli-service lint resources/js",
-        "jest:config": "jest --showConfig"
+        "jest:config": "jest --showConfig",
+        "test:unit": "jest"
     },
     "devDependencies": {
         "@babel/cli": "^7.4.4",
