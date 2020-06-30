@@ -82,3 +82,6 @@ jobs:
       - run:
           name: Run PHPUnit
           command: ./vendor/bin/phpunit --testdox
+      - run:
+          name: Run Jest
+          command: yarn run test:unit
