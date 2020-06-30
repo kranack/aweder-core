@@ -84,4 +84,4 @@ jobs:
           command: ./vendor/bin/phpunit --testdox
       - run:
           name: Run Jest
-          command: yarn run unit:test
+          command: yarn run test:unit
