@@ -30,7 +30,9 @@ class ViewControllerTest extends TestCase
 
         $response = $this->call('GET', $merchant->url_slug);
 
-        $response->assertStatus(SymfonyResponse::HTTP_OK);
+        $response->assertStatus(SymfonyResponse::HTTP_FOUND);
+
+        $response->assertRedirect($merchant->url_slug . '/take-away');
     }
 
     /**
