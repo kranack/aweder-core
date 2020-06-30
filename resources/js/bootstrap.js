@@ -49,7 +49,7 @@ orderFilters.init();
 const adminMenu = new AdminMenu();
 adminMenu.init();
 
-Vue.config.devtools = true;
+Vue.config.devtools = false;
 Vue.config.productionTip = false;
 Vue.config.silent = false;
 
