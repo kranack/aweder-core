@@ -1,0 +1,16 @@
+/* FONT FAMILY MIXINS ============================================================================= */
+
+@mixin fontFamily() {
+  @each $name, $fontFamily in $fontFamilies {
+    .font-#{$name} {
+      @each $family, $font in $fontFamily {
+        #{$family}: $font;
+      }
+    }
+    @include placeholder(font-#{$name}) {
+      @each $family, $font in $fontFamily {
+        #{$family}: $font;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+/* TEMPLATE ROWS MIXINS ============================================================================= */
+
+@mixin templateRows() {
+  @each $size, $breakpoint in $breakpoints {
+    @if $size != 'xl' {
+      @for $i from 1 through $columns {
+        @include mq($size) {
+          .#{$size}-grid-rows-#{$i} {
+            grid-template-rows: repeat($i, auto);
+          }
+        }
+        @include placeholder(#{$size}-grid-rows-#{$i}) {
+          grid-template-rows: repeat($i, auto);
+        }
+      }
+    } @else {
+      @for $i from 1 through $columns {
+        .grid-rows-#{$i} {
+          grid-template-rows: repeat($i, auto);
+        }
+        @include placeholder(grid-rows-#{$i}) {
+          grid-template-rows: repeat($i, auto);
+        }
+      }
+    }
+  }
+}

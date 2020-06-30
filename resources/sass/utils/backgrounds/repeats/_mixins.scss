@@ -1,0 +1,12 @@
+/* BG REPEAT MIXINS ============================================================================= */
+
+@mixin bgRepeat() {
+  @each $name, $bgRepeat in $bgRepeats {
+    .background-#{$name} {
+      background-position: $bgRepeat;
+    }
+    @include placeholder(background-#{$name}) {
+      background-position: $bgRepeat;
+    }
+  }
+}

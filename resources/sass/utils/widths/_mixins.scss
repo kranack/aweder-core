@@ -1,0 +1,35 @@
+/* WIDTHS MIXINS ============================================================================= */
+@mixin widths() {
+  $maxWidth: map_get($breakpoints, 'xl');
+  .width-xl {
+    max-width: $maxWidth;
+    width: 100%;
+  }
+  @include placeholder(width-xl) {
+    max-width: $maxWidth;
+    width: 100%;
+  }
+  @each $size, $breakpoint in $breakpoints {
+    @if $size == 'xl' {
+      .width-full {
+        max-width: 100%;
+        width: 100%;
+      }
+      @include placeholder(width-full) {
+        max-width: 100%;
+        width: 100%;
+      }
+    } @else {
+      .#{$size}-width-full {
+        max-width: 100%;
+        width: 100%;
+      }
+      @include placeholder(#{$size}-width-full) {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+}
+

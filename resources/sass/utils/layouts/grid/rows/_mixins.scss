@@ -1,0 +1,53 @@
+/* ROWS MIXINS ============================================================================= */
+
+@mixin row() {
+  @each $size, $breakpoint in $breakpoints {
+    @if $size != 'xl' {
+      @for $i from 1 through $rows {
+        @include mq($size) {
+          .#{$size}-row-span-#{$i} {
+            grid-row: span $i / span $i;
+          }
+        }
+        @include placeholder(#{$size}-row-span-#{$i}) {
+          grid-row: span $i / span $i;
+        }
+      }
+    } @else {
+      @for $i from 1 through $rows {
+        .row-span-#{$i} {
+          grid-row: span $i / span $i;
+        }
+        @include placeholder(row-span-#{$i}) {
+          grid-row: span $i / span $i;
+        }
+      }
+    }
+  }
+}
+
+@mixin rowStart() {
+  @each $size, $breakpoint in $breakpoints {
+    @if $size != 'xl' {
+      @for $i from 1 through $rows {
+        @include mq($size) {
+          .#{$size}-row-start-#{$i} {
+            grid-row-start: $i;
+          }
+        }
+        @include placeholder(#{$size}-row-start-#{$i}) {
+          grid-row-start: $i;
+        }
+      }
+    } @else {
+      @for $i from 1 through $rows {
+        .row-start-#{$i} {
+          grid-row-start: $i;
+        }
+        @include placeholder(row-start-#{$i}) {
+          grid-row-start: $i;
+        }
+      }
+    }
+  }
+}

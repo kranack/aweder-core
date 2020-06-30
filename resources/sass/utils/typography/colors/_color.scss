@@ -1,0 +1,7 @@
+@import 'mixins';
+
+@include color;
+
+@include colorRgba(cloud-burst, 0.6);
+@include colorRgba(cloud-burst, 0.5);
+@include colorRgba(cloud-burst, 0.3);

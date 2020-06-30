@@ -1,0 +1,12 @@
+/* WORD BREAK MIXINS ============================================================================= */
+
+@mixin workBreak() {
+  @each $name, $break in $breaks {
+    .break-#{$name} {
+      list-style-type: $break;
+    }
+    @include placeholder(break-#{$name}) {
+      list-style-type: $break;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+/* BORDER RADIUS MIXINS ============================================================================= */
+
+@mixin borderRadius() {
+  @each $name, $borderRadius in $borderRadius {
+    .radius-#{$name} {
+      border-radius: $borderRadius;
+    }
+    @include placeholder(radius-#{$name}) {
+      border-radius: $borderRadius;
+    }
+  }
+}

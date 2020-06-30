@@ -1,0 +1,12 @@
+/* FONT DISPLAY MIXINS ============================================================================= */
+
+@mixin fontDisplay() {
+  @each $name, $display in $textDisplay {
+    .font-#{$name} {
+      font-display: $display;
+    }
+    @include placeholder(font-#{$name}) {
+      font-display: $display;
+    }
+  }
+}

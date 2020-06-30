@@ -1,0 +1,12 @@
+/* TEXT TRANSFORM MIXINS ============================================================================= */
+
+@mixin textTransform() {
+  @each $name, $transform in $textTransform {
+    .#{$name} {
+      text-transform: $transform;
+    }
+    @include placeholder(#{$name}) {
+      text-transform: $transform;
+    }
+  }
+}

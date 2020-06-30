@@ -1,0 +1,23 @@
+/* BORDER STYLES MIXINS ============================================================================= */
+
+@mixin borderStyles() {
+  @each $name, $borderStyle in $borderStyles {
+    @each $pos, $borderPosition in $borderPositions {
+      @if $borderPosition != 'all' {
+        .border-#{$borderPosition}-#{$borderStyle} {
+          border-#{$pos}-style: $borderStyle;
+        }
+        @include placeholder(border-#{$borderPosition}-style-#{$borderStyle}) {
+          border-#{$pos}-style: $borderStyle;
+        }
+      } @else {
+        .border-#{$borderStyle} {
+          border-style: $borderStyle;
+        }
+        @include placeholder(border-#{$borderStyle}) {
+          border-style: $borderStyle;
+        }
+      }
+    }
+  }
+}

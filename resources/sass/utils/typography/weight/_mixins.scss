@@ -1,0 +1,12 @@
+/* FONT WEIGHT MIXINS ============================================================================= */
+
+@mixin weight() {
+  @each $name, $weight in $fontWeight {
+    .font-#{$name} {
+      font-weight: $weight;
+    }
+    @include placeholder(font-#{$name}) {
+      font-weight: $weight;
+    }
+  }
+}

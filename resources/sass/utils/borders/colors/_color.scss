@@ -1,0 +1,5 @@
+@import 'mixins';
+
+@include borderColor;
+
+@include borderColorRgba(silver, 0.5);

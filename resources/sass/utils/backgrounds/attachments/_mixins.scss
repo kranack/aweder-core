@@ -1,0 +1,12 @@
+/* BG ATTACHMENT MIXINS ============================================================================= */
+
+@mixin bgAttachment() {
+  @each $name, $bgAttachment in $bgAttachments {
+    .background-#{$name} {
+      background-attachment: $bgAttachment;
+    }
+    @include placeholder(background-#{$name}) {
+      background-attachment: $bgAttachment;
+    }
+  }
+}

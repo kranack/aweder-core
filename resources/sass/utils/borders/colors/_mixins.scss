@@ -1,0 +1,31 @@
+/* BORDER COLOUR MIXINS ============================================================================= */
+
+@mixin borderColor() {
+  @each $name, $color in $colors {
+    .border-#{$name} {
+      border-color: $color;
+    }
+  }
+}
+
+@mixin borderColorRgba($color, $rgba) {
+  @if ($rgba == 0) {
+    .border-#{$color}-0 {
+      border-color: rgba(map_get($colors, $color), 0);
+    }
+    @include placeholder(border-#{$color}-0) {
+      border-color: rgba(map_get($colors, $color), 0);
+    }
+  } @else if ($rgba > 0 and $rgba < 1) {
+    $rgba: $rgba * 10;
+    .border-#{$color}-#{$rgba} {
+      $rgba: $rgba / 10;
+      border-color: rgba(map_get($colors, $color), $rgba);
+      $rgba: $rgba * 10;
+    }
+    @include placeholder(border-#{$color}-#{$rgba}) {
+      $alpha: $rgba / 10;
+      border-color: rgba(map_get($colors, $color), $alpha);
+    }
+  }
+}

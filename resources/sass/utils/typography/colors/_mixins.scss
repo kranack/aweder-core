@@ -1,0 +1,31 @@
+/* BG COLOUR MIXINS ============================================================================= */
+
+@mixin color() {
+  @each $name, $color in $colors {
+    .color-#{$name} {
+      color: $color;
+    }
+  }
+}
+
+@mixin colorRgba($color, $rgba) {
+  @if ($rgba == 0) {
+    .color-#{$color}-0 {
+      color: rgba(map_get($colors, $color), 0);
+    }
+    @include placeholder(color-#{$color}-0) {
+      color: rgba(map_get($colors, $color), 0);
+    }
+  } @else if ($rgba > 0 and $rgba < 1) {
+    $rgba: $rgba * 10;
+    .color-#{$color}-#{$rgba} {
+      $rgba: $rgba / 10;
+      color: rgba(map_get($colors, $color), $rgba);
+      $rgba: $rgba * 10;
+    }
+    @include placeholder(color-#{$color}-#{$rgba}) {
+      $alpha: $rgba / 10;
+      color: rgba(map_get($colors, $color), $alpha);
+    }
+  }
+}
