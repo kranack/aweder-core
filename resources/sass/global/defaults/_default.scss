@@ -41,6 +41,7 @@ body {
     @include _(m-col-gap);
   }
   @include mq(sm) {
+    @include _(sm-grid-cols-6);
     @include _(sm-col-gap);
   }
   @include mq(s) {

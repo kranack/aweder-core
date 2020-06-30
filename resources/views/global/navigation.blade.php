@@ -1,15 +1,15 @@
-<nav class="site-nav col-span-9 col sm-col-span-2">
+<nav class="site-nav col-span-9 col sm-col-span-4">
     <input type="checkbox" id="menu-trigger" class="hidden" />
-    <label class="site-nav__burger hidden s-flex" for="menu-trigger"></label>
+    <label class="site-nav__burger hidden sm-flex" for="menu-trigger"></label>
     <ul class="site-menu">
         <li class="site-menu__item">
             <a href="{{ route('about.how-it-works') }}" class="site-menu__link">How it works</a>
         </li>
         <li class="site-menu__item">
-            <a href="{{ route('login') }}" class="site-menu__link">Merchant login</a>
+            <a href="{{ route('login') }}" class="site-menu__link site-menu__link--outline">Merchant login</a>
         </li>
         <li class="site-menu__item">
-            <a href="{{ route('register') }}" class="site-menu__link">Merchant signup</a>
+            <a href="{{ route('register') }}" class="site-menu__link site-menu__link--solid">Merchant signup</a>
         </li>
     </ul>
 </nav>

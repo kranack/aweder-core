@@ -12,3 +12,9 @@
 .grid__item {
   @extend .background-silver-4;
 }
+
+.grid__item:nth-child(n+7){
+  @include mq(sm) {
+    @include _(hidden);
+  }
+}
