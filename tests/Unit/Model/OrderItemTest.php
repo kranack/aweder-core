@@ -6,6 +6,7 @@ use App\Inventory;
 use App\Order;
 use App\OrderItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use phpDocumentor\Reflection\Types\This;
 use Tests\TestCase;
 
 /**
@@ -39,12 +40,12 @@ class OrderItemTest extends TestCase
         $inventory1 = factory(Inventory::class)->create();
         $inventory2 = factory(Inventory::class)->create();
 
-        $orderItem1 = factory(OrderItem::class)->create([
+        $orderItem1 = factory($this->model)->create([
             'quantity' => 2,
             'inventory_id' => $inventory1->id
         ]);
 
-        $orderItem2 = factory(OrderItem::class)->create([
+        $orderItem2 = factory($this->model)->create([
             'quantity' => 1,
             'inventory_id' => $inventory2->id
         ]);
@@ -54,6 +55,6 @@ class OrderItemTest extends TestCase
         $this->assertCount(1, $inventory1->orderItems()->get());
         $this->assertCount(1, $inventory2->orderItems()->get());
 
-        $this->assertCount(1, OrderItem::multipleQuantity()->get());
+        $this->assertCount(1, $this->model::multipleQuantity()->get());
     }
 }
