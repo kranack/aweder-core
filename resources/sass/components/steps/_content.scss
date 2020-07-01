@@ -1,0 +1,37 @@
+.steps {
+  @media (min-width: $l-min) and (min-height: 750px){
+    @include calc(height, "100vh - 80px");
+    background: linear-gradient(90deg, rgba($carnation, 1) 0%, rgba($carnation, 1) 49.9%, rgba($ecru-white, 0.3) 50%, rgba($ecru-white, 0.3) 100%);
+  }
+}
+
+.steps__wrapper {
+  @media (min-width: $l-min) and (min-height: 750px){
+    @include calc(height, "100vh - 80px");
+    overflow: hidden;
+  }
+}
+
+.steps__item .row {
+  @extend .flex,
+  .justify-content-center;
+  height: 100%;
+}
+
+.steps__item .content {
+  height: 100%;
+}
+
+.steps__col {
+  @extend .padding-top-80,
+  .padding-bottom-80;
+}
+
+.steps__col--content {
+  @extend .background-carnation;
+
+  @media (min-width: $l-min) and (min-height: 750px){
+    display: inline-grid;
+    grid-template-columns: repeat(6, [col-start] 1fr);
+  }
+}

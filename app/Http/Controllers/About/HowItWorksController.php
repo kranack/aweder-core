@@ -15,6 +15,11 @@ class HowItWorksController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return response()->view('about.how-it-works');
+        return response()->view(
+            'about.how-it-works',
+            [
+                'bodyClass' => 'body-steps',
+            ]
+        );
     }
 }

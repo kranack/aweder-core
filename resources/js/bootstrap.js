@@ -10,6 +10,7 @@ import Delivery from './delivery_cost';
 import StripeElements from './stripe-elements';
 import OrderFilters from './order_filters';
 import AdminMenu from './admin-menu';
+import VerticalSlider from './vertical-slider';
 
 import '@/sass/app.scss';
 
@@ -48,6 +49,9 @@ orderFilters.init();
 
 const adminMenu = new AdminMenu();
 adminMenu.init();
+
+const verticalSlider = new VerticalSlider();
+verticalSlider.init();
 
 Vue.config.devtools = false;
 Vue.config.productionTip = false;

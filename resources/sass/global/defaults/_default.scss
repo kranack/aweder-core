@@ -29,7 +29,9 @@ body {
 }
 
 .site-wrapper {
-  overflow: hidden;
+  @include mq(sm) {
+    overflow: hidden;
+  }
 }
 
 .content {
