@@ -1,0 +1,7 @@
+.site-footer {
+  @extend
+  .flex,
+  .width-full,
+  .background-cloud-burst;
+  height: 200px;
+}

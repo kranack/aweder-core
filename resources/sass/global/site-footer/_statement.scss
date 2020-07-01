@@ -1,0 +1,14 @@
+.site-footer__statement {
+  @extend .inline-flex,
+  .align-items-center;
+}
+
+.site-footer__statement p {
+  @extend .body-small,
+  .color-ecru-white;
+}
+
+.site-footer__statement p a {
+  @extend .color-ecru-white,
+  .text-underline;
+}
