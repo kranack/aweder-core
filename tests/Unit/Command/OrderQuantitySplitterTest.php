@@ -26,12 +26,18 @@ class OrderQuantitySplitterTest extends TestCase
 
         $orderItem = factory(OrderItem::class)->create([
             'quantity' => $randomQuantity,
-            'inventory_id' => $inventory->id
+            'inventory_id' => $inventory->id,
+            'price' => 65
         ]);
 
         $this->assertDatabaseHas('order_items', ['id' => $orderItem->id]);
         $this->assertCount(1, $inventory->orderItems()->get());
         $this->artisan('db:order-quantity-split-hotfix');
         $this->assertCount($randomQuantity, $inventory->orderItems()->get());
+
+        foreach ($inventory->orderItems() as $orderItem) {
+            $this->assertEquals(1, $orderItem->quantity);
+            $this->assertEquals(65, $orderItem->price);
+        }
     }
 }
