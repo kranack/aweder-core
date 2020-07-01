@@ -40,11 +40,10 @@ class RetrospectiveOrderQuantitySplitter extends Command
     {
         $run = true;
         if (App::environment() === 'production') {
-            $userResponse = $this->ask(
+            $run = $this->confirm(
                 'WARNING! This app is in production. This command manipulates orders in the db.
                 Are you sure you want to run it? [Y/N]'
             );
-            $run = strtolower($userResponse) !== 'n';
         }
 
         if (!$run) {
