@@ -1,0 +1,21 @@
+.site-footer__branding {
+  @extend .relative,
+  .inline-flex;
+}
+
+.site-footer__branding .bowl {
+  @extend .width-full;
+}
+
+.site-footer__branding .icon--bowl {
+  @extend .absolute,
+  .width-full;
+  left: 0;
+  bottom: 0;
+}
+
+.site-footer__branding .icon--bowl svg {
+  @extend .flex,
+  .width-full;
+  height: auto;
+}
