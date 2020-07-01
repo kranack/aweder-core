@@ -1,13 +1,25 @@
 .hero {
   @extend .padding-top-140,
   .padding-bottom-140;
+
+  @include mq(l) {
+    @include _(l-padding-top-100);
+    @include _(l-padding-bottom-100);
+  }
+  @include mq(m) {
+    @include _(m-padding-top-80);
+    @include _(m-padding-bottom-80);
+  }
 }
 
 .hero__copy {
   @extend .margin-top-40;
 
   @include mq(sm) {
-    @include _(sm-margin-top-20)
+    @include _(sm-margin-top-60)
+  }
+  @include mq(s) {
+    @include _(text-center);
   }
 }
 

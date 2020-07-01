@@ -4,6 +4,7 @@
   .button-#{$type}--#{$border} .button__content {
     @extend .flex,
     .align-items-center,
+    .justify-content-center,
     .border-width-1,
     .border-solid,
     .radius-5,

@@ -2,14 +2,17 @@
   @extend
   .flex,
   .width-full,
-  .background-cloud-burst;
+  .background-cloud-burst,
+  .margin-top-140;
   height: 200px;
 
   @include mq(l) {
     height: 150px;
+    @include _(l-margin-top-100);
   }
   @include mq(m) {
-    @include _(padding-bottom-20);
+    @include _(m-padding-bottom-20);
+    @include _(m-margin-top-140);
     height: 220px;
   }
   @include mq(sm) {

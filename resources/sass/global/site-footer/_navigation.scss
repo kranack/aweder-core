@@ -1,6 +1,10 @@
 .site-footer__menu {
   @extend .flex,
   .align-items-center;
+
+  @include mq(m) {
+    @include _(m-margin-top-20);
+  }
 }
 
 .site-footer__navigation {
