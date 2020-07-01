@@ -70,9 +70,11 @@
 }
 
 .site-footer__branding .icon--jump svg {
+  max-width: 90px;
+  width: 100%;
+
   @include mq(l) {
     max-width: 70px;
-    width: 100%;
   }
   @include mq(m) {
     max-width: 50px;
@@ -87,4 +89,9 @@
     @include _(l-margin-top-10);
     @include _(l-margin-bottom-10);
   }
+}
+
+.site-footer__branding .icon--cross svg {
+  max-width: 14px;
+  width: 100%;
 }

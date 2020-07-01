@@ -18,82 +18,36 @@ $rem-base-font: 16px !default;
 
 @mixin fontSizes() {
   $sizes: map-keys($breakpoints);
+  $golden-rule: map_get($fontStyles, golden-rule);
   @each $name, $fontStyle in $fontStyles {
-    $golden-rule: map_get($fontStyles, golden-rule);
     @if $name != 'golden-rule' {
       .#{$name} {
-        @each $size, $style in $fontStyle {
-          $fontBreakpoints: map-keys($fontStyle);
-          @if $fontBreakpoints = $sizes {
-            @if $size == 'xl' {
-              @each $selector, $type in $style {
-                $font-size: map-get($style, 'font-size');
-                $line-height-rule: map-get($style, 'line-height-rule');
-                $line-height-px: map-get($style, 'line-height-px');
-                @if $font-size != null {
-                  @include rem2px(font-size, $type);
-                }
-                @if $font-size != null {
-                  @include rem2px(font-size, $type);
-                }
-                @if $line-height-rule != null {
-                  @include lineHeightRule($line-height-rule);
-                } @else {
-                  @include lineHeightRule($golden-rule);
-                }
+        @each $size, $mq in $fontStyle {
+          @if $size == 'xl' {
+            @each $selector, $prop in $mq {
+              @if $selector == 'font-size' {
+                @include rem2px(font-size, $prop);
               }
-            } @else {
-              @include mq($size) {
-                @each $selector, $type in $style {
-                  $font-size: map-get($style, 'font-size');
-                  $line-height-rule: map-get($style, 'line-height-rule');
-                  $line-height-px: map-get($style, 'line-height-px');
-                  @if $font-size != null {
-                    @include rem2px(font-size, $type);
-                  }
-                  @if $line-height-rule != null {
-                    @include lineHeightRule($line-height-rule);
-                  } @else {
-                    @include lineHeightRule($golden-rule);
-                  }
-                }
+              @if $selector == 'line-height-px' {
+                line-height: $prop;
+              } @else if $selector == 'line-height-rule' {
+                @include lineHeightRule($prop);
+              } @else {
+                @include lineHeightRule($golden-rule);
               }
             }
-          }
-        }
-      }
-      @include placeholder($name) {
-        @each $size, $style in $fontStyle {
-          $fontBreakpoints: map-keys($fontStyle);
-          @if $fontBreakpoints = $sizes {
-            @if $size == 'xl' {
-              @each $selector, $type in $style {
-                $font-size: map-get($style, 'font-size');
-                $line-height-rule: map-get($style, 'line-height-rule');
-                $line-height-px: map-get($style, 'line-height-px');
-                @if $font-size != null {
-                  @include rem2px(font-size, $type);
+          } @else if $size != 'xl' {
+            @include mq($size) {
+              @each $selector, $prop in $mq {
+                @if $selector == 'font-size' {
+                  @include rem2px(font-size, $prop);
                 }
-                @if $line-height-rule != null {
-                  @include lineHeightRule($line-height-rule);
+                @if $selector == 'line-height-px' {
+                  line-height: $prop;
+                } @else if $selector == 'line-height-rule' {
+                  @include lineHeightRule($prop);
                 } @else {
                   @include lineHeightRule($golden-rule);
-                }
-              }
-            } @else {
-              @include mq($size) {
-                @each $selector, $type in $style {
-                  $font-size: map-get($style, 'font-size');
-                  $line-height-rule: map-get($style, 'line-height-rule');
-                  $line-height-px: map-get($style, 'line-height-px');
-                  @if $font-size != null {
-                    @include rem2px(font-size, $type);
-                  }
-                  @if $line-height-rule != null {
-                    @include lineHeightRule($line-height-rule);
-                  } @else {
-                    @include lineHeightRule($golden-rule);
-                  }
                 }
               }
             }

@@ -1,5 +1,5 @@
-<footer class="site-footer">
-    <div class="row flex width-full">
+<footer class="site-footer margin-top-140">
+    <div class="row flex width-full justify-content-center">
         <div class="content align-items-stretch">
             <nav class="site-footer__navigation col-span-3 m-col-span-12 sm-col-span-6">
                 <ul class="site-footer__menu">

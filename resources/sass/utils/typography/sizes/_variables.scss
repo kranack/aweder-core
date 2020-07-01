@@ -2,23 +2,41 @@ $fontStyles: (
   golden-rule: 150,
   header-one: (
     xl: (
-      font-size: 8.8,
+      font-size: 7.6,
+      line-height-px: 82px,
     ),
+    l: (
+      font-size: 6.6,
+      line-height-px: 74px,
+    )
   ),
   header-two: (
     xl: (
-      font-size: 6.6
+      font-size: 6.6,
+      line-height-px: 74px,
     ),
+    l: (
+      font-size: 4.8,
+      line-height-px: 54px,
+    )
   ),
   header-three: (
     xl: (
-      font-size: 4.8
+      font-size: 4.8,
+      line-height-px: 54px,
     ),
   ),
   body-xlarge: (
     xl: (
-      font-size: 3
+      font-size: 3,
+      line-height-px: 42px,
     ),
+    l: (
+      font-size: 2.4
+    ),
+    m: (
+      font-size: 2.2
+    )
   ),
   body-large: (
     xl: (

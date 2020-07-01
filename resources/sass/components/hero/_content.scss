@@ -1,0 +1,17 @@
+.hero {
+  @extend .padding-top-140,
+  .padding-bottom-140;
+}
+
+.hero__copy {
+  @extend .margin-top-40;
+
+  @include mq(sm) {
+    @include _(sm-margin-top-20)
+  }
+}
+
+.hero__copy p {
+  @extend .body-xlarge,
+  .color-carnation;
+}

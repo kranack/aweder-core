@@ -1,8 +1,5 @@
-.header-one {
-  @extend .font-gibson-semi
-}
-
+.header-one,
 .header-two,
 .header-three {
-  @extend .font-gibson-med;
+  @extend .font-gibson-semi;
 }

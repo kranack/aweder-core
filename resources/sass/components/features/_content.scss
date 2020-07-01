@@ -1,0 +1,16 @@
+.feature {
+  @extend .padding-top-60,
+  .padding-bottom-60;
+}
+
+.feature__header {
+  @extend .margin-bottom-40;
+}
+
+.feature__copy {
+  @extend .body-large;
+}
+
+.feature__content .button {
+  @extend .margin-top-40;
+}

@@ -1,9 +1,7 @@
 @import 'mixins';
 
 .button {
-  @extend .flex,
-  .justify-content-center,
-  .align-items-center;
+  @extend .flex;
 }
 
 .button__icon-right {

@@ -4,26 +4,26 @@ $breakpoints: (
   l: 1440px,
   m: 1024px,
   sm: 768px,
-  s: 375px
+  s: 500px
 );
 
 $breakpointsMin: (
   xl-min: 1441px,
   l-min: 1025px,
   m-min: 769px,
-  sm-min: 376px
+  sm-min: 501px
 );
 
 $xl: 2000px;
 $l: 1440px;
 $m: 1024px;
 $sm: 768px;
-$s: 375px;
+$s: 500px;
 
 $xl-min: 1441px;
 $l-min: 1025px;
 $m-min: 769px;
-$sm-min: 376px;
+$sm-min: 501px;
 
 $default-breakpoint: root;
 $current-breakpoint: $default-breakpoint;

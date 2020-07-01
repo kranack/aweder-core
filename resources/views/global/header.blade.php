@@ -1,5 +1,5 @@
 <header class="site-header">
-    <div class="row">
+    <div class="row flex justify-content-center">
         <div class="content">
             <div class="col col-span-3 sm-col-span-2 site-branding">
                 <a href="{{ route('home')}}">
