@@ -28,6 +28,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.site-wrapper {
+  overflow: hidden;
+}
+
 .content {
   @extend .width-xl,
   .grid,

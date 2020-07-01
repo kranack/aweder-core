@@ -1,8 +1,14 @@
 .site-header {
   @extend .background-carnation,
   .flex,
-  .align-items-center;
+  .align-items-center,
+  .relative;
   height: 80px;
+}
+
+.site-branding {
+  @extend .flex,
+  .align-items-center;
 }
 
 .site-branding .icon--logo svg {

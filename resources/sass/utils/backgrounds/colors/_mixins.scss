@@ -5,6 +5,9 @@
     .background-#{$name} {
       background-color: $color;
     }
+    @include placeholder(background-#{$name}) {
+      background-color: $color;
+    }
   }
 }
 

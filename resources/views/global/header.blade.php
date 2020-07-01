@@ -1,8 +1,8 @@
 <header class="site-header">
     <div class="row">
         <div class="content">
-            <div class="col col-span-3 sm-col-span-1 site-logo">
-                <a href="{{ route('home')}}" class="site-branding">
+            <div class="col col-span-3 sm-col-span-2 site-branding">
+                <a href="{{ route('home')}}">
                     <span class="icon icon--logo s-hidden">
                         @svg('aweder-logo')
                     </span>

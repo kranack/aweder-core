@@ -5,6 +5,9 @@
     .color-#{$name} {
       color: $color;
     }
+    @include placeholder(color-#{$name}) {
+      color: $color;
+    }
   }
 }
 

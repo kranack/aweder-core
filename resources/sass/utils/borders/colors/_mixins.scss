@@ -5,6 +5,9 @@
     .border-#{$name} {
       border-color: $color;
     }
+    @include placeholder(border-#{$name}) {
+      border-color: $color;
+    }
   }
 }
 
