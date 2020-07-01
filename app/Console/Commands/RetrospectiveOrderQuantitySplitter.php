@@ -51,16 +51,13 @@ class RetrospectiveOrderQuantitySplitter extends Command
             return;
         }
 
-        $orderItems = App\OrderItem::all();
-        $orderItems->each(function ($orderItem) {
-            if ($orderItem->quantity > 0) {
-                for ($i = 1; $i <= $orderItem->quantity; $i++) {
-                    $newOrderItem = $orderItem->replicate();
-                    $newOrderItem->quantity = 1;
-                    $newOrderItem->save();
-                }
-                $orderItem->delete();
+        foreach (App\OrderItem::multipleQuantity()->get() as $orderItem) {
+            for ($i = 1; $i <= $orderItem->quantity; $i++) {
+                $newOrderItem = $orderItem->replicate();
+                $newOrderItem->quantity = 1;
+                $newOrderItem->save();
             }
-        });
+            $orderItem->delete();
+        }
     }
 }

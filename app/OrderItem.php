@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\HelperTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -18,16 +19,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $inventory_id
  * @property-read \App\Inventory $inventory
  * @property-read \App\Order $order
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereInventoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereOrderId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereUpdatedAt($value)
+ * @method static Builder|\App\OrderItem newModelQuery()
+ * @method static Builder|\App\OrderItem newQuery()
+ * @method static Builder|\App\OrderItem query()
+ * @method static Builder|\App\OrderItem whereCreatedAt($value)
+ * @method static Builder|\App\OrderItem whereId($value)
+ * @method static Builder|\App\OrderItem whereInventoryId($value)
+ * @method static Builder|\App\OrderItem whereOrderId($value)
+ * @method static Builder|\App\OrderItem wherePrice($value)
+ * @method static Builder|\App\OrderItem whereQuantity($value)
+ * @method static Builder|\App\OrderItem whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Inventory $orderInventory
  * @property-read string $formatted_u_k_price
@@ -74,5 +75,16 @@ class OrderItem extends Model
     public function getOrderItemPriceByQuantity(): string
     {
         return number_format((($this->price * $this->quantity) / 100), 2);
+    }
+
+    /**
+     * Return only items with more than one quantity
+     *
+     * @param  Builder  $query
+     * @return Builder
+     */
+    public function scopeMultipleQuantity($query): Builder
+    {
+        return $query->where('quantity', '>', 1);
     }
 }
