@@ -4,4 +4,15 @@
   .width-full,
   .background-cloud-burst;
   height: 200px;
+
+  @include mq(l) {
+    height: 150px;
+  }
+  @include mq(m) {
+    @include _(padding-bottom-20);
+    height: 220px;
+  }
+  @include mq(sm) {
+    height: auto;
+  }
 }

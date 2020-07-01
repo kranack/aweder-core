@@ -1,6 +1,11 @@
 .site-footer__statement {
   @extend .inline-flex,
   .align-items-center;
+
+  @include mq(m) {
+    @include _(text-center);
+    @include _(margin-top-30);
+  }
 }
 
 .site-footer__statement p {

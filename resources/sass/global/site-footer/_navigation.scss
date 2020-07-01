@@ -5,6 +5,10 @@
 
 .site-footer__navigation {
   @extend .inline-flex;
+
+  @include mq(m) {
+    @include _(justify-content-center);
+  }
 }
 
 .site-footer__item {
@@ -18,4 +22,8 @@
 .site-footer__link {
   @extend .body-large,
   .color-ecru-white;
+
+  @include mq(m) {
+    @include _(body-medium);
+  }
 }

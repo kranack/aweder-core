@@ -28,7 +28,7 @@
                     <span class="icon icon--bowl">@svg('footer')</span>
                 </div>
             </div>
-            <div class="site-footer__statement col-span-3 col-start-10 m-col-span-10 m-col-start-2 sm-col-span-6 sm-col-offset-1">
+            <div class="site-footer__statement col-span-3 col-start-10 m-col-span-10 m-col-start-2 sm-col-span-6 sm-col-start-1">
                 <p>Awe-der. is a non-profit project by <a href="https://jump24.co.uk" target="_blank">Jump24</a> to help communities and small businesses. The core code will be licensed under Open Source enabling others to contribute and enhance</p>
             </div>
         </div>
