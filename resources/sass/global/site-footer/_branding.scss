@@ -95,3 +95,9 @@
   max-width: 14px;
   width: 100%;
 }
+
+.body-steps .site-footer__branding .bowl:before {
+  @include mq(sm) {
+    @include _(background-casablanca);
+  }
+}

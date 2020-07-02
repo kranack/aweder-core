@@ -1,3 +1,21 @@
 .steps__col--image {
   @extend .background-ecru-white-3;
 }
+
+.steps__col--image:before,
+.steps__col--image:after {
+  @include mq(sm) {
+    @include _(background-ecru-white-3);
+  }
+}
+
+.steps__col--image .steps__wrapper {
+  @extend .align-items-center;
+}
+
+.steps__image {
+  @include mq(s) {
+    @include _(s-padding-left-20);
+    @include _(s-padding-right-20);
+  }
+}

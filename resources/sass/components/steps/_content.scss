@@ -1,37 +1,93 @@
-.steps {
-  @media (min-width: $l-min) and (min-height: 750px){
-    @include calc(height, "100vh - 80px");
-    background: linear-gradient(90deg, rgba($carnation, 1) 0%, rgba($carnation, 1) 49.9%, rgba($ecru-white, 0.3) 50%, rgba($ecru-white, 0.3) 100%);
-  }
-}
-
-.steps__wrapper {
-  @media (min-width: $l-min) and (min-height: 750px){
-    @include calc(height, "100vh - 80px");
-    overflow: hidden;
-  }
-}
-
-.steps__item .row {
-  @extend .flex,
-  .justify-content-center;
-  height: 100%;
-}
-
-.steps__item .content {
-  height: 100%;
-}
-
-.steps__col {
-  @extend .padding-top-80,
-  .padding-bottom-80;
+.steps__col--content .steps__wrapper {
+  grid-template-rows: auto auto 1fr;
 }
 
 .steps__col--content {
   @extend .background-carnation;
+}
 
-  @media (min-width: $l-min) and (min-height: 750px){
-    display: inline-grid;
-    grid-template-columns: repeat(6, [col-start] 1fr);
+.steps__col--content:before,
+.steps__col--content:after {
+  @include mq(sm) {
+    @include _(background-carnation);
   }
 }
+
+.steps__header {
+  @extend .margin-bottom-40;
+}
+
+.steps__title {
+  @extend .uppercase,
+  .color-ecru-white,
+  .body-small,
+  .font-gibson-reg,
+  .margin-bottom-40;
+}
+
+.steps__subtitle {
+  @extend .relative,
+  .color-ecru-white,
+  .padding-left-60;
+
+  @include mq(m) {
+    @include _(m-padding-left-40);
+  }
+}
+
+.steps__number {
+  @extend .absolute;
+  left: 0;
+  top: 0;
+}
+
+.steps__list {
+  @extend .padding-left-60;
+
+  @include mq(m) {
+    @include _(m-padding-left-40);
+  }
+  @include mq(s) {
+    @include _(s-padding-left-0);
+  }
+}
+
+.steps__list-item {
+  @extend .color-ecru-white,
+  .body-large,
+  .margin-bottom-20,
+  .relative,
+  .padding-left-20;
+}
+
+
+.steps__list-item:before {
+  @extend .absolute,
+  .radius-100,
+  .background-casablanca;
+  content: '';
+  width: 8px;
+  height: 8px;
+  left: 0;
+  top: 8px;
+}
+
+.steps__buttons {
+  @extend .inline-flex,
+  .justify-content-end,
+  .align-items-end,
+  .padding-top-20,
+  .padding-bottom-40;
+
+  @include mq(sm) {
+    @include _(sm-padding-bottom-0);
+  }
+}
+
+.steps__buttons .button,
+.steps__buttons .button__content {
+  @include mq(sm) {
+    @include _(grow-1);
+  }
+}
+

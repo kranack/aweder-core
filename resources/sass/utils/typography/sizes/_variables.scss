@@ -8,7 +8,11 @@ $fontStyles: (
     l: (
       font-size: 6.6,
       line-height-px: 74px,
-    )
+    ),
+    m: (
+      font-size: 4.8,
+      line-height-px: 52px,
+    ),
   ),
   header-two: (
     xl: (
@@ -17,13 +21,25 @@ $fontStyles: (
     ),
     l: (
       font-size: 4.8,
-      line-height-px: 54px,
-    )
+      line-height-px: 52px,
+    ),
+    m: (
+      font-size: 3.6,
+      line-height-px: 38px,
+    ),
   ),
   header-three: (
     xl: (
       font-size: 4.8,
-      line-height-px: 54px,
+      line-height-px: 52px,
+    ),
+    l: (
+      font-size: 3.6,
+      line-height-px: 38px,
+    ),
+    m: (
+      font-size: 3,
+      line-height-px: 42px,
     ),
   ),
   body-xlarge: (

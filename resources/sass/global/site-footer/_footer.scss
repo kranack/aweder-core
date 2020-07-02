@@ -22,4 +22,22 @@
 
 .body-steps .site-footer {
   @extend .hidden;
+
+  @include mq(sm) {
+    @include _(sm-flex);
+    @include _(relative);
+  }
+}
+
+.body-steps .site-footer:after {
+  @include mq(sm) {
+    @include _(background-carnation);
+    @include _(absolute);
+    content: '';
+    top: -140px;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    z-index: -1;
+  }
 }
