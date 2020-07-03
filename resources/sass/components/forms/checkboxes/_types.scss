@@ -20,11 +20,17 @@
 }
 
 .checkbox__icon--small svg {
-  width: 8.6px;
-  height: 5px;
+  width: 11px;
+  height: 7px;
 }
 
+
 .checkbox__icon--small polyline {
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+}
+
+.checkbox-input:checked ~ .checkbox .checkbox__icon--small polyline {
   stroke-dasharray: 40;
   stroke-dashoffset: 40;
   animation-name: dash;
