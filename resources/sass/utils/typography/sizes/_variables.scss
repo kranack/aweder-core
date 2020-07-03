@@ -74,9 +74,13 @@ $fontStyles: (
       font-size: 1.2
     )
   ),
-  label: (
+  body-label: (
     xl: (
-      font-size: 2
+      font-size: 2,
+      line-height-px: 34px,
+    ),
+    m: (
+      font-size: 1.8
     )
   )
 );

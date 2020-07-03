@@ -18,7 +18,7 @@ class HowItWorksController extends Controller
         return response()->view(
             'about.how-it-works',
             [
-                'bodyClass' => 'body-steps',
+                'bodyClass' => 'body-steps, body-marketing',
             ]
         );
     }

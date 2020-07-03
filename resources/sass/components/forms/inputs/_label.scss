@@ -1,0 +1,11 @@
+.label {
+  @extend .body-xsmall,
+  .uppercase,
+  .color-cloud-burst-6;
+}
+
+.label--float {
+  @extend .absolute;
+  left: 0;
+  top: 0;
+}

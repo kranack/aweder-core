@@ -22,16 +22,26 @@ html {
 body {
   @include rem2px(font-size, 1.6);
   @extend .color-cloud-burst,
-  .font-gibson-reg;
+  .font-gibson-reg,
+  .background-silver-2;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.body-marketing {
+  background: transparent;
 }
 
 .site-wrapper {
   @include mq(sm) {
     overflow: hidden;
   }
+}
+
+section {
+  @extend .flex,
+  .width-full;
 }
 
 .content {

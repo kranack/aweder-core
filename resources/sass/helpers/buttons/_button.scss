@@ -1,14 +1,16 @@
 @import 'mixins';
 
-.button {
-  @extend .flex;
+.button__content {
+  @extend .flex,
+  .font-gibson-med,
+  .body-medium;
 }
 
-.button__icon-right {
+.button__icon--right {
  @extend .margin-left-10;
 }
 
-.button__icon-left {
+.button__icon--left {
   @extend .margin-right-10;
 }
 

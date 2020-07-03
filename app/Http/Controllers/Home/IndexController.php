@@ -16,6 +16,6 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request): Response
     {
-        return response()->view('home', ['bodyClass' => 'home']);
+        return response()->view('home', ['bodyClass' => 'body-home, body-marketing']);
     }
 }
