@@ -1,0 +1,8 @@
+.field__error {
+  @extend .absolute,
+  .body-xsmall,
+  .uppercase,
+  .color-carnation;
+  left: 0;
+  top: 0;
+}

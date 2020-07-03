@@ -3,10 +3,10 @@ import debounce from 'debounce';
 
 const SlugChecker = class SlugChecker {
   removeExistingValidationErrors = (element) => {
-    const errors = element.parentElement.querySelector('.form__validation-error--slug');
+    const errors = element.parentElement.querySelector('.field__error--slug');
     if (errors) {
       element.parentNode.removeChild(errors);
-      element.parentElement.classList.remove('input-error');
+      element.parentElement.classList.remove('field--error');
     }
   };
 
@@ -26,11 +26,11 @@ const SlugChecker = class SlugChecker {
           .get(`/validate-slug/${e.target.value}`)
           .then((response) => {
             if (response.data.exists === true) {
-              element.parentElement.classList.add('input-error');
+              element.parentElement.classList.add('field--error');
               const error = document.createElement('p');
               error.innerText = 'The slug is already taken.';
-              error.classList.add('form__validation-error');
-              error.classList.add('form__validation-error--slug');
+              error.classList.add('field__error');
+              error.classList.add('field__error--slug');
               element.parentElement.insertBefore(error, element);
             }
           });

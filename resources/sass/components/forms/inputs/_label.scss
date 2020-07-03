@@ -9,3 +9,8 @@
   left: 0;
   top: 0;
 }
+
+.field--error .label {
+  @extend .opacity-0;
+  visibility: hidden;
+}
