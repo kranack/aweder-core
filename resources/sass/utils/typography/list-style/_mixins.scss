@@ -1,0 +1,12 @@
+/* LIST STYLE MIXINS ============================================================================= */
+
+@mixin listStyle() {
+  @each $name, $style in $listStyle {
+    .list-#{$name} {
+      list-style-type: $style;
+    }
+    @include placeholder(list-#{$name}) {
+      list-style-type: $style;
+    }
+  }
+}

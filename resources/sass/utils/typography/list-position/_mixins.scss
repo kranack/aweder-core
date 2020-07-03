@@ -1,0 +1,12 @@
+/* LIST POSITION MIXINS ============================================================================= */
+
+@mixin listPosition() {
+  @each $name, $listPosition in $listPosition {
+    .list-#{$name} {
+      list-style-position: $listPosition;
+    }
+    @include placeholder(list-#{$name}) {
+      list-style-position: $listPosition;
+    }
+  }
+}

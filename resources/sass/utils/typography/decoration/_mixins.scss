@@ -1,0 +1,12 @@
+/* TEXT DECORATION MIXINS ============================================================================= */
+
+@mixin decoration() {
+  @each $name, $decoration in $textDecoration {
+    .text-#{$name} {
+      text-decoration: $decoration;
+    }
+    @include placeholder(text-#{$name}) {
+      text-decoration: $decoration;
+    }
+  }
+}

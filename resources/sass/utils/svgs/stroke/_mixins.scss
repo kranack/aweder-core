@@ -1,0 +1,12 @@
+/* STROKE WIDTH MIXINS ============================================================================= */
+
+@mixin stroke() {
+  @each $name, $strokeWidth in $strokeWidths {
+    .stroke-#{$name} {
+      stroke-width: $strokeWidth;
+    }
+    @include placeholder(stroke-#{$name}) {
+      stroke-width: $strokeWidth;
+    }
+  }
+}

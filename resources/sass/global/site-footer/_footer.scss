@@ -1,0 +1,43 @@
+.site-footer {
+  @extend
+  .flex,
+  .width-full,
+  .background-cloud-burst,
+  .margin-top-140;
+  height: 200px;
+
+  @include mq(l) {
+    height: 150px;
+    @include _(l-margin-top-100);
+  }
+  @include mq(m) {
+    @include _(m-padding-bottom-20);
+    @include _(m-margin-top-140);
+    height: 220px;
+  }
+  @include mq(sm) {
+    height: auto;
+  }
+}
+
+.body-steps .site-footer {
+  @extend .hidden;
+
+  @include mq(sm) {
+    @include _(sm-flex);
+    @include _(relative);
+  }
+}
+
+.body-steps .site-footer:after {
+  @include mq(sm) {
+    @include _(background-carnation);
+    @include _(absolute);
+    content: '';
+    top: -140px;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    z-index: -1;
+  }
+}

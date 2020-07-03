@@ -1,0 +1,22 @@
+@import 'mixins';
+
+.button__content {
+  @extend .flex,
+  .font-gibson-med,
+  .body-medium;
+}
+
+.button__icon--right {
+ @extend .margin-left-10;
+}
+
+.button__icon--left {
+  @extend .margin-right-10;
+}
+
+@include buttons(outline, transparent, ecru-white, ecru-white);
+@include buttons(solid, ecru-white, ecru-white, carnation);
+@include buttons(outline, transparent, carnation, carnation);
+@include buttons(solid, carnation, carnation, ecru-white);
+@include buttons(outline, transparent, silver, silver);
+@include buttons(solid, silver, silver, white);

@@ -1,0 +1,12 @@
+/* BORDER WIDTHS MIXINS ============================================================================= */
+
+@mixin borderWidths() {
+  @each $name, $borderWidth in $borderWidths {
+    .border-width-#{$name} {
+      border-width: $borderWidth;
+    }
+    @include placeholder(border-width-#{$name}) {
+      border-width: $borderWidth;
+    }
+  }
+}

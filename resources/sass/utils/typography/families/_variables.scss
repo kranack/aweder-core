@@ -1,0 +1,26 @@
+$fontFamilies: (
+  gibson-book: (
+    font-family: 'canada-type-gibson'#{','} sans-serif,
+    font-style: normal,
+    font-weight: 300,
+    font-display: swap
+  ),
+  gibson-reg: (
+    font-family: 'canada-type-gibson'#{','} sans-serif,
+    font-style: normal,
+    font-weight: 400,
+    font-display: swap
+  ),
+  gibson-med: (
+    font-family: 'canada-type-gibson'#{','} sans-serif,
+    font-style: normal,
+    font-weight: 500,
+    font-display: swap
+  ),
+  gibson-semi: (
+    font-family: 'canada-type-gibson'#{','} sans-serif,
+    font-style: normal,
+    font-weight: 600,
+    font-display: swap
+  )
+);

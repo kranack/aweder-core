@@ -1,0 +1,103 @@
+.site-footer__branding {
+  @extend .relative,
+  .inline-flex;
+
+  @include mq(m) {
+    @include _(m-row-start-1)
+  }
+}
+
+.site-footer__branding .bowl {
+  @extend .width-full,
+  .flex,
+  .flex-col,
+  .align-items-center,
+  .justify-content-center,
+  .relative;
+
+  @include mq(m) {
+    top: -70%;
+  }
+}
+
+.site-footer__branding .bowl:before {
+  @include mq(m) {
+    content: '';
+    width: 230px;
+    height: 230px;
+    @include _(absolute);
+    @include _(radius-100);
+    @include _(background-carnation);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.site-footer__branding .icon {
+  @extend .relative;
+  z-index: 2;
+}
+
+.site-footer__branding .icon--bowl {
+  @extend .absolute,
+  .width-full;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+
+  @include mq(m) {
+    @include _(m-hidden);
+  }
+}
+
+.site-footer__branding .icon--bowl svg {
+  @extend .flex,
+  .width-full;
+  height: auto;
+}
+
+
+.site-footer__branding .icon--aweder svg {
+  max-width: 159px;
+  width: 100%;
+
+  @include mq(l) {
+    max-width: 120px;
+  }
+  @include mq(m) {
+    max-width: 100px;
+  }
+}
+
+.site-footer__branding .icon--jump svg {
+  max-width: 90px;
+  width: 100%;
+
+  @include mq(l) {
+    max-width: 70px;
+  }
+  @include mq(m) {
+    max-width: 50px;
+  }
+}
+
+.site-footer__branding .icon--cross {
+  @extend .margin-top-30,
+  .margin-bottom-30;
+
+  @include mq(l) {
+    @include _(l-margin-top-10);
+    @include _(l-margin-bottom-10);
+  }
+}
+
+.site-footer__branding .icon--cross svg {
+  max-width: 14px;
+  width: 100%;
+}
+
+.body-steps .site-footer__branding .bowl:before {
+  @include mq(sm) {
+    @include _(background-casablanca);
+  }
+}

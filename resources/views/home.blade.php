@@ -1,74 +1,76 @@
 @extends('global.app')
 @section('content')
-    <section class="banner">
+    <section class="hero background-ecru-white-3 margin-bottom-80 l-margin-bottom-60">
         <div class="row">
-            <div class="content">
-                <header class="banner__header col col--lg-12-6 col--lg-offset-12-2 col--l-12-6 col--l-offset-12-1 col--m-12-11 col--m-offset-12-1 col--sm-6-6 col--sm-offset-6-1 col--s-6-6">
-                    <h2 class="header header--three color--carnation">Quickly move your business to accepting online orders for pickup or delivery.</h2>
+            <div class="content align-items-center">
+                <header class="hero__header col-span-6 col-start-2 l-col-start-1 m-col-span-7 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
+                    <h1 class="header-one color-carnation">Quickly move your business to accepting online orders for pickup or delivery.</h1>
                 </header>
-                <div class="banner__copy col col--lg-12-4 col--lg-offset-12-2 col--l-12-6 col--l-offset-12-1 col--m-12-11 col--m-offset-12-1  col--sm-6-6 col--sm-offset-6-1 col--s-6-6">
+                <div class="hero__copy col-span-4 col-start-2 l-col-span-5 l-col-start-1 m-col-span-6 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
                     <p>Simple online order taking for small businesses with payment acceptance and pickup / delivery confirmation.</p>
                 </div>
-                <div class="banner__svg col col--lg-12-3 col--lg-offset-12-9 col--l-12-4 col--l-offset-12-8 col--m-12-4 col--m-offset-12-5 col--sm-6-4 col--sm-offset-6-2 col--s-6-4 col--s-offset-6-2">
-                    @svg('logo-mark')
+                <div class="hero__image col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-4 m-col-start-9 sm-col-start-2 row-span-2 row-start-1 sm-row-start-2 sm-row-span-1">
+                    <span class="icon icon--logo-mark">
+                        @svg('logo-mark')
+                    </span>
                 </div>
             </div>
         </div>
     </section>
-    <section class="how-it-works">
+    <section class="feature">
         <div class="row">
-            <div class="content">
-                <div class="how-it-works__content col col--lg-12-4 col--lg-offset-12-7 col--l-12-6 col--l-offset-12-7 col--sm-6-6 col--sm-offset-6-1 col--s-6-6">
-                    <header class="section-title spacer-bottom--40">
-                        <h2 class="header header--three color--carnation">Simple and seamless</h2>
-                    </header>
-                    <div class="spacer-bottom--40">
-                        <p>In this time of uncertainty during the Covid-19 outbreak, we want to help as many small businesses such as Restaurants, Pubs, Cafes and Retailers survive. Pivoting your business to a takeaway or remote service model can be daunting the Awe-der platform is here to make this as simple and seamless as possible without incurring unnecessary expense.</p>
-                    </div>
-                    <a href="{{route('about.how-it-works')}}" class="button button--outline button--outline-red">
+            <div class="content align-items-center">
+                <header class="feature__header col-span-5 col-start-7 m-col-span-5 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 sm-row-start-1">
+                    <h2 class="header-two color-carnation">Simple and seamless</h2>
+                </header>
+                <div class="feature__copy col-span-5 col-start-7 m-col-span-5 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 sm-row-start-3">
+                    <p>In this time of uncertainty during the Covid-19 outbreak, we want to help as many small businesses such as Restaurants, Pubs, Cafes and Retailers survive. Pivoting your business to a takeaway or remote service model can be daunting the Awe-der platform is here to make this as simple and seamless as possible without incurring unnecessary expense.</p>
+                </div>
+                <div class="feature__buttons col-span-5 col-start-7 m-col-span-5 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 sm-row-span-1 sm-row-start-4">
+                    <a href="{{route('about.how-it-works')}}" class="button button-outline--carnation">
                         <span class="button__content">How it works</span>
                     </a>
                 </div>
-                <div class="how-it-works__image col col--lg-12-4 col--lg-offset-12-2 col--l-12-6 col--l-offset-12-1 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">
-                    <img src="images/simple-menu.png" alt="awe-der menu" />
+                <div class="feature__image col-span-4 col-start-2 l-col-span-5 l-col-start-1 sm-col-span-4 sm-col-start-2 row-span-3 row-start-1 sm-row-span-1 sm-row-start-2">
+                    <img src="images/simple-menu.png" alt="awe-der menu" class="width-full" />
                 </div>
             </div>
         </div>
     </section>
-    <section class="here-to-help">
+    <section class="feature">
         <div class="row">
-            <div class="content">
-                <div class="here-to-help__content col col--lg-12-4 col--lg-offset-12-2 col--l-12-6 col--l-offset-12-1 col--sm-6-6 col--sm-offset-6-1 col--s-6-6 col--s-offset-6-1">
-                    <header class="section-title spacer-bottom--40">
-                        <h2 class="header header--three color--carnation">We&acute;re here to help you</h2>
-                    </header>
-                    <div class="spacer-bottom--40">
-                        <p>At Awe-der we want to get you up and running online as soon as possible, allowing your business to focus on supporting the community in these uncertain times. Here are some of the features we can offer:</p>
-                        <ul>
-                            <li class="spacer-bottom--40">
-                                <strong class="spacer-bottom--10">Menu / Product listing</strong>
-                                Quickly add your products with descriptions and prices.
-                            </li>
-                            <li class="spacer-bottom--40">
-                                <strong class="spacer-bottom--10">Order acceptance and pickup timing confirmation</strong>
-                                View and accept incoming orders from your dashboard.
-                            </li>
-                            <li class="spacer-bottom--40">
-                                <strong class="spacer-bottom--10">Online payment integration</strong>
-                                Support for Stripe to quickly and securely take online payments at the point of order.
-                            </li>
-                            <li class="spacer-bottom--40">
-                                <strong class="spacer-bottom--10">Instant on-boarding and setup for businesses</strong>
-                                Setup your online store with ease and start selling!
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="{{route('register')}}" class="button button--filled button--filled-carnation">
+            <div class="content align-items-center">
+                <header class="feature__header col-span-5 col-start-2 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
+                    <h2 class="header-two color-carnation">We&acute;re here to help you</h2>
+                </header>
+                <div class="feature__copy col-span-5 col-start-2 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
+                    <p>At Awe-der we want to get you up and running online as soon as possible, allowing your business to focus on supporting the community in these uncertain times. Here are some of the features we can offer:</p>
+                    <ul class="feature__list">
+                        <li class="feature__list-item">
+                            <span>Menu / Product listing</span>
+                            Quickly add your products with descriptions and prices.
+                        </li>
+                        <li class="feature__list-item">
+                            <span>Order acceptance and pickup timing confirmation</span>
+                            View and accept incoming orders from your dashboard.
+                        </li>
+                        <li class="feature__list-item">
+                            <span>Online payment integration</span>
+                            Support for Stripe to quickly and securely take online payments at the point of order.
+                        </li>
+                        <li class="feature__list-item">
+                            <span>Instant on-boarding and setup for businesses</span>
+                            Setup your online store with ease and start selling!
+                        </li>
+                    </ul>
+                </div>
+                <div class="feature__buttons col-span-5 col-start-2 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
+                    <a href="{{route('register')}}" class="button button-solid--carnation">
                         <span class="button__content">Get started with Awe-der</span>
                     </a>
                 </div>
-                <div class="here-to-help__image col col--lg-12-4 col--lg-offset-12-7 col--l-12-6 col--l-offset-12-7 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">
-                    <img src="images/dashboard-benefits.png" alt="orders" />
+                <div class="feature__image col-span-4 col-start-8 l-col-span-5 sm-col-span-4 sm-col-start-2 row-span-3 row-start-1 sm-row-span-1 sm-row-start-2">
+                    <img src="images/dashboard-benefits.png" alt="orders" class="width-full" />
                 </div>
             </div>
         </div>

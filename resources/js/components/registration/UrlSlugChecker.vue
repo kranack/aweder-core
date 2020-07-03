@@ -16,7 +16,7 @@
     />
     <p
       v-if="validationError || exists"
-      class="form__validation-error form__validation-error--slug"
+      class="field__error field__error--slug"
     >
       {{ errorMessage }}
     </p>

@@ -1,0 +1,12 @@
+/* BOX SHADOW MIXINS ============================================================================= */
+
+@mixin shadow() {
+  @each $name, $shadow in $shadows {
+    .shadow-#{$name} {
+      box-shadow: $shadow;
+    }
+    @include placeholder(shadow-#{$name}) {
+      box-shadow: $shadow;
+    }
+  }
+}

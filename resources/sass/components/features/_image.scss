@@ -1,0 +1,7 @@
+.feature__image {
+  @extend .row-start-1;
+
+  @include mq(m) {
+    @include _(m-margin-bottom-40);
+  }
+}

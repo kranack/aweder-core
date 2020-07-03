@@ -3,9 +3,9 @@
 @include('global/head')
 <body @if (isset($bodyClass)) class="{{ $bodyClass }}" @endif>
 @if (app()->environment() === 'local')
-<div class="grid">
-    <div class="content">
-        <div class="row">
+<div class="grid-overlay">
+    <div class="row flex justify-content-center">
+        <div class="content">
             <div class="grid__item"></div>
             <div class="grid__item"></div>
             <div class="grid__item"></div>
@@ -25,7 +25,7 @@
 <div class="site-wrapper" id="app">
     @include('global/header')
     @include('shared/notification')
-    <main>
+    <main class="flex flex-col align-items-center">
         @yield('content')
     </main>
 </div>

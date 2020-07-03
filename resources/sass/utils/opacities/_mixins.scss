@@ -1,0 +1,12 @@
+/* OPACITY MIXINS ============================================================================= */
+
+@mixin opacity() {
+  @each $name, $opacity in $opacities {
+    .opacity-#{$name} {
+      opacity: $opacity;
+    }
+    @include placeholder(opacity-#{$name}) {
+      opacity: $opacity;
+    }
+  }
+}

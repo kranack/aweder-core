@@ -1,0 +1,83 @@
+/* apply a natural box layout model to all elements */
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* GENERAL ============================================================================= */
+
+html {
+  font-size: 62.5%;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  height:100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  @include rem2px(font-size, 1.6);
+  @extend .color-cloud-burst,
+  .font-gibson-reg,
+  .background-silver-2;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.body-marketing {
+  background: transparent;
+}
+
+.site-wrapper {
+  @include mq(sm) {
+    overflow: hidden;
+  }
+}
+
+section {
+  @extend .flex,
+  .width-full;
+}
+
+.content {
+  @extend .width-xl,
+  .grid,
+  .col-gap,
+  .grid-cols-12;
+
+  @include mq(l) {
+    @include _(l-col-gap);
+  }
+  @include mq(m) {
+    @include _(m-col-gap);
+  }
+  @include mq(sm) {
+    @include _(sm-grid-cols-6);
+    @include _(sm-col-gap);
+  }
+  @include mq(s) {
+    @include _(s-col-gap);
+  }
+}
+
+.row {
+  @extend .container, .width-full;
+
+  @include mq(l) {
+    @include _(l-container);
+  }
+  @include mq(m) {
+    @include _(m-container);
+  }
+  @include mq(sm) {
+    @include _(sm-container);
+  }
+  @include mq(s) {
+    @include _(s-container);
+  }
+}

@@ -1,0 +1,22 @@
+/* BUTTON MIXINS ============================================================================= */
+
+@mixin buttons($type, $background, $border, $color) {
+  .button-#{$type}--#{$border} {
+    @extend
+    .flex,
+    .align-items-center,
+    .padding-left-30,
+    .padding-right-30,
+    .radius-5,
+    .border-width-1,
+    .border-solid;
+    height: 50px;
+    @if $background != 'transparent' {
+      background-color: map_get($colors, $background);
+    } @else {
+      background-color: transparent;
+    }
+    border-color: map_get($colors, $border);
+    color: map_get($colors, $color);
+  }
+}

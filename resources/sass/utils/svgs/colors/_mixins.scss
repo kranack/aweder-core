@@ -1,0 +1,31 @@
+/* SVG COLOUR MIXINS ============================================================================= */
+
+@mixin svgColor($type) {
+  @each $name, $color in $colors {
+    .#{$type}-#{$name} {
+      #{$type}: $color;
+    }
+  }
+}
+
+@mixin svgColorRgba($type, $color, $rgba) {
+  @if ($rgba == 0) {
+    .#{$type}-#{$color}-0 {
+      #{$type}: map_get($colors, $color);
+    }
+    @include placeholder(#{$type}-#{$color}-0) {
+      #{$type}: map_get($colors, $color);
+    }
+  } @else if ($rgba > 0 and $rgba < 1) {
+    $rgba: $rgba * 10;
+    .#{$type}-#{$color}-#{$rgba} {
+      $rgba: $rgba / 10;
+      #{$type}: rgba(map_get($colors, $color), $rgba);
+      $rgba: $rgba * 10;
+    }
+    @include placeholder(#{$type}-#{$color}-#{$rgba}) {
+      $alpha: $rgba / 10;
+      #{$type}: rgba(map_get($colors, $color), $alpha);
+    }
+  }
+};

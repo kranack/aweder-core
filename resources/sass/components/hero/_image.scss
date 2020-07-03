@@ -1,0 +1,13 @@
+.hero__image {
+  @extend .inline-flex,
+  .align-items-center;
+
+  @include mq(sm) {
+    @include _(sm-margin-top-60);
+  }
+}
+
+.hero__image .icon,
+.hero__image .icon--logo-mark svg {
+  @extend .width-full;
+}

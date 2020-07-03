@@ -1,0 +1,12 @@
+/* TEXT ALIGNMENT MIXINS ============================================================================= */
+
+@mixin textAlign() {
+  @each $name, $align in $textAlignment {
+    .text-#{$name} {
+      text-align: $align;
+    }
+    @include placeholder(text-#{$name}) {
+      text-align: $align;
+    }
+  }
+}

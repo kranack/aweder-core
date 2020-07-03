@@ -1,0 +1,12 @@
+/* BG POSITION MIXINS ============================================================================= */
+
+@mixin bgPosition() {
+  @each $name, $bgPosition in $bgPositions {
+    .background-#{$name} {
+      background-position: $bgPosition;
+    }
+    @include placeholder(background-#{$name}) {
+      background-position: $bgPosition;
+    }
+  }
+}

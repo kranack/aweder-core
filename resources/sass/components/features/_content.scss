@@ -1,0 +1,27 @@
+.feature {
+  @extend .padding-top-60,
+  .padding-bottom-60;
+
+  @include mq(l) {
+    @include _(l-padding-top-40);
+    @include _(l-padding-bottom-40);
+  }
+}
+
+.feature__header {
+  @extend .margin-bottom-40;
+}
+
+.feature__copy {
+  @extend .body-large;
+}
+
+.feature__buttons {
+  @extend .margin-top-40;
+}
+
+.feature__buttons .button__content {
+  @include mq(s) {
+    @include _(width-full);
+  }
+}

@@ -34,7 +34,7 @@ describe('UrlSlug Checker', () => {
         },
       },
     );
-    expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
+    expect(failedWrapper.find('.field__error').exists()).toBe(true);
   });
 
   it('Does the field render the validation error message when a validation error is present', () => {
@@ -49,7 +49,7 @@ describe('UrlSlug Checker', () => {
         },
       },
     );
-    expect(failedWrapper.find('.form__validation-error').text()).toBe('The validation has failed');
+    expect(failedWrapper.find('.field__error').text()).toBe('The validation has failed');
   });
 
   it('makes sure slug checker isn\'t called on first keydown', async () => {
@@ -165,7 +165,7 @@ describe('UrlSlug Checker', () => {
       },
     );
 
-    expect(urlFailedWrapper.find('.form__validation-error--slug').exists()).toBe(false);
+    expect(urlFailedWrapper.find('.field__error--slug').exists()).toBe(false);
   });
 
   it('does validation error show when api request returns url exists', async () => {
@@ -198,7 +198,7 @@ describe('UrlSlug Checker', () => {
 
     await flushPromises();
 
-    expect(urlFailedWrapper.find('.form__validation-error--slug')
+    expect(urlFailedWrapper.find('.field__error--slug')
       .exists())
       .toBe(true);
   });
@@ -233,7 +233,7 @@ describe('UrlSlug Checker', () => {
 
     await flushPromises();
 
-    expect(urlFailedWrapper.find('.form__validation-error--slug')
+    expect(urlFailedWrapper.find('.form__error--slug')
       .exists())
       .toBe(false);
   });

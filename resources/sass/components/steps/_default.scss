@@ -1,0 +1,73 @@
+.steps {
+  background: linear-gradient(90deg, rgba($carnation, 1) 0%, rgba($carnation, 1) 49.9%, rgba($ecru-white, 0.3) 50%, rgba($ecru-white, 0.3) 100%);
+
+  @include mq(sm) {
+    background: transparent;
+  }
+}
+
+.steps .row {
+  @extend .flex,
+  .justify-content-center;
+}
+
+.steps .content {
+  grid-gap: 0;
+  min-height: 100vh;
+
+  @include mq(sm) {
+    min-height: auto;
+  }
+}
+
+.steps__col {
+  @extend .padding-top-80,
+  .padding-bottom-80,
+  .relative;
+}
+
+.steps__col:before,
+.steps__col:after {
+  @include mq(sm) {
+    content: '';
+    @include _(absolute);
+    height: 100%;
+    width: 20px;
+    top: 0;
+  }
+  @include mq(s) {
+    width: 10px;
+  }
+}
+
+.steps__col:before {
+  @include mq(sm) {
+    left: -20px;
+  }
+  @include mq(s) {
+    left: -10px;
+  }
+}
+
+.steps__col:after {
+  @include mq(sm) {
+    right: -20px;
+  }
+  @include mq(s) {
+    right: -10px;
+  }
+}
+
+.steps__wrapper {
+  @extend .inline-grid,
+  .grid-cols-6,
+  .col-gap;
+  height: 100%;
+
+  @include mq(l) {
+    @include _(l-col-gap);
+  }
+  @include mq(m) {
+    @include _(m-col-gap);
+  }
+}

@@ -1,0 +1,25 @@
+/* POSITION MIXINS ============================================================================= */
+
+@mixin position() {
+  @each $name, $position in $positions {
+    @each $size, $breakpoint in $breakpoints {
+      @if $size != 'xl' {
+        @include mq($size) {
+          .#{$size}-#{$name} {
+            position: $name;
+          }
+        }
+        @include placeholder(#{$size}-#{$name}) {
+          position: $name;
+        }
+      } @else {
+        .#{$name} {
+          position: $name;
+        }
+        @include placeholder(#{$name}) {
+          position: $name;
+        }
+      }
+    }
+  }
+}

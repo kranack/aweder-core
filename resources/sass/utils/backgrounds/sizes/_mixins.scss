@@ -1,0 +1,12 @@
+/* BG SIZES MIXINS ============================================================================= */
+
+@mixin bgSize() {
+  @each $name, $bgSize in $bgSizes {
+    .background-#{$name} {
+      background-size: $bgSize;
+    }
+    @include placeholder(background-#{$name}) {
+      background-size: $bgSize;
+    }
+  }
+}
