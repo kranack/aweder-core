@@ -84,10 +84,9 @@
   }
 }
 
-.steps__buttons .button,
-.steps__buttons .button__content {
-  @include mq(sm) {
-    @include _(grow-1);
+.steps__buttons .button {
+  @include mq(s) {
+    @include _(width-full);
   }
 }
 
