@@ -35,7 +35,7 @@
                         </label>
                     </div>
                     <div class="field field--buttons align-items-start margin-top-20">
-                        <button type="submit" class="button button-solid--carnation">
+                        <button type="submit" class="button button-solid--carnation s-width-full">
                             <span class="button__content">Merchant login</span>
                             <span class="button__icon button__icon--right">@svg('arrow-right', 'fill-ecru-white')</span>
                         </button>
