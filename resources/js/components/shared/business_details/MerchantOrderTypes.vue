@@ -37,7 +37,7 @@
           class="collection--type"
           id="both"
           value="table"
-          >
+        >
         <label for="both">Table Service</label>
       </div>
       <p
@@ -48,27 +48,38 @@
       </p>
     </div>
     <div class="field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @if(!$errors->isEmpty()) show @endif @error('delivery_cost') input-error @enderror">
-      <label for="name">If delivery is chosen, what is the customer delivery charge (can be £0)</label>
-      <input type="text"
-             name="delivery_cost"
-             id="delivery_cost"
-             tabindex="4"
-             value="" />
-      @error('delivery_cost')
-      <p class="form__validation-error">{{ $message }}</p>
-      @enderror
+      <label for="delivery_cost">If delivery is chosen, what is the customer delivery charge (can be £0)</label>
+      <input
+        id="delivery_cost"
+        type="text"
+        name="delivery_cost"
+        tabindex="4"
+        value=""
+      />
+      <p
+        v-if="deliveryCostValidationMessage !== ''"
+        class="form__validation-error"
+      >
+        {{ deliveryCostValidationMessage }}
+      </p>
     </div>
-    <div class="field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @if(!$errors->isEmpty()) show @endif @error('delivery_cost') input-error @enderror">
-      <label for="name">Delivery radius in miles</label>
-      <input type="text"
-             name="delivery_radius"
-             id="delivery_radius"
-             tabindex="4"
-             placeholder="Delivery radius in miles"
-             value="" />
-      @error('delivery_radius')
-      <p class="form__validation-error">{{ $message }}</p>
-      @enderror
+    <div
+      class="field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @if(!$errors->isEmpty()) show @endif @error('delivery_cost') input-error @enderror">
+      <label for="delivery_radius">Delivery radius in miles</label>
+      <input
+        id="delivery_radius"
+        type="text"
+        name="delivery_radius"
+        tabindex="4"
+        placeholder="Delivery radius in miles"
+        value=""
+      />
+      <p
+        v-if="deliveryRadiusValidationMessage !== ''"
+        class="form__validation-error"
+      >
+        {{ deliveryRadiusValidationMessage }}
+      </p>
     </div>
   </div>
 </template>
@@ -81,6 +92,14 @@ export default {
       default: false,
     },
     collectionTypeValidationMessage: {
+      type: String,
+      default: '',
+    },
+    deliveryRadiusValidationMessage: {
+      type: String,
+      default: '',
+    },
+    deliveryCostValidationMessage: {
       type: String,
       default: '',
     },
