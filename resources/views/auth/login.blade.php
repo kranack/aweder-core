@@ -12,6 +12,7 @@
                       autocomplete="off"
                       action="{{ route('login') }}"
                       method="POST">
+                    @csrf
                     <div class="field @error('email') field--error @enderror">
                         <label for="email" class="label label--float">Email<sup>*</sup></label>
                         <input type="email" name="email" id="email" class="text-input" placeholder="Email address" value="{{ old('email') }}" />

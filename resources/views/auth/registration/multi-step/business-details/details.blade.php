@@ -41,16 +41,16 @@
                             <h3 class="header header--five color--carnation spacer-bottom--30">How will customers receive their orders <abbr title="required">*</abbr></h3>
                         </header>
                         <div class="field field--radio">
-                            <input type="radio" name="collection_type" data-collection-type="collection" class="collection--type"  id="allow-collection"  @if (old('collection_type') === 'collection') checked="checked" @endif value="collection">
+                            <input type="checkbox" name="collection_types[]" data-collection-type="collection" class="collection--type"  id="allow-collection"  @if (old('collection_type') === 'collection') checked="checked" @endif value="collection">
                             <label for="allow-collection">Collection</label>
                         </div>
                         <div class="field field--radio">
-                            <input type="radio" name="collection_type" data-collection-type="delivery" class="collection--type" tabindex="7" @if (old('collection_type') === 'delivery') checked="checked" @endif id="allow-delivery" value="delivery">
+                            <input type="checkbox" name="collection_types[]" data-collection-type="delivery" class="collection--type" tabindex="7" @if (old('collection_type') === 'delivery') checked="checked" @endif id="allow-delivery" value="delivery">
                             <label for="allow-delivery">Delivery</label>
                         </div>
                         <div class="field field--radio">
-                            <input type="radio" name="collection_type" data-collection-type="delivery" class="collection--type" id="both"  @if (old('collection_type') === 'both') checked="checked" @endif value="both">
-                            <label for="both">Delivery & Collection</label>
+                            <input type="checkbox" name="collection_types[]" data-collection-type="table" class="collection--type" id=""  @if (old('collection_type') === 'both') checked="checked" @endif value="both">
+                            <label for="both">Table Service</label>
                         </div>
                         @error('collection_type')
                         <p class="form__validation-error">{{ $message }}</p>
