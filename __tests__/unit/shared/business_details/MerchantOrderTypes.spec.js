@@ -9,7 +9,6 @@ describe('Merchant Ordet Types Component', () => {
     {
       localVue,
       props: {
-        collectionTypeValidationError: false,
         collectionTypeValidationMessage: '',
         deliveryRadiusValidationMessage: '',
         deliveryCostValidationMessage: '',
@@ -27,7 +26,6 @@ describe('Merchant Ordet Types Component', () => {
       {
         localVue,
         propsData: {
-          collectionTypeValidationError: true,
           collectionTypeValidationMessage: 'The validation has failed',
           deliveryRadiusValidationMessage: '',
           deliveryCostValidationMessage: '',
@@ -43,7 +41,6 @@ describe('Merchant Ordet Types Component', () => {
       {
         localVue,
         propsData: {
-          collectionTypeValidationError: false,
           collectionTypeValidationMessage: '',
           deliveryRadiusValidationMessage: 'The radius is required on delivery option',
           deliveryCostValidationMessage: '',
@@ -61,7 +58,6 @@ describe('Merchant Ordet Types Component', () => {
       {
         localVue,
         propsData: {
-          collectionTypeValidationError: false,
           collectionTypeValidationMessage: '',
           deliveryRadiusValidationMessage: '',
           deliveryCostValidationMessage: 'Delivery cost is required',
@@ -78,7 +74,6 @@ describe('Merchant Ordet Types Component', () => {
       {
         localVue,
         propsData: {
-          collectionTypeValidationError: false,
           collectionTypeValidationMessage: '',
           deliveryRadiusValidationMessage: '',
           deliveryCostValidationMessage: '',
@@ -86,5 +81,79 @@ describe('Merchant Ordet Types Component', () => {
       },
     );
     expect(failedWrapper.find('.form__validation-error').exists()).toBe(false);
+  });
+
+  it('Confirms collection is selected when passed in as array element', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
+          collectionTypes: '["collection"]',
+        },
+      },
+    );
+    expect(failedWrapper.find('#allow-collection').exists()).toBe(true);
+    expect(failedWrapper.find('#allow-collection:checked').exists()).toBe(true);
+    expect(failedWrapper.find('#table:checked').exists()).toBe(false);
+    expect(failedWrapper.find('#allow-delivery:checked').exists()).toBe(false);
+  });
+
+  it('Confirms delivery selected when passed in as array element', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
+          collectionTypes: '["delivery"]',
+        },
+      },
+    );
+    expect(failedWrapper.find('#allow-collection:checked').exists()).toBe(false);
+    expect(failedWrapper.find('#table:checked').exists()).toBe(false);
+    expect(failedWrapper.find('#allow-delivery:checked').exists()).toBe(true);
+  });
+
+  it('Confirms table is selected when passed in as array element', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
+          collectionTypes: '["table"]',
+        },
+      },
+    );
+    expect(failedWrapper.find('#allow-collection:checked').exists()).toBe(false);
+    expect(failedWrapper.find('#table:checked').exists()).toBe(true);
+    expect(failedWrapper.find('#allow-delivery:checked').exists()).toBe(false);
+  });
+
+  it('Confirms all selected is selected when passed in as array element', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
+          collectionTypes: '["collection", "delivery", "table"]',
+        },
+      },
+    );
+    expect(failedWrapper.find('#allow-collection').exists()).toBe(true);
+    expect(failedWrapper.find('#allow-collection:checked').exists()).toBe(true);
+    expect(failedWrapper.find('#table:checked').exists()).toBe(true);
+    expect(failedWrapper.find('#allow-delivery:checked').exists()).toBe(true);
   });
 });

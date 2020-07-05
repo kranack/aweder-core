@@ -2,6 +2,8 @@ import Vue from 'vue';
 import 'core-js';
 import 'regenerator-runtime/runtime';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
+import MerchantOrderTypes
+  from '@/js/components/shared/business_details/MerchantOrderTypes';
 import NotificationBanner from './notification';
 import SlugChecker from './slug-checker';
 import Upload from './upload';
@@ -49,12 +51,13 @@ orderFilters.init();
 const adminMenu = new AdminMenu();
 adminMenu.init();
 
-Vue.config.devtools = false;
+Vue.config.devtools = true;
 Vue.config.productionTip = false;
 Vue.config.silent = false;
 
 new Vue({
   components: {
     UrlSlugChecker,
+    'merchant-order-types': MerchantOrderTypes,
   },
 }).$mount('#app');

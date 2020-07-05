@@ -28,7 +28,10 @@
                         <p class="form__validation-error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <url-slug-checker @if ($errors->has('url-slug')) :validation-error="true" @endif @error('url-slug') validation-message="{{ $message }}" @enderror url-value="{{ old('url-slug') }}"></url-slug-checker>
+                    <url-slug-checker
+                        @if ($errors->has('url_slug')) :validation-error="true" @endif
+                        @error('url_slug') validation-message="{{ $message }}" @enderror
+                        @if (old('url_slug')) url-value="{{ old('url_slug') }}" @endif></url-slug-checker>
                     <div class="field field--wrapper col col--lg-12-6 col--m-12-8 col-sm-6-6">
                         <label for="description">Enter a description about your business and/or state any notes for your order form e.g. ‘This is Thursdays menu’ <abbr title="required">*</abbr></label>
                         <textarea name="description" tabindex="6" id="description">{{ old('description') }}</textarea>
@@ -36,49 +39,14 @@
                         <p class="form__validation-error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="field field--wrapper col col--lg-12-6 col--m-12-8 col-sm-6-6">
-                        <header class="section-title">
-                            <h3 class="header header--five color--carnation spacer-bottom--30">How will customers receive their orders <abbr title="required">*</abbr></h3>
-                        </header>
-                        <div class="field field--radio">
-                            <input type="checkbox" name="collection_types[]" data-collection-type="collection" class="collection--type"  id="allow-collection"  @if (old('collection_type') === 'collection') checked="checked" @endif value="collection">
-                            <label for="allow-collection">Collection</label>
-                        </div>
-                        <div class="field field--radio">
-                            <input type="checkbox" name="collection_types[]" data-collection-type="delivery" class="collection--type" tabindex="7" @if (old('collection_type') === 'delivery') checked="checked" @endif id="allow-delivery" value="delivery">
-                            <label for="allow-delivery">Delivery</label>
-                        </div>
-                        <div class="field field--radio">
-                            <input type="checkbox" name="collection_types[]" data-collection-type="table" class="collection--type" id=""  @if (old('collection_type') === 'both') checked="checked" @endif value="both">
-                            <label for="both">Table Service</label>
-                        </div>
-                        @error('collection_type')
-                        <p class="form__validation-error">{{ $message }}</p>
-                        @enderror
-                    </div>
-                        <div class="field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @if(!$errors->isEmpty()) show @endif @error('delivery_cost') input-error @enderror">
-                            <label for="name">If delivery is chosen, what is the customer delivery charge (can be £0)</label>
-                            <input type="text"
-                                   name="delivery_cost"
-                                   id="delivery_cost"
-                                   tabindex="4"
-                                   value="{{ old('delivery_cost') }}" />
-                            @error('delivery_cost')
-                            <p class="form__validation-error">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @if(!$errors->isEmpty()) show @endif @error('delivery_cost') input-error @enderror">
-                            <label for="name">Delivery radius in miles</label>
-                            <input type="text"
-                                   name="delivery_radius"
-                                   id="delivery_radius"
-                                   tabindex="4"
-                                   placeholder="Delivery radius in miles"
-                                   value="{{ old('delivery_radius') }}" />
-                            @error('delivery_radius')
-                            <p class="form__validation-error">{{ $message }}</p>
-                            @enderror
-                        </div>
+                    <merchant-order-types
+                        @if (old('collection_types')) :collection-types="'{{json_encode(old('collection_types')) }}'" @endif
+                        @error('collection_types') collection-type-validation-message="{{ $message  }}" @enderror
+                        @error('delivery_radius') delivery-radius-validation-message="{{ $message }}" @enderror
+                        @error('delivery_cost') delivery-cost-validation-message="{{ $message }}" @enderror
+                        @if (old('delivery_radius')) delivery-radius="{{ old('delivery_radius') }}" @endif
+                        @if (old('delivery_cost')) delivery-cost="{{ old('delivery_cost') }}" @endif
+                    ></merchant-order-types>
                     <div class="field col col--lg-12-6 col--m-12-8 col-sm-6-6 field--button">
                         <button type="submit" class="button button--icon-right button--filled button--filled-carnation button--end">
                             <span class="button__content">Next</span>

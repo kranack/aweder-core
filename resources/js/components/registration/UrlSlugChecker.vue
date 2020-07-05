@@ -6,10 +6,9 @@
     <label for="url-slug">The business's URL slug <abbr title="required">*</abbr></label>
     <input
       v-model="urlSlug"
+      id="url_slug"
       type="text"
-      id="url-slug"
-      name="url-slug"
-      value="urlValue"
+      name="url_slug"
       tabindex="5"
       placeholder="URL slug"
       @keyup="doesUrlExist"
@@ -49,7 +48,7 @@ export default {
   },
   data() {
     return {
-      urlSlug: '',
+      slug: '',
       exists: false,
     };
   },
@@ -57,8 +56,24 @@ export default {
     errorMessage() {
       return this.validationMessage;
     },
+    urlSlug: {
+      get() {
+        return this.slug;
+      },
+      set(newSlug) {
+        if (newSlug.length === 0 && this.urlValue.length > 0) {
+          this.slug = this.urlValue;
+        } else {
+          this.slug = newSlug;
+        }
+        return this.slug;
+      },
+    },
   },
   mounted() {
+    if (this.urlValue && this.urlValue.length > 0) {
+      this.urlSlug = this.urlValue;
+    }
     if (this.validationError === true) {
       this.exist = true;
     }

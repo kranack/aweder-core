@@ -14,7 +14,7 @@
           class="collection--type"
           id="allow-collection"
           value="collection"
-
+          :checked="doesOrderTypeExist('collection')"
         >
         <label for="allow-collection">Collection</label>
       </div>
@@ -27,23 +27,25 @@
           class="collection--type"
           tabindex="7"
           value="delivery"
+          @change="showDeliveryData($event)"
+          :checked="doesOrderTypeExist('delivery')"
         >
         <label for="allow-delivery">Delivery</label>
       </div>
       <div class="field field--radio">
         <input
-          id="both"
+          id="table"
           type="checkbox"
           name="collection_types[]"
           data-collection-type="table"
           class="collection--type"
           value="table"
-          @change="showDeliveryData($event)"
+          :checked="doesOrderTypeExist('table')"
         >
-        <label for="both">Table Service</label>
+        <label for="table">Table Service</label>
       </div>
       <p
-        v-if="collectionTypeValidationError"
+        v-if="collectionTypeValidationMessage !== ''"
         class="form__validation-error"
       >
         {{ collectionTypeValidationMessage }}
@@ -53,13 +55,15 @@
       :class="{ show: showDeliveryFields, 'input-error': deliveryCostValidationMessage !== ''}"
       class="field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6"
     >
-      <label for="delivery_cost">If delivery is chosen, what is the customer delivery charge (can be £0)</label>
+      <label for="delivery_cost">
+        If delivery is chosen, what is the customer delivery charge (can be £0)
+      </label>
       <input
         id="delivery_cost"
         type="text"
         name="delivery_cost"
         tabindex="4"
-        value=""
+        :value="deliveryCost"
       />
       <p
         v-if="deliveryCostValidationMessage !== ''"
@@ -79,7 +83,7 @@
         name="delivery_radius"
         tabindex="4"
         placeholder="Delivery radius in miles"
-        value=""
+        :value="deliveryRadius"
       />
       <p
         v-if="deliveryRadiusValidationMessage !== ''"
@@ -94,10 +98,6 @@
 export default {
   name: 'MerchantOrderTypes',
   props: {
-    collectionTypeValidationError: {
-      type: Boolean,
-      default: false,
-    },
     collectionTypeValidationMessage: {
       type: String,
       default: '',
@@ -110,6 +110,18 @@ export default {
       type: String,
       default: '',
     },
+    collectionTypes: {
+      type: String,
+      default: '',
+    },
+    deliveryRadius: {
+      type: String,
+      default: '',
+    },
+    deliveryCost: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -119,6 +131,13 @@ export default {
   methods: {
     showDeliveryData() {
       this.showDeliveryFields = !this.showDeliveryFields;
+    },
+    doesOrderTypeExist(collectionType) {
+      if (this.collectionTypes !== '') {
+        const submittedCollectionType = JSON.parse(this.collectionTypes);
+        return submittedCollectionType.find((type) => type === collectionType);
+      }
+      return false;
     },
   },
 };

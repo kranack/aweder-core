@@ -24,6 +24,7 @@ class DetailsPost extends Controller
         RegistrationContract $registrationService,
         AuthManager $auth
     ): RedirectResponse {
+        dd($request);
         $user = $auth->user();
 
         $request = $request->merge(['registration_stage' => 3]);
