@@ -30,15 +30,16 @@ class MerchantRepository implements MerchantContract
             [
                 'salt' => \Str::random(10),
                 'registration_stage' => $registrationData['registration_stage'] ?? 1,
-                'url_slug' => $registrationData['url-slug'],
+                'url_slug' => $registrationData['url_slug'],
                 'name' => $registrationData['name'],
                 'description' => $registrationData['description'] ?? null,
                 'contact_number' => $registrationData['customer-phone-number'] ?? null,
                 'address' => $this->generateAddressFromRegistrationForm($registrationData, null),
                 'mobile_number' => $registrationData['mobile-number'] ?? null,
                 'customer_phone_number' => $registrationData['customer-phone-number'] ?? null,
-                'allow_delivery' => $this->doesMerchantAllowDelivery($registrationData['collection_type']),
-                'allow_collection' => $this->doesMerchantAllowCollection($registrationData['collection_type']),
+                'allow_delivery' => $this->doesMerchantAllowDelivery($registrationData['collection_types']),
+                'allow_collection' => $this->doesMerchantAllowCollection($registrationData['collection_types']),
+                'allow_table_service' => $this->doesMerchantAllowTableService($registrationData['collection_types']),
                 'address_name_number' => $registrationData['address-name-number'] ?? null,
                 'address_street' => $registrationData['address-street'] ?? null,
                 'address_postcode' => $registrationData['address-postcode'] ?? null,
@@ -81,6 +82,9 @@ class MerchantRepository implements MerchantContract
                 'allow_collection' => isset($registrationData['collection_collection'])
                     ? $this->doesMerchantAllowCollection($registrationData['collection_type'])
                     : $merchant->allow_collection,
+                'allow_table_service' => isset($registrationData['collection_collection'])
+                    ? $this->doesMerchantAllowTableService($registrationData['collection_type'])
+                    : $merchant->allow_table_service,
             ]
         );
     }
@@ -136,22 +140,19 @@ class MerchantRepository implements MerchantContract
         return $address;
     }
 
-    protected function doesMerchantAllowDelivery(string $option): int
+    protected function doesMerchantAllowDelivery(array $options): int
     {
-        if ($option === 'delivery' || $option === 'both') {
-            return 1;
-        }
-
-        return 0;
+        return (int) in_array('delivery', $options);
     }
 
-    protected function doesMerchantAllowCollection(string $option): int
+    protected function doesMerchantAllowCollection(array $options): int
     {
-        if ($option === 'collection' || $option === 'both') {
-            return 1;
-        }
+        return (int) in_array('collection', $options);
+    }
 
-        return 0;
+    protected function doesMerchantAllowTableService(array $options): int
+    {
+        return (int) in_array('table', $options);
     }
 
     protected function getModel(): Merchant

@@ -97,6 +97,7 @@ class Merchant extends Model
         'customer_phone_number',
         'allow_delivery',
         'allow_collection',
+        'allow_table_service',
         'delivery_cost',
         'delivery_radius',
         'address_name_number',
