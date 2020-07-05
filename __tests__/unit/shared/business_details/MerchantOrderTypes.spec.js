@@ -11,6 +11,8 @@ describe('Merchant Ordet Types Component', () => {
       props: {
         collectionTypeValidationError: false,
         collectionTypeValidationMessage: '',
+        deliveryRadiusValidationMessage: '',
+        deliveryCostValidationMessage: '',
       },
     },
   );
@@ -27,9 +29,62 @@ describe('Merchant Ordet Types Component', () => {
         propsData: {
           collectionTypeValidationError: true,
           collectionTypeValidationMessage: 'The validation has failed',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
         },
       },
     );
     expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
+  });
+
+  it('Delivery Radius Validation renders message', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationError: false,
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: 'The radius is required on delivery option',
+          deliveryCostValidationMessage: '',
+        },
+      },
+    );
+    expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
+    expect(failedWrapper.find('.field.delivery.input-error').exists()).toBe(true);
+
+  });
+
+  it('Delivery Cost Validation renders message', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationError: false,
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: 'Delivery cost is required',
+        },
+      },
+    );
+    expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
+    expect(failedWrapper.find('.field.field--price.input-error').exists()).toBe(true);
+  });
+
+  it('No validation errors are shows', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationError: false,
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
+        },
+      },
+    );
+    expect(failedWrapper.find('.form__validation-error').exists()).toBe(false);
   });
 });

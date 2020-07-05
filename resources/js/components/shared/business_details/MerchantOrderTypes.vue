@@ -14,6 +14,7 @@
           class="collection--type"
           id="allow-collection"
           value="collection"
+
         >
         <label for="allow-collection">Collection</label>
       </div>
@@ -31,12 +32,13 @@
       </div>
       <div class="field field--radio">
         <input
+          id="both"
           type="checkbox"
           name="collection_types[]"
           data-collection-type="table"
           class="collection--type"
-          id="both"
           value="table"
+          @change="showDeliveryData($event)"
         >
         <label for="both">Table Service</label>
       </div>
@@ -47,7 +49,10 @@
         {{ collectionTypeValidationMessage }}
       </p>
     </div>
-    <div class="field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @if(!$errors->isEmpty()) show @endif @error('delivery_cost') input-error @enderror">
+    <div
+      :class="{ show: showDeliveryFields, 'input-error': deliveryCostValidationMessage !== ''}"
+      class="field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6"
+    >
       <label for="delivery_cost">If delivery is chosen, what is the customer delivery charge (can be £0)</label>
       <input
         id="delivery_cost"
@@ -64,7 +69,9 @@
       </p>
     </div>
     <div
-      class="field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @if(!$errors->isEmpty()) show @endif @error('delivery_cost') input-error @enderror">
+      :class="{ show: showDeliveryFields, 'input-error': deliveryRadiusValidationMessage !== ''}"
+      class="field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6"
+    >
       <label for="delivery_radius">Delivery radius in miles</label>
       <input
         id="delivery_radius"
@@ -102,6 +109,16 @@ export default {
     deliveryCostValidationMessage: {
       type: String,
       default: '',
+    },
+  },
+  data() {
+    return {
+      showDeliveryFields: false,
+    };
+  },
+  methods: {
+    showDeliveryData() {
+      this.showDeliveryFields = !this.showDeliveryFields;
     },
   },
 };
