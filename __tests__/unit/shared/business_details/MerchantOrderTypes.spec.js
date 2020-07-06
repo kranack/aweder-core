@@ -17,7 +17,7 @@ describe('Merchant Order Types Component', () => {
   );
 
   it('Does the field render with default values', () => {
-    expect(wrapper.find('h3.header').exists()).toBe(true);
+    expect(wrapper.find('span.label').exists()).toBe(true);
   });
 
   it('Does the field render the validation paragraph when a validation error is present', () => {
@@ -32,7 +32,8 @@ describe('Merchant Order Types Component', () => {
         },
       },
     );
-    expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
+    expect(failedWrapper.find('.field__error').exists()).toBe(true);
+    expect(failedWrapper.find('.field__error').text()).toBe('The validation has failed');
   });
 
   it('Delivery Radius Validation renders message', () => {
@@ -47,8 +48,11 @@ describe('Merchant Order Types Component', () => {
         },
       },
     );
-    expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
-    expect(failedWrapper.find('.field.delivery.input-error').exists()).toBe(true);
+    expect(failedWrapper.find('p.field__error').exists()).toBe(true);
+    expect(failedWrapper.findAll('p.field__error').length).toBe(1);
+
+    expect(failedWrapper.find('.field.field--delivery.field__error').exists()).toBe(true);
+    expect(failedWrapper.find('p.field__error').text()).toBe('The radius is required on delivery option');
   });
 
   it('Delivery Cost Validation renders message', () => {
@@ -63,9 +67,10 @@ describe('Merchant Order Types Component', () => {
         },
       },
     );
-    // failedWrapper.vm.showDeliveryFields = true;
-    expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
-    expect(failedWrapper.find('.field.field--price.input-error').exists()).toBe(true);
+    expect(failedWrapper.find('p.field__error').exists()).toBe(true);
+    expect(failedWrapper.findAll('p.field__error').length).toBe(1);
+    expect(failedWrapper.find('p.field__error').text()).toBe('Delivery cost is required');
+    expect(failedWrapper.find('.field.field--price.field__error').exists()).toBe(true);
   });
 
   it('No validation errors are shows', () => {

@@ -20,7 +20,7 @@
           <span class="checkbox__icon checkbox__icon--image checkbox__icon--small
             icon icon--collection"
           >
-          <collection></collection>
+            <Collection />
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
             Collection
@@ -42,7 +42,7 @@
           <span class="checkbox__icon checkbox__icon--image
             checkbox__icon--small icon icon--delivery"
           >
-            <delivery></delivery>
+            <Delivery />
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
             Delivery
@@ -61,7 +61,7 @@
         >
         <label class="checkbox checkbox--icon checkbox--icon-small" for="table">
           <span class="checkbox__icon checkbox__icon--image checkbox__icon--small icon icon--table">
-            <table></table>
+            <Table />
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
             Table service
@@ -77,7 +77,7 @@
     </p>
     <div v-if="showDeliveryFields">
       <div class="field field--price field--price col-span-6 m-col-span-10 sm-col-span-6"
-           :class="{'field--error': deliveryCostValidationMessage !== ''}"
+           :class="{'field__error': deliveryCostValidationMessage !== ''}"
       >
         <label class="label label--float" for="delivery_cost">Delivery charge<sup>*</sup></label>
         <input
@@ -96,8 +96,9 @@
         </p>
       </div>
 
-      <div class="field field--delivery col-span-6 m-col-span-10 sm-col-span-6"
-           :class="{'field__error': deliveryRadiusValidationMessage !== ''}"
+      <div
+        class="field field--delivery col-span-6 m-col-span-10 sm-col-span-6"
+         :class="{'field__error': deliveryRadiusValidationMessage !== ''}"
       >
         <label class="label label--float" for="name">Delivery radius in miles<sup>*</sup></label>
         <input

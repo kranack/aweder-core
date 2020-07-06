@@ -28,7 +28,7 @@
                         <p class="field__error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <url-slug-checker @if ($errors->has('url-slug')) :validation-error="true" @endif @error('url-slug') validation-message="{{ $message }}" @enderror url-value="{{ old('url-slug') }}"></url-slug-checker>
+                    <url-slug-checker @if ($errors->has('url_slug')) :validation-error="true" @endif @error('url_slug') validation-message="{{ $message }}" @enderror url-value="{{ old('url_slug') }}"></url-slug-checker>
                     <div class="field col-span-6 m-col-span-10 sm-col-span-6 margin-top-20 sm-margin-top-0">
                         <label class="label label--float" for="description">Enter a description about your business and/or any notes’ <sup>*</sup></label>
                         <textarea name="description" tabindex="6" id="description" class="textarea-input" placeholder="About your business">{{ old('description') }}</textarea>
