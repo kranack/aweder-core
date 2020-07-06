@@ -75,46 +75,47 @@
     >
       {{ collectionTypeValidationMessage }}
     </p>
+    <div v-if="showDeliveryFields">
+      <div class="field field--price field--price col-span-6 m-col-span-10 sm-col-span-6"
+           :class="{'field--error': deliveryCostValidationMessage !== ''}"
+      >
+        <label class="label label--float" for="delivery_cost">Delivery charge<sup>*</sup></label>
+        <input
+          id="delivery_cost"
+          type="text"
+          name="delivery_cost"
+          tabindex="4"
+          class="text-input text-input--price"
+          :value="deliveryCost"
+        >
+        <p
+          v-if="deliveryCostValidationMessage !== ''"
+          class="field__error"
+        >
+          {{ deliveryCostValidationMessage }}
+        </p>
+      </div>
 
-    <div class="field field--price field--price col-span-6 m-col-span-10 sm-col-span-6"
-         :class="{'field--error': deliveryCostValidationMessage !== ''}"
-    >
-      <label class="label label--float" for="delivery_cost">Delivery charge<sup>*</sup></label>
-      <input
-        id="delivery_cost"
-        type="text"
-        name="delivery_cost"
-        tabindex="4"
-        class="text-input text-input--price"
-        :value="deliveryCost"
+      <div class="field field--delivery col-span-6 m-col-span-10 sm-col-span-6"
+           :class="{'field__error': deliveryRadiusValidationMessage !== ''}"
       >
-      <p
-        v-if="deliveryCostValidationMessage !== ''"
-        class="field__error"
-      >
-        {{ deliveryCostValidationMessage }}
-      </p>
-    </div>
-
-    <div class="field field--delivery col-span-6 m-col-span-10 sm-col-span-6"
-         :class="{'field__error': deliveryRadiusValidationMessage !== ''}"
-    >
-      <label class="label label--float" for="name">Delivery radius in miles<sup>*</sup></label>
-      <input
-        id="delivery_radius"
-        type="text"
-        name="delivery_radius"
-        class="text-input"
-        tabindex="4"
-        placeholder="Delivery radius in miles"
-        :value="deliveryRadius"
-      >
-      <p
-        v-if="deliveryRadiusValidationMessage !== ''"
-        class="field__error"
-      >
-        {{ deliveryRadiusValidationMessage }}
-      </p>
+        <label class="label label--float" for="name">Delivery radius in miles<sup>*</sup></label>
+        <input
+          id="delivery_radius"
+          type="text"
+          name="delivery_radius"
+          class="text-input"
+          tabindex="4"
+          placeholder="Delivery radius in miles"
+          :value="deliveryRadius"
+        >
+        <p
+          v-if="deliveryRadiusValidationMessage !== ''"
+          class="field__error"
+        >
+          {{ deliveryRadiusValidationMessage }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
