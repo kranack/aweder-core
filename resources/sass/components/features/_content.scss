@@ -17,11 +17,14 @@
 }
 
 .feature__buttons {
-  @extend .margin-top-40;
+  @extend .margin-top-40,
+  .flex,
+  .justify-content-start;
 }
 
-.feature__buttons .button__content {
+.feature__buttons .button {
   @include mq(s) {
     @include _(width-full);
   }
 }
+

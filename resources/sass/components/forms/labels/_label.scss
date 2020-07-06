@@ -1,0 +1,22 @@
+.label {
+  @extend .font-gibson-reg,
+  .body-label;
+}
+
+.label.label--float {
+  @extend .absolute,
+  .body-xsmall,
+  .uppercase,
+  .color-cloud-burst-6;
+  left: 0;
+  top: 0;
+}
+
+.label sup {
+  @extend .color-carnation;
+}
+
+.field--error .label.label--float {
+  @extend .opacity-0;
+  visibility: hidden;
+}

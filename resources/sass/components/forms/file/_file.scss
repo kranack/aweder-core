@@ -1,0 +1,53 @@
+input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.upload {
+  @extend .flex,
+  .flex-col,
+  .relative,
+  .align-items-center,
+  .justify-content-center,
+  .text-center,
+  .radius-5,
+  .background-off-white,
+  .border-width-1,
+  .border-solid,
+  .border-cloud-burst,
+  .padding-20;
+  height: 100%;
+
+  @include mq(sm) {
+    height: auto;
+    padding-bottom: 100%;
+  }
+}
+
+.upload__trigger {
+  @extend .flex,
+  .flex-col,
+  .align-items-center,
+  .justify-content-center;
+
+  @include mq(sm) {
+    @include _(absolute);
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+
+.upload__icon {
+  @extend .flex;
+  max-width: 100%;
+}
+
+.upload__label {
+  @extend .body-small,
+  .color-cloud-burst-5,
+  .margin-top-10;
+}

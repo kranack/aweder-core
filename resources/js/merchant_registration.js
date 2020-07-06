@@ -42,7 +42,7 @@ const Delivery = class DeliveryCost {
   init = () => {
     this.collectionChoice = document.querySelectorAll('.collection--type');
     if (this.collectionChoice !== null) {
-      this.deliveryFieldWrapper = document.querySelectorAll('.delivery');
+      this.deliveryFieldWrapper = document.querySelectorAll('.field--delivery');
       this.attachChangeEvent();
     }
   };
