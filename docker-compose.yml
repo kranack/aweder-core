@@ -26,8 +26,10 @@ services:
             DB_USER: 'root'
             DB_PASSWORD: 'root'
             DB_NAME: 'uk_restaurant_local'
+            PHP_IDE_CONFIG: 'serverName=uk-restaurants.test'
         volumes:
             - ./:/var/www/vhost/:cached
+            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
         ports:
             - '9000:9000'
         networks:
