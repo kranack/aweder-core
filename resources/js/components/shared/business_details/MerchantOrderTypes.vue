@@ -20,7 +20,7 @@
           <span class="checkbox__icon checkbox__icon--image checkbox__icon--small
             icon icon--collection"
           >
-            @svg('collection')
+          <collection></collection>
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
             Collection
@@ -42,7 +42,7 @@
           <span class="checkbox__icon checkbox__icon--image
             checkbox__icon--small icon icon--delivery"
           >
-            @svg('delivery')
+            <delivery></delivery>
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
             Delivery
@@ -61,7 +61,7 @@
         >
         <label class="checkbox checkbox--icon checkbox--icon-small" for="table">
           <span class="checkbox__icon checkbox__icon--image checkbox__icon--small icon icon--table">
-            @svg('table')
+            <table></table>
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
             Table service
@@ -120,8 +120,17 @@
   </div>
 </template>
 <script>
+import Delivery from '@/js/components/svgs/Delivery';
+import Collection from '@/js/components/svgs/Collection';
+import Table from '@/js/components/svgs/Table';
+
 export default {
   name: 'MerchantOrderTypes',
+  components: {
+    Delivery,
+    Collection,
+    Table,
+  },
   props: {
     collectionTypeValidationMessage: {
       type: String,
