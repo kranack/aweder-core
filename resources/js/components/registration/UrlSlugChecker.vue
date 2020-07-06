@@ -1,6 +1,6 @@
 <template>
   <div
-    class="field col-span-4 m-col-span-8 sm-col-span-6 row-start-2 sm-row-start-3"
+    class="field col-span-4 m-col-span-6 sm-col-span-6 row-start-2 sm-row-start-3"
     :class="{ 'field--error': exists }"
   >
     <label class="label label--float" for="url-slug">Business's URL slug<sup>*</sup></label>

@@ -12,6 +12,10 @@
   top: 0;
 }
 
+.label sup {
+  @extend .color-carnation;
+}
+
 .field--error .label.label--float {
   @extend .opacity-0;
   visibility: hidden;

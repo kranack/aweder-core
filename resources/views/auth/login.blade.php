@@ -29,7 +29,7 @@
                     </div>
                     <div class="field field--checkbox margin-top-10">
                         <input type="checkbox" name="remember" id="remember" class="checkbox-input hidden">
-                        <label for="remember" class="checkbox">
+                        <label for="remember" class="checkbox checkbox--standard">
                             <span class="checkbox__icon checkbox__icon--small">@svg('tick', 'stroke-cloud-burst')</span>
                             <span class="checkbox__label checkbox__label--small">Remember Me</span>
                         </label>
