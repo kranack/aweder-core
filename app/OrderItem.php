@@ -32,6 +32,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @mixin \Eloquent
  * @property-read \App\Inventory $orderInventory
  * @property-read string $formatted_u_k_price
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem multipleQuantity()
  */
 class OrderItem extends Model
 {

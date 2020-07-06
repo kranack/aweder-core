@@ -76,6 +76,8 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereLogo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereRegistrationStage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereSalt($value)
+ * @property int $allow_table_service
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereAllowTableService($value)
  */
 class Merchant extends Model
 {

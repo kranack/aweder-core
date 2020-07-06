@@ -76,14 +76,14 @@ class MerchantRepository implements MerchantContract
                     : $merchant->delivery_radius,
                 'delivery_cost' => isset($registrationData['delivery_cost'])
                     ? $this->convertToPence($registrationData['delivery_cost']) : $merchant->delivery_cost,
-                'allow_delivery' => isset($registrationData['collection_type'])
-                    ? $this->doesMerchantAllowDelivery($registrationData['collection_type'])
+                'allow_delivery' => isset($registrationData['collection_types'])
+                    ? $this->doesMerchantAllowDelivery($registrationData['collection_types'])
                     : $merchant->allow_delivery,
-                'allow_collection' => isset($registrationData['collection_collection'])
-                    ? $this->doesMerchantAllowCollection($registrationData['collection_type'])
+                'allow_collection' => isset($registrationData['collection_types'])
+                    ? $this->doesMerchantAllowCollection($registrationData['collection_types'])
                     : $merchant->allow_collection,
-                'allow_table_service' => isset($registrationData['collection_collection'])
-                    ? $this->doesMerchantAllowTableService($registrationData['collection_type'])
+                'allow_table_service' => isset($registrationData['collection_types'])
+                    ? $this->doesMerchantAllowTableService($registrationData['collection_types'])
                     : $merchant->allow_table_service,
             ]
         );

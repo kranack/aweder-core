@@ -53,7 +53,7 @@ class DetailsPostControllerTest extends TestCase
 
         $response->assertRedirect(route('register.business-details'));
 
-        $response->assertSessionHasErrors('url-slug');
+        $response->assertSessionHasErrors('url_slug');
     }
 
     /**
@@ -68,7 +68,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $this->faker->safeEmail,
-            'url-slug' => $this->faker->slug,
+            'url_slug' => $this->faker->slug,
             'collection_type' => 'collection',
             'description' => $this->faker->words(10, true),
         ];
@@ -90,7 +90,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $this->faker->safeEmail,
-            'url-slug' => $this->faker->slug,
+            'url_slug' => $this->faker->slug,
             'collection_type' => 'delivery',
         ];
 
@@ -113,7 +113,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $this->faker->safeEmail,
-            'url-slug' => $this->faker->slug,
+            'url_slug' => $this->faker->slug,
             'collection_type' => 'delivery',
             'delivery_radius' => 5
         ];
@@ -143,7 +143,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
+            'url_slug' => $slug,
             'collection_type' => 'delivery',
             'delivery_radius' => 5,
             'delivery_cost' => '5.99',
@@ -188,7 +188,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
+            'url_slug' => $slug,
             'collection_type' => 'both',
             'delivery_radius' => 5,
             'delivery_cost' => '5.99',
@@ -230,7 +230,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
+            'url_slug' => $slug,
             'collection_type' => 'both',
             'delivery_cost' => '5.99',
         ];
@@ -258,7 +258,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
+            'url_slug' => $slug,
             'collection_type' => 'both',
             'delivery_radius' => 5,
         ];
@@ -286,7 +286,7 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
+            'url_slug' => $slug,
             'collection_type' => 'collection',
             'description' => $this->faker->words(140, true),
         ];
