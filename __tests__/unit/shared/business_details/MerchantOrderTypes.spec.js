@@ -161,4 +161,27 @@ describe('Merchant Order Types Component', () => {
     expect(failedWrapper.find('#table:checked').exists()).toBe(true);
     expect(failedWrapper.find('#allow-delivery:checked').exists()).toBe(true);
   });
+
+  it('Confirm deliver options appears when item is checked', async () => {
+    const showsDeliveryWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
+          collectionTypes: '',
+        },
+      },
+    );
+
+    expect(showsDeliveryWrapper.find('.field.field--price').exists()).toBe(false);
+    expect(showsDeliveryWrapper.find('.field.field--delivery').exists()).toBe(false);
+    await showsDeliveryWrapper.find('#allow-delivery').trigger('change');
+    showsDeliveryWrapper.vm.$nextTick();
+    expect(showsDeliveryWrapper.find('.field.field--price').exists()).toBe(true);
+    expect(showsDeliveryWrapper.find('.field.field--delivery').exists()).toBe(true);
+
+  });
 });
