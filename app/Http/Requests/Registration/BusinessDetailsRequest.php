@@ -31,6 +31,7 @@ class BusinessDetailsRequest extends FormRequest
             'description' => ['required', new MaxWordsRule(100)],
             'url_slug' => ['required', 'alpha_dash', 'unique:merchants,url_slug'],
             'collection_types' => ['required'],
+            'collection_types.*' => [Rule::in(['table', 'delivery', 'collection'])],
             'delivery_cost' => [
                 Rule::requiredIf(function () {
                     return is_array(request()->get('collection_types')) &&
