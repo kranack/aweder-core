@@ -7,8 +7,8 @@
                     <h1 class="header-one color-carnation">Login</h1>
                 </header>
                 <form class="col-span-6 col-start-4 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 inline-flex flex-col margin-bottom-60"
-                      id="signUpForm"
-                      name="signUpForm"
+                      id="login"
+                      name="login"
                       autocomplete="off"
                       action="{{ route('login') }}"
                       method="POST">
@@ -30,13 +30,13 @@
                     </div>
                     <div class="field field--checkbox margin-top-10">
                         <input type="checkbox" name="remember" id="remember" class="checkbox-input hidden">
-                        <label for="remember" class="checkbox">
+                        <label for="remember" class="checkbox checkbox--standard">
                             <span class="checkbox__icon checkbox__icon--small">@svg('tick', 'stroke-cloud-burst')</span>
                             <span class="checkbox__label checkbox__label--small">Remember Me</span>
                         </label>
                     </div>
                     <div class="field field--buttons align-items-start margin-top-20">
-                        <button type="submit" class="button button-solid--carnation">
+                        <button type="submit" class="button button-solid--carnation s-width-full">
                             <span class="button__content">Merchant login</span>
                             <span class="button__icon button__icon--right">@svg('arrow-right', 'fill-ecru-white')</span>
                         </button>

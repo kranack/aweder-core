@@ -1,0 +1,9 @@
+.notification {
+  @extend .absolute,
+  .radius-5,
+  .flex,
+  .align-items-center;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}

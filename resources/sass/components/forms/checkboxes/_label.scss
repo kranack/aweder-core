@@ -1,3 +1,7 @@
 .checkbox__label--small {
   @extend .body-small;
 }
+
+.checkbox__label--large {
+  @extend .body-medium;
+}

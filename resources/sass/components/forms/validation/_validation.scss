@@ -2,7 +2,12 @@
   @extend .absolute,
   .body-xsmall,
   .uppercase,
-  .color-carnation;
+  .color-carnation,
+  .opacity-0;
   left: 0;
   top: 0;
+}
+
+.field--error .field__error {
+  @extend .opacity-1;
 }

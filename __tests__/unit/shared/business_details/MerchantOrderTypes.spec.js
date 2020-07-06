@@ -49,7 +49,6 @@ describe('Merchant Ordet Types Component', () => {
     );
     expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
     expect(failedWrapper.find('.field.delivery.input-error').exists()).toBe(true);
-
   });
 
   it('Delivery Cost Validation renders message', () => {
