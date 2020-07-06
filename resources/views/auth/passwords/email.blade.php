@@ -9,8 +9,8 @@
                     <p>Enter your login email address and we’ll send you an email with instructions on how to reset your password.</p>
                 </header>
                 <form class="col-span-6 col-start-4 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 inline-flex flex-col margin-bottom-60"
-                      id="signUpForm"
-                      name="signUpForm"
+                      id="confirm-email"
+                      name="confirmEmail"
                       autocomplete="off"
                       action="{{ route('password.email') }}"
                       method="POST">

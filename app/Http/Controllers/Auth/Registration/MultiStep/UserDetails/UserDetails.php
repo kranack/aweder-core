@@ -15,6 +15,6 @@ class UserDetails extends Controller
      */
     public function __invoke(Request $request)
     {
-        return response()->view('auth.registration.multi-step.user-details', ['bodyClass' => 'body-auth']);
+        return response()->view('auth.registration.multi-step.user-details');
     }
 }

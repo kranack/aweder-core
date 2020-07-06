@@ -1,16 +1,18 @@
 .label {
-  @extend .body-xsmall,
-  .uppercase,
-  .color-cloud-burst-6;
+  @extend .font-gibson-reg,
+  .body-label;
 }
 
-.label--float {
-  @extend .absolute;
+.label.label--float {
+  @extend .absolute,
+  .body-xsmall,
+  .uppercase,
+  .color-cloud-burst-6;
   left: 0;
   top: 0;
 }
 
-.field--error .label {
+.field--error .label.label--float {
   @extend .opacity-0;
   visibility: hidden;
 }

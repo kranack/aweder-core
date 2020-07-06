@@ -1,3 +1,14 @@
+.tab-nav {
+  @extend .margin-bottom-80;
+
+  @include mq(m) {
+   @include _(m-margin-bottom-60);
+  }
+  @include mq(sm) {
+    @include _(sm-margin-bottom-40);
+  }
+}
+
 .tab-menu {
   @extend .width-full,
   .flex,

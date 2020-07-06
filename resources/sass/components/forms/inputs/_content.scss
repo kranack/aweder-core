@@ -1,13 +1,16 @@
-input.text-input {
+input.text-input,
+textarea.textarea-input {
   @extend .border-bottom-solid,
   .border-width-1,
   .border-cloud-burst,
+  .font-gibson-reg,
   .body-label,
   .padding-top-30,
   .padding-bottom-10;
   transition: border-color 0.3s ease-in-out;
 }
 
-.field--error input.text-input {
+.field--error input.text-input,
+.field--error textarea.textarea-input {
   @extend .border-carnation;
 }

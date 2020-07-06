@@ -1,10 +1,11 @@
 <template>
   <div
-    class="field col--lg-12-4 col--lg-offset-12-3 col--m-12-5 col--m-offset-12-4 col-sm-6-6 col--sm-offset-6-1"
-    :class="{ 'input-error': exists }"
+    class="field col-span-4 m-col-span-8 sm-col-span-6 row-start-2 sm-row-start-3"
+    :class="{ 'field--error': exists }"
   >
-    <label for="url-slug">The business's URL slug <abbr title="required">*</abbr></label>
+    <label class="label label--float" for="url-slug">Business's URL slug<sup>*</sup></label>
     <input
+      class="text-input"
       v-model="urlSlug"
       type="text"
       id="url-slug"
@@ -20,7 +21,7 @@
     >
       {{ errorMessage }}
     </p>
-    <p class="form__note">
+    <p class="field__note">
       This will generate your url - for example - if you enter red-lion you will have https://aweder.net/red-lion
     </p>
   </div>

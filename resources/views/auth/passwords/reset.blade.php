@@ -8,8 +8,8 @@
                     <h1 class="header-one color-carnation">Reset password</h1>
                 </header>
                 <form class="col-span-6 col-start-4 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 inline-flex flex-col margin-bottom-60"
-                      id="signUpForm"
-                      name="signUpForm"
+                      id="reset"
+                      name="reset"
                       autocomplete="off"
                       action="{{ route('password.update') }}"
                       method="POST">
