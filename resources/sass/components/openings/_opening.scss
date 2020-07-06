@@ -1,0 +1,50 @@
+.field.opening-time {
+  @extend .flex,
+  .flex-row,
+  .align-items-center;
+}
+
+.field.opening-time:nth-child(4) {
+  @extend .margin-bottom-0;
+
+  @include mq(sm) {
+    @include _(margin-bottom-30);
+  }
+}
+
+.field.opening-time:last-child {
+  @include mq(sm) {
+    @include _(margin-bottom-0);
+  }
+}
+
+.opening-time__day {
+  @extend .font-gibson-med;
+  max-width: 130px;
+  width: 100%;
+}
+
+.opening-time__group {
+  @extend .flex,
+  .align-items-center,
+  .relative;
+}
+
+.opening-time__group:before {
+  @extend .absolute,
+  .body-medium,
+  .font-gibson-book,
+  .color-cloud-burst;
+  content: ':';
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.opening-time__select {
+  @extend .background-silver-4,
+  .body-medium,
+  .font-gibson-book,
+  .padding-left-5,
+  .padding-right-5;
+}
