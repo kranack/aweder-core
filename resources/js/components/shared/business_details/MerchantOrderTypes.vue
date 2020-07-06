@@ -52,7 +52,8 @@
       </p>
     </div>
     <div
-      :class="{ show: showDeliveryFields, 'input-error': deliveryCostValidationMessage !== ''}"
+      v-if="showDeliveryFields"
+      :class="{'input-error': deliveryCostValidationMessage !== ''}"
       class="field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6"
     >
       <label for="delivery_cost">
@@ -73,7 +74,8 @@
       </p>
     </div>
     <div
-      :class="{ show: showDeliveryFields, 'input-error': deliveryRadiusValidationMessage !== ''}"
+      v-if="showDeliveryFields"
+      :class="{'input-error': deliveryRadiusValidationMessage !== ''}"
       class="field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6"
     >
       <label for="delivery_radius">Delivery radius in miles</label>
