@@ -53,7 +53,7 @@
                 @enderror
             </div>
             <merchant-order-types
-                :collection-types="'{{json_encode(old('collection_types')) }}'"
+                :collection-types="'{{json_encode(old('collection_types', $merchant->getMerchantAcceptableOrderTypes())) }}'"
                 @error('collection_types') collection-type-validation-message="{{ $message  }}" @enderror
                 @error('delivery_radius') delivery-radius-validation-message="{{ $message }}" @enderror
                 @error('delivery_cost') delivery-cost-validation-message="{{ $message }}" @enderror

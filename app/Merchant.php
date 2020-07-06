@@ -241,4 +241,23 @@ class Merchant extends Model
             ->where('name', 'Stripe')
             ->first();
     }
+
+    public function getMerchantAcceptableOrderTypes(): array
+    {
+        $orderTypes = [];
+
+        if ($this->allow_collection === 1) {
+            $orderTypes[] = 'collection';
+        }
+
+        if ($this->allow_delivery === 1) {
+            $orderTypes[] = 'delivery';
+        }
+
+        if ($this->allow_table_service === 1) {
+            $orderTypes[] = 'table';
+        }
+
+        return $orderTypes;
+    }
 }
