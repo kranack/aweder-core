@@ -1,40 +1,26 @@
 @extends('global.app')
-
 @section('content')
-    <section class="intro">
+    <section class="auth">
         <div class="row">
             <div class="content">
-                <header class="intro__header col col--lg-12-8 col--sm-6-6 col--s-6-6">
-                    <h1 class="header header--three color--carnation">Verify your email address.</h1>
+                <header class="auth__header col-span-6 col-start-4 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
+                    <h1 class="header-one color-carnation">Verify your email address</h1>
+                    <p>A Fresh verification link has been sent to your email address</p>
                 </header>
-                @if (session('resent'))
-                    <div class="intro__copy col col--lg-12-6 col--sm-6-6 col--s-6-6">
-                        <p>A Fresh verification link has been sent to your email address</p>
-                        <p><a href="{{ route('about.how-it-works') }}">Find out more about how Aweder will work</a></p>
+                <form class="col-span-6 col-start-4 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 inline-flex flex-col margin-bottom-60"
+                      id="resend-verification"
+                      name="resendVerification"
+                      autocomplete="off"
+                      action="{{ route('verification.resend') }}"
+                      method="POST">
+                    <div class="field field--buttons align-items-start margin-top-20">
+                        <button type="submit" class="button button-solid--carnation s-width-full">
+                            <span class="button__content">Sign in</span>
+                            <span class="button__icon button__icon--right">@svg('arrow-right', 'fill-ecru-white')</span>
+                        </button>
                     </div>
-                @endif
+                </form>
             </div>
         </div>
     </section>
-    <div class="content">
-        <div class="login__form col col--lg-12-6 col--lg-offset-12-4 col--l-12-6 col--l-offset-12-4 col--m-12-11 col--m-offset-12-1 col--sm-6-6 col--sm-offset-6-1 col--s-6-6">
-            <p>Before proceeding, please check your email for a verification link</p>
-            <p>If you did not receive the email, use the form below</p>
-            <form
-                class="form form--background"
-                id="resend-verification"
-                name="resendVerification"
-                autocomplete="off"
-                method="POST"
-                action="{{ route('verification.resend') }}">
-                @csrf
-                <div class="field field--button">
-                    <button type="submit" class="button button--icon-right button--filled button--filled-carnation button--end">
-                        <span class="button__content">Sign in</span>
-                        <span class="icon icon-right">@svg('arrow-right')</span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 @endsection

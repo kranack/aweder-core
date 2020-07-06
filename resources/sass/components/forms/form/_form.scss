@@ -1,15 +1,4 @@
-.field {
-  @extend .flex,
-  .flex-col,
-  .margin-bottom-30,
-  .relative;
-}
-
-.field.field--buttons {
-  @extend .margin-bottom-0;
-}
-
-.field-wrapper {
+.form-inline {
   @extend .col-gap;
 
   @include mq(l) {

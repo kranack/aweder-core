@@ -6,30 +6,37 @@
 .checkbox__icon {
   @extend .flex,
   .align-items-center,
-  .justify-content-center,
-  .border-solid,
+  .justify-content-center;
+}
+
+.checkbox--standard .checkbox__icon {
+  @extend .border-solid,
   .border-cloud-burst,
   .border-width-1,
   .radius-5;
 }
 
-.checkbox__icon polyline {
+.checkbox--standard .checkbox__icon polyline {
   stroke-dashoffset: 40;
   stroke-dasharray: 40;
 }
 
-.checkbox__icon--small {
+
+.checkbox__icon {
   @extend .margin-right-20;
+}
+
+.checkbox--standard .checkbox__icon--small {
   width: 20px;
   height: 20px;
 }
 
-.checkbox__icon--small svg {
+.checkbox--standard .checkbox__icon--small svg {
   width: 11px;
   height: 7px;
 }
 
-.checkbox-input:checked ~ .checkbox .checkbox__icon--small polyline {
+.checkbox-input:checked ~ .checkbox--standard .checkbox__icon--small polyline {
   animation-name: dash;
   animation-fill-mode: forwards;
   animation-timing-function: linear;

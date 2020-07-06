@@ -16,6 +16,6 @@ class Details extends Controller
      */
     public function __invoke(Request $request): Response
     {
-        return response()->view('auth.registration.multi-step.business-details.details', ['bodyClass' => 'body-auth']);
+        return response()->view('auth.registration.multi-step.business-details.details');
     }
 }

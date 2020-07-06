@@ -1,0 +1,41 @@
+.checkbox--icon {
+  @extend .background-off-white,
+  .border-cloud-burst,
+  .border-width-1,
+  .border-solid,
+  .radius-5,
+  .padding-left-20,
+  .padding-right-20;
+  transition: background 0.3s ease-in-out;
+}
+
+.checkbox-input:checked ~ .checkbox--icon {
+  @extend .background-casablanca;
+}
+
+.checkbox--icon-small {
+  height: 66px;
+}
+
+.checkbox--icon .checkbox__icon svg {
+  width: 100%;
+}
+
+.checkbox__icon--small.icon--delivery svg,
+.checkbox__icon--small.icon--table svg {
+  max-width: 30px;
+}
+
+.checkbox__icon--small.icon--collection svg {
+  max-width: 34px;
+}
+
+.checkbox__icon .hollow {
+  @extend .opacity-0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.checkbox-input:checked ~ .checkbox--icon .hollow {
+  @extend .opacity-1;
+}
+

@@ -1,5 +1,19 @@
 @import 'mixins';
 
+.button {
+  @extend
+  .flex,
+  .justify-content-center,
+  .align-items-center,
+  .padding-left-30,
+  .padding-right-30,
+  .radius-5,
+  .border-width-1,
+  .border-solid;
+  height: 50px;
+  width: auto;
+}
+
 .button__content {
   @extend .flex,
   .font-gibson-med,

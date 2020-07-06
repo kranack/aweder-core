@@ -4,8 +4,7 @@ const Upload = class Upload {
   getTargetEls = () => {
     this.uploadEls.forEach((upload) => {
       const input = upload.querySelectorAll('input')[0];
-      const filename = upload.querySelectorAll('.upload-input-name')[0];
-
+      const filename = upload.querySelectorAll('.upload__label')[0];
       input.addEventListener('change', () => {
         this.showFileName(event, input, filename);
       });

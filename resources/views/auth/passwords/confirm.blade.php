@@ -9,8 +9,8 @@
                     <p>Please confirm your password before continuing.</p>
                 </header>
                 <form class="col-span-6 col-start-4 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 inline-flex flex-col margin-bottom-60"
-                      id="signUpForm"
-                      name="signUpForm"
+                      id="confirm"
+                      name="confirm"
                       autocomplete="off"
                       action="{{ route('login') }}"
                       method="POST">
@@ -30,7 +30,7 @@
                         </label>
                     </div>
                     <div class="field field--buttons align-items-start margin-top-20">
-                        <button type="submit" class="button button-solid--carnation">
+                        <button type="submit" class="button button-solid--carnation s-width-full">
                             <span class="button__content">Confirm password</span>
                             <span class="button__icon button__icon--right">@svg('arrow-right', 'fill-ecru-white')</span>
                         </button>

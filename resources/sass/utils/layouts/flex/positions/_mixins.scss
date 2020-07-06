@@ -3,20 +3,20 @@
 @mixin flexPosition($pos, $type) {
   @each $name, $flexPosition in $flexPositions {
     @each $size, $breakpoint in $breakpoints {
-      @if $size == 'xl' {
-        .#{$pos}-#{$type}-#{$name} {
-          #{$pos}-#{$type}: $flexPosition;
-        }
-        @include placeholder(#{$pos}-#{$type}-#{$name}) {
-          #{$pos}-#{$type}: $flexPosition;
-        }
-      } @else {
+      @if $size != 'xl' {
         @include mq($size) {
           .#{$size}-#{$pos}-#{$type}-#{$name} {
             #{$pos}-#{$type}: $flexPosition;
           }
         }
         @include placeholder(#{$size}-#{$pos}-#{$type}-#{$name}) {
+          #{$pos}-#{$type}: $flexPosition;
+        }
+      } @else {
+        .#{$pos}-#{$type}-#{$name} {
+          #{$pos}-#{$type}: $flexPosition;
+        }
+        @include placeholder(#{$pos}-#{$type}-#{$name}) {
           #{$pos}-#{$type}: $flexPosition;
         }
       }
