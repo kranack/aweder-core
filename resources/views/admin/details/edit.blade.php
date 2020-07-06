@@ -52,6 +52,15 @@
                 <p class="form__validation-error">{{ $message }}</p>
                 @enderror
             </div>
+            <merchant-order-types
+                :collection-types="'{{json_encode(old('collection_types')) }}'"
+                @error('collection_types') collection-type-validation-message="{{ $message  }}" @enderror
+                @error('delivery_radius') delivery-radius-validation-message="{{ $message }}" @enderror
+                @error('delivery_cost') delivery-cost-validation-message="{{ $message }}" @enderror
+                delivery-radius="{{ old('delivery_radius', $merchant->delivery_radius) }}"
+                delivery-cost="{{ old('delivery_cost', $merchant->delivery_cost) }}"
+            ></merchant-order-types>
+
             <div class="field field--wrapper col col--lg-12-6 col--m-12-8 col-sm-6-6">
                 <header class="section-title">
                     <p>How will customers receive their orders <abbr title="required">*</abbr></p>
