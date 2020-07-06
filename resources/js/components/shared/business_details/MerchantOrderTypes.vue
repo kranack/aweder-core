@@ -1,95 +1,117 @@
 <template>
   <div>
-    <div class="field field--wrapper col col--lg-12-6 col--m-12-8 col-sm-6-6">
-      <header class="section-title">
-        <h3 class="header header--five color--carnation spacer-bottom--30">
-          How can customers place orders <abbr title="required">*</abbr>
-        </h3>
-      </header>
-      <div class="field field--radio">
+    <div class="form-inline col-span-6 m-col-span-10 sm-col-span-6 inline-grid inline-grid
+     grid-cols-6 m-grid-cols-10 sm-col-span-6 s-inline-flex s-flex-col"
+    >
+      <span class="label label--group col-span-6 m-col-span-10 sm-col-span-6 margin-bottom-20">
+        Service options<sup>*</sup>
+      </span>
+      <div class="field field--checkbox col-span-2 m-col-span-3 sm-col-span-3 s-col-span-6">
         <input
+          id="allow-collection"
           type="checkbox"
           name="collection_types[]"
           data-collection-type="collection"
-          class="collection--type"
-          id="allow-collection"
+          class="hidden checkbox-input collection--type"
           value="collection"
           :checked="doesOrderTypeExist('collection')"
         >
-        <label for="allow-collection">Collection</label>
+        <label class="checkbox checkbox--icon checkbox--icon-small" for="allow-collection">
+          <span class="checkbox__icon checkbox__icon--image checkbox__icon--small
+            icon icon--collection"
+          >
+            @svg('collection')
+          </span>
+          <span class="checkbox__label checkbox__label--image checkbox__label--small">
+            Collection
+          </span>
+        </label>
       </div>
-      <div class="field field--radio">
+      <div class="field field--checkbox col-span-2 m-col-span-3 sm-col-span-3 s-col-span-6">
         <input
+          id="allow-delivery"
           type="checkbox"
           name="collection_types[]"
-          id="allow-delivery"
           data-collection-type="delivery"
-          class="collection--type"
-          tabindex="7"
+          class="hidden checkbox-input collection--type"
           value="delivery"
-          @change="showDeliveryData($event)"
           :checked="doesOrderTypeExist('delivery')"
+          @change="showDeliveryData($event)"
         >
-        <label for="allow-delivery">Delivery</label>
+        <label class="checkbox checkbox--icon checkbox--icon-small" for="allow-delivery">
+          <span class="checkbox__icon checkbox__icon--image
+            checkbox__icon--small icon icon--delivery"
+          >
+            @svg('delivery')
+          </span>
+          <span class="checkbox__label checkbox__label--image checkbox__label--small">
+            Delivery
+          </span>
+        </label>
       </div>
-      <div class="field field--radio">
+      <div class="field field--checkbox col-span-2 m-col-span-3 sm-col-span-3 s-col-span-6">
         <input
           id="table"
           type="checkbox"
           name="collection_types[]"
           data-collection-type="table"
-          class="collection--type"
+          class="hidden checkbox-input collection--type"
           value="table"
           :checked="doesOrderTypeExist('table')"
         >
-        <label for="table">Table Service</label>
+        <label class="checkbox checkbox--icon checkbox--icon-small" for="table">
+          <span class="checkbox__icon checkbox__icon--image checkbox__icon--small icon icon--table">
+            @svg('table')
+          </span>
+          <span class="checkbox__label checkbox__label--image checkbox__label--small">
+            Table service
+          </span>
+        </label>
       </div>
-      <p
-        v-if="collectionTypeValidationMessage !== ''"
-        class="form__validation-error"
-      >
-        {{ collectionTypeValidationMessage }}
-      </p>
     </div>
-    <div
-      v-if="showDeliveryFields"
-      :class="{'input-error': deliveryCostValidationMessage !== ''}"
-      class="field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6"
+    <p
+      v-if="collectionTypeValidationMessage !== ''"
+      class="field__error"
     >
-      <label for="delivery_cost">
-        If delivery is chosen, what is the customer delivery charge (can be £0)
-      </label>
+      {{ collectionTypeValidationMessage }}
+    </p>
+
+    <div class="field field--price field--price col-span-6 m-col-span-10 sm-col-span-6"
+         :class="{'field--error': deliveryCostValidationMessage !== ''}"
+    >
+      <label class="label label--float" for="delivery_cost">Delivery charge<sup>*</sup></label>
       <input
         id="delivery_cost"
         type="text"
         name="delivery_cost"
         tabindex="4"
+        class="text-input text-input--price"
         :value="deliveryCost"
-      />
+      >
       <p
         v-if="deliveryCostValidationMessage !== ''"
-        class="form__validation-error"
+        class="field__error"
       >
         {{ deliveryCostValidationMessage }}
       </p>
     </div>
-    <div
-      v-if="showDeliveryFields"
-      :class="{'input-error': deliveryRadiusValidationMessage !== ''}"
-      class="field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6"
+
+    <div class="field field--delivery col-span-6 m-col-span-10 sm-col-span-6"
+         :class="{'field__error': deliveryRadiusValidationMessage !== ''}"
     >
-      <label for="delivery_radius">Delivery radius in miles</label>
+      <label class="label label--float" for="name">Delivery radius in miles<sup>*</sup></label>
       <input
         id="delivery_radius"
         type="text"
         name="delivery_radius"
+        class="text-input"
         tabindex="4"
         placeholder="Delivery radius in miles"
         :value="deliveryRadius"
-      />
+      >
       <p
         v-if="deliveryRadiusValidationMessage !== ''"
-        class="form__validation-error"
+        class="field__error"
       >
         {{ deliveryRadiusValidationMessage }}
       </p>
@@ -129,6 +151,12 @@ export default {
     return {
       showDeliveryFields: false,
     };
+  },
+  created() {
+    if (this.deliveryRadiusValidationMessage !== ''
+      || this.deliveryCostValidationMessage !== '') {
+      this.showDeliveryFields = true;
+    }
   },
   methods: {
     showDeliveryData() {

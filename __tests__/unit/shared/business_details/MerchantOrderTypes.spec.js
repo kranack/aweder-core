@@ -3,7 +3,7 @@ import MerchantOrderTypes from '@/js/components/shared/business_details/Merchant
 
 const localVue = createLocalVue();
 
-describe('Merchant Ordet Types Component', () => {
+describe('Merchant Order Types Component', () => {
   const wrapper = shallowMount(
     MerchantOrderTypes,
     {
@@ -63,6 +63,7 @@ describe('Merchant Ordet Types Component', () => {
         },
       },
     );
+    // failedWrapper.vm.showDeliveryFields = true;
     expect(failedWrapper.find('.form__validation-error').exists()).toBe(true);
     expect(failedWrapper.find('.field.field--price.input-error').exists()).toBe(true);
   });
