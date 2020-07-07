@@ -38,7 +38,7 @@ class MerchantRepositoryTest extends TestCase
         ]);
 
         $registrationData = [
-            'url-slug' => 'test-slug',
+            'url_slug' => 'test-slug',
             'name' => 'test-name',
             'customer-phone-number' => '01234567890',
             'address-name-number' => '1',
@@ -48,7 +48,7 @@ class MerchantRepositoryTest extends TestCase
             'address-county' => 'test county',
             'address-postcode' => 'TE5T11',
             'mobile-number' => '01234567890',
-            'collection_type' => 'both',
+            'collection_types' => ['table', 'delivery'],
             'delivery_cost' => 0,
             'delivery_radius' => 0,
         ];
@@ -90,7 +90,7 @@ class MerchantRepositoryTest extends TestCase
             'address-county' => 'test county',
             'address-postcode' => 'TE5T11',
             'mobile-number' => '01234567890',
-            'collection_type' => 'both',
+            'collection_types' => ['table', 'delivery'],
             'contact_email' => $merchant->users()->first()->email,
             'delivery_cost' => '4.99'
         ];
@@ -133,7 +133,7 @@ class MerchantRepositoryTest extends TestCase
         ]);
 
         $merchant = factory(Merchant::class)->create([
-            'delivery_cost' => 249
+            'delivery_cost' => 249,
         ]);
 
         $user->merchants()->attach($merchant->id);
@@ -206,7 +206,7 @@ class MerchantRepositoryTest extends TestCase
             'address-county' => 'test county',
             'address-postcode' => 'TE5T11',
             'mobile-number' => '01234567890',
-            'collection_type' => 'both',
+            'collection_types' => ['table', 'delivery'],
             'contact_email' => $merchant->users()->first()->email,
         ];
 

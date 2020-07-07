@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inventory whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Inventory withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Inventory withoutTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Inventory whereImage($value)
  */
 class Inventory extends Model
 {

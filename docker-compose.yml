@@ -30,6 +30,8 @@ services:
         volumes:
             - ./:/var/www/vhost/:cached
             - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+            - ./docker/php/x-debug-off.ini:/var/www/vhost/x-debug-off.ini
+
         ports:
             - '9000:9000'
         networks:

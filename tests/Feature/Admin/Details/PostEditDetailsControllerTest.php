@@ -68,7 +68,7 @@ class PostEditDetailsControllerTest extends TestCase
         $postData = [
             'description' => 'updated description',
             'customer-phone-number' => $merchantOne->contact_number,
-            'collection_type' => 'both',
+            'collection_types' => ['collection', 'delivery'],
             'delivery_cost' => 5.99,
             'delivery_radius'=> 20,
         ];
@@ -84,6 +84,48 @@ class PostEditDetailsControllerTest extends TestCase
             'merchants',
             [
                 'id' => $merchantOne->id,
+                'description' => 'updated description',
+            ]
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function authorisedMerchantCanUpdateOrderTypeOptionsDetails()
+    {
+        $user = factory(User::class)->create();
+
+        $merchantOne = $this->createAndReturnMerchant([
+            'registration_stage' => 0,
+            'allow_table_service' => 0,
+            'description' => 'tester description',
+        ]);
+
+        $user->merchants()->attach($merchantOne->id);
+
+        $this->actingAs($user);
+
+        $postData = [
+            'description' => 'updated description',
+            'customer-phone-number' => $merchantOne->contact_number,
+            'collection_types' => ['collection', 'delivery', 'table'],
+            'delivery_cost' => 5.99,
+            'delivery_radius'=> 20,
+        ];
+
+        $response = $this->from('admin/edit-details')->post(
+            'admin/edit-details',
+            $postData
+        );
+
+        $response->assertRedirect('/admin/dashboard');
+
+        $this->assertDatabaseHas(
+            'merchants',
+            [
+                'id' => $merchantOne->id,
+                'allow_table_service' => 1,
                 'description' => 'updated description',
             ]
         );
@@ -115,7 +157,7 @@ class PostEditDetailsControllerTest extends TestCase
         $postData = [
             'description' => 'updated description',
             'customer-phone-number' => $merchantOne->contact_number,
-            'collection_type' => 'both',
+            'collection_types' => ['collection', 'delivery'],
             'delivery_cost' => 5.99,
             'delivery_radius' => 20,
             'logo' => $uploadedFile,

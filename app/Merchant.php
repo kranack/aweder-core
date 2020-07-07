@@ -76,6 +76,8 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereLogo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereRegistrationStage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereSalt($value)
+ * @property int $allow_table_service
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereAllowTableService($value)
  */
 class Merchant extends Model
 {
@@ -97,6 +99,7 @@ class Merchant extends Model
         'customer_phone_number',
         'allow_delivery',
         'allow_collection',
+        'allow_table_service',
         'delivery_cost',
         'delivery_radius',
         'address_name_number',
@@ -237,5 +240,24 @@ class Merchant extends Model
         return $this->paymentProviders
             ->where('name', 'Stripe')
             ->first();
+    }
+
+    public function getMerchantAcceptableOrderTypes(): array
+    {
+        $orderTypes = [];
+
+        if ($this->allow_collection === 1) {
+            $orderTypes[] = 'collection';
+        }
+
+        if ($this->allow_delivery === 1) {
+            $orderTypes[] = 'delivery';
+        }
+
+        if ($this->allow_table_service === 1) {
+            $orderTypes[] = 'table';
+        }
+
+        return $orderTypes;
     }
 }
