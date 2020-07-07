@@ -22,15 +22,14 @@
     </div>
 </div>
 @endif
-<div class="admin-wrapper row">
-    <div class="content">
-        @include('global/admin-nav')
-        @include('global/admin-header')
-        @include('shared/notification')
-        <main class="admin-main col-span-10 col-start-3 l-col-span-9 l-col-start-4">
-            @yield('content')
-        </main>
-    </div>
+
+<div class="admin-wrapper" id="app">
+    @include('global/admin-nav')
+    @include('global/admin-header')
+    @include('shared/notification')
+    <main class="admin-main col col--lg-12-10 col--lg-offset-12-3 col--l-12-9 col--l-offset-12-4 col--m-12-12 col--m-offset-12-1 col--sm-6-6 col--sm-offset-6-1">
+        @yield('content')
+    </main>
 </div>
 <script src="/main.js?{{ time() }}"></script>
 @if (app()->environment() !== 'local' && (url()->current() === route('home') || url()->current() === route('about.how-it-works') || url()->current() === route('admin.dashboard')))

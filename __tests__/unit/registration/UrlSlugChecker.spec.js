@@ -22,6 +22,23 @@ describe('UrlSlug Checker', () => {
     expect(wrapper.find("[type='text']").exists()).toBe(true);
   });
 
+  it('Does the field render default url passed in ', () => {
+    const testWrapper = shallowMount(
+      UrlSlugChecker,
+      {
+        localVue,
+        propsData: {
+          validationError: false,
+          validationMessage: '',
+          urlValue: 'tester',
+        },
+      },
+    );
+    testWrapper.vm.$nextTick();
+
+    expect(testWrapper.vm.urlSlug).toBe('tester');
+  });
+
   it('Does the field render the validation paragraph when a validation error is present', () => {
     const failedWrapper = shallowMount(
       UrlSlugChecker,
@@ -72,7 +89,7 @@ describe('UrlSlug Checker', () => {
       },
     );
 
-    const urlInput = urlFailedWrapper.find('#url-slug');
+    const urlInput = urlFailedWrapper.find('#url_slug');
 
     urlInput.trigger('keyup',
       {
@@ -104,7 +121,7 @@ describe('UrlSlug Checker', () => {
       },
     );
 
-    const urlInput = urlFailedWrapper.find('#url-slug');
+    const urlInput = urlFailedWrapper.find('#url_slug');
 
     urlInput.setValue('da');
 
@@ -131,14 +148,14 @@ describe('UrlSlug Checker', () => {
       {
         localVue,
         propsData: {
-          validationError: true,
+          validationError: false,
           validationMessage: 'The validation has failed',
           urlValue: '',
         },
       },
     );
 
-    const urlInput = urlFailedWrapper.find('#url-slug');
+    const urlInput = urlFailedWrapper.find('#url_slug');
 
     const uri = 'validate-slug/dan';
 
@@ -188,9 +205,7 @@ describe('UrlSlug Checker', () => {
       },
     );
 
-    const urlInput = urlFailedWrapper.find('#url-slug');
-
-    const uri = 'validate-slug/dan';
+    const urlInput = urlFailedWrapper.find('#url_slug');
 
     urlInput.setValue('dan');
 
@@ -223,7 +238,7 @@ describe('UrlSlug Checker', () => {
       },
     );
 
-    const urlInput = urlFailedWrapper.find('#url-slug');
+    const urlInput = urlFailedWrapper.find('#url_slug');
 
     const uri = 'validate-slug/dan';
 

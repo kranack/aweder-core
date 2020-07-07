@@ -29,18 +29,19 @@ class BusinessDetailsRequest extends FormRequest
             'logo' => ['image'],
             'name' => ['required'],
             'description' => ['required', new MaxWordsRule(100)],
-            'url-slug' => ['required', 'alpha_dash', 'unique:merchants,url_slug'],
-            'collection_type' => ['required', Rule::in(['collection', 'both', 'delivery'])],
+            'url_slug' => ['required', 'alpha_dash', 'unique:merchants,url_slug'],
+            'collection_types' => ['required'],
+            'collection_types.*' => [Rule::in(['table', 'delivery', 'collection'])],
             'delivery_cost' => [
                 Rule::requiredIf(function () {
-                    return (request()->get('collection_type') === 'both'
-                        || request()->get('collection_type') === 'delivery');
+                    return is_array(request()->get('collection_types')) &&
+                        (in_array('delivery', request()->get('collection_types')));
                 })
             ],
             'delivery_radius' => [
                 Rule::requiredIf(function () {
-                    return (request()->get('collection_type') === 'both'
-                        || request()->get('collection_type') === 'delivery');
+                    return is_array(request()->get('collection_types')) &&
+                        (in_array('delivery', request()->get('collection_types')));
                 })
             ],
         ];

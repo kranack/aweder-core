@@ -1,16 +1,15 @@
 <template>
   <div
     class="field col-span-4 m-col-span-6 sm-col-span-6 row-start-2 sm-row-start-3"
-    :class="{ 'field--error': exists }"
+    :class="{ 'field__error': exists === true }"
   >
-    <label class="label label--float" for="url-slug">Business's URL slug<sup>*</sup></label>
+    <label class="label label--float" for="url_slug">Business's URL slug<sup>*</sup></label>
     <input
       class="text-input"
       v-model="urlSlug"
+      id="url_slug"
       type="text"
-      id="url-slug"
-      name="url-slug"
-      value="urlValue"
+      name="url_slug"
       tabindex="5"
       placeholder="URL slug"
       @keyup="doesUrlExist"
@@ -19,7 +18,7 @@
       v-if="validationError || exists"
       class="field__error field__error--slug"
     >
-      {{ errorMessage }}
+      {{ validationMessage }}
     </p>
     <p class="field__note">
       This will generate your url - for example - if you enter red-lion you will have https://aweder.net/red-lion
@@ -50,7 +49,7 @@ export default {
   },
   data() {
     return {
-      urlSlug: '',
+      slug: '',
       exists: false,
     };
   },
@@ -58,8 +57,25 @@ export default {
     errorMessage() {
       return this.validationMessage;
     },
+    urlSlug: {
+      get() {
+        return this.slug;
+      },
+      set(newSlug) {
+        if (newSlug.length === 0 && this.urlValue.length > 0) {
+          this.slug = this.urlValue;
+        } else {
+          this.slug = newSlug;
+        }
+        return this.slug;
+      },
+    },
   },
-  mounted() {
+  created() {
+    if (this.urlValue && this.urlValue.length > 0) {
+      this.urlSlug = this.urlValue;
+    }
+
     if (this.validationError === true) {
       this.exist = true;
     }

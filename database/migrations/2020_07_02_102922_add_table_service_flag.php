@@ -15,7 +15,7 @@ class AddTableServiceFlag extends Migration
     {
         if (Schema::hasTable('merchants')) {
             Schema::table('merchants', function (Blueprint $table) {
-                $table->boolean('allow_table_service')->default(0);
+                $table->boolean('allow_table_service')->default(0)->after('allow_collection');
             });
         }
     }

@@ -130,8 +130,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'collection_types' => [
+            'required' => 'You must select at least one method a customer can place an order.',
         ],
     ],
 
