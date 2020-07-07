@@ -162,6 +162,24 @@ describe('Merchant Order Types Component', () => {
     expect(failedWrapper.find('#allow-delivery:checked').exists()).toBe(true);
   });
 
+  it('Confirms none of the options are selected when nothing passed in', () => {
+    const failedWrapper = shallowMount(
+      MerchantOrderTypes,
+      {
+        localVue,
+        propsData: {
+          collectionTypeValidationMessage: '',
+          deliveryRadiusValidationMessage: '',
+          deliveryCostValidationMessage: '',
+          collectionTypes: '',
+        },
+      },
+    );
+    expect(failedWrapper.find('#allow-collection:checked').exists()).toBe(false);
+    expect(failedWrapper.find('#table:checked').exists()).toBe(false);
+    expect(failedWrapper.find('#allow-delivery:checked').exists()).toBe(false);
+  });
+
   it('Confirm deliver options appears when item is checked', async () => {
     const showsDeliveryWrapper = shallowMount(
       MerchantOrderTypes,
@@ -182,6 +200,5 @@ describe('Merchant Order Types Component', () => {
     await showsDeliveryWrapper.vm.$nextTick();
     expect(showsDeliveryWrapper.find('.field.field--price').exists()).toBe(true);
     expect(showsDeliveryWrapper.find('.field.field--delivery').exists()).toBe(true);
-
   });
 });
