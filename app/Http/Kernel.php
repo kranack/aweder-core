@@ -6,6 +6,7 @@ use App\Http\Middleware\CheckMerchantHasCompletedSetup;
 use App\Http\Middleware\DoesOrderBelongToMerchant;
 use App\Http\Middleware\HasOrderGonePastStageMiddleware;
 use App\Http\Middleware\HasUserCompletedCurrentStage;
+use App\Http\Middleware\IsCorrectOrderTypeMiddleware;
 use App\Http\Middleware\UserHasCompletedMerchantRegistration;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -72,5 +73,6 @@ class Kernel extends HttpKernel
         'has-order-gone-past-stage' => HasOrderGonePastStageMiddleware::class,
         'has-user-completed-merchant-signup' => UserHasCompletedMerchantRegistration::class,
         'has-user-completed-registration-stage' => HasUserCompletedCurrentStage::class,
+        'is-correct-order-type' => IsCorrectOrderTypeMiddleware::class
     ];
 }

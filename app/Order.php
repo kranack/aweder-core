@@ -450,6 +450,10 @@ class Order extends Model
             return 'delivery';
         }
 
+        if ($this->is_table_service === 1) {
+            return 'table service';
+        }
+
         return 'collection';
     }
 

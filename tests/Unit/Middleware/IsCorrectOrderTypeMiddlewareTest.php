@@ -22,7 +22,7 @@ class IsCorrectOrderTypeMiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function canAddTableServiceItemToTableServiceOrder()
+    public function canAddTableServiceItemToTableServiceOrder(): void
     {
         $user = factory(User::class)->create();
         $merchant = factory(Merchant::class)->create();
@@ -55,7 +55,7 @@ class IsCorrectOrderTypeMiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function cannotAddDeliveryToTableServiceOrder()
+    public function cannotAddDeliveryToTableServiceOrder(): void
     {
         $user = factory(User::class)->create();
         $merchant = factory(Merchant::class)->create();
@@ -64,6 +64,7 @@ class IsCorrectOrderTypeMiddlewareTest extends TestCase
         $order = factory(Order::class)->create([
             'status' => 'purchased',
             'is_table_service' => 1,
+            'is_delivery' => 0,
             'merchant_id' => $merchant->id
         ]);
 
@@ -83,7 +84,6 @@ class IsCorrectOrderTypeMiddlewareTest extends TestCase
 
         $response->assertSessionHas('error', 'Cannot add takeaway menu item to Table Service Order');
         $this->assertCount(0, $order->items()->get());
-
         $response->assertRedirect($storeRoute);
     }
 }
