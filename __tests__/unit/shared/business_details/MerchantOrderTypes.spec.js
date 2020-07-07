@@ -179,7 +179,7 @@ describe('Merchant Order Types Component', () => {
     expect(showsDeliveryWrapper.find('.field.field--price').exists()).toBe(false);
     expect(showsDeliveryWrapper.find('.field.field--delivery').exists()).toBe(false);
     await showsDeliveryWrapper.find('#allow-delivery').trigger('change');
-    showsDeliveryWrapper.vm.$nextTick();
+    await showsDeliveryWrapper.vm.$nextTick();
     expect(showsDeliveryWrapper.find('.field.field--price').exists()).toBe(true);
     expect(showsDeliveryWrapper.find('.field.field--delivery').exists()).toBe(true);
 

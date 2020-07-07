@@ -218,6 +218,38 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
+    public function userCantSubmiWithAnOptionThatDoesntExistAsFloatCost()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        $name = $this->faker->name;
+
+        $slug = $this->faker->slug;
+
+        $description = $this->faker->words(10, true);
+
+        $businessDetails = [
+            'name' => $name,
+            'url_slug' => $slug,
+            'collection_types' => ['collection', 'sunny'],
+            'delivery_radius' => 5,
+            'delivery_cost' => '5.99',
+            'description' => $description,
+        ];
+
+        $response = $this->from(route('register.business-details'))
+            ->post(route('register.business-details.post'), $businessDetails);
+
+        $response->assertRedirect(route('register.business-details'));
+
+        $response->assertSessionHasErrors('collection_types');
+    }
+
+    /**
+     * @test
+     */
     public function userCanSubmitBothChoiceWithAllDeliveryOptionsAndTableAsFloatCost()
     {
         $user = factory(User::class)->create();
