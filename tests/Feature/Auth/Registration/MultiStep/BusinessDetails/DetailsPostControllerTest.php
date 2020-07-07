@@ -233,7 +233,7 @@ class DetailsPostControllerTest extends TestCase
         $businessDetails = [
             'name' => $name,
             'url_slug' => $slug,
-            'collection_types' => ['collection', 'sunny'],
+            'collection_types' => ['sunny'],
             'delivery_radius' => 5,
             'delivery_cost' => '5.99',
             'description' => $description,
@@ -244,7 +244,39 @@ class DetailsPostControllerTest extends TestCase
 
         $response->assertRedirect(route('register.business-details'));
 
-        $response->assertSessionHasErrors('collection_types');
+        $response->assertSessionHasErrors('collection_types.*');
+    }
+
+    /**
+     * @test
+     */
+    public function userCantSubmiWithAnOptionThatDoesntExistAndOneThatDoesAsFloatCost()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        $name = $this->faker->name;
+
+        $slug = $this->faker->slug;
+
+        $description = $this->faker->words(10, true);
+
+        $businessDetails = [
+            'name' => $name,
+            'url_slug' => $slug,
+            'collection_types' => ['sunny', 'collection'],
+            'delivery_radius' => 5,
+            'delivery_cost' => '5.99',
+            'description' => $description,
+        ];
+
+        $response = $this->from(route('register.business-details'))
+            ->post(route('register.business-details.post'), $businessDetails);
+
+        $response->assertRedirect(route('register.business-details'));
+
+        $response->assertSessionHasErrors('collection_types.*');
     }
 
     /**
