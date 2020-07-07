@@ -1,26 +1,11 @@
-.admin-nav {
-  @extend .background-carnation,
-  .padding-left-40,
-  .padding-bottom-40;
-
-  @include mq(l) {
-    @extend .l-padding-left-30,
-    .l-padding-bottom-30;
-  }
-  @include mq(m) {
-    @extend .m-padding-left-20,
-    .m-padding-bottom-20;
-  }
-}
-
 .branding--admin {
   @extend .padding-right-40;
   height: 80px;
 
   @include mq(l) {
-    @extend .l-padding-right-30;
+    @include _(l-padding-right-30);
   }
   @include mq(m) {
-    @extend .m-padding-right-20;
+    @include _(m-padding-right-20);
   }
 }

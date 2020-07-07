@@ -87,3 +87,20 @@ section {
     @include _(s-container);
   }
 }
+
+.admin-main {
+  @extend .col-gap;
+
+  @include mq(l) {
+    @include _(l-col-gap);
+  }
+  @include mq(m) {
+    @include _(m-col-gap);
+  }
+  @include mq(sm) {
+    @include _(sm-col-gap);
+  }
+  @include mq(s) {
+    @include _(s-col-gap);
+  }
+}
