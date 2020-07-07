@@ -23,8 +23,9 @@ body {
   @include rem2px(font-size, 1.6);
   @extend .color-cloud-burst,
   .font-gibson-reg,
-  .background-silver-2;
-  margin: 0;
+  .background-silver-2,
+  .margin-0;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,6 +38,11 @@ body {
   @include mq(sm) {
     overflow: hidden;
   }
+}
+
+.admin-wrapper,
+.admin-wrapper .content {
+  height: 100%;
 }
 
 section {
