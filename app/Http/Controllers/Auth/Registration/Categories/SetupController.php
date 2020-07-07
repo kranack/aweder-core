@@ -28,7 +28,6 @@ class SetupController extends Controller
             'auth.registration.categories.index',
             [
                 'categories' => $categories,
-                'bodyClass' => 'body--auth',
                 'defaultCategories' => $defaultCategories,
             ]
         );

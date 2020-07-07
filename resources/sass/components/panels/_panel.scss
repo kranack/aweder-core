@@ -1,0 +1,15 @@
+.panel {
+  @extend .background-off-white,
+  .radius-5,
+  .border-silver,
+  .border-width-1,
+  .border-solid,
+  .padding-40;
+
+  @include mq(l) {
+    @include _(l-padding-30);
+  }
+  @include mq(m) {
+    @include _(l-padding-20);
+  }
+}
