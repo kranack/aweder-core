@@ -2,8 +2,7 @@ import Vue from 'vue';
 import 'core-js';
 import 'regenerator-runtime/runtime';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
-import MerchantOrderTypes
-  from '@/js/components/shared/business_details/MerchantOrderTypes';
+import MerchantOrderTypes from '@/js/components/shared/business_details/MerchantOrderTypes';
 import NotificationBanner from './notification';
 import SlugChecker from './slug-checker';
 import Upload from './upload';
@@ -14,6 +13,7 @@ import OrderFilters from './order_filters';
 import AdminMenu from './admin-menu';
 import OpeningTimes from './opening-times';
 
+// SASS
 import '@/sass/app.scss';
 
 /**
@@ -21,11 +21,22 @@ import '@/sass/app.scss';
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
 window.axios = require('axios');
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+// Init Vue
+Vue.config.devtools = process.env.APP_ENV === 'local';
+Vue.config.productionTip = false;
+Vue.config.silent = false;
+
+new Vue({
+  components: {
+    UrlSlugChecker,
+    'merchant-order-types': MerchantOrderTypes,
+  },
+}).$mount('#app');
+
+// Init JS
 const banner = new NotificationBanner();
 banner.init();
 
@@ -54,14 +65,3 @@ adminMenu.init();
 
 const openingTimes = new OpeningTimes();
 openingTimes.init();
-
-Vue.config.devtools = process.env.APP_ENV === 'local';
-Vue.config.productionTip = false;
-Vue.config.silent = false;
-
-new Vue({
-  components: {
-    UrlSlugChecker,
-    'merchant-order-types': MerchantOrderTypes,
-  },
-}).$mount('#app');
