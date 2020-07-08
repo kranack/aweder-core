@@ -1,4 +1,4 @@
-const OrderFilters = class OrderFilters {
+export default class OrderFilters {
   init = () => {
     const statusFilter = document.getElementById('dashboard-status-filter-select');
     if (statusFilter) {
@@ -11,6 +11,4 @@ const OrderFilters = class OrderFilters {
       e.target.parentElement.submit();
     });
   }
-};
-
-export default OrderFilters;
+}
