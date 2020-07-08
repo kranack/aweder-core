@@ -31,7 +31,7 @@ class AddIsCollectionToOrder extends Migration
     {
         if (Schema::hasTable('orders')) {
             Schema::table('orders', function (Blueprint $table) {
-                if (!Schema::hasColumn('orders', 'is_collection')) {
+                if (Schema::hasColumn('orders', 'is_collection')) {
                     $table->dropColumn('is_collection');
                 }
             });

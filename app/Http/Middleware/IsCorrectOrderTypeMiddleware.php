@@ -25,7 +25,7 @@ class IsCorrectOrderTypeMiddleware
             return $next($request);
         }
 
-        if ($order->orderType() === 'table service') {
+        if ($order->orderType() === 'table_service') {
             if ($route !== 'store.table-order.order.add') {
                 $request->session()->flash('error', 'Cannot add takeaway menu item to Table Service Order');
                 return redirect()->back();

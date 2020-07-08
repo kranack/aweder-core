@@ -31,7 +31,7 @@ class AddIsTableServiceFlagToOrder extends Migration
     {
         if (Schema::hasTable('orders')) {
             Schema::table('orders', function (Blueprint $table) {
-                if (!Schema::hasColumn('orders', 'is_table_service')) {
+                if (Schema::hasColumn('orders', 'is_table_service')) {
                     $table->dropColumn('is_table_service');
                 }
             });

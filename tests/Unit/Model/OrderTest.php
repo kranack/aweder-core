@@ -67,7 +67,7 @@ class OrderTest extends TestCase
     public function canIdentifyTableServiceType(): void
     {
         $this->model->__set('is_table_service', 1);
-        $this->assertEquals('table service', $this->model->orderType());
+        $this->assertEquals('table_service', $this->model->orderType());
     }
 
     /**

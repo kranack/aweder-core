@@ -102,7 +102,7 @@ class Order extends Model
 
     protected const ORDER_TYPE_COLLECTION = "collection";
 
-    protected const ORDER_TYPE_TABLE_SERVICE = 'table service';
+    protected const ORDER_TYPE_TABLE_SERVICE = 'table_service';
 
     protected const ORDER_TYPE_DELIVERY = 'delivery';
 
