@@ -33,10 +33,12 @@ class OrderTest extends TestCase
     /**
      * @test
      * @dataProvider deliveryOrCollectionProvider
+     * @param bool $bool
+     * @param string $type
      */
-    public function getIsDeliveryOrCollectionWithValidTypes($bool, $type): void
+    public function getIsDeliveryOrCollectionWithValidTypes(bool $bool, string $type): void
     {
-        $this->model->__set('is_delivery', $bool);
+        $this->model->setAttribute('is_delivery', $bool);
 
         $value = $this->model->getIsDeliveryOrCollection();
 
@@ -48,7 +50,7 @@ class OrderTest extends TestCase
      */
     public function canIdentifyDeliveryType(): void
     {
-        $this->model->__set('is_delivery', 1);
+        $this->model->setAttribute('is_delivery', 1);
         $this->assertEquals('delivery', $this->model->orderType());
     }
 
@@ -57,7 +59,7 @@ class OrderTest extends TestCase
      */
     public function canIdentifyCollectionType(): void
     {
-        $this->model->__set('is_collection', 1);
+        $this->model->setAttribute('is_collection', 1);
         $this->assertEquals('collection', $this->model->orderType());
     }
 
@@ -66,7 +68,7 @@ class OrderTest extends TestCase
      */
     public function canIdentifyTableServiceType(): void
     {
-        $this->model->__set('is_table_service', 1);
+        $this->model->setAttribute('is_table_service', 1);
         $this->assertEquals('table_service', $this->model->orderType());
     }
 

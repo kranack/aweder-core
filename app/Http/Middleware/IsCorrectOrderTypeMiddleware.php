@@ -20,16 +20,14 @@ class IsCorrectOrderTypeMiddleware
         $route = Route::currentRouteName();
         $order = Order::whereUrlSlug($request->order_no)->first();
 
-        // If no order, it's a new order
-        if (!$order) {
+        if (!$order instanceof Order) {
             return $next($request);
         }
 
-        if ($order->orderType() === 'table_service') {
-            if ($route !== 'store.table-order.order.add') {
-                $request->session()->flash('error', 'Cannot add takeaway menu item to Table Service Order');
-                return redirect()->back();
-            }
+        if ($order->orderType() === Order::ORDER_TYPE_TABLE_SERVICE && $route !== 'store.table-order.order.add') {
+            $request->session()->flash('error', 'Cannot add takeaway menu item to Table Service Order');
+
+            return redirect()->back();
         }
 
         return $next($request);

@@ -100,13 +100,13 @@ class Order extends Model
 
     protected const FRONT_REJECTED = 'Rejected';
 
-    protected const ORDER_TYPE_COLLECTION = "collection";
+    public const ORDER_TYPE_COLLECTION = 'collection';
 
-    protected const ORDER_TYPE_TABLE_SERVICE = 'table_service';
+    public const ORDER_TYPE_TABLE_SERVICE = 'table_service';
 
-    protected const ORDER_TYPE_DELIVERY = 'delivery';
+    public const ORDER_TYPE_DELIVERY = 'delivery';
 
-    protected const ORDER_TYPE_UNASSIGNED = 'unassigned';
+    public const ORDER_TYPE_UNASSIGNED = 'unassigned';
 
     public array $frontEndStatusMap = [
         self::FRONT_NEWORDER => [
