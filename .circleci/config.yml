@@ -81,7 +81,7 @@ jobs:
 
       - run:
           name: Run PHPUnit
-          command: ./vendor/bin/phpunit --testdox
+          command: php -c ./x-debug-off.ini vendor/bin/phpunit --testdox
       - run:
           name: Run Jest
           command: yarn run test:unit

@@ -1,0 +1,8 @@
+.separator {
+  @extend .flex,
+  .background-cloud-burst,
+  .margin-left-10,
+  .margin-right-10;
+  width: 10px;
+  height: 1px;
+}

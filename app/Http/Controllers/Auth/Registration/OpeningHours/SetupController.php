@@ -16,6 +16,6 @@ class SetupController extends Controller
      */
     public function __invoke(Request $request): Response
     {
-        return response()->view('auth.registration.openingHours.index', ['bodyClass' => 'body--auth']);
+        return response()->view('auth.registration.openingHours.index');
     }
 }

@@ -29,17 +29,18 @@ class BusinessDetailsEditRequest extends FormRequest
             'logo' => ['image'],
             'description' => ['required', new MaxWordsRule(100)],
             'customer-phone-number' => ['required'],
-            'collection_type' => ['required', Rule::in(['collection', 'both', 'delivery'])],
+            'collection_types' => ['required'],
+            'collection_types.*' => [Rule::in(['table', 'delivery', 'collection'])],
             'delivery_cost' => [
                 Rule::requiredIf(function () {
-                    return (request()->get('collection_type') === 'both'
-                        || request()->get('collection_type') === 'delivery');
+                    return is_array(request()->get('collection_types')) &&
+                        (in_array('delivery', request()->get('collection_types')));
                 })
             ],
             'delivery_radius' => [
                 Rule::requiredIf(function () {
-                    return (request()->get('collection_type') === 'both'
-                        || request()->get('collection_type') === 'delivery');
+                    return is_array(request()->get('collection_types')) &&
+                        (in_array('delivery', request()->get('collection_types')));
                 })
             ],
         ];

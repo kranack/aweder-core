@@ -53,7 +53,7 @@ class DetailsPostControllerTest extends TestCase
 
         $response->assertRedirect(route('register.business-details'));
 
-        $response->assertSessionHasErrors('url-slug');
+        $response->assertSessionHasErrors('url_slug');
     }
 
     /**
@@ -68,8 +68,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $this->faker->safeEmail,
-            'url-slug' => $this->faker->slug,
-            'collection_type' => 'collection',
+            'url_slug' => $this->faker->slug,
+            'collection_types' => ['collection'],
             'description' => $this->faker->words(10, true),
         ];
 
@@ -90,8 +90,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $this->faker->safeEmail,
-            'url-slug' => $this->faker->slug,
-            'collection_type' => 'delivery',
+            'url_slug' => $this->faker->slug,
+            'collection_types' => ['delivery'],
         ];
 
         $response = $this->from(route('register.business-details'))
@@ -113,8 +113,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $this->faker->safeEmail,
-            'url-slug' => $this->faker->slug,
-            'collection_type' => 'delivery',
+            'url_slug' => $this->faker->slug,
+            'collection_types' => ['delivery'],
             'delivery_radius' => 5
         ];
 
@@ -143,8 +143,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
-            'collection_type' => 'delivery',
+            'url_slug' => $slug,
+            'collection_types' => ['delivery'],
             'delivery_radius' => 5,
             'delivery_cost' => '5.99',
             'description' => $description,
@@ -188,8 +188,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
-            'collection_type' => 'both',
+            'url_slug' => $slug,
+            'collection_types' => ['collection', 'delivery'],
             'delivery_radius' => 5,
             'delivery_cost' => '5.99',
             'description' => $description,
@@ -218,6 +218,115 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
+    public function userCantSubmiWithAnOptionThatDoesntExistAsFloatCost()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        $name = $this->faker->name;
+
+        $slug = $this->faker->slug;
+
+        $description = $this->faker->words(10, true);
+
+        $businessDetails = [
+            'name' => $name,
+            'url_slug' => $slug,
+            'collection_types' => ['sunny'],
+            'delivery_radius' => 5,
+            'delivery_cost' => '5.99',
+            'description' => $description,
+        ];
+
+        $response = $this->from(route('register.business-details'))
+            ->post(route('register.business-details.post'), $businessDetails);
+
+        $response->assertRedirect(route('register.business-details'));
+
+        $response->assertSessionHasErrors('collection_types.*');
+    }
+
+    /**
+     * @test
+     */
+    public function userCantSubmiWithAnOptionThatDoesntExistAndOneThatDoesAsFloatCost()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        $name = $this->faker->name;
+
+        $slug = $this->faker->slug;
+
+        $description = $this->faker->words(10, true);
+
+        $businessDetails = [
+            'name' => $name,
+            'url_slug' => $slug,
+            'collection_types' => ['sunny', 'collection'],
+            'delivery_radius' => 5,
+            'delivery_cost' => '5.99',
+            'description' => $description,
+        ];
+
+        $response = $this->from(route('register.business-details'))
+            ->post(route('register.business-details.post'), $businessDetails);
+
+        $response->assertRedirect(route('register.business-details'));
+
+        $response->assertSessionHasErrors('collection_types.*');
+    }
+
+    /**
+     * @test
+     */
+    public function userCanSubmitBothChoiceWithAllDeliveryOptionsAndTableAsFloatCost()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        $name = $this->faker->name;
+
+        $slug = $this->faker->slug;
+
+        $description = $this->faker->words(10, true);
+
+        $businessDetails = [
+            'name' => $name,
+            'url_slug' => $slug,
+            'collection_types' => ['collection', 'delivery', 'table'],
+            'delivery_radius' => 5,
+            'delivery_cost' => '5.99',
+            'description' => $description,
+        ];
+
+        $response = $this->from(route('register.business-details'))
+            ->post(route('register.business-details.post'), $businessDetails);
+
+        $response->assertRedirect(route('register.contact-details'));
+
+        $this->assertDatabaseHas(
+            'merchants',
+            [
+                'url_slug' => $slug,
+                'name' => $name,
+                'description' => $description,
+                'allow_delivery' => 1,
+                'allow_collection' => 1,
+                'allow_table_service' => 1,
+                'delivery_cost' => 599,
+                'delivery_radius' => 5,
+                'registration_stage' => 3,
+            ]
+        );
+    }
+
+    /**
+     * @test
+     */
     public function userCantSubmitBothChoiceWithRadiusMissing()
     {
         $user = factory(User::class)->create();
@@ -230,8 +339,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
-            'collection_type' => 'both',
+            'url_slug' => $slug,
+            'collection_types' => ['collection', 'delivery'],
             'delivery_cost' => '5.99',
         ];
 
@@ -258,8 +367,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
-            'collection_type' => 'both',
+            'url_slug' => $slug,
+            'collection_types' => ['collection', 'delivery'],
             'delivery_radius' => 5,
         ];
 
@@ -286,8 +395,8 @@ class DetailsPostControllerTest extends TestCase
 
         $businessDetails = [
             'name' => $name,
-            'url-slug' => $slug,
-            'collection_type' => 'collection',
+            'url_slug' => $slug,
+            'collection_types' => ['collection'],
             'description' => $this->faker->words(140, true),
         ];
 

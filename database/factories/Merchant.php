@@ -20,6 +20,7 @@ $factory->define(Merchant::class, function (Faker $faker) {
         'mobile_number' => $faker->phoneNumber,
         'allow_delivery' => $faker->numberBetween(0, 1),
         'allow_collection' => $faker->numberBetween(0, 1),
+        'allow_table_service' => $faker->numberBetween(0, 1),
         'address_name_number' => $faker->secondaryAddress,
         'address_street' => $faker->streetAddress,
         'address_city' => $faker->city,
@@ -34,6 +35,7 @@ $factory->state(Merchant::class, 'Delivery Only', function (Faker $faker) {
     return [
         'allow_delivery' => 1,
         'allow_collection' => 0,
+        'allow_table_service' => 0,
         'delivery_cost' => $faker->numberBetween(100, 500),
         'delivery_radius' => $faker->numberBetween(1, 10),
     ];
@@ -43,6 +45,7 @@ $factory->state(Merchant::class, 'Collection Only', function (Faker $faker) {
     return [
         'allow_delivery' => 0,
         'allow_collection' => 1,
+        'allow_table_service' => 0,
         'delivery_cost' => 0,
         'delivery_radius' => 0,
     ];
@@ -52,6 +55,17 @@ $factory->state(Merchant::class, 'Both', function (Faker $faker) {
     return [
         'allow_delivery' => 1,
         'allow_collection' => 1,
+        'allow_table_service' => 0,
+        'delivery_cost' => $faker->numberBetween(100, 500),
+        'delivery_radius' => $faker->numberBetween(1, 10),
+    ];
+});
+
+$factory->state(Merchant::class, 'All', function (Faker $faker) {
+    return [
+        'allow_delivery' => 1,
+        'allow_collection' => 1,
+        'allow_table_service' => 1,
         'delivery_cost' => $faker->numberBetween(100, 500),
         'delivery_radius' => $faker->numberBetween(1, 10),
     ];

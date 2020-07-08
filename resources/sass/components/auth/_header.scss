@@ -9,3 +9,7 @@
     @include _(m-padding-top-80);
   }
 }
+
+.auth__header p {
+  @extend .margin-top-30;
+}
