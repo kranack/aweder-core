@@ -1,6 +1,6 @@
 const OpeningTimes = class OpeningTimes {
   timesMenu = null;
-  
+
   timesTrigger = null;
 
   attachClickEvent = () => {
