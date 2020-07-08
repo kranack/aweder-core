@@ -1,5 +1,6 @@
 const OpeningTimes = class OpeningTimes {
   timesMenu = null;
+  
   timesTrigger = null;
 
   attachClickEvent = () => {
@@ -14,7 +15,7 @@ const OpeningTimes = class OpeningTimes {
   init = () => {
     this.timesMenu = document.getElementById('merchant-times__timetable');
     this.timesTrigger = document.getElementById('merchant-times__current');
-    this.attachClickEvent();
+
     if (this.timesMenu !== null && this.timesTrigger !== null) {
       this.attachClickEvent();
     }

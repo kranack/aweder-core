@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                             <form
-                                id="inventoryForm"
+                                id="inventoryForm_{{$category->id}}"
                                 name="inventoryForm"
                                 autocomplete="off"
                                 action="{{ route('admin.inventory.post') }}"
@@ -41,14 +41,14 @@
                                 <input type="hidden" name="category-id" value="{{ $category->id }}">
                                 <tr>
                                     <td>
-                                        <div class="choose_file">
-                                            <button type="button" class="button">
-                                                        <span class="field--upload icon">
-                                                            @svg('upload')
-                                                        </span>
-                                                <input type="file" name="image" id="image" accept="image/*"/>
-                                            </button>
-                                        </div>
+                                        {{--<div class="choose_file">--}}
+                                            {{--<button type="button" class="button">--}}
+                                                        {{--<span class="field--upload icon">--}}
+                                                            {{--@svg('upload')--}}
+                                                        {{--</span>--}}
+                                                {{--<input type="file" name="image" id="image" accept="image/*"/>--}}
+                                            {{--</button>--}}
+                                        {{--</div>--}}
                                     </td>
                                     <td>
                                         <div class="field @error('title') input-error @enderror">
@@ -85,7 +85,7 @@
                             </form>
                             @foreach ($category->inventories as $item)
                                 <form
-                                    id="updateInventoryForm"
+                                    id="updateInventoryForm_{{$item->id}}"
                                     name="updateInventoryForm"
                                     autocomplete="off"
                                     action="{{ route('admin.inventory.update', $item->id) }}"
@@ -98,14 +98,14 @@
                                     <tr class="inventory__current">
                                         <td>
                                             @if(!$item->image)
-                                                <div class="choose_file">
-                                                    <button type="button" class="button">
-                                                            <span class="field--upload icon">
-                                                                @svg('upload')
-                                                            </span>
-                                                        <input type="file" name="image" id="image" accept="image/*"/>
-                                                    </button>
-                                                </div>
+                                                {{--<div class="choose_file">--}}
+                                                    {{--<button type="button" class="button">--}}
+                                                            {{--<span class="field--upload icon">--}}
+                                                                {{--@svg('upload')--}}
+                                                            {{--</span>--}}
+                                                        {{--<input type="file" name="image" id="image" accept="image/*"/>--}}
+                                                    {{--</button>--}}
+                                                {{--</div>--}}
                                             @else
                                                 <img src="{{ $item->getTemporaryInventoryImageLink() }}"
                                             @endif

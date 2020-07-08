@@ -13,6 +13,7 @@
                       autocomplete="off"
                       action="{{ route('registration.opening-hours.post') }}"
                       method="POST">
+                    @csrf
                     <div class="form-inline panel inline-grid grid-cols-6 m-grid-cols-10 sm-grid-cols-6 width-full">
                         <div class="field field--select opening-time col-span-3 m-col-span-5 sm-col-span-6">
                             <span class="label opening-time__day">Monday</span>
