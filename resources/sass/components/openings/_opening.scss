@@ -36,9 +36,9 @@
   .font-gibson-book,
   .color-cloud-burst;
   content: ':';
-  top: 50%;
+  top: -1px;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%);
 }
 
 .opening-time__select {

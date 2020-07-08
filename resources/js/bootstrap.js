@@ -12,6 +12,7 @@ import Delivery from './delivery_cost';
 import StripeElements from './stripe-elements';
 import OrderFilters from './order_filters';
 import AdminMenu from './admin-menu';
+import OpeningTimes from './opening-times';
 
 import '@/sass/app.scss';
 
@@ -50,6 +51,9 @@ orderFilters.init();
 
 const adminMenu = new AdminMenu();
 adminMenu.init();
+
+const openingTimes = new OpeningTimes();
+openingTimes.init();
 
 Vue.config.devtools = process.env.APP_ENV === 'local';
 Vue.config.productionTip = false;

@@ -30,14 +30,14 @@
                                     <option value="45" @if (old('monday.opening.minute') === 45) selected @endif>45</option>
                                 </select>
                             </div>
-                            <span class="separator"></span>
+                            <span class="separator separator--small"></span>
                             <div class="opening-time__group">
                                 <select class="select-input opening-time__select" id="monday-closing-hour" name="monday[closing][hour]">
                                     @for ($i = 0; $i <= 23; $i++)
                                     <option value="{{ $i }}"
                                     @if (old('monday.closing.hour', 17) === $i) selected @endif>{{ $i }}</option>
                                     @endfor
-                                </select>>
+                                </select>
                                 <select class="select-input opening-time__select" id="monday-closing-minute" name="monday[closing][minute]">
                                     <option value="00" @if (old('monday.closing.minute') === 00) selected @endif>00</option>
                                     <option value="15" @if (old('monday.closing.minute') === 15) selected @endif>15</option>
@@ -62,14 +62,14 @@
                                     <option value="45" @if (old('tuesday.opening.minute') === 45) selected @endif>45</option>
                                 </select>
                             </div>
-                            <span class="separator"></span>
+                            <span class="separator separator--small"></span>
                             <div class="opening-time__group">
                                 <select class="select-input opening-time__select" id="tuesday-closing-hour" name="tuesday[closing][hour]">
                                     @for ($i = 0; $i <= 23; $i++)
                                         <option value="{{ $i }}"
                                                 @if (old('tuesday.closing.hour', 17) === $i) selected @endif>{{ $i }}</option>
                                     @endfor
-                                </select>>
+                                </select>
                                 <select class="select-input opening-time__select" id="tuesday-closing-minute" name="tuesday[closing][minute]">
                                     <option value="00" @if (old('tuesday.closing.minute') === 00) selected @endif>00</option>
                                     <option value="15" @if (old('tuesday.closing.minute') === 15) selected @endif>15</option>
@@ -94,14 +94,14 @@
                                     <option value="45" @if (old('wednesday.opening.minute') === 45) selected @endif>45</option>
                                 </select>
                             </div>
-                            <span class="separator"></span>
+                            <span class="separator separator--small"></span>
                             <div class="opening-time__group">
                                 <select class="select-input opening-time__select" id="wednesday-closing-hour" name="wednesday[closing][hour]">
                                     @for ($i = 0; $i <= 23; $i++)
                                         <option value="{{ $i }}"
                                                 @if (old('wednesday.closing.hour', 17) === $i) selected @endif>{{ $i }}</option>
                                     @endfor
-                                </select>>
+                                </select>
                                 <select class="select-input opening-time__select" id="wednesday-closing-minute" name="wednesday[closing][minute]">
                                     <option value="00" @if (old('wednesday.closing.minute') === 00) selected @endif>00</option>
                                     <option value="15" @if (old('wednesday.closing.minute') === 15) selected @endif>15</option>
@@ -126,14 +126,14 @@
                                     <option value="45" @if (old('thursday.opening.minute') === 45) selected @endif>45</option>
                                 </select>
                             </div>
-                            <span class="separator"></span>
+                            <span class="separator separator--small"></span>
                             <div class="opening-time__group">
                                 <select class="select-input opening-time__select" id="thursday-closing-hour" name="thursday[closing][hour]">
                                     @for ($i = 0; $i <= 23; $i++)
                                         <option value="{{ $i }}"
                                                 @if (old('thursday.closing.hour', 17) === $i) selected @endif>{{ $i }}</option>
                                     @endfor
-                                </select>>
+                                </select>
                                 <select class="select-input opening-time__select" id="thursday-closing-minute" name="thursday[closing][minute]">
                                     <option value="00" @if (old('thursday.closing.minute') === 00) selected @endif>00</option>
                                     <option value="15" @if (old('thursday.closing.minute') === 15) selected @endif>15</option>
@@ -158,14 +158,14 @@
                                     <option value="45" @if (old('friday.opening.minute') === 45) selected @endif>45</option>
                                 </select>
                             </div>
-                            <span class="separator"></span>
+                            <span class="separator separator--small"></span>
                             <div class="opening-time__group">
                                 <select class="select-input opening-time__select" id="friday-closing-hour" name="friday[closing][hour]">
                                     @for ($i = 0; $i <= 23; $i++)
                                         <option value="{{ $i }}"
                                                 @if (old('friday.closing.hour', 17) === $i) selected @endif>{{ $i }}</option>
                                     @endfor
-                                </select>>
+                                </select>
                                 <select class="select-input opening-time__select" id="friday-closing-minute" name="friday[closing][minute]">
                                     <option value="00" @if (old('friday.closing.minute') === 00) selected @endif>00</option>
                                     <option value="15" @if (old('friday.closing.minute') === 15) selected @endif>15</option>
@@ -190,14 +190,14 @@
                                     <option value="45" @if (old('saturday.opening.minute') === 45) selected @endif>45</option>
                                 </select>
                             </div>
-                            <span class="separator"></span>
+                            <span class="separator separator--small"></span>
                             <div class="opening-time__group">
                                 <select class="select-input opening-time__select" id="saturday-closing-hour" name="saturday[closing][hour]">
                                     @for ($i = 0; $i <= 23; $i++)
                                         <option value="{{ $i }}"
                                                 @if (old('saturday.closing.hour', 17) === $i) selected @endif>{{ $i }}</option>
                                     @endfor
-                                </select>>
+                                </select>
                                 <select class="select-input opening-time__select" id="saturday-closing-minute" name="saturday[closing][minute]">
                                     <option value="00" @if (old('saturday.closing.minute') === 00) selected @endif>00</option>
                                     <option value="15" @if (old('saturday.closing.minute') === 15) selected @endif>15</option>
@@ -222,14 +222,14 @@
                                     <option value="45" @if (old('sunday.opening.minute') === 45) selected @endif>45</option>
                                 </select>
                             </div>
-                            <span class="separator"></span>
+                            <span class="separator separator--small"></span>
                             <div class="opening-time__group">
                                 <select class="select-input opening-time__select" id="sunday-closing-hour" name="sunday[closing][hour]">
                                     @for ($i = 0; $i <= 23; $i++)
                                         <option value="{{ $i }}"
                                                 @if (old('sunday.closing.hour', 17) === $i) selected @endif>{{ $i }}</option>
                                     @endfor
-                                </select>>
+                                </select>
                                 <select class="select-input opening-time__select" id="sunday-closing-minute" name="sunday[closing][minute]">
                                     <option value="00" @if (old('sunday.closing.minute') === 00) selected @endif>00</option>
                                     <option value="15" @if (old('sunday.closing.minute') === 15) selected @endif>15</option>
