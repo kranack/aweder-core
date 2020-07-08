@@ -43,10 +43,8 @@ banner.init();
 const slugChecker = new SlugChecker();
 slugChecker.init();
 
-const stripe = new StripeElements();
-if (document.getElementById('card-element')) {
-  stripe.init();
-}
+const stripeElements = new StripeElements();
+stripeElements.init();
 
 const merchantRegistration = new MerchantRegistration();
 merchantRegistration.init();

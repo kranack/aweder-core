@@ -1,38 +1,14 @@
 const StripeElements = class StripeElements {
-  /**
-   *
-   * @type Stripe
-   */
   stripe = null;
 
-  /**
-   *
-   * @type string
-   */
   clientSecret = null;
 
-  /**
-   *
-   * @type {null}
-   */
   card = null;
 
-  /**
-   *
-   * @type Element
-   */
   form = null;
 
-  /**
-   *
-   * @type {null}
-   */
   intentInput = null;
 
-  /**
-   *
-   * @type {null}
-   */
   submitButton = null;
 
   setupElement = (element) => {
@@ -109,6 +85,10 @@ const StripeElements = class StripeElements {
   };
 
   init = () => {
+    if (document.getElementById('card-element') === null) {
+      return;
+    }
+
     const key = document.getElementById('stripe_connect_account_id').value;
 
     const stripeMerchantAccount = document.getElementById('stripe_merchant_account_id').value;
@@ -124,6 +104,7 @@ const StripeElements = class StripeElements {
     this.stripe = Stripe(key, {
       stripeAccount: stripeMerchantAccount,
     });
+
     if (this.stripe !== null && this.stripe !== undefined) {
       const element = this.stripe.elements();
 
