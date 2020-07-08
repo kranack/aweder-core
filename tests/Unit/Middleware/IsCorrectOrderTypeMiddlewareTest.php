@@ -31,6 +31,8 @@ class IsCorrectOrderTypeMiddlewareTest extends TestCase
         $order = factory(Order::class)->create([
             'status' => 'purchased',
             'is_table_service' => 1,
+            'is_delivery' => 0,
+            'is_collection' => 0,
             'merchant_id' => $merchant->id
         ]);
 

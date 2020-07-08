@@ -100,6 +100,8 @@ class Order extends Model
 
     protected const FRONT_REJECTED = 'Rejected';
 
+    protected const ORDER_TYPE_UNASSIGNED = 'unassigned';
+
     public array $frontEndStatusMap = [
         self::FRONT_NEWORDER => [
             self::PURCHASED
@@ -118,6 +120,16 @@ class Order extends Model
     ];
 
     /**
+     * Map for available order types
+     * @var array|string[]
+     */
+    public array $orderTypeFields = [
+        'is_collection' => 'collection',
+        'is_table_service' => 'table service',
+        'is_delivery' => 'delivery'
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -127,6 +139,8 @@ class Order extends Model
         'merchant_id',
         'status',
         'is_delivery',
+        'is_table_service',
+        'is_collection',
         'customer_name',
         'customer_email',
         'customer_address',
@@ -446,15 +460,12 @@ class Order extends Model
      */
     public function orderType(): string
     {
-        if ($this->is_delivery === 1) {
-            return 'delivery';
+        foreach ($this->orderTypeFields as $field => $handle) {
+            if ($this->{$field} === 1) {
+                return $handle;
+            }
         }
-
-        if ($this->is_table_service === 1) {
-            return 'table service';
-        }
-
-        return 'collection';
+        return self::ORDER_TYPE_UNASSIGNED;
     }
 
     /**
