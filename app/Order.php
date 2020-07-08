@@ -100,6 +100,12 @@ class Order extends Model
 
     protected const FRONT_REJECTED = 'Rejected';
 
+    protected const ORDER_TYPE_COLLECTION = "collection";
+
+    protected const ORDER_TYPE_TABLE_SERVICE = 'table service';
+
+    protected const ORDER_TYPE_DELIVERY = 'delivery';
+
     protected const ORDER_TYPE_UNASSIGNED = 'unassigned';
 
     public array $frontEndStatusMap = [
@@ -124,9 +130,9 @@ class Order extends Model
      * @var array|string[]
      */
     public array $orderTypeFields = [
-        'is_collection' => 'collection',
-        'is_table_service' => 'table service',
-        'is_delivery' => 'delivery'
+        'is_collection' => self::ORDER_TYPE_COLLECTION,
+        'is_table_service' => self::ORDER_TYPE_TABLE_SERVICE,
+        'is_delivery' => self::ORDER_TYPE_DELIVERY
     ];
 
     /**
