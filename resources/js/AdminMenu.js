@@ -1,4 +1,4 @@
-const AdminMenu = class AdminMenu {
+export default class AdminMenu {
   adminMenu = null;
 
   adminTrigger = null;
@@ -20,6 +20,4 @@ const AdminMenu = class AdminMenu {
       this.attachClickEvent();
     }
   };
-};
-
-export default AdminMenu;
+}

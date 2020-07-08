@@ -1,4 +1,4 @@
-const NotificationBanner = class Notification {
+export default class NotificationBanner {
   fixedElement = null;
 
   timeout = null
@@ -20,6 +20,4 @@ const NotificationBanner = class Notification {
       this.addClearDownTimeOut();
     }
   };
-};
-
-export default NotificationBanner;
+}

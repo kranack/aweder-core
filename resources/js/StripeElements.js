@@ -1,4 +1,4 @@
-const StripeElements = class StripeElements {
+export default class StripeElements {
   stripe = null;
 
   clientSecret = null;
@@ -113,6 +113,4 @@ const StripeElements = class StripeElements {
       }
     }
   }
-};
-
-export default StripeElements;
+}

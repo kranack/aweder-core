@@ -1,10 +1,10 @@
-const Timer = class Timer {
+export default class Timer {
   elements = document.getElementsByClassName('hidden-time')
 
-  startTimer = (total_seconds, element) => {
+  startTimer = (totalSeconds, element) => {
     setInterval(() => {
-      const minute = Math.floor((total_seconds) / 60);
-      total_seconds++;
+      const minute = Math.floor((totalSeconds) / 60);
+      totalSeconds++;
       if (minute >= 20) {
         element.parentElement.classList.replace('order__status--new',
           'order__status--old');
@@ -14,16 +14,16 @@ const Timer = class Timer {
   }
 
   calculateTime = (element) => {
-    let total_seconds = null;
+    let totalSeconds = null;
     const time = element.value;
-    const split_time = time.split(':');
-    if (split_time[0] !== '00') {
-      total_seconds += Math.floor(split_time[0] * 60);
+    const splitTime = time.split(':');
+    if (splitTime[0] !== '00') {
+      totalSeconds += Math.floor(splitTime[0] * 60);
     }
-    if (split_time[1] !== '00') {
-      total_seconds += Math.floor(split_time[1]);
+    if (splitTime[1] !== '00') {
+      totalSeconds += Math.floor(splitTime[1]);
     }
-    this.startTimer(total_seconds, element);
+    this.startTimer(totalSeconds, element);
   }
 
   pad = (val) => {
@@ -41,6 +41,4 @@ const Timer = class Timer {
       }
     }
   }
-};
-
-export default Timer;
+}

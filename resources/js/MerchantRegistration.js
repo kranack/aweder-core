@@ -1,12 +1,10 @@
-const Delivery = class DeliveryCost {
+export default class MerchantRegistration {
   /**
-   *
    * @type NodeListOf
    */
   collectionChoice = null;
 
   /**
-   *
    * @type Element
    */
   deliveryFieldWrapper = null
@@ -46,6 +44,4 @@ const Delivery = class DeliveryCost {
       this.attachChangeEvent();
     }
   };
-};
-
-export default Delivery;
+}
