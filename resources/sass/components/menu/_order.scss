@@ -1,0 +1,16 @@
+.button.menu__view {
+  @extend .radius-0;
+}
+
+.button.menu__view .button__icon {
+  @extend .flex;
+}
+
+.button.menu__view svg {
+  max-width: 14px;
+  width: 100%;
+}
+
+.menu__view .separator {
+  @extend .background-ecru-white;
+}

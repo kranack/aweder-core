@@ -41,7 +41,7 @@ class ViewController extends Controller
                 'merchant' => $merchant,
                 'order' => $order ?? null,
                 'editable' => $editable,
-                'bodyClass' => 'body--auth',
+                'bodyClass' => 'body-menu',
             ]
         );
     }

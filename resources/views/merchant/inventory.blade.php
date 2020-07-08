@@ -85,9 +85,56 @@
                 <div class="hero__copy col-span-4 col-start-2 l-col-span-5 l-col-start-1 m-col-span-6 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 margin-top-50">
                     <p>Simple online order taking for small businesses with payment acceptance and pickup / delivery confirmation.</p>
                 </div>
-                <div class="hero__image hero__image--border hero__image--square inline-flex col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-4 m-col-start-9 sm-col-span-2 sm-col-start-3 s-col-start-1 row-span-5 row-start-1 sm-row-start-5 sm-margin-top-50 s-row-start-5">
+                <div class="hero__image hero__image--border hero__image--square inline-flex col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 m-col-start-8 sm-col-span-2 sm-col-start-3 s-col-start-1 row-span-5 row-start-1 sm-row-start-5 sm-margin-top-50 s-row-start-5">
                     <img src="" />
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="menu flex flex-col">
+        <header class="menu__categories">
+            <div class="row flex align-content-stretch">
+                <div class="content align-content-stretch">
+                    <nav class="menu__nav inline-flex align-content-stretch col-span-6 col-start-2 l-col-start-1">
+                        <ul class="menu__cat-list">
+                            <li class="menu__cat-item">
+                                <a href="" class="menu__cat-link">Nibbles</a>
+                            </li>
+                            <li class="menu__cat-item">
+                                <a href="" class="menu__cat-link">Sides/Salads</a>
+                            </li>
+                            <li class="menu__cat-item">
+                                <a href="" class="menu__cat-link">Soups</a>
+                            </li>
+                            <li class="menu__cat-item">
+                                <a href="" class="menu__cat-link">Dim Sum - Crispy</a>
+                            </li>
+                            <li class="menu__cat-item">
+                                <a href="" class="menu__cat-link">Dim Sum - Steamed</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="menu__cart col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-hidden">
+                        <span class="icon icon--logo-mark flex margin-right-20">@svg('aweder-logo-small')</span>
+                        <p>Add more items - £12.00</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="menu__listing padding-top-100 padding-bottom-140">
+            <div class="row">
+                <div class="content">
+                    <div class="inventory col-span-6 col-start-2 l-col-start-1">
+                    </div>
+                    <div class="menu__order panel background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
+                    </div>
+                </div>
+            </div>
+            <div class="button button-solid--carnation hidden sm-flex menu__view" id="menu__view">
+                <span class="button__icon button__icon--left">@svg('aweder-logo-small')</span>
+                <span class="button__content">View order</span>
+                <span class="separator separator--small"></span>
+                <span class="button__price">£12.00</span>
             </div>
         </div>
     </section>

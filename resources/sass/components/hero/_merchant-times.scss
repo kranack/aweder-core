@@ -23,6 +23,10 @@
 .merchant-times__icon svg {
   max-width: 15px;
   width: 100%;
+
+  @include mq(m) {
+    max-width: 11px;
+  }
 }
 
 .merchant-times__current {

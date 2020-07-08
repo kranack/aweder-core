@@ -34,12 +34,6 @@ body {
   background: transparent;
 }
 
-.site-wrapper {
-  @include mq(sm) {
-    overflow: hidden;
-  }
-}
-
 .admin-wrapper,
 .admin-wrapper .content {
   height: 100%;
