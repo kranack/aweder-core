@@ -46,6 +46,41 @@ class OrderTest extends TestCase
     /**
      * @test
      */
+    public function canIdentifyDeliveryType(): void
+    {
+        $this->model->__set('is_delivery', 1);
+        $this->assertEquals('delivery', $this->model->orderType());
+    }
+
+    /**
+     * @test
+     */
+    public function canIdentifyCollectionType(): void
+    {
+        $this->model->__set('is_collection', 1);
+        $this->assertEquals('collection', $this->model->orderType());
+    }
+
+    /**
+     * @test
+     */
+    public function canIdentifyTableServiceType(): void
+    {
+        $this->model->__set('is_table_service', 1);
+        $this->assertEquals('table service', $this->model->orderType());
+    }
+
+    /**
+     * @test
+     */
+    public function canIdentifyAsUnassignedOrderType()
+    {
+        $this->assertEquals('unassigned', $this->model->orderType());
+    }
+
+    /**
+     * @test
+     */
     public function timeSinceCreatedWithCreatedAtOlderThan20Minutes(): void
     {
         $now = Carbon::create(2020, 03, 26, 10, 37, 35);
