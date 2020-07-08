@@ -38,9 +38,24 @@ new Vue({
   },
 }).$mount('#app');
 
-// Init JS
-const banner = new NotificationBanner();
-banner.init();
+// Init Classes
+const adminMenu = new AdminMenu();
+adminMenu.init();
+
+const deliveryCost = new DeliveryCost();
+deliveryCost.init();
+
+const merchantRegistration = new MerchantRegistration();
+merchantRegistration.init();
+
+const notificationBanner = new NotificationBanner();
+notificationBanner.init();
+
+const orderFilters = new OrderFilters();
+orderFilters.init();
+
+const openingTimes = new OpeningTimes();
+openingTimes.init();
 
 const slugChecker = new SlugChecker();
 slugChecker.init();
@@ -48,20 +63,5 @@ slugChecker.init();
 const stripeElements = new StripeElements();
 stripeElements.init();
 
-const merchantRegistration = new MerchantRegistration();
-merchantRegistration.init();
-
-const deliveryCost = new DeliveryCost();
-deliveryCost.init();
-
 const upload = new Upload();
 upload.init();
-
-const orderFilters = new OrderFilters();
-orderFilters.init();
-
-const adminMenu = new AdminMenu();
-adminMenu.init();
-
-const openingTimes = new OpeningTimes();
-openingTimes.init();
