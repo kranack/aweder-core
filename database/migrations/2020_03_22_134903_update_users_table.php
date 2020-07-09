@@ -25,7 +25,7 @@ class UpdateUsersTable extends Migration
                 }
             });
         } else {
-            Log::error('the table ' . self::TABLE_NAME . ' does not exist');
+            Log::error('The table ' . self::TABLE_NAME . ' does not exist.');
         }
 
 
@@ -51,7 +51,7 @@ class UpdateUsersTable extends Migration
                 }
             });
         } else {
-            Log::error('the table ' . self::TABLE_NAME . ' does not exist');
+            Log::error('The table ' . self::TABLE_NAME . ' does not exist.');
         }
 
         if (Schema::hasTable('merchant_users')) {
