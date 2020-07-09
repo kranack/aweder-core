@@ -27,16 +27,18 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // Init Vue
-Vue.config.devtools = process.env.APP_ENV === 'local';
-Vue.config.productionTip = false;
-Vue.config.silent = false;
+if (document.getElementById('app') !== null) {
+  Vue.config.devtools = process.env.APP_ENV === 'local';
+  Vue.config.productionTip = false;
+  Vue.config.silent = false;
 
-new Vue({
-  components: {
-    UrlSlugChecker,
-    'merchant-order-types': MerchantOrderTypes,
-  },
-}).$mount('#app');
+  new Vue({
+    components: {
+      UrlSlugChecker,
+      'merchant-order-types': MerchantOrderTypes,
+    },
+  }).$mount('#app');
+}
 
 // Init Classes
 const adminMenu = new AdminMenu();
