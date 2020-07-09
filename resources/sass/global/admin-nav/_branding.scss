@@ -1,0 +1,11 @@
+.branding--admin {
+  @extend .padding-right-40;
+  height: 80px;
+
+  @include mq(l) {
+    @include _(l-padding-right-30);
+  }
+  @include mq(m) {
+    @include _(m-padding-right-20);
+  }
+}

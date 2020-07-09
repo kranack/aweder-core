@@ -6,17 +6,17 @@
   height: 80px;
 }
 
-.site-branding {
+.branding {
   @extend .flex,
   .align-items-center;
 }
 
-.site-branding .icon--logo svg {
+.branding .icon--logo svg {
   max-width: 159px;
   width: 100%;
 }
 
-.site-branding .icon--logo-mobile svg {
+.branding .icon--logo-mobile svg {
   max-width: 21px;
   width: 100%;
 }

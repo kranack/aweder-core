@@ -1,0 +1,62 @@
+.admin-nav {
+  @extend .background-carnation,
+  .padding-left-40,
+  .padding-bottom-40;
+
+  @include mq(l) {
+    @include _(l-padding-left-30);
+    @include _(l-padding-bottom-30);
+  }
+  @include mq(m) {
+    @include _(m-padding-left-20);
+    @include _(m-padding-right-20);
+    @include _(m-padding-bottom-20);
+    @include _(m-absolute);
+    @include _(width-full);
+    @include _(m-inline-grid);
+    @include _(m-grid-cols-12);
+    @include _(m-col-gap);
+    background: transparent;
+    left: 0;
+    top: 0;
+    z-index: -2;
+    height: 100%;
+  }
+  @include mq(sm) {
+    @include _(sm-grid-cols-6);
+    @include _(sm-col-gap);
+  }
+  @include mq(s) {
+    @include _(s-col-gap);
+    @include _(s-padding-left-10);
+    @include _(s-padding-right-10);
+  }
+}
+
+.admin-nav.admin-nav--open {
+  @include mq(m) {
+    z-index: 2;
+  }
+}
+
+.admin-nav__wrapper {
+  @include mq(m) {
+    @include _(m-absolute);
+    @include _(background-carnation);
+    @include _(m-padding-left-30);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    @include calc(right, "-100% - 20px");
+    transition: right 0.3s ease-in-out;
+  }
+  @include mq(s) {
+    @include calc(right, "-100% - 10px");
+  }
+}
+
+.admin-nav--open .admin-nav__wrapper {
+  @include mq(m) {
+    right: 0;
+  }
+}

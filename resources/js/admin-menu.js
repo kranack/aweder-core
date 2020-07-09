@@ -8,12 +8,13 @@ const AdminMenu = class AdminMenu {
   };
 
   toggleMenu = () => {
-    this.adminMenu.classList.toggle('admin-menu--open');
+    this.adminMenu.classList.toggle('admin-nav--open');
+    this.adminTrigger.classList.toggle('admin__greeting--open');
   };
 
   init = () => {
-    this.adminMenu = document.getElementById('admin-mobile-nav');
-    this.adminTrigger = document.getElementById('admin-mobile-trigger');
+    this.adminMenu = document.getElementById('admin-nav');
+    this.adminTrigger = document.getElementById('admin__greeting');
 
     if (this.adminMenu !== null && this.adminTrigger !== null) {
       this.attachClickEvent();

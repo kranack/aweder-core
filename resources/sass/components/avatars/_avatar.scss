@@ -1,0 +1,18 @@
+.avatar {
+  @extend .flex,
+  .align-items-center,
+  .justify-content-center,
+  .radius-100,
+  .border-solid,
+  .border-silver,
+  .border-width-1,
+  .background-white;
+}
+.avatar img {
+  @extend .width-full;
+}
+
+.avatar--small {
+  width: 40px;
+  height: 40px;
+}

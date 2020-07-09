@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="col-span-6 m-col-span-10 sm-col-span-6">
     <div class="form-inline col-span-6 m-col-span-10 sm-col-span-6 inline-grid inline-grid
-     grid-cols-6 m-grid-cols-10 sm-col-span-6 s-inline-flex s-flex-col"
-    >
+     grid-cols-6 m-grid-cols-10 sm-col-span-6 s-inline-flex s-flex-col m-width-full">
       <span class="label label--group col-span-6 m-col-span-10 sm-col-span-6 margin-bottom-20">
         Service options<sup>*</sup>
       </span>
@@ -14,12 +13,10 @@
           data-collection-type="collection"
           class="hidden checkbox-input collection--type"
           value="collection"
-          :checked="doesOrderTypeExist('collection')"
-        >
+          :checked="doesOrderTypeExist('collection')">
         <label class="checkbox checkbox--icon checkbox--icon-small" for="allow-collection">
           <span class="checkbox__icon checkbox__icon--image checkbox__icon--small
-            icon icon--collection"
-          >
+            icon icon--collection">
             <Collection />
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
@@ -36,12 +33,10 @@
           class="hidden checkbox-input collection--type"
           value="delivery"
           :checked="doesOrderTypeExist('delivery')"
-          @change="showDeliveryData($event)"
-        >
+          @change="showDeliveryData($event)">
         <label class="checkbox checkbox--icon checkbox--icon-small" for="allow-delivery">
           <span class="checkbox__icon checkbox__icon--image
-            checkbox__icon--small icon icon--delivery"
-          >
+            checkbox__icon--small icon icon--delivery">
             <Delivery />
           </span>
           <span class="checkbox__label checkbox__label--image checkbox__label--small">
@@ -57,8 +52,7 @@
           data-collection-type="table"
           class="hidden checkbox-input collection--type"
           value="table"
-          :checked="doesOrderTypeExist('table')"
-        >
+          :checked="doesOrderTypeExist('table')">
         <label class="checkbox checkbox--icon checkbox--icon-small" for="table">
           <span class="checkbox__icon checkbox__icon--image checkbox__icon--small icon icon--table">
             <Table />
@@ -69,16 +63,12 @@
         </label>
       </div>
     </div>
-    <p
-      v-if="collectionTypeValidationMessage !== ''"
-      class="field__error"
-    >
+    <p v-if="collectionTypeValidationMessage !== ''" class="field__error">
       {{ collectionTypeValidationMessage }}
     </p>
     <div v-if="showDeliveryFields">
       <div class="field field--price field--price col-span-6 m-col-span-10 sm-col-span-6"
-           :class="{'field__error': deliveryCostValidationMessage !== ''}"
-      >
+           :class="{'field__error': deliveryCostValidationMessage !== ''}">
         <label class="label label--float" for="delivery_cost">Delivery charge<sup>*</sup></label>
         <input
           id="delivery_cost"
@@ -86,20 +76,15 @@
           name="delivery_cost"
           tabindex="4"
           class="text-input text-input--price"
-          :value="deliveryCost"
-        >
-        <p
-          v-if="deliveryCostValidationMessage !== ''"
-          class="field__error"
-        >
+          :value="deliveryCost">
+        <p v-if="deliveryCostValidationMessage !== ''" class="field__error">
           {{ deliveryCostValidationMessage }}
         </p>
       </div>
 
       <div
         class="field field--delivery col-span-6 m-col-span-10 sm-col-span-6"
-         :class="{'field__error': deliveryRadiusValidationMessage !== ''}"
-      >
+         :class="{'field__error': deliveryRadiusValidationMessage !== ''}">
         <label class="label label--float" for="name">Delivery radius in miles<sup>*</sup></label>
         <input
           id="delivery_radius"
@@ -108,12 +93,8 @@
           class="text-input"
           tabindex="4"
           placeholder="Delivery radius in miles"
-          :value="deliveryRadius"
-        >
-        <p
-          v-if="deliveryRadiusValidationMessage !== ''"
-          class="field__error"
-        >
+          :value="deliveryRadius">
+        <p v-if="deliveryRadiusValidationMessage !== ''" class="field__error">
           {{ deliveryRadiusValidationMessage }}
         </p>
       </div>

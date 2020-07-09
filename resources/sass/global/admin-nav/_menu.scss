@@ -1,0 +1,29 @@
+.admin-menu {
+  @extend .margin-top-80;
+}
+
+.admin-menu__link {
+  @extend .flex,
+  .align-items-center,
+  .background-off-white-0,
+  .body-medium,
+  .color-ecru-white,
+  .padding-left-20;
+  border-radius: 5px 0 0 5px;
+  height: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-menu__link:hover,
+.admin-menu__link--active {
+  @extend .background-off-white,
+  .color-carnation;
+}
+
+.admin-menu__icon {
+  @extend .margin-right-20;
+
+  @include mq(l) {
+    @include _(margin-right-10);
+  }
+}
