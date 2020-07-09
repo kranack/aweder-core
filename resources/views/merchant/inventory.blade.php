@@ -1,79 +1,12 @@
 @extends('global.app')
 @section('content')
-    <section class="hero background-off-white">
+    <section class="hero background-off-white border-silver border-width-1 border-bottom-solid">
         <div class="row">
             <div class="content align-items-center">
                 <header class="hero__header col-span-5 col-start-2 l-col-start-1 m-col-span-7 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1 margin-bottom-15">
                     <h1 class="header-one color-carnation">{{ $merchant->name }}</h1>
                 </header>
-                <div class="hero__merchant-times col-span-4 col-start-2 l-col-span-5 l-col-start-1 m-col-span-7 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
-                    <p class="merchant-times__status">We're open</p>
-                    <span class="separator separator--large"></span>
-                    <div id="merchant-times__current" class="merchant-times__current flex align-items-center">
-                        <span class="merchant-times__hours merchant-times__hours--open">12:00</span>
-                        <span class="separator separator--small"></span>
-                        <span class="merchant-times__hours merchant-times__hours--open">22:00</span>
-                        <span class="merchant-times__icon">@svg('arrow-down-narrow', 'fill-cloud-burst')</span>
-                        <ul id="merchant-times__timetable" class="merchant-times__timetable">
-                            <li class="timetable__hours grid grid-cols-2">
-                                <span class="timetable__day">Monday</span>
-                                <span class="timetable__time">
-                                12:00
-                                <span class="separator separator--small"></span>
-                                22:00
-                            </span>
-                            </li>
-                            <li class="timetable__hours grid grid-cols-2">
-                                <span class="timetable__day">Tuesday</span>
-                                <span class="timetable__time">
-                                12:00
-                                <span class="separator separator--small"></span>
-                                22:00
-                            </span>
-                            </li>
-                            <li class="timetable__hours grid grid-cols-2">
-                                <span class="timetable__day">Wednesday</span>
-                                <span class="timetable__time">
-                                12:00
-                                <span class="separator separator--small"></span>
-                                22:00
-                            </span>
-                            </li>
-                            <li class="timetable__hours grid grid-cols-2">
-                                <span class="timetable__day">Thursday</span>
-                                <span class="timetable__time">
-                                12:00
-                                <span class="separator separator--small"></span>
-                                22:00
-                            </span>
-                            </li>
-                            <li class="timetable__hours grid grid-cols-2">
-                                <span class="timetable__day">Friday</span>
-                                <span class="timetable__time">
-                                12:00
-                                <span class="separator separator--small"></span>
-                                22:00
-                            </span>
-                            </li>
-                            <li class="timetable__hours grid grid-cols-2">
-                                <span class="timetable__day">Saturday</span>
-                                <span class="timetable__time">
-                                12:00
-                                <span class="separator separator--small"></span>
-                                22:00
-                            </span>
-                            </li>
-                            <li class="timetable__hours grid grid-cols-2">
-                                <span class="timetable__day">Sunday</span>
-                                <span class="timetable__time">
-                                12:00
-                                <span class="separator separator--small"></span>
-                                22:00
-                            </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <x-merchant-opening-hours :opening-hours="$merchant->openingHours" />
                 <div class="hero__merchant-delivery wrap col-span-5 col-start-2 l-col-start-1 m-col-span-7 sm-col-span-4 sm-col-start-2 s-col-span-6 s-col-start-1">
                     @if ($merchant->doesMerchantAllowDeliveryAndCollection())
                     <p class="margin-right-40"><span class="icon icon--pinpoint">@svg('pinpoint', 'fill-casablanca')</span>We deliver within a {{ $merchant->delivery_radius }} mile radius</p>
@@ -92,9 +25,11 @@
                         <p>{{ $merchant->description }}</p>
                     </div>
                 @endif
-                <div class="hero__image hero__image--border hero__image--square inline-flex col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 m-col-start-8 sm-col-span-2 sm-col-start-3 s-col-start-1 row-span-5 row-start-1 sm-row-start-5 sm-margin-top-50 s-row-start-5">
-                    <img src="{{ $merchant->getTemporaryLogoLink() }}" alt="{{ $merchant->name }}">
-                </div>
+                @if ($merchant->logo !== null)
+                    <div class="hero__image hero__image--border hero__image--square inline-flex col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 m-col-start-8 sm-col-span-2 sm-col-start-3 s-col-start-1 row-span-5 row-start-1 sm-row-start-5 sm-margin-top-50 s-row-start-5">
+                        <img src="{{ $merchant->getTemporaryLogoLink() }}" alt="{{ $merchant->name }}">
+                    </div>
+                @endif
             </div>
         </div>
     </section>
@@ -102,59 +37,56 @@
         <header class="menu__categories">
             <div class="row flex align-content-stretch">
                 <div class="content align-content-stretch">
-                    <nav class="menu__nav inline-flex align-content-stretch col-span-6 col-start-2 l-col-start-1">
-                        <ul class="menu__cat-list">
-                            <li class="menu__cat-item">
-                                <a href="" class="menu__cat-link">Nibbles</a>
-                            </li>
-                            <li class="menu__cat-item">
-                                <a href="" class="menu__cat-link">Sides/Salads</a>
-                            </li>
-                            <li class="menu__cat-item">
-                                <a href="" class="menu__cat-link">Soups</a>
-                            </li>
-                            <li class="menu__cat-item">
-                                <a href="" class="menu__cat-link">Dim Sum - Crispy</a>
-                            </li>
-                            <li class="menu__cat-item">
-                                <a href="" class="menu__cat-link">Dim Sum - Steamed</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="menu__cart col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-hidden">
+                    @if (!$merchant->categories->isEmpty() && $merchant->categories->count() > 1)
+                        <nav class="menu__nav inline-flex align-content-stretch col-span-6 col-start-2 l-col-start-1">
+                            <ul class="menu__cat-list">
+                                @foreach ($merchant->categories as $category)
+                                    @if (!$category->inventoriesAvailable->isEmpty())
+                                        <li class="menu__cat-item">
+                                            <a href="#{{$category->title}}" class="menu__cat-link">{{ $category->title }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </nav>
+                    @endif
+                    @if (isset($order))
+                        @if (!$order->items->isEmpty())
+                            <div class="menu__cart menu__cart--added col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-hidden">
                                 <span class="icon icon--logo-mark flex margin-right-20">@svg('aweder-logo-small')</span>
-                        <p>Add more items - £12.00</p>
-                    </div>
+                                <p>Add more items - £{{ $order->getFormattedUKPriceAttribute($order->total_cost) }}</p>
+                            </div>
+                        @endif
+                    @else
+                        <div class="menu__cart col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-hidden">
+                            <span class="icon icon--logo-mark flex margin-right-20">@svg('aweder-logo-small')</span>
+                            <p>Your bag is empty</p>
+                        </div>
+                    @endif
                 </div>
             </div>
         </header>
         <div class="menu__listing padding-bottom-140 sm-padding-bottom-0">
             <div class="row">
-                <div class="content">
-                    <div class="inventory col-span-6 col-start-2 l-col-start-1 m-col-span-7 sm-col-span-6 padding-top-100">
-                        <div class="inventory__categories inline-flex flex-col width-full">
-                            <header class="inventory__category-name">
-                                <h2 class="header-three">Nibbles</h2>
-                            </header>
-                            <div class="inventory__item">
-                                <div class="inventory__image">
-                                    <img src="" />
-                                </div>
-                                <div class="inventory__details">
-                                    <header class="inventory__header">
-                                        <h3 class="inventory__title">Order item</h3>
-                                        <span class="separator separator--small"></span>
-                                        <p class="inventory__description">With spicy chilli oil</p>
-                                    </header>
-                                    <span class="inventory__price">£4.95</span>
-                                    <div class="inventory__button">
-                                        <p class="inventory__add">Add</p>
-                                        <span class="icon icon--add flex margin-left-10">@svg('add')</span>
+                <div class="content align-items-start">
+                    @if (!$merchant->categories->isEmpty())
+                        <div class="inventory col-span-6 col-start-2 l-col-start-1 m-col-span-7 sm-col-span-6 padding-top-100">
+                            @foreach ($merchant->categories as $category)
+                                @if (!$category->inventoriesAvailable->isEmpty())
+                                    <div class="inventory__categories inline-flex flex-col width-full" id="{{$category->title}}">
+                                        <header class="inventory__category-name">
+                                            <h2 class="header-three">{{$category->title}}</h2>
+                                        </header>
+                                        {{--@TODO add if sub category--}}
+                                        <h3 class="inventory__subcategory">Sub category</h3>
+                                        @foreach ($category->inventoriesAvailable as $inventory)
+                                            <x-display-item :item="$inventory" :editable="$editable" :merchant="$merchant" :order="$order ?? null" />
+                                        @endforeach
                                     </div>
-                                </div>
-                            </div>
+                                @endif
+                            @endforeach
                         </div>
-                    </div>
+                    @endif
                     <div class="menu__order panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
 
                     </div>
@@ -168,84 +100,7 @@
             </div>
         </div>
     </section>
-    {{--<section class="merchant-banner">--}}
-        {{--<div class="row">--}}
-            {{--<div class="content">--}}
-                {{--<div class="merchant-banner__content col col--lg-12-6 col--lg-offset-12-2 col--m-12-8 col--m-offset-12-2 col--sm-6-6 col--sm-offset-6-1">--}}
-                    {{--<header class="">--}}
-                        {{--<h1 class="header header--three color--carnation spacer-bottom--10">{{ $merchant->name }}</h1>--}}
-                    {{--</header>--}}
-                    {{--<x-merchant-opening-hours :opening-hours="$merchant->openingHours" />--}}
-                    {{--<div class="merchant-banner__details">--}}
-                        {{--@if ($merchant->doesMerchantAllowDeliveryAndCollection())--}}
-                            {{--<div class="merchant-banner__delivery">--}}
-                                {{--<p class="merchant-banner__radius">--}}
-                                    {{--<span class="icon icon--pin">@svg('pinpoint')</span>--}}
-                                    {{--We deliver within a {{ $merchant->delivery_radius }} mile radius--}}
-                                {{--</p>--}}
-                                {{--<p class="merchant-banner__type">--}}
-                                    {{--<span class="icon icon--delivery">@svg('bike')</span>--}}
-                                    {{--Delivery & Collection--}}
-                                {{--</p>--}}
-                                {{--<p class="merchant-banner__type">--}}
-                                    {{--<span class="icon icon--delivery">@svg('arrow-right')</span>--}}
-                                    {{--Delivery Charge: £{{ $merchant->getFormattedUKPriceAttribute($merchant->delivery_cost) }}--}}
-                                {{--</p>--}}
-                            {{--</div>--}}
-                        {{--@elseif ($merchant->deliveryOnly())--}}
-                            {{--<div class="merchant-banner__delivery">--}}
-                                {{--<p class="merchant-banner__radius">--}}
-                                    {{--<span class="icon icon--pin">@svg('pinpoint')</span>--}}
-                                    {{--We delivery within a {{ $merchant->delivery_radius }} mile radius--}}
-                                {{--</p>--}}
-                                {{--<p class="merchant-banner__type">--}}
-                                    {{--<span class="icon icon--delivery">@svg('bike')</span>--}}
-                                    {{--Delivery--}}
-                                {{--</p>--}}
-                            {{--</div>--}}
-                        {{--@endif--}}
-
-                        {{--<p>{{ $merchant->address }}</p>--}}
-                        {{--<p class="merchant-banner__tel"><a href="tel:{{ $merchant->contact_number }}">{{ $merchant->contact_number }}</a></p>--}}
-                    {{--</div>--}}
-                    {{--@if ($merchant->description  !== null)--}}
-                        {{--<div class="merchant-banner__description">--}}
-                            {{--<p>{{ $merchant->description }}</p>--}}
-                        {{--</div>--}}
-                    {{--@endif--}}
-                {{--</div>--}}
-                {{--@if ($merchant->logo !== null)--}}
-                    {{--<div class="merchant-banner__logo col col--lg-12-3 col--lg-offset-12-9 col--m-12-3 col--m-offset-12-10 col--sm-6-4 col--sm-offset-6-2 col--s-6-6 col--s-offset-6-1">--}}
-                        {{--<img src="{{ $merchant->getTemporaryLogoLink() }}" alt="{{ $merchant->name }}">--}}
-                    {{--</div>--}}
-                {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
     {{--<section class="ordering">--}}
-        {{--<div class="row row--menu">--}}
-            {{--<div class="content">--}}
-                {{--@if (!$merchant->categories->isEmpty() && $merchant->categories->count() > 1)--}}
-                    {{--<nav class="menu__navigation col col--lg-12-12 col--sm-6-6">--}}
-                        {{--<ul class="col col--lg-12-6 col--lg-offset-12-2 col--m-12-7 col--m-offset-12-2 col--sm-6-6 col--sm-offset-6-1">--}}
-                            {{--@foreach ($merchant->categories as $category)--}}
-                                {{--@if (!$category->inventoriesAvailable->isEmpty())--}}
-                                    {{--<li><a href="#{{$category->title}}">{{ $category->title }}</a></li>--}}
-                                {{--@endif--}}
-                            {{--@endforeach--}}
-                        {{--</ul>--}}
-                        {{--<div class="ordering__status col col--lg-12-3 col--lg-offset-12-9 col--m-12-4 col--m-offset-12-9 col--sm-6-6 col--sm-offset-6-1">--}}
-                            {{--@if (isset($order))--}}
-                                {{--@if (!$order->items->isEmpty())--}}
-                                    {{--<span class="icon icon--logo">@svg('aweder-logo-small')</span>--}}
-                                    {{--<p class="ordering__status-items">Add more items - £{{ $order->getFormattedUKPriceAttribute($order->total_cost) }}</p>--}}
-                                {{--@endif--}}
-                            {{--@endif--}}
-                        {{--</div>--}}
-                    {{--</nav>--}}
-                {{--@endif--}}
-            {{--</div>--}}
-        {{--</div>--}}
         {{--<div class="row">--}}
             {{--<div class="content">--}}
                 {{--<div class="col--lg-12-6 col--lg-offset-12-2 col--sm-6-6 col--sm-offset-6-1 menu">--}}
