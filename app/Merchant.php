@@ -216,6 +216,10 @@ class Merchant extends Model
      */
     public function getTemporaryLogoLink(): string
     {
+        if (substr($this->logo, 0, 4) === 'http') {
+            return $this->logo;
+        }
+
         return Storage::temporaryUrl($this->logo, now()->addMinutes(10));
     }
 
