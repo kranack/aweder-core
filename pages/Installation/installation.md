@@ -4,7 +4,8 @@ title: Installation
 permalink: /installation/
 nav_order: 2
 ---
-# Aweder (awe-der, like order, not ah-weder!)
+
+# Awe-der (awe-der, like order, not ah-weder!)
 
 ## TL;DR
 
@@ -46,7 +47,7 @@ Once docker has completed you will have six containers running:
 - Scheduler
 
 
-## Install Application
+### Install Application
 
 SSH into the php docker container.
 
@@ -66,7 +67,38 @@ Goto [https://uk-restaurants.test](https://uk-restaurants.test) in your browser.
 You will see an SSL warning, just bypass the warning by clicking Advanced > Ignore. (Do not save the certificate to your Keychain, this is not necessary and may cause issues if the certificate is regenerated).
 
 
-## Setup Testing Environment
+## Frontend Development
+
+You should use a tool like [nvm (Node Version Manager)](https://github.com/nvm-sh/nvm) to use the required version of node when working on different projects.
+
+Install the required version of node specified in `.nvmrc` (this will switch to this version if already installed, or install if not installed)
+
+```
+nvm install
+```
+
+Install the project dependencies.
+
+```
+npm install
+```
+
+During development, to watch files and rebuild:
+
+```
+npm run start
+```
+
+To build for production, run build and commit the generated files separately. In the future these may be built by a Continuous Integration / Continuous Deployment tool, but for now we have to commit them.
+
+```
+npm run build
+```
+
+
+## Automated Testing
+
+### Setup Testing Environment
 
 The unit tests require a separate database. Our MySQL container has already created the empty database using the file `docker/mysql/seeds/uk_restaurant_testing.sql`, so we will need to run the migrations for the testing environment.
 
@@ -90,6 +122,25 @@ Now you can run your tests from inside the docker container:
 vendor/bin/phpunit --testdox
 ```
 
+
+### Frontend Testing
+
+Jest Config:
+```
+npm run jest:config
+```
+
+Unit Tests:
+
+```
+npm run test:unit
+```
+
+Vue.js Linter:
+```
+npm run lint
+```
+
 ---
 
 ## Troubleshooting
@@ -98,7 +149,8 @@ vendor/bin/phpunit --testdox
 
 You can connect to MySQL using a tool like [Sequel Pro](https://sequelpro.com/test-builds) or [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) using these details:
 
-If you have MySQL installed locally, you will need to stop the local server for this to work.  there is a GUI available that will assist in doing this that can be found at [DBNgin](https://https://dbngin.com/)
+If you have MySQL installed locally, you will need to stop the local server for this to work. There is a GUI available that will assist in doing this that can be found at [DBNgin](https://dbngin.com/)
+
 ```
 Host: 127.0.0.1
 Port: 3306
