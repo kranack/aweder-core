@@ -45,6 +45,8 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Query\Builder|\App\Inventory withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Inventory withoutTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inventory whereImage($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\InventoryVariant[] $variants
+ * @property-read int|null $variants_count
  */
 class Inventory extends Model
 {
@@ -64,6 +66,11 @@ class Inventory extends Model
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function variants(): HasMany
+    {
+        return $this->hasMany(InventoryVariant::class);
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\Repositories\InventoryVariantServiceProvider;
+
 return [
 
     /*
@@ -173,6 +175,7 @@ return [
         App\Providers\Repositories\InventoryServiceProvider::class,
         App\Providers\Repositories\CategoryServiceProvider::class,
         App\Providers\Repositories\NormalOpeningHoursServiceProvider::class,
+        App\Providers\Repositories\InventoryVariantServiceProvider::class,
 
         App\Providers\Service\EmailServiceServiceProvider::class,
         App\Providers\Service\RegistrationServiceProvider::class,

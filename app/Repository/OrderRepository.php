@@ -124,7 +124,7 @@ class OrderRepository implements OrderContract
         return true;
     }
 
-    public function addItemToOder(Order $order, Inventory $inventoryItem, int $quantity): bool
+    public function addItemToOrder(Order $order, Inventory $inventoryItem, int $quantity): bool
     {
         $orderItem = new OrderItem(
             [
