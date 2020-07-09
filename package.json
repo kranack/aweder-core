@@ -18,12 +18,12 @@
         "webpack-s3-uploader": "^1.3.3"
     },
     "scripts": {
+        "build": "webpack --mode production && npm run copy-images",
         "copy-images": "rm -rf public/images && cp -R resources/images public/images/",
-        "prod": "webpack --config webpack.prod.js  && npm run copy-images",
-        "preview": "yarn run build && http-server dist",
+        "jest:config": "jest --showConfig",
         "test:unit": "./node_modules/jest/bin/jest.js",
         "lint": "vue-cli-service lint resources/js",
-        "jest:config": "jest --showConfig"
+        "start": "npm run copy-images && webpack --mode development --watch --progress"
     },
     "devDependencies": {
         "@babel/cli": "^7.4.4",
@@ -41,7 +41,7 @@
         "babel-jest": "^24.8.0",
         "babel-loader": "^8.0.6",
         "babel-plugin-transform-class-properties": "^6.24.1",
-        "clean-webpack-plugin": "^2.0.2",
+        "clean-webpack-plugin": "^3.0.0",
         "core-js": "^3.6.4",
         "css-loader": "^2.1.1",
         "eslint": "^6.7.2",

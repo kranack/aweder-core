@@ -51,11 +51,11 @@ merchantRegistration.init();
 const notificationBanner = new NotificationBanner();
 notificationBanner.init();
 
-const orderFilters = new OrderFilters();
-orderFilters.init();
-
 const openingTimes = new OpeningTimes();
 openingTimes.init();
+
+const orderFilters = new OrderFilters();
+orderFilters.init();
 
 const slugChecker = new SlugChecker();
 slugChecker.init();
