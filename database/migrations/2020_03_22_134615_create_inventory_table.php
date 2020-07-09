@@ -16,8 +16,8 @@ class CreateInventoryTable extends Migration
         if (!Schema::hasTable('inventories')) {
             Schema::create('inventories', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('merchant_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
-                $table->foreignId('category_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
+                $table->foreignId('merchant_id')->constrained('merchants')->onUpdate('CASCADE')->onDelete('CASCADE');
+                $table->foreignId('category_id')->constrained('categories')->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->text('title');
                 $table->text('description')->nullable();
                 $table->integer('price')->default(0);
