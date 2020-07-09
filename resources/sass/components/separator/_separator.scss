@@ -1,8 +1,17 @@
 .separator {
   @extend .flex,
-  .background-cloud-burst,
-  .margin-left-10,
+  .background-cloud-burst;
+  height: 1px;
+}
+
+.separator--small {
+  @extend .margin-left-10,
   .margin-right-10;
   width: 10px;
-  height: 1px;
+}
+
+.separator--large {
+  @extend .margin-left-20,
+  .margin-right-20;
+  width: 20px;
 }

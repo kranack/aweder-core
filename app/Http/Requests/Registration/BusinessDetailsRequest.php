@@ -26,7 +26,7 @@ class BusinessDetailsRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => ['image'],
+            //'logo' => ['image'],
             'name' => ['required'],
             'description' => ['required', new MaxWordsRule(100)],
             'url_slug' => ['required', 'alpha_dash', 'unique:merchants,url_slug'],

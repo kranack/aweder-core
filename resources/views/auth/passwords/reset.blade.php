@@ -29,8 +29,8 @@
                         <p class="field__error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="field field--buttons align-items-start margin-top-20">
-                        <button type="submit" class="button button-solid--carnation s-width-full">
+                    <div class="field field--buttons align-items-start margin-top-20 s-align-items-stretch">
+                        <button type="submit" class="button button-solid--carnation">
                             <span class="button__content">Reset password</span>
                             <span class="button__icon button__icon--right">@svg('arrow-right', 'fill-ecru-white')</span>
                         </button>

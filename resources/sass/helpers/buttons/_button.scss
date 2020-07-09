@@ -2,7 +2,7 @@
 
 .button {
   @extend
-  .flex,
+  .inline-flex,
   .justify-content-center,
   .align-items-center,
   .padding-left-30,
@@ -12,6 +12,7 @@
   .border-solid;
   height: 50px;
   width: auto;
+  cursor: pointer;
 }
 
 .button__content {

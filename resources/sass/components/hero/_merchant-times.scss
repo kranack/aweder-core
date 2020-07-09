@@ -1,0 +1,87 @@
+.hero__merchant-times {
+  @extend .inline-flex,
+  .align-items-center,
+  .margin-bottom-30;
+}
+
+.merchant-times__status {
+  @extend .body-xlarge,
+  .font-gibson-med,
+  .shrink-0;
+}
+
+.merchant-times__hours {
+  @extend .body-xlarge,
+  .font-gibson-book;
+}
+
+.merchant-times__icon {
+  @extend .flex,
+  .margin-left-20;
+}
+
+.merchant-times__icon svg {
+  max-width: 15px;
+  width: 100%;
+
+  @include mq(m) {
+    max-width: 11px;
+  }
+}
+
+.merchant-times__current {
+  @extend .relative;
+  cursor: pointer;
+}
+
+.merchant-times__timetable {
+  @extend .flex,
+  .flex-col,
+  .absolute,
+  .background-cloud-burst,
+  .padding-40,
+  .shadow-nav,
+  .opacity-0;
+  visibility: hidden;
+  top: 100%;
+  right: 0;
+  width: auto;
+
+  @include mq(l) {
+    @include _(l-padding-30);
+  }
+  @include mq(m) {
+    @include _(m-padding-20);
+  }
+}
+
+.merchant-times__timetable--open {
+  @extend .opacity-1;
+  visibility: visible;
+}
+
+.timetable__hours {
+  @extend .color-ecru-white,
+  .margin-bottom-10;
+}
+
+.timetable__hours:last-child {
+  @extend .margin-bottom-0;
+}
+
+.timetable__day {
+  @extend .body-small,
+  .font-gibson-semi,
+  .margin-right-40;
+}
+
+.timetable__time {
+  @extend .body-small,
+  .flex,
+  .align-items-center,
+  .justify-content-end;
+}
+
+.timetable__hours .separator {
+  @extend .background-ecru-white;
+}

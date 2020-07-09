@@ -1,0 +1,32 @@
+.hero__merchant-delivery {
+  @extend .flex,
+  .align-items-center,
+  .margin-bottom-30;
+}
+
+.hero__merchant-delivery p {
+  @extend .flex,
+  .align-items-center,
+  .body-small;
+}
+
+.hero__merchant-delivery .icon {
+  @extend .flex,
+  .margin-right-10;
+}
+
+.hero__merchant-delivery svg {
+  width: 100%;
+}
+
+.hero__merchant-delivery .icon--delivery svg {
+  max-width: 28px;
+}
+
+.hero__merchant-delivery .icon--pinpoint svg {
+  max-width: 15px;
+}
+
+.hero__merchant-delivery .icon--delivery .hollow {
+  @extend .opacity-0;
+}

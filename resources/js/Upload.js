@@ -1,11 +1,11 @@
-const Upload = class Upload {
+export default class Upload {
   uploadEls = document.querySelectorAll('.field--upload');
 
   getTargetEls = () => {
     this.uploadEls.forEach((upload) => {
       const input = upload.querySelectorAll('input')[0];
       const filename = upload.querySelectorAll('.upload__label')[0];
-      input.addEventListener('change', () => {
+      input.addEventListener('change', (event) => {
         this.showFileName(event, input, filename);
       });
     });
@@ -22,6 +22,4 @@ const Upload = class Upload {
       this.getTargetEls();
     }
   }
-};
-
-export default Upload;
+}

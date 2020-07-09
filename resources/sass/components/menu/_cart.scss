@@ -1,0 +1,18 @@
+.menu__cart {
+  @extend .inline-flex,
+  .align-items-center;
+
+  @include mq(sm) {
+    @include _(sm-hidden);
+  }
+}
+
+.menu__cart p {
+  @extend .font-gibson-med,
+  .body-medium;
+}
+
+.menu__cart .icon svg {
+  max-width: 24px;
+  width: 100%;
+}
