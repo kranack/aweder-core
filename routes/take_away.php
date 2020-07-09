@@ -2,6 +2,7 @@
 
 //This handles the magic for the stores
 Route::post('/{merchant}/take-away/add-to-order', 'Store\\Orders\\CreateController')
+    ->middleware(['is-correct-order-type'])
     ->name('store.order.add');
 Route::post('/{merchant}/take-away/{order}/submit-order', 'Store\\Orders\\SubmitController')
     ->name('store.order.submit');
