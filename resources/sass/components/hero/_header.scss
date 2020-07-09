@@ -1,5 +1,0 @@
-.hero__header {
-  @include mq(s) {
-    @include _(text-center);
-  }
-}

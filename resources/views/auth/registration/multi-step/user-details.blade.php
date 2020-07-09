@@ -12,21 +12,21 @@
                 action="{{ route('register.user-details.post') }}"
                 method="POST">
                 @csrf
-                    <div class="field col-span-6 m-col-span-10 sm-col-span-6  @error('email') field--error @enderror">
+                    <div class="field col-span-6 m-col-span-10 sm-col-span-6 @error('email')field--error @enderror">
                         <label class="label label--float" for="email">Email<sup>*</sup></label>
                         <input type="email" name="email" id="email" tabindex="1"  value="{{ old('email') }}" placeholder="Email" class="text-input" />
                         @error('email')
                         <p class="field__error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="field col-span-6 m-col-span-10 sm-col-span-6  @error('email') field--error @enderror">
+                    <div class="field col-span-6 m-col-span-10 sm-col-span-6 @error('password')field--error @enderror">
                         <label class="label label--float" for="password">Enter a strong password<sup>*</sup></label>
                         <input type="password" name="password" tabindex="2"  id="password" placeholder="Password" class="text-input" />
                         @error('password')
                         <p class="field__error">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="field col-span-6 m-col-span-10 sm-col-span-6  @error('email') field--error @enderror">
+                    <div class="field col-span-6 m-col-span-10 sm-col-span-6 @error('password-confirmeds')field--error @enderror">
                         <label class="label label--float" for="password-confirmed">Confirm password<sup>*</sup></label>
                         <input type="password" name="password-confirmed" tabindex="3"  id="password-confirmed" placeholder="Confirm password" class="text-input" />
                         @error('password-confirmed')

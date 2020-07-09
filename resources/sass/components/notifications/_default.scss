@@ -1,9 +1,28 @@
 .notification {
   @extend .absolute,
-  .radius-5,
   .flex,
-  .align-items-center;
-  top: 80px;
+  .align-items-center,
+  .body-medium,
+  .color-ecru-white,
+  .width-full;
+  top: 90px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.notification__message {
+  @extend .padding-top-20,
+  .padding-bottom-20,
+  .padding-left-20,
+  .padding-right-20,
+  .radius-5,
+  .text-center;
+}
+
+.notification--error .notification__message {
+  @extend .background-carnation;
+}
+
+.notification--success .notification__message {
+  @extend .background-success;
 }

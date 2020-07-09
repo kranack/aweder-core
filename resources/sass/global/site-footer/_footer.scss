@@ -41,3 +41,9 @@
     z-index: -1;
   }
 }
+
+.body-menu .site-footer {
+  @include mq(sm) {
+    @include _(sm-hidden);
+  }
+}

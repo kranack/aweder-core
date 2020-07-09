@@ -23,8 +23,9 @@ body {
   @include rem2px(font-size, 1.6);
   @extend .color-cloud-burst,
   .font-gibson-reg,
-  .background-silver-2;
-  margin: 0;
+  .background-silver-2,
+  .margin-0;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -33,10 +34,9 @@ body {
   background: transparent;
 }
 
-.site-wrapper {
-  @include mq(sm) {
-    overflow: hidden;
-  }
+.admin-wrapper,
+.admin-wrapper .content {
+  height: 100%;
 }
 
 section {
@@ -79,5 +79,22 @@ section {
   }
   @include mq(s) {
     @include _(s-container);
+  }
+}
+
+.admin-main {
+  @extend .col-gap;
+
+  @include mq(l) {
+    @include _(l-col-gap);
+  }
+  @include mq(m) {
+    @include _(m-col-gap);
+  }
+  @include mq(sm) {
+    @include _(sm-col-gap);
+  }
+  @include mq(s) {
+    @include _(s-col-gap);
   }
 }

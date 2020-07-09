@@ -1,7 +1,7 @@
 import axios from 'axios';
 import debounce from 'debounce';
 
-const SlugChecker = class SlugChecker {
+export default class SlugChecker {
   removeExistingValidationErrors = (element) => {
     const errors = element.parentElement.querySelector('.field__error--slug');
     if (errors) {
@@ -37,6 +37,4 @@ const SlugChecker = class SlugChecker {
       }, 600));
     }
   };
-};
-
-export default SlugChecker;
+}

@@ -12,18 +12,3 @@
   }
 }
 
-.hero__copy {
-  @extend .margin-top-40;
-
-  @include mq(sm) {
-    @include _(sm-margin-top-60)
-  }
-  @include mq(s) {
-    @include _(text-center);
-  }
-}
-
-.hero__copy p {
-  @extend .body-xlarge,
-  .color-carnation;
-}
