@@ -31,7 +31,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Category extends Model
 {
-
     protected $fillable = [
         'merchant_id',
         'category_id',
@@ -43,9 +42,6 @@ class Category extends Model
         return $this->hasMany(Inventory::class);
     }
 
-    /**
-     * @return HasMany
-     */
     public function inventoriesAvailable(): HasMany
     {
         return $this->hasMany(Inventory::class, 'category_id')->where('available', 1);
