@@ -1,0 +1,132 @@
+.inventory__item {
+  @extend .flex,
+  .background-off-white,
+  .border-top-solid,
+  .border-left-solid,
+  .border-right-solid,
+  .border-silver,
+  .border-width-1,
+  .padding-20,
+  .relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.inventory__item:before {
+  @extend .absolute,
+  .flex,
+  .background-casablanca;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  transition: height 0.3s ease-in-out;
+}
+
+.inventory__item--added:before {
+  height: 2px;
+}
+
+.inventory__categories .inventory__item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.inventory__categories .inventory__item:last-child {
+  @extend .border-bottom-solid;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.inventory__categories .inventory__item:only-of-type {
+  @extend .radius-5;
+}
+
+.inventory__image {
+  @extend .flex,
+  .align-items-center,
+  .align-self-center,
+  .justify-content-center,
+  .radius-5,
+  .background-off-white,
+  .border-width-1,
+  .border-solid,
+  .border-silver,
+  .margin-right-20;
+  width: 70px;
+  height: 70px;
+}
+
+.inventory__header {
+  @extend .flex;
+
+  @include mq(m) {
+    @include _(m-flex-col);
+  }
+}
+
+.inventory__header .separator {
+  @extend .relative;
+  top: 11px;
+
+  @include mq(m) {
+    @include _(m-hidden);
+  }
+}
+
+.inventory__details {
+  @extend .flex,
+  .flex-col,
+  .relative,
+  .grow-1,
+  .padding-right-80;
+}
+
+.inventory__title {
+  @extend .body-medium,
+  .font-gibson-med,
+  .shrink-0;
+}
+
+.inventory__description {
+  @extend .body-small,
+  .relative;
+  top: 1px;
+
+  @include mq(m) {
+    @include _(m-margin-bottom-20);
+  }
+}
+
+.inventory__price {
+  @extend .body-small,
+  .font-gibson-med;
+  margin-top: auto;
+}
+
+.inventory__button {
+  @extend .flex,
+  .align-items-center,
+  .absolute;
+  bottom: -2px;
+  right: 0;
+}
+
+.inventory__add {
+  @extend .body-medium,
+  .color-carnation,
+  .font-gibson-med;
+}
+
+.inventory__button--added .inventory__add {
+  @extend .color-casablanca;
+}
+
+.inventory__button svg {
+  @extend .fill-carnation;
+  width: 10px;
+}
+
+.inventory__button--added.inventory__button svg {
+  @extend .fill-casablanca;
+}

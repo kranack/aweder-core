@@ -16,3 +16,11 @@
   max-width: 24px;
   width: 100%;
 }
+
+.menu__cart .icon .logo-top {
+  @extend .fill-silver-4;
+}
+
+.menu__cart .icon .logo-bottom {
+  @extend .fill-silver-6;
+}

@@ -1,0 +1,26 @@
+.inventory__categories {
+  @extend .margin-bottom-80;
+
+  @include mq(m) {
+    @include _(m-margin-bottom-60);
+  }
+}
+
+.inventory__categories:last-child {
+  @extend .margin-bottom-0;
+}
+
+.inventory__category-name {
+  @extend .margin-bottom-50;
+
+  @include mq(m) {
+    @include _(m-margin-bottom-40);
+  }
+  @include mq(sm) {
+    @include _(sm-margin-bottom-20);
+  }
+}
+
+.inventory__category-name .header {
+  @extend .font-gibson-med;
+}
