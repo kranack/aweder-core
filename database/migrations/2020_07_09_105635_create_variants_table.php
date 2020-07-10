@@ -20,7 +20,7 @@ class CreateVariantsTable extends Migration
                 $table->foreignId('inventory_id')->index('inventory_id_variants')->constrained()->onDelete('RESTRICT');
                 $table->string('name');
                 $table->integer('price');
-                $table->dateTime('deleted_at')->nullable();
+                $table->softDeletes();
             });
         }
     }

@@ -19,9 +19,9 @@ class CreateInventoryOptionGroupsTable extends Migration
                 $table->timestamps();
                 $table->foreignId('inventory_id')->index('inventory_id_option_group')->constrained()->onDelete('RESTRICT');
                 $table->string('name');
-                $table->integer('title');
+                $table->string('title');
                 $table->boolean('required')->default(0);
-                $table->dateTime('deleted_at')->nullable();
+                $table->softDeletes();
             });
         }
     }

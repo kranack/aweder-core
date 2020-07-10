@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Contract\Repositories\InventoryVariantContract;
+use App\Inventory;
 use App\InventoryVariant;
 use App\Traits\HelperTrait;
 use Psr\Log\LoggerInterface;
@@ -31,5 +32,14 @@ class InventoryVariantRepository implements InventoryVariantContract
     protected function getModel(): InventoryVariant
     {
         return $this->model;
+    }
+
+    public function addVariantToInventoryItem(
+        InventoryVariant $inventoryVariant,
+        Inventory $inventory
+    ): InventoryVariant {
+        $inventory->variants()->save($inventoryVariant);
+
+        return $inventoryVariant;
     }
 }

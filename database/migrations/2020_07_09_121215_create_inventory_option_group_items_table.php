@@ -23,7 +23,7 @@ class CreateInventoryOptionGroupItemsTable extends Migration
                     ->onDelete('RESTRICT');
                 $table->string('name');
                 $table->integer('price_modified');
-                $table->dateTime('deleted_at');
+                $table->softDeletes();
             });
         }
     }

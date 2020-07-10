@@ -73,6 +73,11 @@ class Inventory extends Model
         return $this->hasMany(InventoryVariant::class);
     }
 
+    public function optionGroups(): HasMany
+    {
+        return $this->hasMany(InventoryOptionGroup::class);
+    }
+
     /**
      * @return string
      */
