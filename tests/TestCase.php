@@ -5,6 +5,7 @@ namespace Tests;
 use App\Category;
 use App\Inventory;
 use App\InventoryOptionGroup;
+use App\InventoryOptionGroupItem;
 use App\InventoryVariant;
 use App\Merchant;
 use App\NormalOpeningHour;
@@ -62,6 +63,15 @@ abstract class TestCase extends BaseTestCase
     protected function createAndReturnInventoryOptionGroup(array $optionGroupOverrideData = []): InventoryOptionGroup
     {
         return factory(InventoryOptionGroup::class)->create($optionGroupOverrideData);
+    }
+
+    /**
+     * @param array $optionGroupItemOverrideData
+     * @return InventoryOptionGroupItem
+     */
+    protected function createAndReturnInventoryOptionGroupItem(array $optionGroupItemOverrideData = []): InventoryOptionGroupItem
+    {
+        return factory(InventoryOptionGroupItem::class)->create($optionGroupItemOverrideData);
     }
 
     /**
