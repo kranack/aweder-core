@@ -34,6 +34,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\InventoryOptionGroup withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\InventoryOptionGroup withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\InventoryOptionGroupItem[] $items
+ * @property-read int|null $items_count
  */
 class InventoryOptionGroup extends Model
 {

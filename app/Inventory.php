@@ -47,6 +47,8 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Inventory whereImage($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\InventoryVariant[] $variants
  * @property-read int|null $variants_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\InventoryOptionGroup[] $optionGroups
+ * @property-read int|null $option_groups_count
  */
 class Inventory extends Model
 {
