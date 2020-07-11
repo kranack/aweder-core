@@ -45,7 +45,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
             $categoryOne = factory(Category::class)->create(
                 [
                     'merchant_id' => $merchant->id,
-                    'category_id' => 1,
+                    'order' => 1,
                     'title' => 'Starters',
                 ]
             );
@@ -53,7 +53,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
             $categoryTwo = factory(Category::class)->create(
                 [
                     'merchant_id' => $merchant->id,
-                    'category_id' => 2,
+                    'order' => 2,
                     'title' => 'Mains',
                 ]
             );
@@ -61,7 +61,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
             $categoryThree = factory(Category::class)->create(
                 [
                     'merchant_id' => $merchant->id,
-                    'category_id' => 3,
+                    'order' => 3,
                     'title' => 'Sides',
                 ]
             );
@@ -69,7 +69,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
             $categoryFour = factory(Category::class)->create(
                 [
                     'merchant_id' => $merchant->id,
-                    'category_id' => 4,
+                    'order' => 4,
                     'title' => 'Desserts',
                 ]
             );
@@ -79,7 +79,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
                     'title' => 'Nachos & Cheese',
-                    'description' => 'A lovely big service of Nachos & Cheese',
+                    'description' => 'A lovely big serving of Nachos & Cheese',
                     'price' => 500,
                     'available' => 1,
                 ]
@@ -89,8 +89,8 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
-                    'title' => 'Nachos,Cheese & Chilli',
-                    'description' => 'A lovely big service of Nachos & Cheese with some spicy Chilli',
+                    'title' => 'Nachos, Cheese & Chilli',
+                    'description' => 'A lovely big serving of Nachos & Cheese with some spicy Chilli',
                     'price' => 500,
                     'available' => 1,
                 ]
@@ -134,7 +134,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
                     'title' => 'Beef Burger',
-                    'description' => '100% prime short rib and chuck beef patty served in a toasted brioche bun smothered in a creamy tomato and gherkin sauce. With caramelised onions, beef tomato and baby gem.',
+                    'description' => '100% prime short rib and chuck beef patty served in a toasted brioche bun smothered in a creamy tomato and gherkin sauce. With caramelised onions, beef tomato and baby gem lettuce.',
                     'price' => 800,
                     'available' => 1,
                 ]
@@ -166,7 +166,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
-                    'title' => 'Chillie Con Carnie',
+                    'title' => 'Chilli con Carne',
                     'description' => '',
                     'price' => 800,
                     'available' => 1,
@@ -276,7 +276,7 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 [
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryFour->id,
-                    'title' => '3 Scoop Ice Cream',
+                    'title' => '3 Scoops of Ice Cream',
                     'description' => 'Chocolate, Vanilla or Strawberry ice cream',
                     'price' => 400,
                     'available' => 1,

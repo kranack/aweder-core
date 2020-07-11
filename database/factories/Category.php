@@ -11,7 +11,7 @@ $factory->define(Category::class, function (Faker $faker) {
         'merchant_id' =>  function () {
             return factory(Merchant::class)->create()->id;
         },
-        'category_id' => $faker->numberBetween(1, 4),
+        'order' => $faker->numberBetween(1, 100),
         'title' => $faker->word
     ];
 });

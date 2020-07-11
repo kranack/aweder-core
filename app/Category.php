@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -33,7 +34,8 @@ class Category extends Model
 {
     protected $fillable = [
         'merchant_id',
-        'category_id',
+        'parent_category_id',
+        'order',
         'title'
     ];
 
@@ -45,5 +47,15 @@ class Category extends Model
     public function inventoriesAvailable(): HasMany
     {
         return $this->hasMany(Inventory::class, 'category_id')->where('available', 1);
+    }
+
+    public function parentCategory(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'parent_category_id', 'id');
+    }
+
+    public function subcategories(): HasMany
+    {
+        return $this->hasMany(Category::class, 'parent_category_id', 'id');
     }
 }

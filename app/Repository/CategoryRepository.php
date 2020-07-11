@@ -64,7 +64,7 @@ class CategoryRepository implements CategoryContract
         foreach ($categories as $key => $value) {
             $category = $this->getModel()->create([
                 'merchant_id' => $merchant_id,
-                'category_id' => $key + 1,
+                'order' => $key + 1,
                 'title' => $value
             ]);
             $categoryCollection->add($category);
