@@ -12,8 +12,9 @@ class CategoryCreateRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
+        // TODO: Check merchant_id against user
         return true;
     }
 
