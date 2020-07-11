@@ -55,7 +55,7 @@ class CategoriesRepositoryTest extends TestCase
         foreach ($response as $category) {
             $this->assertDatabaseHas('categories', [
                 'merchant_id' => $merchant_id,
-                'category_id' => $category->category_id,
+                'order' => $category->order,
                 'title' => $category->title
             ]);
         }
@@ -84,7 +84,7 @@ class CategoriesRepositoryTest extends TestCase
         foreach ($response as $category) {
             $this->assertDatabaseHas('categories', [
                 'merchant_id' => $merchant_id,
-                'category_id' => $category->category_id,
+                'order' => $category->order,
                 'title' => $category->title
             ]);
         }
@@ -107,7 +107,7 @@ class CategoriesRepositoryTest extends TestCase
         foreach ($response as $category) {
             $this->assertDatabaseHas('categories', [
                 'merchant_id' => $merchant_id,
-                'category_id' => $category->category_id,
+                'order' => $category->order,
                 'title' => ''
             ]);
         }
