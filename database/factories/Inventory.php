@@ -39,8 +39,10 @@ $factory->state(Inventory::class, 'variants', function (Faker $faker) {
     ];
 });
 
-$factory->afterCreatingState(Inventory::class, 'variants', function (Inventory $inventory, $faker) {
-    $inventory->variants()->createMany(
-        factory(InventoryVariant::class, 2)->make()->toArray()
+$factory->afterCreatingState(Inventory::class, 'variants', function (Inventory $inventory, Faker $faker) {
+    $variant = factory(InventoryVariant::class)->create(['inventory_id' => $inventory->id]);
+
+    $inventory->variants()->save(
+        $variant
     );
 });

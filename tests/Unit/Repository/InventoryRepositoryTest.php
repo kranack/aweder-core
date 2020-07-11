@@ -133,12 +133,39 @@ class InventoryRepositoryTest extends TestCase
      * @test
      * @group Inv
      */
-    public function inventoryItemsNotReturnedWhenTheyHaveNoVariants()
+    public function inventoryItemsReturnedWhenTheyHaveNoVariants()
+    {
+        factory(Inventory::class)->create();
+
+        $result = $this->repository->getInventoryItemsWithoutVariants();
+
+        $this->assertTrue($result->count() === 1);
+    }
+
+    /**
+     * @test
+     * @group Inv
+     */
+    public function inventoryItemsNotReturnedWhenTheyHaveVariants()
     {
         factory(Inventory::class)->state('variants')->create();
 
         $result = $this->repository->getInventoryItemsWithoutVariants();
 
-        $this->assertCount(0, $result);
+        $this->assertSame(0, $result->count());
+    }
+
+    /**
+     * @test
+     */
+    public function correctInventoryItemCountIsReturnedWhenACombinationsIsCreated()
+    {
+        factory(Inventory::class)->create();
+
+        factory(Inventory::class)->state('variants')->create();
+
+        $result = $this->repository->getInventoryItemsWithoutVariants();
+
+        $this->assertSame(1, $result->count());
     }
 }
