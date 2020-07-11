@@ -58,5 +58,7 @@ class RetrospectiveOrderQuantitySplitter extends Command
             }
             $orderItem->delete();
         }
+
+        return;
     }
 }

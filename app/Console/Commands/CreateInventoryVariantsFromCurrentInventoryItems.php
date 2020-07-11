@@ -2,7 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Contract\Service\InventoryContract;
+use App\Contract\Repositories\InventoryContract;
+use App\Contract\Repositories\InventoryVariantContract;
+use App\Inventory;
+use App\InventoryVariant;
 use Illuminate\Console\Command;
 
 class CreateInventoryVariantsFromCurrentInventoryItems extends Command
@@ -34,10 +37,44 @@ class CreateInventoryVariantsFromCurrentInventoryItems extends Command
     /**
      * Execute the console command.
      *
+     * @param InventoryContract $inventoryRepository
+     * @param InventoryVariantContract $inventoryVariantRepository
      * @return mixed
      */
-    public function handle(InventoryContract $inventoryRepository)
-    {
+    public function handle(
+        InventoryContract $inventoryRepository,
+        InventoryVariantContract $inventoryVariantRepository
+    ) {
         $inventoryItems = $inventoryRepository->getInventoryItemsWithoutVariants();
+
+        if ($inventoryItems->isEmpty()) {
+            $this->info('No items to update');
+            return;
+        }
+
+        $this->info($inventoryItems->count() . ' Found and will have singular variants created for them.');
+
+        $bar = $this->output->createProgressBar($inventoryItems->count());
+
+        $bar->start();
+
+        $inventoryItems->each(function (Inventory $inventory, $key) use ($inventoryVariantRepository, $bar) {
+            $variant = new InventoryVariant(
+                [
+                    'name' => $inventory->title,
+                    'price' => $inventory->price,
+                ]
+            );
+
+            if (!$inventoryVariantRepository->addVariantToInventoryItem($variant, $inventory)) {
+                $this->error('There was an error creating a variant for item ' . $inventory->id);
+            }
+
+            $bar->advance();
+        });
+
+        $bar->finish();
+
+        return;
     }
 }
