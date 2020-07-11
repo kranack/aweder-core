@@ -16,12 +16,12 @@ class CreateInventoryOptionGroupsTable extends Migration
         if (!Schema::hasTable('inventory_option_groups')) {
             Schema::create('inventory_option_groups', function (Blueprint $table) {
                 $table->id();
-                $table->timestamps();
                 $table->foreignId('inventory_id')->index('inventory_id_option_group')->constrained()->onDelete('RESTRICT');
                 $table->string('name');
                 $table->string('title');
                 $table->boolean('required')->default(0);
                 $table->softDeletes();
+                $table->timestamps();
             });
         }
     }
