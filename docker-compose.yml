@@ -22,6 +22,7 @@ services:
         build: ./docker/php
         environment:
             PHP_MEMORY_LIMIT: '128M'
+            COMPOSER_MEMORY_LIMIT: '-1'
             DB_HOST: 'mysql'
             PHP_IDE_CONFIG: 'serverName=uk-restaurants.test'
         volumes:
