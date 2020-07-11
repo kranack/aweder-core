@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Traits;
+namespace Tests\Unit\Traits;
 
 use App\Merchant;
 use App\Order;
