@@ -3,6 +3,7 @@
 namespace App\Contract\Repositories;
 
 use App\Inventory;
+use Illuminate\Support\Collection;
 
 interface InventoryContract
 {
@@ -52,4 +53,10 @@ interface InventoryContract
         Inventory $inventoryItem,
         array $descriptionDetails = []
     ): Inventory;
+
+    /**
+     * returns a collection of inventory items that have no variants associated with them
+     * @return Collection
+     */
+    public function getInventoryItemsWithoutVariants(): Collection;
 }
