@@ -20,7 +20,7 @@ trait MigrationHelper
         $doctrineTable = Schema::getConnection()
             ->getDoctrineSchemaManager()
             ->listTableDetails($table);
-        dd($doctrineTable->getForeignKey());
+
         return $doctrineTable->hasIndex($index);
     }
 }

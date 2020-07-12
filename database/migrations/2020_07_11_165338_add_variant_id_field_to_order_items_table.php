@@ -40,7 +40,6 @@ class AddVariantIdFieldToOrderItemsTable extends Migration
                 if (Schema::hasColumn('order_items', 'variant_id')) {
                     if ($this->doesTableHaveForeignKey('order_items', 'order_items_variant_id_foreign')) {
                         $table->dropForeign(['variant_id']);
-
                     }
                     $table->dropColumn('variant_id');
                 }
