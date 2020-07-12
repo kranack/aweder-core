@@ -2,17 +2,16 @@
 
 namespace Tests\Unit\Command;
 
-use App\Contract\Repositories\InventoryVariantContract;
 use App\Inventory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Mockery;
 use Tests\TestCase;
 
 /**
  * Class CreateInventoryVariantsFromCurrentInventoryTest
  * @package Tests\Unit\Command
  * @group Inventory
+ * @coversDefaultClass \App\Console\Commands\CreateInventoryVariantsFromCurrentInventoryItems
  */
 class CreateInventoryVariantsFromCurrentInventoryTest extends TestCase
 {

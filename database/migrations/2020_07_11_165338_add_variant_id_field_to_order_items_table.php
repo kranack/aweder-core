@@ -20,6 +20,7 @@ class AddVariantIdFieldToOrderItemsTable extends Migration
                 if (!Schema::hasColumn('order_items', 'variant_id')) {
                     $table->foreignId('variant_id')
                         ->nullable()
+                        ->after('order_id')
                         ->constrained('inventory_variants')
                         ->onUpdate('CASCADE')
                         ->onDelete('CASCADE');
