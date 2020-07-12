@@ -70,6 +70,10 @@ class CreateInventoryVariantsFromCurrentInventoryItems extends Command
                 $this->error('There was an error creating a variant for item ' . $inventory->id);
             }
 
+            $inventory->price = null;
+
+            $inventory->save();
+
             $bar->advance();
         });
 
