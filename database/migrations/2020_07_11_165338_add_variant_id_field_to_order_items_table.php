@@ -19,6 +19,7 @@ class AddVariantIdFieldToOrderItemsTable extends Migration
             Schema::table('order_items', function (Blueprint $table) {
                 if (!Schema::hasColumn('order_items', 'variant_id')) {
                     $table->foreignId('variant_id')
+                        ->nullable()
                         ->constrained('inventory_variants')
                         ->onUpdate('CASCADE')
                         ->onDelete('CASCADE');
@@ -37,7 +38,11 @@ class AddVariantIdFieldToOrderItemsTable extends Migration
         if (Schema::hasTable('order_items')) {
             Schema::table('order_items', function (Blueprint $table) {
                 if (Schema::hasColumn('order_items', 'variant_id')) {
-                   $table->dropForeign(['variant_id']);
+                    if ($this->doesTableHaveForeignKey('order_items', 'order_items_variant_id_foreign')) {
+                        $table->dropForeign(['variant_id']);
+
+                    }
+                    $table->dropColumn('variant_id');
                 }
             });
         }
