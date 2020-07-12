@@ -74,43 +74,4 @@ class CreateInventoryVariantsFromCurrentInventoryTest extends TestCase
             ]
         );
     }
-
-    /**
-     * @test
-     */
-    public function commandFailsToCreateInventoryItemTestingCreationOfVariant()
-    {
-        $inventory = factory(Inventory::class)->create();
-
-        $this->assertCount(0, $inventory->variants);
-
-        $this->instance(
-            InventoryVariantContract::class,
-            Mockery::mock(InventoryVariantContract::class, function ($mock) {
-                $mock->shouldReceive('addVariantToInventoryItem')
-                    ->once()
-                    ->andReturn(false);
-            })
-        );
-
-        $this->artisan('inventory:create_inventory_variants_from_current_inventory')
-            ->expectsOutput('1 Found and will have singular variants created for them.')
-            ->expectsOutput('There was an error creating a variant for item ' . $inventory->id)
-            ->assertExitCode(0);
-
-        $this->assertDatabaseMissing(
-            'inventory_variants',
-            [
-                'inventory_id' => $inventory->id,
-            ]
-        );
-
-        $this->assertDatabaseMissing(
-            'inventories',
-            [
-                'price' => null,
-                'id' => $inventory->id,
-            ]
-        );
-    }
 }
