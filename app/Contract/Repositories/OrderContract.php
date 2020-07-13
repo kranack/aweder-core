@@ -239,4 +239,11 @@ interface OrderContract
      * @return array
      */
     public function getFrontendStatusesOnly(): array;
+
+    /**
+     * Returns a collection of orders where the order item doesnt contain a variant_id allowing us to update the
+     * records
+     * @return Collection
+     */
+    public function getOrdersWithOrderItemsThatNeedUpdated(): Collection;
 }

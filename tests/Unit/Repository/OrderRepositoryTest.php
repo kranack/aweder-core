@@ -556,6 +556,11 @@ class OrderRepositoryTest extends TestCase
         $this->assertCount(2, $result);
     }
 
+    public function returnsOrdersWithOrderItemsThatRequireVariantIdAddingToThem()
+    {
+
+    }
+
     public function statusDataProvider(): array
     {
         return [
@@ -569,7 +574,6 @@ class OrderRepositoryTest extends TestCase
             ['unacknowledged'],
         ];
     }
-
 
     public function submittedOrders(): array
     {

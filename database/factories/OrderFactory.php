@@ -3,6 +3,8 @@
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
 use App\Merchant;
+use App\Order;
+use App\OrderItem;
 use Faker\Generator as Faker;
 
 $factory->define(App\Order::class, function (Faker $faker) {
@@ -107,4 +109,20 @@ $factory->state(App\Order::class, 'Fulfilled', function () {
         'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
         'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
     ];
+});
+
+$factory->state(App\Order::class, 'With Variant Id Missing', function () {
+    return [
+        'status' => 'ready-to-buy',
+        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
+        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
+    ];
+});
+
+$factory->afterCreatingState(App\Order::class, 'With Variant Id Missing', function (App\Order $order, Faker $faker) {
+    $orderItem = factory(OrderItem::class)->state('No Variant')->create(['order_id' => $order->id]);
+
+    $order->items()->save(
+        $orderItem
+    );
 });

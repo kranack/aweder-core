@@ -313,4 +313,9 @@ class OrderRepository implements OrderContract
         }
         return $formattedMetrics;
     }
+
+    public function getOrdersWithOrderItemsThatNeedUpdated(): Collection
+    {
+        return new Collection();
+    }
 }

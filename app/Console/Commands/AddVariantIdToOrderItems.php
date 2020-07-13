@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Contract\Repositories\OrderContract;
 use Illuminate\Console\Command;
 
 class AddVariantIdToOrderItems extends Command
@@ -33,10 +34,18 @@ class AddVariantIdToOrderItems extends Command
     /**
      * Execute the console command.
      *
+     * @param OrderContract $orderRepository
      * @return mixed
      */
-    public function handle()
+    public function handle(OrderContract $orderRepository)
     {
-        //
+        $this->info('Starting command to update order items by adding variant id and title');
+
+        $ordersToUpdate = $orderRepository->getOrdersWithOrderItemsThatNeedUpdated();
+
+        if ($ordersToUpdate->isEmpty()) {
+            $this->info('No order items to update');
+            return;
+        }
     }
 }
