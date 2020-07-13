@@ -15,12 +15,12 @@ class InventoryOptionGroupRepository implements InventoryOptionGroupContract
     /**
      * @var InventoryOptionGroup
      */
-    protected $model;
+    protected InventoryOptionGroup $model;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(InventoryOptionGroup $model, LoggerInterface $logger)
     {

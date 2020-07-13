@@ -15,12 +15,12 @@ class InventoryVariantRepository implements InventoryVariantContract
     /**
      * @var InventoryVariant
      */
-    protected $model;
+    protected InventoryVariant $model;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(InventoryVariant $model, LoggerInterface $logger)
     {

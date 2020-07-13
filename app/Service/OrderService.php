@@ -26,12 +26,12 @@ class OrderService implements OrderContract
      * @var InventoryContract
      *
      */
-    protected $inventoryRepository;
+    protected InventoryContract $inventoryRepository;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(
         OrderRepositoryContract $orderRepository,
