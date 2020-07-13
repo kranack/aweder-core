@@ -21,7 +21,7 @@ class InventoryOptionGroupRepositoryTest extends TestCase
     /**
      * @var InventoryOptionGroupContract $repository
      */
-    protected $repository;
+    protected InventoryOptionGroupContract $repository;
 
     public function setUp(): void
     {

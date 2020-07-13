@@ -19,9 +19,9 @@ class InventoryOptionGroupItemsRepositoryTest extends TestCase
     use HelperTrait;
 
     /**
-     * @var InventoryOptionGroupItemsContract $repository
+     * @var InventoryOptionGroupItemContract $repository
      */
-    protected $repository;
+    protected InventoryOptionGroupItemContract $repository;
 
     public function setUp(): void
     {

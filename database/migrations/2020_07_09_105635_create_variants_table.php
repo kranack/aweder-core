@@ -16,11 +16,11 @@ class CreateVariantsTable extends Migration
         if (!Schema::hasTable('inventory_variants')) {
             Schema::create('inventory_variants', function (Blueprint $table) {
                 $table->id();
-                $table->timestamps();
                 $table->foreignId('inventory_id')->index('inventory_id_variants')->constrained()->onDelete('RESTRICT');
                 $table->string('name');
                 $table->integer('price');
                 $table->softDeletes();
+                $table->timestamps();
             });
         }
     }

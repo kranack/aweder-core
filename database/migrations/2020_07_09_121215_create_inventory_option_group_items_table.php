@@ -16,7 +16,6 @@ class CreateInventoryOptionGroupItemsTable extends Migration
         if (!Schema::hasTable('inventory_option_group_items')) {
             Schema::create('inventory_option_group_items', function (Blueprint $table) {
                 $table->id();
-                $table->timestamps();
                 $table->foreignId('inventory_option_group_id')
                     ->index('inventory_option_group_items_id')
                     ->constrained()
@@ -24,6 +23,7 @@ class CreateInventoryOptionGroupItemsTable extends Migration
                 $table->string('name');
                 $table->integer('price_modified');
                 $table->softDeletes();
+                $table->timestamps();
             });
         }
     }

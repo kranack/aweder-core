@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -36,4 +37,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class InventoryOptionGroupItem extends Model
 {
     use SoftDeletes;
+
+    public function optionGroup(): BelongsTo
+    {
+        return $this->belongsTo(InventoryOptionGroup::class);
+    }
 }

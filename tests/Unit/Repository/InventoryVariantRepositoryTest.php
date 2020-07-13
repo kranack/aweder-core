@@ -23,7 +23,7 @@ class InventoryVariantRepositoryTest extends TestCase
     /**
      * @var InventoryVariantContract $repository
      */
-    protected $repository;
+    protected InventoryVariantContract $repository;
 
     public function setUp(): void
     {
