@@ -47,14 +47,15 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryItems extends Command
         InventoryVariantContract $inventoryVariantRepository
     ) {
         $run = true;
-        if (App::environment() === 'production') {
+        if (App::isProduction()) {
             $run = $this->confirm(
-                'WARNING! This app is in production. This command manipulates inventory items in the db.
-                Are you sure you want to run it? [Y/N]'
+                'WARNING! This app is in production. This command manipulates inventory items in the db.'
+                . ' Are you sure you want to run it? [Y/N]'
             );
         }
 
         if (!$run) {
+            $this->info('Command Not Run');
             return;
         }
 

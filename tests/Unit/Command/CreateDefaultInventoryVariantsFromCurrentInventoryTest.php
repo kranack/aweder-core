@@ -6,6 +6,7 @@ use App\Contract\Repositories\InventoryVariantContract;
 use App\Inventory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\App;
 use Mockery;
 use Tests\TestCase;
 
@@ -57,6 +58,69 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryTest extends TestCase
 
         $this->artisan('inventory:create_default_inventory_variants_from_current_inventory')
             ->expectsOutput('1 Found and will have singular variants created for them.')
+            ->assertExitCode(0);
+
+        $this->assertDatabaseHas(
+            'inventory_variants',
+            [
+                'inventory_id' => $inventory->id,
+            ]
+        );
+
+        $this->assertDatabaseHas(
+            'inventories',
+            [
+                'price' => null,
+                'id' => $inventory->id,
+            ]
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function commandDoesNotRunInProduction()
+    {
+        app()->detectEnvironment(function () {
+            return 'production';
+        });
+
+        $inventory = factory(Inventory::class)->create();
+
+        $this->assertCount(0, $inventory->variants);
+
+        $this->app->environment();
+
+        $this->artisan('inventory:create_default_inventory_variants_from_current_inventory')
+            ->expectsConfirmation(
+                'WARNING! This app is in production. This command manipulates inventory items in the db.'
+                . ' Are you sure you want to run it? [Y/N]',
+                'no'
+            )->expectsOutput('Command Not Run')
+            ->assertExitCode(0);
+    }
+
+    /**
+     * @test
+     */
+    public function commandDoesRunInProduction()
+    {
+        app()->detectEnvironment(function () {
+            return 'production';
+        });
+
+        $inventory = factory(Inventory::class)->create();
+
+        $this->assertCount(0, $inventory->variants);
+
+        $this->app->environment();
+
+        $this->artisan('inventory:create_default_inventory_variants_from_current_inventory')
+            ->expectsConfirmation(
+                'WARNING! This app is in production. This command manipulates inventory items in the db.'
+                . ' Are you sure you want to run it? [Y/N]',
+                'yes'
+            )->expectsOutput('1 Found and will have singular variants created for them.')
             ->assertExitCode(0);
 
         $this->assertDatabaseHas(
