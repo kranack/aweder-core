@@ -12,12 +12,12 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
     /**
      * @var NormalOpeningHour
      */
-    protected $model;
+    protected NormalOpeningHour $model;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(NormalOpeningHour $model, LoggerInterface $logger)
     {

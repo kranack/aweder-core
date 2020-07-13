@@ -12,7 +12,7 @@ class SearchOrderService implements SearchOrderContract
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     /**
      * @var OrderContract

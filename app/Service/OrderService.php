@@ -26,12 +26,12 @@ class OrderService implements OrderContract
      * @var InventoryContract
      *
      */
-    protected $inventoryRepository;
+    protected InventoryContract $inventoryRepository;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(
         OrderRepositoryContract $orderRepository,
@@ -69,7 +69,7 @@ class OrderService implements OrderContract
             $inventoryItem = $this->inventoryRepository->getItemById($itemId);
 
             if ($inventoryItem->merchant_id === $merchant->id) {
-                return $this->orderRepository->addItemToOder($order, $inventoryItem, 1);
+                return $this->orderRepository->addItemToOrder($order, $inventoryItem, 1);
             }
 
             return false;

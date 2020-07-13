@@ -15,12 +15,12 @@ class InventoryRepository implements InventoryContract
     /**
      * @var Inventory
      */
-    protected $model;
+    protected Inventory $model;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(Inventory $model, LoggerInterface $logger)
     {

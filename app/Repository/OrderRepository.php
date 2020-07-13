@@ -22,12 +22,12 @@ class OrderRepository implements OrderContract
     /**
      * @var Order
      */
-    protected $model;
+    protected Order $model;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(Order $model, LoggerInterface $logger)
     {
@@ -124,7 +124,7 @@ class OrderRepository implements OrderContract
         return true;
     }
 
-    public function addItemToOder(Order $order, Inventory $inventoryItem, int $quantity): bool
+    public function addItemToOrder(Order $order, Inventory $inventoryItem, int $quantity): bool
     {
         $orderItem = new OrderItem(
             [

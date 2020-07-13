@@ -12,12 +12,12 @@ class UserRepository implements UserContract
     /**
      * @var User
      */
-    protected $model;
+    protected User $model;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(User $model, LoggerInterface $logger)
     {
