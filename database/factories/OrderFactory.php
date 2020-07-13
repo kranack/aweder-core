@@ -119,8 +119,32 @@ $factory->state(App\Order::class, 'With Variant Id Missing', function () {
     ];
 });
 
+$factory->state(App\Order::class, 'With Variant Id', function () {
+    return [
+        'status' => 'ready-to-buy',
+        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
+        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
+    ];
+});
+
 $factory->afterCreatingState(App\Order::class, 'With Variant Id Missing', function (App\Order $order, Faker $faker) {
-    $orderItem = factory(OrderItem::class)->state('No Variant')->create(['order_id' => $order->id]);
+    $orderItem = factory(OrderItem::class)->state('No Variant')->create(
+        [
+            'order_id' => $order->id,
+        ]
+    );
+
+    $order->items()->save(
+        $orderItem
+    );
+});
+
+$factory->afterCreatingState(App\Order::class, 'With Variant Id', function (App\Order $order, Faker $faker) {
+    $orderItem = factory(OrderItem::class)->create(
+        [
+            'order_id' => $order->id,
+        ]
+    );
 
     $order->items()->save(
         $orderItem

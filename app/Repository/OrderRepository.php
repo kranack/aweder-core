@@ -316,6 +316,8 @@ class OrderRepository implements OrderContract
 
     public function getOrdersWithOrderItemsThatNeedUpdated(): Collection
     {
-        return new Collection();
+        return $this->getModel()->whereHas('items', function (Builder $query) {
+            $query->whereNull('variant_id');
+        })->get();
     }
 }

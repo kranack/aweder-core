@@ -556,9 +556,41 @@ class OrderRepositoryTest extends TestCase
         $this->assertCount(2, $result);
     }
 
+    /**
+     * @test
+     * @group VariantId
+     */
     public function returnsOrdersWithOrderItemsThatRequireVariantIdAddingToThem()
     {
+        factory(Order::class, 4)->state('With Variant Id Missing')->create();
 
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedUpdated();
+
+        $this->assertCount(4, $result);
+    }
+
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnNoOrdersWhenNoneExist()
+    {
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedUpdated();
+
+        $this->assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnsOrdersWithOrderItemsThaHaveVariantId()
+    {
+        factory(Order::class, 1)->state('With Variant Id')->create();
+
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedUpdated();
+
+        $this->assertCount(0, $result);
     }
 
     public function statusDataProvider(): array
