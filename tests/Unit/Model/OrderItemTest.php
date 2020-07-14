@@ -21,7 +21,7 @@ class OrderItemTest extends TestCase
     /**
      * @var OrderItem
      */
-    protected $model;
+    protected OrderItem $model;
 
     public function setUp(): void
     {

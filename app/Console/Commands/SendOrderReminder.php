@@ -57,5 +57,7 @@ class SendOrderReminder extends Command
 
             $order->reminders()->save($reminderSent);
         });
+
+        return;
     }
 }

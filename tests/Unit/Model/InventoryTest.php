@@ -22,4 +22,24 @@ class InventoryTest extends TestCase
     {
         parent::setUp();
     }
+
+    /**
+     * @test
+     */
+    public function inventoryCreatedWithVariantsIsSaved(): void
+    {
+        $inventory = factory(Inventory::class)->state('variants')->create();
+
+        $this->assertTrue($inventory->variants()->count() !== 0);
+    }
+
+    /**
+     * @test
+     */
+    public function inventoryCreatedWithNoVariants(): void
+    {
+        $inventory = factory(Inventory::class)->create();
+
+        $this->assertTrue($inventory->variants()->count() === 0);
+    }
 }

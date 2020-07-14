@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Contract\Repositories\InventoryContract;
 use App\Traits\HelperTrait;
 use App\Inventory;
+use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
 use Illuminate\Support\Facades\DB;
 
@@ -84,6 +85,11 @@ class InventoryRepository implements InventoryContract
         ]);
 
         return $inventoryItem;
+    }
+
+    public function getInventoryItemsWithoutVariants(): Collection
+    {
+        return $this->getModel()->doesntHave('variants')->get();
     }
 
     protected function getModel(): Inventory

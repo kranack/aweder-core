@@ -31,8 +31,6 @@ class InventoryRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->createAndReturnInventoryItem([]);
-
         $this->repository = $this->app->make(InventoryContract::class);
     }
 
@@ -129,5 +127,45 @@ class InventoryRepositoryTest extends TestCase
             'price' => $inventoryData['amount'],
             'available' => $inventoryData['available']
         ]);
+    }
+
+    /**
+     * @test
+     * @group Inv
+     */
+    public function inventoryItemsReturnedWhenTheyHaveNoVariants()
+    {
+        factory(Inventory::class)->create();
+
+        $result = $this->repository->getInventoryItemsWithoutVariants();
+
+        $this->assertTrue($result->count() === 1);
+    }
+
+    /**
+     * @test
+     * @group Inv
+     */
+    public function inventoryItemsNotReturnedWhenTheyHaveVariants()
+    {
+        factory(Inventory::class)->state('variants')->create();
+
+        $result = $this->repository->getInventoryItemsWithoutVariants();
+
+        $this->assertSame(0, $result->count());
+    }
+
+    /**
+     * @test
+     */
+    public function correctInventoryItemCountIsReturnedWhenACombinationsIsCreated()
+    {
+        factory(Inventory::class)->create();
+
+        factory(Inventory::class)->state('variants')->create();
+
+        $result = $this->repository->getInventoryItemsWithoutVariants();
+
+        $this->assertSame(1, $result->count());
     }
 }
