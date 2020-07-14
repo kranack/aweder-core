@@ -178,6 +178,7 @@ return [
         App\Providers\Repositories\InventoryVariantServiceProvider::class,
         App\Providers\Repositories\InventoryOptionGroupServiceProvider::class,
         App\Providers\Repositories\InventoryOptionGroupItemServiceProvider::class,
+        App\Providers\Repositories\OrderItemServiceProvider::class,
 
         App\Providers\Service\EmailServiceServiceProvider::class,
         App\Providers\Service\RegistrationServiceProvider::class,

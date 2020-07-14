@@ -19,7 +19,7 @@ class AddVariantIdToOrderItems extends Command
      *
      * @var string
      */
-    protected $description = 'Adds the variant ID and required fields to the new order items table';
+    protected $description = 'Adds the variant ID and required fields to the order items table';
 
     /**
      * Create a new command instance.
