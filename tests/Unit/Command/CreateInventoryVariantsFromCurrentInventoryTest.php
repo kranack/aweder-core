@@ -27,7 +27,7 @@ class CreateInventoryVariantsFromCurrentInventoryTest extends TestCase
      */
     public function commandOutputsNothingFoundWhenNoInventoryItemsPresent()
     {
-        $this->artisan('inventory:create_inventory_variants_from_current_inventory')
+        $this->artisan('inventory:create_default_inventory_variants_from_current_inventory')
             ->expectsOutput('No items to update')
             ->assertExitCode(0);
     }
@@ -39,7 +39,7 @@ class CreateInventoryVariantsFromCurrentInventoryTest extends TestCase
     {
         factory(Inventory::class, 10)->create();
 
-        $this->artisan('inventory:create_inventory_variants_from_current_inventory')
+        $this->artisan('inventory:create_default_inventory_variants_from_current_inventory')
             ->expectsOutput('10 Found and will have singular variants created for them.')
             ->assertExitCode(0);
     }
@@ -53,7 +53,7 @@ class CreateInventoryVariantsFromCurrentInventoryTest extends TestCase
 
         $this->assertCount(0, $inventory->variants);
 
-        $this->artisan('inventory:create_inventory_variants_from_current_inventory')
+        $this->artisan('inventory:create_default_inventory_variants_from_current_inventory')
             ->expectsOutput('1 Found and will have singular variants created for them.')
             ->assertExitCode(0);
 
