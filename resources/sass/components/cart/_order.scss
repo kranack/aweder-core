@@ -1,0 +1,27 @@
+.cart__order {
+  @extend .flex,
+  .flex-col;
+}
+
+.cart__item {
+  @extend .inline-grid,
+  .flow-col,
+  .align-items-start;
+  grid-column-gap: 20px;
+}
+
+.cart__title {
+  @extend .body-small,
+  .font-gibson-med;
+}
+
+.cart__order .increment,
+.cart__price {
+  @extend .justify-content-end;
+}
+
+.cart__price {
+  @extend .body-small,
+  .font-gibson-med,
+  .color-cloud-burst-8;
+}

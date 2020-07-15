@@ -1,3 +1,11 @@
+.cart__buttons {
+  @extend .margin-top-40;
+}
+
+.cart__buttons .button {
+  @extend .width-full;
+}
+
 .button.menu__view {
   @extend .radius-0;
 }

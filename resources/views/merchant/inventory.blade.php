@@ -60,7 +60,7 @@
                     @else
                         <div class="menu__cart col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-hidden">
                             <span class="icon icon--logo-mark flex margin-right-20">@svg('aweder-logo-small')</span>
-                            <p>Your bag is empty</p>
+                            <p>Your order is empty</p>
                         </div>
                     @endif
                 </div>
@@ -87,9 +87,49 @@
                             @endforeach
                         </div>
                     @endif
-                    <div class="menu__order panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
+                    @if (isset($order))
+                        @if (!$order->items->isEmpty())
+                        <div class="cart panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
 
-                    </div>
+                        </div>
+                        @endif
+                    @else
+                        <div class="cart cart--empty panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
+                            <div class="cart__service flex align-items-center">
+                                <div class="field field--radio">
+                                    <input type="radio" name="service" id="delivery" class="radio-input hidden">
+                                    <label for="delivery" class="radio radio--standard">
+                                        <span class="radio__icon radio__icon--small"></span>
+                                        <span class="radio__label radio__label--small">Delivery</span>
+                                    </label>
+                                </div>
+                                <div class="field field--radio">
+                                    <input type="radio" name="service" id="collection" class="radio-input hidden">
+                                    <label for="collection" class="radio radio--standard">
+                                        <span class="radio__icon radio__icon--small"></span>
+                                        <span class="radio__label radio__label--small">Collection</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="cart__order">
+                                <div class="cart__item">
+                                    <p class="cart__title">Prawn crackers</p>
+                                    <div class="increment increment--small">
+                                        <span class="increment__type increment__type--down">@svg('minus', 'fill-casablanca')</span>
+                                        <span class="increment__value">1</span>
+                                        <span class="increment__type increment__type--up">@svg('add', 'fill-casablanca')</span>
+                                    </div>
+                                    <span class="cart__price text-right">£1.95</span>
+                                </div>
+                            </div>
+
+                            {{--<div class="cart__sbuttons">--}}
+                                {{--<button class="button button-outline--silver">--}}
+                                    {{--<span class="button__content">Place order</span>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="button button-solid--carnation hidden sm-flex menu__view" id="menu__view">

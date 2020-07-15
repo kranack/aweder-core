@@ -59,19 +59,6 @@
 
 .inventory__header {
   @extend .flex;
-
-  @include mq(m) {
-    @include _(m-flex-col);
-  }
-}
-
-.inventory__header .separator {
-  @extend .relative;
-  top: 11px;
-
-  @include mq(m) {
-    @include _(m-hidden);
-  }
 }
 
 .inventory__details {
@@ -90,8 +77,8 @@
 
 .inventory__description {
   @extend .body-small,
-  .relative;
-  top: 1px;
+  .relative,
+  .margin-top-10;
 
   @include mq(m) {
     @include _(m-margin-bottom-20);

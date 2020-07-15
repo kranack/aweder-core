@@ -97,7 +97,7 @@ interface OrderContract
      * @param int $quantity
      * @return bool
      */
-    public function addItemToOder(Order $order, Inventory $inventoryItem, int $quantity): bool;
+    public function addItemToOrder(Order $order, Inventory $inventoryItem, int $quantity): bool;
 
     /**
      * removes the order item from the DB

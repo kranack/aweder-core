@@ -1,0 +1,15 @@
+.cart__service {
+  @extend .padding-bottom-20,
+  .margin-bottom-20,
+  .border-width-1,
+  .border-bottom-solid,
+  .border-silver-5;
+}
+
+.cart__service .field {
+  @extend .margin-bottom-0;
+}
+
+.cart__service .field:first-child {
+  @extend .margin-right-60;
+}

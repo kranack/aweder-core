@@ -7,11 +7,10 @@
     <div class="inventory__details">
         <header class="inventory__header">
             <h3 class="inventory__title">{{ $item->title }}</h3>
-            @if ($item->description !== null && !empty($item->description))
-                <span class="separator separator--small"></span>
-                <p class="inventory__description">{{ $item->description }}</p>
-            @endif
         </header>
+        @if ($item->description !== null && !empty($item->description))
+            <p class="inventory__description">{{ $item->description }}</p>
+        @endif
         <span class="inventory__price">£{{ $item->getFormattedUKPriceAttribute($item->price) }}</span>
         <div class="inventory__button">
             <p class="inventory__add">Add</p>

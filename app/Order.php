@@ -66,6 +66,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDeliveryCost($value)
  * @property string|null $payment_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePaymentId($value)
+ * @property int $is_table_service
+ * @property int $is_collection
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsCollection($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsTableService($value)
  */
 class Order extends Model
 {

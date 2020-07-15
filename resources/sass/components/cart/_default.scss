@@ -1,0 +1,7 @@
+.cart {
+  @extend .shadow-order,
+  .inline-flex,
+  .flex-col,
+  .sticky;
+  top: 60px;
+}

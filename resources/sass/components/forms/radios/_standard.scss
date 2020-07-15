@@ -1,0 +1,42 @@
+.radio {
+  @extend .flex,
+  .align-items-center;
+}
+
+.radio__icon {
+  @extend .flex,
+  .align-items-center,
+  .justify-content-center,
+  .margin-right-20;
+}
+
+.radio--standard .radio__icon {
+  @extend .border-solid,
+  .border-cloud-burst,
+  .border-width-1,
+  .radius-100;
+}
+
+.radio__icon:before {
+  @extend .flex,
+  .background-casablanca,
+  .radius-100;
+  content: '';
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.radio--standard .radio__icon--small {
+  @extend .margin-right-10;
+  width: 20px;
+  height: 20px;
+}
+
+.radio--standard .radio__icon--small:before {
+  width: 14px;
+  height: 14px;
+}
+
+.radio-input:checked ~ .radio--standard .radio__icon:before {
+  transform:  scale(1);
+}
