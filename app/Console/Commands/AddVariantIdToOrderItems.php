@@ -49,7 +49,7 @@ class AddVariantIdToOrderItems extends Command
             return;
         }
 
-        $this->info('Adding default variant to ' . $ordersToUpdate->count(). ' Order(s)');
+        $this->info('Adding default variant to ' . $ordersToUpdate->count() . ' Order(s)');
 
         $bar = $this->output->createProgressBar($ordersToUpdate->count());
 
