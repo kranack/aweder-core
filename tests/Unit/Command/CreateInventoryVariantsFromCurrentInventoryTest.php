@@ -11,7 +11,6 @@ use Tests\TestCase;
  * Class CreateInventoryVariantsFromCurrentInventoryTest
  * @package Tests\Unit\Command
  * @group Inventory
- * @coversDefaultClass \App\Console\Commands\CreateInventoryVariantsFromCurrentInventoryItems
  */
 class CreateInventoryVariantsFromCurrentInventoryTest extends TestCase
 {

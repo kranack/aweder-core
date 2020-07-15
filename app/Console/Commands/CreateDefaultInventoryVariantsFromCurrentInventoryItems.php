@@ -2,20 +2,21 @@
 
 namespace App\Console\Commands;
 
+use App;
 use App\Contract\Repositories\InventoryContract;
 use App\Contract\Repositories\InventoryVariantContract;
 use App\Inventory;
 use App\InventoryVariant;
 use Illuminate\Console\Command;
 
-class CreateInventoryVariantsFromCurrentInventoryItems extends Command
+class CreateDefaultInventoryVariantsFromCurrentInventoryItems extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'inventory:create_inventory_variants_from_current_inventory';
+    protected $signature = 'inventory:create_default_inventory_variants_from_current_inventory';
 
     /**
      * The console command description.
@@ -45,6 +46,19 @@ class CreateInventoryVariantsFromCurrentInventoryItems extends Command
         InventoryContract $inventoryRepository,
         InventoryVariantContract $inventoryVariantRepository
     ) {
+        $run = true;
+        if (App::isProduction()) {
+            $run = $this->confirm(
+                'WARNING! This app is in production. This command manipulates inventory items in the db.'
+                . ' Are you sure you want to run it? [Y/N]'
+            );
+        }
+
+        if (!$run) {
+            $this->info('Command Not Run');
+            return;
+        }
+
         $inventoryItems = $inventoryRepository->getInventoryItemsWithoutVariants();
 
         if ($inventoryItems->isEmpty()) {
