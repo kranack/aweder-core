@@ -36,9 +36,9 @@ class AddVariantIdToOrderItems extends Command
      * Execute the console command.
      *
      * @param OrderContract $orderRepository
-     * @return mixed
+     * @return void
      */
-    public function handle(OrderContract $orderRepository)
+    public function handle(OrderContract $orderRepository): void
     {
         $this->info('Starting command to update order items by adding variant id and title');
 
@@ -56,12 +56,18 @@ class AddVariantIdToOrderItems extends Command
         $bar->start();
 
         $ordersToUpdate->each(function (Order $order) use ($bar) {
-            $items = $order->items()->where('variant_id', '=', null)->get();
+            $items = $order->items()
+                ->where('variant_id', '=', null)
+                ->with('inventory')
+                ->get();
+
             foreach ($items as $item) {
-                $inventory = $item->inventory()->first();
-                $defaultVariant = $inventory->variants()->first();
-                $item->variant_id = $defaultVariant->id;
-                $item->save();
+                $defaultVariant = $item->inventory->first()->variants->first();
+
+                if ($defaultVariant !== null) {
+                    $item->variant_id = $defaultVariant->id;
+                    $item->save();
+                }
             }
             $bar->advance();
         });

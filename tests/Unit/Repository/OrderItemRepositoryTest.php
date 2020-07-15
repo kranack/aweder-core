@@ -21,9 +21,9 @@ class OrderItemRepositoryTest extends TestCase
     use WithFaker;
 
     /**
-     * @var OrderContract
+     * @var OrderItemContract
      */
-    protected $repository;
+    protected OrderItemContract $repository;
 
     public function setUp(): void
     {

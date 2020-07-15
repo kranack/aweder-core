@@ -5,9 +5,10 @@
 use App\Merchant;
 use App\Order;
 use App\OrderItem;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 
-$factory->define(App\Order::class, function (Faker $faker) {
+$factory->define(Order::class, function (Faker $faker) {
     return [
         'url_slug' => $faker->regexify('[A-Za-z0-9_]{8}'),
         'merchant_id' => function () {
@@ -35,99 +36,99 @@ $factory->define(App\Order::class, function (Faker $faker) {
     ];
 });
 
-$factory->state(App\Order::class, 'Cancellable Order', function (Faker $faker) {
+$factory->state(Order::class, 'Cancellable Order', function (Faker $faker) {
     return [
         'status' => $faker->randomElement(['purchased', 'processing']),
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
+        'created_at' => Carbon::parse()->subMinutes(30),
     ];
 });
 
-$factory->state(App\Order::class, 'Unprocessed Order', function () {
+$factory->state(Order::class, 'Unprocessed Order', function () {
     return [
         'status' => 'purchased',
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
+        'created_at' => Carbon::parse()->subMinutes(30),
+        'order_submitted' => Carbon::parse()->subMinutes(30),
     ];
 });
 
-$factory->state(App\Order::class, 'Incomplete Order', function () {
+$factory->state(Order::class, 'Incomplete Order', function () {
     return [
         'status' => 'incomplete',
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(20),
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(5),
+        'created_at' => Carbon::parse()->subMinutes(20),
+        'order_submitted' => Carbon::parse()->subMinutes(5),
     ];
 });
 
-$factory->state(App\Order::class, 'Purchased Order', function () {
+$factory->state(Order::class, 'Purchased Order', function () {
     return [
         'status' => 'purchased',
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(5),
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(5),
+        'created_at' => Carbon::parse()->subMinutes(5),
+        'order_submitted' => Carbon::parse()->subMinutes(5),
     ];
 });
 
-$factory->state(App\Order::class, 'Payment Rejected', function () {
+$factory->state(Order::class, 'Payment Rejected', function () {
     return [
         'status' => 'payment-rejected',
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(5),
+        'order_submitted' => Carbon::parse()->subMinutes(5),
     ];
 });
 
-$factory->state(App\Order::class, 'Acknowledged Order', function () {
+$factory->state(Order::class, 'Acknowledged Order', function () {
     return [
         'status' => 'acknowledged',
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(5),
+        'order_submitted' => Carbon::parse()->subMinutes(5),
     ];
 });
 
-$factory->state(App\Order::class, 'Rejected Order', function () {
+$factory->state(Order::class, 'Rejected Order', function () {
     return [
         'status' => 'rejected',
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(5),
+        'order_submitted' => Carbon::parse()->subMinutes(5),
     ];
 });
 
-$factory->state(App\Order::class, 'Unacknowledged Order', function () {
+$factory->state(Order::class, 'Unacknowledged Order', function () {
     return [
         'status' => 'unacknowledged',
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(35),
+        'order_submitted' => Carbon::parse()->subMinutes(35),
     ];
 });
 
-$factory->state(App\Order::class, 'Ready To Buy Order', function () {
+$factory->state(Order::class, 'Ready To Buy Order', function () {
     return [
         'status' => 'ready-to-buy',
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
+        'created_at' => Carbon::parse()->subMinutes(30),
+        'order_submitted' => Carbon::parse()->subMinutes(30),
     ];
 });
 
 
-$factory->state(App\Order::class, 'Fulfilled', function () {
+$factory->state(Order::class, 'Fulfilled', function () {
     return [
         'status' => 'fulfilled',
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
+        'created_at' => Carbon::parse()->subMinutes(30),
+        'order_submitted' => Carbon::parse()->subMinutes(30),
     ];
 });
 
-$factory->state(App\Order::class, 'With Variant Id Missing', function () {
+$factory->state(Order::class, 'With Variant Id Missing', function () {
     return [
         'status' => 'ready-to-buy',
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
+        'created_at' => Carbon::parse()->subMinutes(30),
+        'order_submitted' => Carbon::parse()->subMinutes(30),
     ];
 });
 
-$factory->state(App\Order::class, 'With Variant Id', function () {
+$factory->state(Order::class, 'With Variant Id', function () {
     return [
         'status' => 'ready-to-buy',
-        'created_at' => \Carbon\Carbon::parse()->subMinutes(30),
-        'order_submitted' => \Carbon\Carbon::parse()->subMinutes(30),
+        'created_at' => Carbon::parse()->subMinutes(30),
+        'order_submitted' => Carbon::parse()->subMinutes(30),
     ];
 });
 
-$factory->afterCreatingState(App\Order::class, 'With Variant Id Missing', function (App\Order $order, Faker $faker) {
+$factory->afterCreatingState(Order::class, 'With Variant Id Missing', function (Order $order, Faker $faker) {
     $orderItem = factory(OrderItem::class)->state('No Variant')->create(
         [
             'order_id' => $order->id,
@@ -139,7 +140,7 @@ $factory->afterCreatingState(App\Order::class, 'With Variant Id Missing', functi
     );
 });
 
-$factory->afterCreatingState(App\Order::class, 'With Variant Id', function (App\Order $order, Faker $faker) {
+$factory->afterCreatingState(Order::class, 'With Variant Id', function (Order $order, Faker $faker) {
     $orderItem = factory(OrderItem::class)->create(
         [
             'order_id' => $order->id,

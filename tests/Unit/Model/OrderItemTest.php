@@ -25,7 +25,7 @@ class OrderItemTest extends TestCase
     protected OrderItem $model;
 
     /**
-     * @var OrderItemContract|mixed
+     * @var OrderItemContract
      */
     private OrderItemContract $repository;
 

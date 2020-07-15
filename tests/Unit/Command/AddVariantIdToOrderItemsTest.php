@@ -20,7 +20,7 @@ class AddVariantIdToOrderItemsTest extends TestCase
     use WithFaker;
 
     /**
-     * @var mixed
+     * @var OrderContract
      */
     private OrderContract $repository;
 
