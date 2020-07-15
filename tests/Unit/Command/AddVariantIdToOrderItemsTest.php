@@ -2,7 +2,8 @@
 
 namespace Tests\Unit\Command;
 
-use App\Contract\Repositories\OrderItemContract;
+use App\Contract\Repositories\OrderContract;
+use App\OrderItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -21,54 +22,22 @@ class AddVariantIdToOrderItemsTest extends TestCase
     /**
      * @var mixed
      */
-    private OrderItemContract $repository;
+    private OrderContract $repository;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->repository = app()->make(OrderItemContract::class);
+        $this->repository = app()->make(OrderContract::class);
     }
 
     /**
      * @test
      */
-    public function canFindOrderItemsWithMissingVariantIds(): void
+    public function noVariantIdsToAdd(): void
     {
-        $order = $this->createAndReturnOrderForStatus('Purchased Order');
-        $orderItem1 = $this->createAndReturnOrderItem([
-            'order_id' => $order,
-            'variant_id' => null
-        ]);
-        $orderItem2 = $this->createAndReturnOrderItem([
-            'order_id' => $order,
-        ]);
-
-        $this->assertDatabaseHas('orders', [
-            'id' => $order->id,
-        ]);
-
-        $this->assertCount(1, $this->repository->getOrderItemsWithMissingVariantIds());
-    }
-
-    /**
-     * @test
-     */
-    public function cannotFindMissingVariantIdInOrderItems(): void
-    {
-        $order = $this->createAndReturnOrderForStatus('Purchased Order');
-        $inventoryVariant = $this->createAndReturnInventoryVariant();
-
-        $orderItem1 = $this->createAndReturnOrderItem([
-            'order_id' => $order->id,
-            'variant_id' => $inventoryVariant->id
-        ]);
-
-        $orderItem2 = $this->createAndReturnOrderItem([
-            'order_id' => $order->id,
-            'variant_id' => $inventoryVariant->id
-        ]);
-
-        $this->assertCount(0, $this->repository->getOrderItemsWithMissingVariantIds());
+        $this->artisan('orders:add-variants-to-order-items')
+            ->expectsOutput('No order items to update')
+            ->assertExitCode(0);
     }
 
     /**
@@ -87,11 +56,14 @@ class AddVariantIdToOrderItemsTest extends TestCase
             'variant_id' => null
         ]);
 
-        $this->assertCount(1, $this->repository->getOrderItemsWithMissingVariantIds());
+        $this->assertCount(1, $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId()->toArray());
 
-        $this->artisan('orders:add-variants-to-order-items');
+        $this->artisan('orders:add-variants-to-order-items')
+            ->expectsOutput('Adding default variant to 1 Order(s)')
+            ->assertExitCode(0);
 
-        $this->assertCount(1, $this->repository->getOrderItemsWithMissingVariantIds());
-        $this->assertEquals($inventoryVariant->id, $orderItem1->variant_id);
+        $this->assertCount(0, $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId()->toArray());
+        $modifiedOrderItem = OrderItem::find($orderItem1->id);
+        $this->assertEquals(1, $modifiedOrderItem->variant_id);
     }
 }

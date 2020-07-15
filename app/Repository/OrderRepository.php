@@ -314,7 +314,7 @@ class OrderRepository implements OrderContract
         return $formattedMetrics;
     }
 
-    public function getOrdersWithOrderItemsThatNeedUpdated(): Collection
+    public function getOrdersWithOrderItemsThatNeedDefaultVariantId(): Collection
     {
         return $this->getModel()->whereHas('items', function (Builder $query) {
             $query->whereNull('variant_id');

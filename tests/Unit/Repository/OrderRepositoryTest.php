@@ -564,7 +564,7 @@ class OrderRepositoryTest extends TestCase
     {
         factory(Order::class, 4)->state('With Variant Id Missing')->create();
 
-        $result = $this->repository->getOrdersWithOrderItemsThatNeedUpdated();
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
 
         $this->assertCount(4, $result);
     }
@@ -575,7 +575,7 @@ class OrderRepositoryTest extends TestCase
      */
     public function returnNoOrdersWhenNoneExist()
     {
-        $result = $this->repository->getOrdersWithOrderItemsThatNeedUpdated();
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
 
         $this->assertCount(0, $result);
     }
@@ -588,7 +588,7 @@ class OrderRepositoryTest extends TestCase
     {
         factory(Order::class, 1)->state('With Variant Id')->create();
 
-        $result = $this->repository->getOrdersWithOrderItemsThatNeedUpdated();
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
 
         $this->assertCount(0, $result);
     }

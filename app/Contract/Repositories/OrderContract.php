@@ -245,5 +245,5 @@ interface OrderContract
      * records
      * @return Collection
      */
-    public function getOrdersWithOrderItemsThatNeedUpdated(): Collection;
+    public function getOrdersWithOrderItemsThatNeedDefaultVariantId(): Collection;
 }
