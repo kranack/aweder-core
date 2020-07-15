@@ -59,6 +59,7 @@ class AddVariantIdToOrderItems extends Command
             $items = $order->items()
                 ->where('variant_id', '=', null)
                 ->with('inventory')
+                ->with('inventory.variants')
                 ->get();
 
             foreach ($items as $item) {
