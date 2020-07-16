@@ -58,12 +58,11 @@ class AddVariantIdToOrderItems extends Command
         $ordersToUpdate->each(function (Order $order) use ($bar) {
             $items = $order->items()
                 ->where('variant_id', '=', null)
-                ->with('inventory')
-                ->with('inventory.variants')
+                ->with(['orderInventory', 'orderInventory.variants'])
                 ->get();
 
             foreach ($items as $item) {
-                $defaultVariant = $item->inventory->first()->variants->first();
+                $defaultVariant = $item->orderInventory->variants->first() ?? null;
 
                 if ($defaultVariant !== null) {
                     $item->variant_id = $defaultVariant->id;
