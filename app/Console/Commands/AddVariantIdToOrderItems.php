@@ -66,6 +66,7 @@ class AddVariantIdToOrderItems extends Command
 
                 if ($defaultVariant !== null) {
                     $item->variant_id = $defaultVariant->id;
+                    $item->title = $defaultVariant->name;
                     $item->save();
                 }
             }

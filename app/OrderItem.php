@@ -70,6 +70,14 @@ class OrderItem extends Model
     }
 
     /**
+     * @return BelongsTo
+     */
+    public function orderVariant(): BelongsTo
+    {
+        return $this->belongsTo(InventoryVariant::class, 'variant_id')->withTrashed();
+    }
+
+    /**
      * returns a overall price for the item devided by quantity
      * @return string
      */

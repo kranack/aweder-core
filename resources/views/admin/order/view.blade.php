@@ -15,7 +15,7 @@
         <div class="col col--lg-12-4 col--m-12-4 col--sm-6-6 merchant-order__order">
             <dl class="merchant-order__list">
                 @foreach ($order->items as $item)
-                    <dt>{{ $item->orderInventory->title }} x {{ $item->quantity }}</dt>
+                    <dt>{{ $item->title }} x {{ $item->quantity }}</dt>
                     <dd>&pound;{{ $item->getOrderItemPriceByQuantity() }}</dd>
                 @endforeach
                 @if ($order->getIsDeliveryOrCollection() === 'Delivery')
