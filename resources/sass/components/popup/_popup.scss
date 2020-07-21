@@ -3,7 +3,6 @@
     .row,
     .fixed,
     .flex,
-    .width-full,
     .align-items-center;
 
   z-index: 10;
@@ -21,10 +20,11 @@
     .m-col-start-1,
     .relative,
     .radius-5,
-    .padding-30;
+    .padding-30,
+    .m-padding-20;
   
   z-index: 1;
-  background: white;
+  background-color: white;
   max-height: 90vh;
   overflow-y: auto;
 }
@@ -32,10 +32,11 @@
 .popup__mask {
   @extend
     .absolute,
-    .width-full,
+    .background-black,
     .opacity-50;
 
-  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  background: black;
 }
