@@ -3,6 +3,8 @@ import 'regenerator-runtime/runtime';
 import MerchantOrderTypes from '@/js/components/shared/business_details/MerchantOrderTypes';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import Vue from 'vue';
+import Vuex from 'vuex';
+import store from './store';
 
 // Classes
 import AdminMenu from './AdminMenu';
@@ -30,12 +32,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 Vue.config.devtools = process.env.APP_ENV === 'local';
 Vue.config.productionTip = false;
 Vue.config.silent = false;
+Vue.use(Vuex);
 
 new Vue({
   components: {
     UrlSlugChecker,
     'merchant-order-types': MerchantOrderTypes,
   },
+  store,
 }).$mount('#app');
 
 // Init Classes
