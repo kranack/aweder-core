@@ -90,11 +90,6 @@
                     @if (isset($order))
                         @if (!$order->items->isEmpty())
                         <div class="cart panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
-
-                        </div>
-                        @endif
-                    @else
-                        <div class="cart cart--empty panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
                             <div class="cart__service flex align-items-center">
                                 <div class="field field--radio">
                                     <input type="radio" name="service" id="delivery" class="radio-input hidden">
@@ -113,21 +108,56 @@
                             </div>
                             <div class="cart__order">
                                 <div class="cart__item">
-                                    <p class="cart__title">Prawn crackers</p>
-                                    <div class="increment increment--small">
-                                        <span class="increment__type increment__type--down">@svg('minus', 'fill-casablanca')</span>
-                                        <input type="text" class="increment__value" value="1" />
-                                        <span class="increment__type increment__type--up">@svg('add', 'fill-casablanca')</span>
+                                    <div class="cart__line">
+                                        <p class="cart__title">Prawn crackers</p>
+                                        <div class="increment increment--small">
+                                            <span class="increment__type increment__type--down">@svg('minus', 'fill-casablanca')</span>
+                                            <input type="text" class="increment__value" value="1" />
+                                            <span class="increment__type increment__type--up">@svg('add', 'fill-casablanca')</span>
+                                        </div>
+                                        <span class="cart__price text-right">£1.95</span>
                                     </div>
+                                    <div class="cart__options">
+                                        <h5 class="cart__option-title">Sauces</h5>
+                                        <div class="cart__option-item">
+                                            <p class="cart__subtitle">
+                                                <span class="icon icon-add">@svg('add', 'fill-cloud-burst')</span>
+                                                Curry sauce</p>
+                                            <span class="cart__price text-right">£1.95</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="subtotal">
+                                <div class="subtotal__item">
+                                    <p class="subtotal__title">Subtotal</p>
+                                    <span class="cart__price text-right">£12.95</span>
+                                </div>
+                                <div class="subtotal__item subtotal__item--light">
+                                    <p class="subtotal__title">Delivery</p>
                                     <span class="cart__price text-right">£1.95</span>
                                 </div>
                             </div>
-
-                            {{--<div class="cart__sbuttons">--}}
-                                {{--<button class="button button-outline--silver">--}}
-                                    {{--<span class="button__content">Place order</span>--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
+                            <div class="total">
+                                <div class="total__item">
+                                    <p class="total__title">Total</p>
+                                    <span class="cart__price text-right">£12.95</span>
+                                </div>
+                            </div>
+                            <div class="cart__buttons">
+                                <button class="button button-solid--carnation">
+                                    <span class="button__content">Place order</span>
+                                </button>
+                            </div>
+                        </div>
+                        @endif
+                    @else
+                        <div class="cart cart--empty panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
+                            <div class="cart__buttons">
+                                <button class="button button-outline--silver">
+                                    <span class="button__content">Place order</span>
+                                </button>
+                            </div>
                         </div>
                     @endif
                 </div>

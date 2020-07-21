@@ -1,0 +1,39 @@
+.subtotal,
+.total {
+  @extend .flex,
+  .flex-col,
+  .margin-bottom-20;
+}
+
+.subtotal {
+  @extend .padding-bottom-15,
+  .border-bottom-solid,
+  .border-silver,
+  .border-width-1;
+}
+
+.subtotal__item,
+.total__item {
+  @extend .inline-grid,
+  .margin-bottom-5;
+  grid-template-columns: 1fr 1fr;
+}
+
+.subtotal__title,
+.total__item .total__title {
+  @extend .font-gibson-med;
+}
+
+.subtotal__title {
+  @extend .body-small;
+}
+
+.subtotal__item--light .subtotal__title,
+.subtotal__item--light .cart__price {
+  @extend .color-cloud-burst-5;
+}
+
+.total__item .total__title,
+.total__item--light .cart__price {
+  @extend .color-cloud-burst;
+}

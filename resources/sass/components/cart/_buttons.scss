@@ -1,5 +1,9 @@
 .cart__buttons {
-  @extend .margin-top-40;
+  @extend .margin-top-20;
+}
+
+.cart--empty .cart__buttons {
+  @extend .margin-top-0;
 }
 
 .cart__buttons .button {

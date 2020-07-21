@@ -1,0 +1,32 @@
+/* TRUNCATE MIXINS ============================================================================= */
+
+@mixin truncate() {
+  @each $size, $breakpoint in $breakpoints {
+    @if $size == 'xl' {
+      .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      @include placeholder(truncate) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    } @else {
+      @include mq($size) {
+        .#{$size}-truncate {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      @include placeholder(#{$size}-truncate) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+

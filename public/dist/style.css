@@ -442,19 +442,19 @@ button {
   .s-margin-140 {
     margin: 140px; } }
 
-.margin-top-0 {
+.margin-top-0, .cart__options .cart__price, .cart--empty .cart__buttons {
   margin-top: 0; }
 
 .margin-top-5 {
   margin-top: 5px; }
 
-.margin-top-10, .upload__label, .field__note, .inventory__description {
+.margin-top-10, .upload__label, .field__note, .inventory__description, .cart__options {
   margin-top: 10px; }
 
 .margin-top-15 {
   margin-top: 15px; }
 
-.margin-top-20 {
+.margin-top-20, .cart__buttons {
   margin-top: 20px; }
 
 .margin-top-30, .site-footer__branding .icon--cross, .auth__header p {
@@ -464,7 +464,7 @@ button {
   .site-footer__statement {
     margin-top: 30px; } }
 
-.margin-top-40, .feature__buttons, .cart__buttons {
+.margin-top-40, .feature__buttons {
   margin-top: 40px; }
 
 .margin-top-50 {
@@ -697,16 +697,18 @@ button {
   .field.opening-time:last-child {
     margin-bottom: 0; } }
 
-.margin-bottom-5 {
+.margin-bottom-5, .cart__option-title, .subtotal__item,
+.total__item {
   margin-bottom: 5px; }
 
-.margin-bottom-10, .timetable__hours, .hero__merchant-delivery p {
+.margin-bottom-10, .timetable__hours, .hero__merchant-delivery p, .cart__item {
   margin-bottom: 10px; }
 
 .margin-bottom-15 {
   margin-bottom: 15px; }
 
-.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .cart__service {
+.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .cart__service, .cart__order, .subtotal,
+.total {
   margin-bottom: 20px; }
 
 .margin-bottom-30, .site-footer__branding .icon--cross, .hero__merchant-times, .field, .inventory__subcategory {
@@ -1192,7 +1194,7 @@ button {
 .margin-right-5 {
   margin-right: 5px; }
 
-.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .checkbox--standard .checkbox__icon--small, .radio--standard .radio__icon--small, .separator--small {
+.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .checkbox--standard .checkbox__icon--small, .radio--standard .radio__icon--small, .separator--small, .cart__subtitle .icon {
   margin-right: 10px; }
 
 @media (max-width: 1440px) {
@@ -1926,10 +1928,10 @@ textarea.textarea-input {
   padding-bottom: 5px; }
 
 .padding-bottom-10, input.text-input,
-textarea.textarea-input {
+textarea.textarea-input, .cart__order {
   padding-bottom: 10px; }
 
-.padding-bottom-15 {
+.padding-bottom-15, .subtotal {
   padding-bottom: 15px; }
 
 .padding-bottom-20, .tab-menu__item, .notification__message, .cart__service {
@@ -2181,7 +2183,7 @@ textarea.textarea-input {
 .padding-left-10 {
   padding-left: 10px; }
 
-.padding-left-15 {
+.padding-left-15, .cart__options {
   padding-left: 15px; }
 
 .padding-left-20, .site-menu__button, .site-nav__burger, .admin-menu__link, .steps__list-item, .text-input--price, .checkbox--icon, .notification__message {
@@ -2711,7 +2713,8 @@ textarea.textarea-input {
   .s-grid {
     display: grid; } }
 
-.inline-grid, .steps__wrapper, .cart__item {
+.inline-grid, .steps__wrapper, .cart__line, .cart__option-item, .subtotal__item,
+.total__item {
   display: inline-grid; }
 
 @media (max-width: 1440px) {
@@ -2786,7 +2789,8 @@ textarea.textarea-input {
 
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__trigger, .admin__burger, .admin__burger:before,
-.admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .cart__order, .button.menu__view .button__icon, .increment, .increment__type, .increment__value {
+.admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .cart__order, .cart__item, .cart__options, .subtotal,
+.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value {
   display: flex; }
 
 @media (max-width: 1440px) {
@@ -2848,7 +2852,8 @@ textarea.textarea-input {
   .s-flex-row-reverse {
     flex-direction: row-reverse; } }
 
-.flex-col, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .merchant-times__timetable, .field, .upload, .upload__trigger, .inventory__details, .cart, .cart__order {
+.flex-col, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .merchant-times__timetable, .field, .upload, .upload__trigger, .inventory__details, .cart, .cart__order, .cart__item, .cart__options, .subtotal,
+.total {
   flex-direction: column; }
 
 @media (max-width: 768px) {
@@ -3234,7 +3239,7 @@ textarea.textarea-input {
   .s-align-self-stretch {
     align-self: stretch; } }
 
-.align-items-start, .cart__item {
+.align-items-start, .cart__line, .cart__option-item {
   align-items: flex-start; }
 
 @media (max-width: 1440px) {
@@ -4950,7 +4955,7 @@ textarea.textarea-input {
   .s-flow-row {
     grid-auto-flow: row; } }
 
-.flow-col, .cart__item {
+.flow-col, .cart__line, .cart__option-item {
   grid-auto-flow: column; }
 
 @media (max-width: 1440px) {
@@ -5107,7 +5112,7 @@ textarea.textarea-input {
   width: 100%; }
 
 .width-full, section, .row, .site-footer, .site-footer__branding .bowl, .site-footer__branding .icon--bowl, .site-footer__branding .icon--bowl svg, .hero__image .icon,
-.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button {
+.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__title, .cart__buttons .button {
   max-width: 100%;
   width: 100%; }
 
@@ -5166,7 +5171,8 @@ textarea.textarea-input {
   color: #F2EDDC; }
 
 .color-cloud-burst, body, input.text-input,
-textarea.textarea-input, .field--price:before, .opening-time__group:before, .menu__cat-link {
+textarea.textarea-input, .field--price:before, .opening-time__group:before, .menu__cat-link, .total__item .total__title,
+.total__item--light .cart__price {
   color: #243752; }
 
 .color-silver {
@@ -5191,7 +5197,8 @@ textarea.textarea-input, .field--price:before, .opening-time__group:before, .men
 .color-cloud-burst-6, .label.label--float {
   color: rgba(36, 55, 82, 0.6); }
 
-.color-cloud-burst-5, .upload__label, .field__note {
+.color-cloud-burst-5, .upload__label, .field__note, .subtotal__item--light .subtotal__title,
+.subtotal__item--light .cart__price {
   color: rgba(36, 55, 82, 0.5); }
 
 .color-cloud-burst-3, .tab-menu__item {
@@ -5222,7 +5229,7 @@ textarea.textarea-input, .field--price:before {
   font-display: swap; }
 
 .font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category-name h2, .inventory__subcategory, .inventory__title, .inventory__price, .inventory__add, .cart__title,
-.cart__price, .increment--small .increment__value {
+.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -5323,7 +5330,7 @@ textarea.textarea-input, .field--price:before {
   line-height: 1.5; }
 
 .body-small, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price,
-.cart__price {
+.cart__price, .cart__subtitle, .subtotal__title {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5; }
@@ -5395,6 +5402,36 @@ textarea.textarea-input, .field--price:before {
 .list-none {
   list-style-type: none; }
 
+/* TRUNCATE MIXINS ============================================================================= */
+.truncate, .cart__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+@media (max-width: 1440px) {
+  .l-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; } }
+
+@media (max-width: 1024px) {
+  .m-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; } }
+
+@media (max-width: 768px) {
+  .sm-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; } }
+
+@media (max-width: 500px) {
+  .s-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; } }
+
 /* TEXT TRANSFORM MIXINS ============================================================================= */
 .none {
   text-transform: none; }
@@ -5402,7 +5439,7 @@ textarea.textarea-input, .field--price:before {
 .capitalize {
   text-transform: capitalize; }
 
-.uppercase, .steps__title, .field__error, .label.label--float {
+.uppercase, .steps__title, .field__error, .label.label--float, .cart__option-title {
   text-transform: uppercase; }
 
 .lowercase {
@@ -5577,7 +5614,7 @@ textarea.textarea-input, .field--price:before {
 
 /* BORDER WIDTHS MIXINS ============================================================================= */
 .border-width-1, .button, .site-menu__button, .site-nav__burger, .admin-header, .hero__image--border, input.text-input,
-textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__service, .increment__type {
+textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .increment__type {
   border-width: 1px; }
 
 /* BORDER RADIUS MIXINS ============================================================================= */
@@ -5599,7 +5636,7 @@ textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .
   border-top-style: solid; }
 
 .border-bottom-solid, .admin-header, input.text-input,
-textarea.textarea-input, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .cart__service {
+textarea.textarea-input, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .cart__service, .cart__order, .subtotal {
   border-bottom-style: solid; }
 
 .border-right-solid, .inventory__item {
@@ -5791,7 +5828,7 @@ textarea.textarea-input, .tab-menu, .menu__categories, .inventory__categories .i
 textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload {
   border-color: #243752; }
 
-.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image {
+.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__order, .subtotal {
   border-color: #C7C7C7; }
 
 .border-off-white {
@@ -6535,11 +6572,29 @@ input[type="file"] {
 .cart {
   top: 60px; }
 
-.cart__item {
+.cart__line {
+  grid-template-columns: 120px 70px auto;
   grid-column-gap: 20px; }
 
 .cart__price {
   margin-top: 2px; }
+
+.cart__option-title {
+  font-size: 10px;
+  font-size: 1rem;
+  line-height: 20px; }
+
+.cart__option-item {
+  grid-template-columns: 120px auto;
+  grid-column-gap: 20px; }
+
+.cart__subtitle .icon svg {
+  width: 8px;
+  height: 8px; }
+
+.subtotal__item,
+.total__item {
+  grid-template-columns: 1fr 1fr; }
 
 .button.menu__view svg {
   max-width: 14px;
