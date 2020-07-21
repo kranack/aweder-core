@@ -1,0 +1,41 @@
+.popup {
+  @extend
+    .row,
+    .fixed,
+    .flex,
+    .width-full,
+    .align-items-center;
+
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.popup__box {
+  @extend
+    .col-span-6,
+    .col-start-4,
+    .m-col-span-12,
+    .m-col-start-1,
+    .relative,
+    .radius-5,
+    .padding-30;
+  
+  z-index: 1;
+  background: white;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.popup__mask {
+  @extend
+    .absolute,
+    .width-full,
+    .opacity-50;
+
+  height: 100%;
+  left: 0;
+  background: black;
+}
