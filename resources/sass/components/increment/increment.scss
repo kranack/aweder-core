@@ -29,7 +29,7 @@
 }
 
 .increment--small .increment__value {
-  @extend .body-medium,
+  @extend .body-small,
   .font-gibson-med;
   width: 35px;
 }

@@ -11,7 +11,14 @@
 }
 
 .button.menu__view {
-  @extend .radius-0;
+  @extend .radius-0,
+  .width-full;
+  left: 0;
+  bottom: 0;
+}
+
+.button.menu__view.menu__view--active {
+  @extend .fixed;
 }
 
 .button.menu__view .button__icon {

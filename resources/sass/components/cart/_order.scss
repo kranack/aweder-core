@@ -20,15 +20,19 @@
   @extend .inline-grid,
   .flow-col,
   .align-items-start;
-  grid-template-columns: 120px 70px auto;
+  grid-template-columns: auto 70px auto;
   grid-column-gap: 20px;
 }
 
+.cart__title,
+.cart__price {
+  @extend .body-small,
+  .font-gibson-med;
+}
+
 .cart__title {
-  @extend .body-medium,
-  .font-gibson-med,
-  .truncate,
-  .width-full;
+  @extend .truncate;
+  width: 100px;
 }
 
 .cart__order .increment,
@@ -37,10 +41,7 @@
 }
 
 .cart__price {
-  @extend .body-small,
-  .font-gibson-med,
-  .color-cloud-burst-8;
-  margin-top: 2px;
+  @extend .color-cloud-burst-8;
 }
 
 .cart__options {
@@ -62,23 +63,18 @@
   @extend .inline-grid,
   .flow-col,
   .align-items-start;
-  grid-template-columns: 120px auto;
   grid-column-gap: 20px;
 }
 
-.cart__subtitle {
-  @extend .body-small;
+.cart__option-item .cart__title {
+  width: 120px;
 }
 
-.cart__subtitle .icon {
+.cart__title .icon {
   @extend .margin-right-10;
 }
 
-.cart__subtitle .icon svg {
+.cart__title .icon svg {
   width: 8px;
   height: 8px;
-}
-
-.cart__options .cart__price {
-  @extend .margin-top-0;
 }

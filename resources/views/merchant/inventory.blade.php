@@ -66,7 +66,7 @@
                 </div>
             </div>
         </header>
-        <div class="menu__listing padding-bottom-140 sm-padding-bottom-0">
+        <div class="menu__listing padding-bottom-140 sm-padding-bottom-60">
             <div class="row">
                 <div class="content align-items-start">
                     @if (!$merchant->categories->isEmpty())
@@ -152,7 +152,7 @@
                         </div>
                         @endif
                     @else
-                        <div class="cart cart--empty panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
+                        <div class="cart cart--empty panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1 sm-hidden">
                             <div class="cart__buttons">
                                 <button class="button button-outline--silver">
                                     <span class="button__content">Place order</span>
@@ -162,7 +162,7 @@
                     @endif
                 </div>
             </div>
-            <div class="button button-solid--carnation hidden sm-flex menu__view" id="menu__view">
+            <div class="button button-solid--carnation hidden menu__view" id="menu__view">
                 <span class="button__icon button__icon--left">@svg('aweder-logo-small')</span>
                 <span class="button__content">View order</span>
                 <span class="separator separator--small"></span>
