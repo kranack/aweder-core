@@ -11,7 +11,7 @@
 }
 
 .cart__title {
-  @extend .body-small,
+  @extend .body-medium,
   .font-gibson-med;
 }
 
@@ -24,4 +24,5 @@
   @extend .body-small,
   .font-gibson-med,
   .color-cloud-burst-8;
+  margin-top: 2px;
 }

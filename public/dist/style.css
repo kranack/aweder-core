@@ -2178,7 +2178,7 @@ textarea.textarea-input {
 .padding-left-5, .opening-time__select {
   padding-left: 5px; }
 
-.padding-left-10, .increment__value {
+.padding-left-10 {
   padding-left: 10px; }
 
 .padding-left-15 {
@@ -2434,7 +2434,7 @@ textarea.textarea-input {
 .padding-right-5, .opening-time__select {
   padding-right: 5px; }
 
-.padding-right-10, .increment__value {
+.padding-right-10 {
   padding-right: 10px; }
 
 .padding-right-15 {
@@ -5317,13 +5317,13 @@ textarea.textarea-input, .field--price:before {
   font-size: 1.8rem;
   line-height: 1.5; }
 
-.body-medium, .button__content, .admin-menu__link, .admin__name, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add {
+.body-medium, .button__content, .admin-menu__link, .admin__name, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add, .cart__title, .increment--small .increment__value {
   font-size: 16px;
   font-size: 1.6rem;
   line-height: 1.5; }
 
-.body-small, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .cart__title,
-.cart__price, .increment--small .increment__value {
+.body-small, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price,
+.cart__price {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5; }
@@ -6537,6 +6537,9 @@ input[type="file"] {
 
 .cart__item {
   grid-column-gap: 20px; }
+
+.cart__price {
+  margin-top: 2px; }
 
 .button.menu__view svg {
   max-width: 14px;

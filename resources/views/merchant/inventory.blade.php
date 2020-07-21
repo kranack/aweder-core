@@ -116,7 +116,7 @@
                                     <p class="cart__title">Prawn crackers</p>
                                     <div class="increment increment--small">
                                         <span class="increment__type increment__type--down">@svg('minus', 'fill-casablanca')</span>
-                                        <span class="increment__value">1</span>
+                                        <input type="text" class="increment__value" value="1" />
                                         <span class="increment__type increment__type--up">@svg('add', 'fill-casablanca')</span>
                                     </div>
                                     <span class="cart__price text-right">£1.95</span>

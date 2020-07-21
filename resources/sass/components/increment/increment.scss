@@ -22,16 +22,14 @@
 }
 
 .increment__value {
-  @extend .padding-left-10,
-  .padding-right-10,
-  .flex,
+  @extend .flex,
   .justify-content-center,
   .shrink-0,
   .text-center;
 }
 
 .increment--small .increment__value {
-  @extend .body-small,
+  @extend .body-medium,
   .font-gibson-med;
   width: 35px;
 }
