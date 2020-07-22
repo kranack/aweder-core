@@ -1,0 +1,40 @@
+.increment {
+  @extend .flex,
+  .align-items-center,
+  .shrink-0;
+}
+
+.increment__type {
+  @extend .radius-100,
+  .border-solid,
+  .border-casablanca,
+  .border-width-1,
+  .flex,
+  .align-items-center,
+  .justify-content-center,
+  .shrink-0;
+  cursor: pointer;
+}
+
+.increment--small .increment__type {
+  width: 16px;
+  height: 16px;
+}
+
+.increment__value {
+  @extend .flex,
+  .justify-content-center,
+  .shrink-0,
+  .text-center;
+}
+
+.increment--small .increment__value {
+  @extend .body-small,
+  .font-gibson-med;
+  width: 35px;
+}
+
+.increment--small svg {
+  width: 6px;
+  height: auto;
+}

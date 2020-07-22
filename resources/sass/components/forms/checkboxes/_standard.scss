@@ -21,12 +21,8 @@
   stroke-dasharray: 40;
 }
 
-
-.checkbox__icon {
-  @extend .margin-right-20;
-}
-
 .checkbox--standard .checkbox__icon--small {
+  @extend .margin-right-10;
   width: 20px;
   height: 20px;
 }
