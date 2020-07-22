@@ -8,7 +8,7 @@
       @click="close()"
     />
     <div class="content">
-      <div class="popup__box col-span-6 col-start-4 m-col-span-12 m-col-start-1">
+      <div class="popup__box col-span-6 col-start-4 m-col-span-12 m-col-start-1 padding-30 m-padding-20">
         <slot />
       </div>
     </div>
