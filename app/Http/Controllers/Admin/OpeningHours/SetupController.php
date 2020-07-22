@@ -37,7 +37,6 @@ class SetupController extends Controller
             'admin.openingHours.index',
             [
                 'openingHours' => $openingHours,
-                'bodyClass' => 'body--auth',
                 'merchant' => $merchant,
             ]
         );

@@ -23,11 +23,13 @@
 .admin__greeting {
   @extend .relative,
   .justify-content-end;
+  pointer-events: none;
 
   @include mq(m) {
     @include _(m-padding-left-30);
     z-index: 4;
     cursor: pointer;
+    pointer-events: all;
   }
 }
 
@@ -62,8 +64,7 @@
 }
 
 .admin__trigger {
-  @extend .flex,
-  .justify-content-center,
+  @extend .justify-content-center,
   .flex-col;
   width: 20px;
   height: 11px;

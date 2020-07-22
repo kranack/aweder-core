@@ -1,0 +1,17 @@
+.dashboard-header {
+  @extend .margin-bottom-140;
+}
+
+.dashboard-header--copy {
+  margin-bottom: 74px;
+}
+
+.dashboard-title + p {
+  @extend .margin-top-40,
+  .body-large;
+}
+
+.dashboard-header p a {
+  @extend .text-underline;
+  color: inherit;
+}

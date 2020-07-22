@@ -464,7 +464,7 @@ button {
   .site-footer__statement {
     margin-top: 30px; } }
 
-.margin-top-40, .feature__buttons {
+.margin-top-40, .feature__buttons, .dashboard-title + p {
   margin-top: 40px; }
 
 .margin-top-50 {
@@ -727,13 +727,13 @@ button {
 .margin-bottom-60, .auth__header, .register {
   margin-bottom: 60px; }
 
-.margin-bottom-80, .tab-nav, .inventory__categories {
+.margin-bottom-80, .tab-nav, .inventory__categories, .metric {
   margin-bottom: 80px; }
 
 .margin-bottom-100 {
   margin-bottom: 100px; }
 
-.margin-bottom-140 {
+.margin-bottom-140, .dashboard-header {
   margin-bottom: 140px; }
 
 @media (max-width: 1440px) {
@@ -968,7 +968,7 @@ button {
 .margin-left-15 {
   margin-left: 15px; }
 
-.margin-left-20, .site-menu__item, .merchant-times__icon, .separator--large {
+.margin-left-20, .site-menu__item, .merchant-times__icon, .separator--large, .metric__count {
   margin-left: 20px; }
 
 .margin-left-30 {
@@ -1188,7 +1188,7 @@ button {
   .s-margin-left-140 {
     margin-left: 140px; } }
 
-.margin-right-0, .site-footer__item:last-child, .menu__cat-item:last-child {
+.margin-right-0, .site-footer__item:last-child, .tab-nav--dashboard .tab-menu__item:last-child, .menu__cat-item:last-child, .metric__item:last-child {
   margin-right: 0; }
 
 .margin-right-5 {
@@ -1223,7 +1223,7 @@ button {
 .margin-right-60, .cart__service .field:first-child {
   margin-right: 60px; }
 
-.margin-right-80, .menu__cat-item {
+.margin-right-80, .tab-nav--dashboard .tab-menu__item, .menu__cat-item, .metric__item {
   margin-right: 80px; }
 
 .margin-right-100 {
@@ -1708,7 +1708,7 @@ textarea.textarea-input {
 .padding-top-60, .feature {
   padding-top: 60px; }
 
-.padding-top-80, .steps__col {
+.padding-top-80, .steps__col, .admin-main {
   padding-top: 80px; }
 
 .padding-top-100 {
@@ -1949,7 +1949,7 @@ textarea.textarea-input, .cart__order {
 .padding-bottom-60, .feature {
   padding-bottom: 60px; }
 
-.padding-bottom-80, .steps__col {
+.padding-bottom-80, .steps__col, .admin-main {
   padding-bottom: 80px; }
 
 .padding-bottom-100 {
@@ -2675,7 +2675,7 @@ textarea.textarea-input, .cart__order {
     padding-right: 140px; } }
 
 /* DISPLAY MIXINS ============================================================================= */
-.inline-flex, .button, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart {
+.inline-flex, .button, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart, .metric {
   display: inline-flex; }
 
 @media (max-width: 1440px) {
@@ -2788,9 +2788,9 @@ textarea.textarea-input, .cart__order {
     display: none; } }
 
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
-.site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__trigger, .admin__burger, .admin__burger:before,
+.site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
 .admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .cart__order, .cart__item, .cart__options, .subtotal,
-.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value {
+.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count {
   display: flex; }
 
 @media (max-width: 1440px) {
@@ -3239,7 +3239,7 @@ textarea.textarea-input, .cart__order {
   .s-align-self-stretch {
     align-self: stretch; } }
 
-.align-items-start, .cart__line, .cart__option-item {
+.align-items-start, .cart__line, .cart__option-item, .admin-main {
   align-items: flex-start; }
 
 @media (max-width: 1440px) {
@@ -3258,7 +3258,7 @@ textarea.textarea-input, .cart__order {
   .s-align-items-start {
     align-items: flex-start; } }
 
-.align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .increment, .increment__type {
+.align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .increment, .increment__type, .metric__item, .metric__count {
   align-items: center; }
 
 @media (max-width: 1440px) {
@@ -3490,7 +3490,7 @@ textarea.textarea-input, .cart__order {
   .s-justify-content-start {
     justify-content: flex-start; } }
 
-.justify-content-center, .button, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value {
+.justify-content-center, .button, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value, .metric__count {
   justify-content: center; }
 
 @media (max-width: 1024px) {
@@ -4881,7 +4881,7 @@ textarea.textarea-input, .cart__order {
     grid-row-start: 6; } }
 
 /* GAP MIXINS ============================================================================= */
-.col-gap, .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper {
+.col-gap, .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .dashboard-content {
   column-gap: 40px; }
 
 @media (max-width: 1440px) {
@@ -4889,7 +4889,7 @@ textarea.textarea-input, .cart__order {
     column-gap: 30px; } }
 
 @media (max-width: 1440px) {
-  .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper {
+  .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .dashboard-content {
     column-gap: 30px; } }
 
 @media (max-width: 1024px) {
@@ -4897,7 +4897,7 @@ textarea.textarea-input, .cart__order {
     column-gap: 20px; } }
 
 @media (max-width: 1024px) {
-  .content, .admin-main, .admin-nav, .admin-header, .steps__wrapper, .form-inline, .field-wrapper {
+  .content, .admin-main, .admin-nav, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .dashboard-content {
     column-gap: 20px; } }
 
 @media (max-width: 768px) {
@@ -4905,7 +4905,7 @@ textarea.textarea-input, .cart__order {
     column-gap: 20px; } }
 
 @media (max-width: 768px) {
-  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper {
+  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper, .dashboard-content {
     column-gap: 20px; } }
 
 @media (max-width: 500px) {
@@ -4913,7 +4913,7 @@ textarea.textarea-input, .cart__order {
     column-gap: 10px; } }
 
 @media (max-width: 500px) {
-  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper {
+  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper, .dashboard-content {
     column-gap: 10px; } }
 
 .row-gap-xl {
@@ -5218,7 +5218,7 @@ textarea.textarea-input, .field--price:before, .opening-time__group:before, .men
   color: rgba(36, 55, 82, 0.3); }
 
 /* TEXT DECORATION MIXINS ============================================================================= */
-.text-underline, .site-footer__statement p a {
+.text-underline, .site-footer__statement p a, .dashboard-header p a {
   text-decoration: underline; }
 
 .text-line-through {
@@ -5242,7 +5242,7 @@ textarea.textarea-input, .field--price:before {
   font-display: swap; }
 
 .font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category-name h2, .inventory__subcategory, .inventory__title, .inventory__price, .inventory__add, .cart__title,
-.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value {
+.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .metric__count {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -5332,7 +5332,7 @@ textarea.textarea-input, .field--price:before {
       font-size: 1.8rem;
       line-height: 1.5; } }
 
-.body-large, .site-footer__link, .feature__copy, .steps__list-item {
+.body-large, .site-footer__link, .feature__copy, .steps__list-item, .dashboard-title + p, .metric__item p {
   font-size: 18px;
   font-size: 1.8rem;
   line-height: 1.5; }
@@ -5619,7 +5619,7 @@ textarea.textarea-input, .field--price:before {
 .background-silver-2, body {
   background-color: rgba(199, 199, 199, 0.2); }
 
-.background-silver-4, .grid__item, .opening-time__select {
+.background-silver-4, .grid__item, .opening-time__select, .metric__count {
   background-color: rgba(199, 199, 199, 0.4); }
 
 .background-off-white-0, .admin-menu__link {
@@ -5637,7 +5637,7 @@ textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .
 .radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image {
   border-radius: 5px; }
 
-.radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type {
+.radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count {
   border-radius: 100%; }
 
 @media (max-width: 1024px) {
@@ -6994,10 +6994,6 @@ body {
 .body-marketing {
   background: transparent; }
 
-.admin-wrapper,
-.admin-wrapper .content {
-  height: 100%; }
-
 .site-menu__button {
   height: 40px; }
   @media (max-width: 768px) {
@@ -7173,10 +7169,13 @@ body {
 .admin-header {
   height: 80px; }
 
-@media (max-width: 1024px) {
-  .admin__greeting {
-    z-index: 4;
-    cursor: pointer; } }
+.admin__greeting {
+  pointer-events: none; }
+  @media (max-width: 1024px) {
+    .admin__greeting {
+      z-index: 4;
+      cursor: pointer;
+      pointer-events: all; } }
 
 .admin__trigger svg {
   width: 8px; }
@@ -7453,6 +7452,9 @@ input[type="file"] {
 .tab-menu__item.tab-menu__item--active:before {
   width: 100%; }
 
+.tab-menu__link {
+  color: inherit; }
+
 .panel--radius-bottom {
   border-radius: 0 0 5px 5px; }
 
@@ -7610,4 +7612,21 @@ input[type="file"] {
 .increment--small svg {
   width: 6px;
   height: auto; }
+
+.dashboard-header--copy {
+  margin-bottom: 74px; }
+
+.dashboard-header p a {
+  color: inherit; }
+
+.metric__count {
+  width: 50px;
+  height: 50px; }
+
+.admin-wrapper,
+.admin-wrapper .content {
+  height: 100%; }
+
+.admin-wrapper .content {
+  grid-template-rows: auto 1fr; }
 

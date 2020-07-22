@@ -78,7 +78,6 @@ class DashboardController extends Controller
             'admin.dashboard.dashboard',
             [
                 'dashboardMetrics' => $dashboardMetrics,
-                'bodyClass' => 'body--auth body--dash',
                 'orders' => $orders,
                 'filterOptions' => $repository->getFormattedStatuses(),
                 'statusFilter' => $request->status,

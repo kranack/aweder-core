@@ -25,7 +25,7 @@ class SetupController extends Controller
         $user = $userRepository->getUserWithMerchants(Auth::id());
         $merchant = $user->merchants()->first();
 
-        return view('admin.inventory.index', ['bodyClass' => 'body--auth'])
+        return view('admin.inventory.index')
             ->with(
                 'fullInventory',
                 $categoryRepository->getCategoryAndInventoryListForUser($user->merchants()->first()->id)
