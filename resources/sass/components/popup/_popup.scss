@@ -1,9 +1,8 @@
 .popup {
-  @extend
-    .row,
-    .fixed,
-    .flex,
-    .align-items-center;
+  @extend .row,
+  .fixed,
+  .flex,
+  .align-items-center;
 
   z-index: 10;
   top: 0;
@@ -13,15 +12,14 @@
 }
 
 .popup__box {
-  @extend
-    .col-span-6,
-    .col-start-4,
-    .m-col-span-12,
-    .m-col-start-1,
-    .relative,
-    .radius-5,
-    .padding-30,
-    .m-padding-20;
+  @extend .col-span-6,
+  .col-start-4,
+  .m-col-span-12,
+  .m-col-start-1,
+  .relative,
+  .radius-5,
+  .padding-30,
+  .m-padding-20;
   
   z-index: 1;
   background-color: white;
@@ -30,10 +28,9 @@
 }
 
 .popup__mask {
-  @extend
-    .absolute,
-    .background-black,
-    .opacity-50;
+  @extend .absolute,
+  .background-black,
+  .opacity-50;
 
   top: 0;
   right: 0;
