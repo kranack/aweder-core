@@ -2,6 +2,7 @@ import 'core-js';
 import 'regenerator-runtime/runtime';
 import MerchantOrderTypes from '@/js/components/shared/business_details/MerchantOrderTypes';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
+import Popup from '@/js/components/shared/Popup';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store';
@@ -38,6 +39,7 @@ new Vue({
   components: {
     UrlSlugChecker,
     'merchant-order-types': MerchantOrderTypes,
+    Popup,
   },
   store,
 }).$mount('#app');
