@@ -80,7 +80,15 @@
                                         {{--@TODO add if sub category--}}
                                         <h3 class="inventory__subcategory">Sub category</h3>
                                         @foreach ($category->inventoriesAvailable as $inventory)
-                                            <x-display-item :item="$inventory" :editable="$editable" :merchant="$merchant" :order="$order ?? null" />
+                                            <inventory-item
+                                                @added=""
+                                                item-id="{{ $inventory->id }}"
+                                                title="{{ $inventory->title }}"
+                                                description="{{ $inventory->description }}"
+                                                price="{{ $inventory->getFormattedUKPriceAttribute($inventory->price) }}"
+                                                {{-- image="{{ $inventory->getTemporaryInventoryImageLink() }}" --}}
+                                                :editable="{{ $editable ? 'true' : 'false' }}"
+                                            ></inventory-item>
                                         @endforeach
                                     </div>
                                 @endif
