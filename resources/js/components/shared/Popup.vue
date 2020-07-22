@@ -1,14 +1,14 @@
 <template>
   <div
     v-if="isActive"
-    class="popup"
+    class="popup row"
   >
     <div
       class="popup__mask"
       @click="close()"
     />
     <div class="content">
-      <div class="popup__box">
+      <div class="popup__box col-span-6 col-start-4 m-col-span-12 m-col-start-1">
         <slot />
       </div>
     </div>

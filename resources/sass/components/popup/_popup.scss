@@ -1,5 +1,5 @@
 .popup {
-  @extend .row,
+  @extend
   .fixed,
   .flex,
   .align-items-center;
@@ -12,23 +12,21 @@
 }
 
 .popup__box {
-  @extend .col-span-6,
-  .col-start-4,
-  .m-col-span-12,
-  .m-col-start-1,
+  @extend 
   .relative,
   .radius-5,
   .padding-30,
-  .m-padding-20;
+  .m-padding-20,
+  .background-ghost-white;
   
   z-index: 1;
-  background-color: white;
   max-height: 90vh;
   overflow-y: auto;
 }
 
 .popup__mask {
-  @extend .absolute,
+  @extend
+  .absolute,
   .background-black,
   .opacity-50;
 
