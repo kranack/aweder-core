@@ -1,0 +1,25 @@
+.cart {
+  @extend .shadow-order,
+  .inline-flex,
+  .flex-col,
+  .sticky;
+  top: 60px;
+
+  @include mq(sm) {
+    @include _(sm-relative);
+    @include _(sm-border-bottom-none);
+    @include _(sm-border-top-solid);
+    top: auto;
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+.cart.cart--active {
+  @include mq(sm) {
+    @include _(sm-fixed);
+    @include _(sm-width-full);
+    bottom: 50px;
+    left: 0;
+    z-index: 3;
+  }
+}

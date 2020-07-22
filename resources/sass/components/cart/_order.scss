@@ -1,0 +1,80 @@
+.cart__order {
+  @extend .padding-bottom-10,
+  .margin-bottom-20,
+  .border-bottom-solid,
+  .border-silver,
+  .border-width-1;
+}
+
+.cart__order,
+.cart__item {
+  @extend .flex,
+  .flex-col;
+}
+
+.cart__item {
+  @extend .margin-bottom-10;
+}
+
+.cart__line {
+  @extend .inline-grid,
+  .flow-col,
+  .align-items-start;
+  grid-template-columns: auto 70px auto;
+  grid-column-gap: 20px;
+}
+
+.cart__title,
+.cart__price {
+  @extend .body-small,
+  .font-gibson-med;
+}
+
+.cart__title {
+  @extend .truncate;
+  width: 100px;
+}
+
+.cart__order .increment,
+.cart__price {
+  @extend .justify-content-end;
+}
+
+.cart__price {
+  @extend .color-cloud-burst-8;
+}
+
+.cart__options {
+  @extend .flex,
+  .flex-col,
+  .margin-top-10,
+  .padding-left-15;
+}
+
+.cart__option-title {
+  @extend .font-gibson-med,
+  .uppercase,
+  .margin-bottom-5;
+  @include rem2px(font-size, 1);
+  line-height: 20px;
+}
+
+.cart__option-item {
+  @extend .inline-grid,
+  .flow-col,
+  .align-items-start;
+  grid-column-gap: 20px;
+}
+
+.cart__option-item .cart__title {
+  width: 120px;
+}
+
+.cart__title .icon {
+  @extend .margin-right-10;
+}
+
+.cart__title .icon svg {
+  width: 8px;
+  height: 8px;
+}

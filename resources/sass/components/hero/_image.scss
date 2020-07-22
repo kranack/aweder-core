@@ -8,6 +8,14 @@
   @extend .width-full;
 }
 
+.hero__image .icon--logo-mark .logo-bottom {
+  @extend .fill-carnation;
+}
+
+.hero__image .icon--logo-mark .logo-top {
+  @extend .fill-cloud-burst;
+}
+
 .hero__image--border {
   @extend .border-width-1,
   .border-silver-5,

@@ -20,3 +20,11 @@
   max-width: 21px;
   width: 100%;
 }
+
+.branding .icon--logo-mobile .logo-top {
+  @extend .fill-cloud-burst;
+}
+
+.branding .icon--logo-mobile .logo-bottom {
+  @extend .fill-ecru-white;
+}

@@ -21,6 +21,10 @@
   width: 100%;
 }
 
+.checkbox--icon .checkbox__icon {
+  @extend .margin-right-20;
+}
+
 .checkbox__icon--small.icon--delivery svg,
 .checkbox__icon--small.icon--table svg {
   max-width: 30px;
