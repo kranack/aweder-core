@@ -9,7 +9,7 @@
         <a
           ref="take_away"
           :href="takeAwayUrl"
-          class="button button--large button-solid--cloud-burst button--hover-casablanca button--focus-casablanca"
+          class="button service-type__button"
         >
           <span class="button__icon button__icon--left"><Delivery /></span>
           <span class="button_content body-large">Take away</span>
@@ -19,7 +19,7 @@
         <a
           ref="table_service"
           :href="tableServiceUrl"
-          class="button button--large button-solid--cloud-burst button--hover-casablanca button--focus-casablanca"
+          class="button service-type__button"
         >
           <span class="button__icon button__icon--left"><Table /></span>
           <span class="button_content body-large">Table service</span>
