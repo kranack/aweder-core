@@ -1,6 +1,27 @@
 @extends('global.admin')
 @section('content')
-    <header class="dashboard__header col col--lg-12-10 col--sm-6-6 admin-inner-grid">
+    <header class="margin-bottom-80 col-span-12">
+        <h1 class="dashboard-title header-one">Orders</h1>
+    </header>
+    <div class="col-span-12">
+        <nav class="tab-nav">
+            <ul class="tab-menu">
+                <li class="tab-menu__item margin-right-80 @if (true)tab-menu__item--active @endif">
+                    <a href="{{ route('admin.dashboard', ['period' => 'today']) }}" class="tab-menu__link">Open orders</a>
+                </li>
+                <li class="tab-menu__item margin-right-80 @if (false)tab-menu__item--active @endif">
+                    <a href="{{ route('admin.dashboard', ['period' => 'this-week']) }}" class="tab-menu__link">Completed</a>
+                </li>
+                <li class="tab-menu__item margin-right-80 @if (false)tab-menu__item--active @endif">
+                    <a href="{{ route('admin.dashboard', ['period' => 'this-month']) }}" class="tab-menu__link">Rejected</a>
+                </li>
+            </ul>
+        </nav>
+        <open-orders
+            :orders="{{ json_encode($outstanding->items()) }}"
+        ></open-orders>
+    </div>
+    {{-- <header class="dashboard__header col col--lg-12-10 col--sm-6-6 admin-inner-grid">
         <div class="dashboard__title col col--lg-12-6 col--sm-6-6">
             <h1 class="header header--three color--carnation">Orders</h1>
         </div>
@@ -60,5 +81,5 @@
                     {{$rejected->appends(['outstanding' => $outstanding->currentPage(), 'accepted' => $accepted->currentPage(), 'rejected' => $rejected->currentPage(), 'fulfilled' => $fulfilled->currentPage()])->links()}}
                 </div>
             @endif
-    </section>
+    </section> --}}
 @endsection

@@ -39,6 +39,19 @@
   @extend .margin-right-10;
 }
 
+.button--large {
+  height: 100px;
+}
+
+.button--large .button__icon--left {
+  @extend .margin-right-20;
+}
+
+.button--hover-casablanca:hover,
+.button--focus-casablanca:focus {
+  @extend .background-casablanca;
+}
+
 @include buttons(outline, transparent, ecru-white, ecru-white);
 @include buttons(solid, ecru-white, ecru-white, carnation);
 @include buttons(outline, transparent, carnation, carnation);
@@ -46,3 +59,4 @@
 @include buttons(outline, transparent, silver, silver);
 @include buttons(solid, silver, silver, white);
 @include buttons(solid, cloud-burst, cloud-burst, ecru-white);
+@include buttons(outline, transparent, cloud-burst, cloud-burst);

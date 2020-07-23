@@ -5,6 +5,7 @@ import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import InventoryItem from '@/js/components/store/InventoryItem';
 import Popup from '@/js/components/shared/Popup';
 import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
+import OpenOrders from '@/js/components/admin/orders/OpenOrders';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store';
@@ -44,6 +45,7 @@ new Vue({
     InventoryItem,
     Popup,
     ServiceTypePopup,
+    OpenOrders,
   },
   store,
 }).$mount('#app');
