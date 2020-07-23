@@ -20,7 +20,7 @@ describe('ServiceTypePopup', () => {
     expect(wrapper.find('.popup').exists()).toBe(true);
   });
 
-  it('is has service links', () => {
+  it('has service links', () => {
     const wrapper = mount(Popup, {
       propsData: {
         isActive: true,
