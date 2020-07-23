@@ -1194,7 +1194,7 @@ button {
 .margin-right-5 {
   margin-right: 5px; }
 
-.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .checkbox--standard .checkbox__icon--small, .radio--standard .radio__icon--small, .separator--small, .cart__title .icon {
+.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .field--select-button .select-icon, .checkbox--standard .checkbox__icon--small, .radio--standard .radio__icon--small, .separator--small, .cart__title .icon, .status {
   margin-right: 10px; }
 
 @media (max-width: 1440px) {
@@ -1436,7 +1436,7 @@ button {
   .s-margin-right-140 {
     margin-right: 140px; } }
 
-.padding-0 {
+.padding-0, .select.select--button {
   padding: 0; }
 
 .padding-5 {
@@ -1696,7 +1696,7 @@ button {
   padding-top: 20px; }
 
 .padding-top-30, input.text-input,
-textarea.textarea-input {
+textarea.textarea-input, .select {
   padding-top: 30px; }
 
 .padding-top-40 {
@@ -1928,7 +1928,7 @@ textarea.textarea-input {
   padding-bottom: 5px; }
 
 .padding-bottom-10, input.text-input,
-textarea.textarea-input, .cart__order {
+textarea.textarea-input, .select, .cart__order {
   padding-bottom: 10px; }
 
 .padding-bottom-15, .subtotal {
@@ -2186,13 +2186,14 @@ textarea.textarea-input, .cart__order {
 .padding-left-15, .cart__options {
   padding-left: 15px; }
 
-.padding-left-20, .site-menu__button, .site-nav__burger, .admin-menu__link, .steps__list-item, .text-input--price, .checkbox--icon, .notification__message {
+.padding-left-20, .button.button--small, .site-menu__button, .site-nav__burger, .admin-menu__link, .steps__list-item, .text-input--price, .checkbox--icon, .notification__message {
   padding-left: 20px; }
 
-.padding-left-30, .button {
+.padding-left-30, .button, .field--select-button {
   padding-left: 30px; }
 
-.padding-left-40, .admin-nav {
+.padding-left-40, .admin-nav, tr th:first-child .table__cell,
+tr td:first-child .table__cell {
   padding-left: 40px; }
 
 .padding-left-50 {
@@ -2442,13 +2443,14 @@ textarea.textarea-input, .cart__order {
 .padding-right-15 {
   padding-right: 15px; }
 
-.padding-right-20, .site-menu__button, .site-nav__burger, .checkbox--icon, .notification__message {
+.padding-right-20, .button.button--small, .site-menu__button, .site-nav__burger, .checkbox--icon, .notification__message {
   padding-right: 20px; }
 
-.padding-right-30, .button {
+.padding-right-30, .button, .select, .field--select-button {
   padding-right: 30px; }
 
-.padding-right-40, .branding--admin {
+.padding-right-40, .branding--admin, tr th:last-child .table__cell,
+tr td:last-child .table__cell {
   padding-right: 40px; }
 
 .padding-right-50 {
@@ -2789,8 +2791,8 @@ textarea.textarea-input, .cart__order {
 
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
-.admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .popup, .cart__order, .cart__item, .cart__options, .subtotal,
-.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count {
+.admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .popup, .cart__order, .cart__item, .cart__options, .subtotal,
+.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status {
   display: flex; }
 
 @media (max-width: 1440px) {
@@ -2814,7 +2816,7 @@ textarea.textarea-input, .cart__order {
     display: flex; } }
 
 /* DIRECTION MIXINS ============================================================================= */
-.flex-row, .field.opening-time {
+.flex-row, .field.field--select, .field.opening-time {
   flex-direction: row; }
 
 @media (max-width: 1440px) {
@@ -3258,7 +3260,7 @@ textarea.textarea-input, .cart__order {
   .s-align-items-start {
     align-items: flex-start; } }
 
-.align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .popup, .increment, .increment__type, .metric__item, .metric__count {
+.align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .popup, .increment, .increment__type, .metric__item, .metric__count, .table__cell {
   align-items: center; }
 
 @media (max-width: 1440px) {
@@ -5013,7 +5015,7 @@ textarea.textarea-input, .cart__order {
     grid-auto-flow: column dense; } }
 
 /* POSITION MIXINS ============================================================================= */
-.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .popup__box {
+.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .popup__box, .table__cell {
   position: relative; }
 
 @media (max-width: 768px) {
@@ -5040,7 +5042,7 @@ textarea.textarea-input, .cart__order {
   .s-relative {
     position: relative; } }
 
-.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .popup__mask {
+.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .field--select .icon--down, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .popup__mask, .table__cell .status {
   position: absolute; }
 
 @media (max-width: 1024px) {
@@ -5187,7 +5189,7 @@ textarea.textarea-input, .cart__order {
   color: #F8F8FF; }
 
 .color-cloud-burst, body, input.text-input,
-textarea.textarea-input, .field--price:before, .opening-time__group:before, .menu__cat-link, .total__item .total__title,
+textarea.textarea-input, .field--price:before, .select, .opening-time__group:before, .menu__cat-link, .total__item .total__title,
 .total__item--light .cart__price {
   color: #243752; }
 
@@ -5238,14 +5240,14 @@ textarea.textarea-input, .field--price:before, .opening-time__group:before, .men
   font-display: swap; }
 
 .font-gibson-reg, body, .site-menu__link, .steps__title, .label, input.text-input,
-textarea.textarea-input, .field--price:before {
+textarea.textarea-input, .field--price:before, .select {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-display: swap; }
 
 .font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category-name h2, .inventory__subcategory, .inventory__title, .inventory__price, .inventory__add, .cart__title,
-.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .metric__count {
+.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .metric__count, th {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -5340,13 +5342,13 @@ textarea.textarea-input, .field--price:before {
   font-size: 1.8rem;
   line-height: 1.5; }
 
-.body-medium, .button__content, .admin-menu__link, .admin__name, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add {
+.body-medium, .button__content, .admin-menu__link, .admin__name, .select.select--button, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add, th {
   font-size: 16px;
   font-size: 1.6rem;
   line-height: 1.5; }
 
-.body-small, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .cart__title,
-.cart__price, .subtotal__title, .increment--small .increment__value {
+.body-small, .button--small .button__content, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .cart__title,
+.cart__price, .subtotal__title, .increment--small .increment__value, td {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5; }
@@ -5357,14 +5359,14 @@ textarea.textarea-input, .field--price:before {
   line-height: 1.5; }
 
 .body-label, .label, input.text-input,
-textarea.textarea-input, .field--price:before {
+textarea.textarea-input, .field--price:before, .select {
   font-size: 20px;
   font-size: 2rem;
   line-height: 1.5;
   line-height: 34px; }
   @media (max-width: 1024px) {
     .body-label, .label, input.text-input,
-    textarea.textarea-input, .field--price:before {
+    textarea.textarea-input, .field--price:before, .select {
       font-size: 18px;
       font-size: 1.8rem;
       line-height: 1.5; } }
@@ -5567,7 +5569,7 @@ textarea.textarea-input, .field--price:before {
   background-size: contain; }
 
 /* BG COLOUR MIXINS ============================================================================= */
-.background-carnation, .site-header, .admin-nav, .steps__col--content, .tab-menu__item:before, .notification--error .notification__message {
+.background-carnation, .site-header, .admin-nav, .steps__col--content, .tab-menu__item:before, .notification--error .notification__message, .status--new {
   background-color: #F25851; }
 
 @media (max-width: 1024px) {
@@ -5579,7 +5581,7 @@ textarea.textarea-input, .field--price:before {
   .steps__col--content:after {
     background-color: #F25851; } }
 
-.background-casablanca, .steps__list-item:before, .checkbox-input:checked ~ .checkbox--icon, .radio__icon:before, .inventory__item:before {
+.background-casablanca, .steps__list-item:before, .checkbox-input:checked ~ .checkbox--icon, .radio__icon:before, .inventory__item:before, .status--processing {
   background-color: #F5B24D; }
 
 @media (max-width: 768px) {
@@ -5591,14 +5593,14 @@ textarea.textarea-input, .field--price:before {
 .admin__greeting--open .admin__burger:after, .timetable__hours .separator, .menu__view .separator {
   background-color: #F2EDDC; }
 
-.background-ghost-white, .popup__box {
+.background-ghost-white, .popup__box, td {
   background-color: #F8F8FF; }
 
 .background-cloud-burst, .site-footer, .admin__burger, .admin__burger:before,
 .admin__burger:after, .merchant-times__timetable, .separator, .menu__cat-link:before {
   background-color: #243752; }
 
-.background-silver {
+.background-silver, .status--rejected {
   background-color: #C7C7C7; }
 
 .background-off-white, .admin-menu__link:hover,
@@ -5611,7 +5613,7 @@ textarea.textarea-input, .field--price:before {
 .background-black, .popup__mask {
   background-color: #000000; }
 
-.background-success, .notification--success .notification__message {
+.background-success, .notification--success .notification__message, .status--completed {
   background-color: #22C371; }
 
 .background-ecru-white-3, .steps__col--image {
@@ -5625,7 +5627,7 @@ textarea.textarea-input, .field--price:before {
 .background-silver-2, body {
   background-color: rgba(199, 199, 199, 0.2); }
 
-.background-silver-4, .grid__item, .opening-time__select, .metric__count {
+.background-silver-4, .grid__item, .opening-time__select, .metric__count, th {
   background-color: rgba(199, 199, 199, 0.4); }
 
 .background-off-white-0, .admin-menu__link {
@@ -5633,17 +5635,17 @@ textarea.textarea-input, .field--price:before {
 
 /* BORDER WIDTHS MIXINS ============================================================================= */
 .border-width-1, .button, .site-menu__button, .site-nav__burger, .admin-header, .hero__image--border, input.text-input,
-textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .increment__type {
+textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .increment__type {
   border-width: 1px; }
 
 /* BORDER RADIUS MIXINS ============================================================================= */
 .radius-0, .button.menu__view {
   border-radius: 0; }
 
-.radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .popup__box {
+.radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .popup__box {
   border-radius: 5px; }
 
-.radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count {
+.radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count, .status {
   border-radius: 100%; }
 
 @media (max-width: 1024px) {
@@ -5655,7 +5657,7 @@ textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .
   border-top-style: solid; }
 
 .border-bottom-solid, .admin-header, input.text-input,
-textarea.textarea-input, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .cart__service, .cart__order, .subtotal {
+textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .cart__service, .cart__order, .subtotal {
   border-bottom-style: solid; }
 
 .border-right-solid, .inventory__item {
@@ -5664,7 +5666,7 @@ textarea.textarea-input, .tab-menu, .menu__categories, .inventory__categories .i
 .border-left-solid, .inventory__item {
   border-left-style: solid; }
 
-.border-solid, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type {
+.border-solid, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type {
   border-style: solid; }
 
 .border-top-dashed {
@@ -5700,7 +5702,7 @@ textarea.textarea-input, .tab-menu, .menu__categories, .inventory__categories .i
 .border-top-none, .panel--radius-bottom {
   border-top-style: none; }
 
-.border-bottom-none {
+.border-bottom-none, .select.select--button {
   border-bottom-style: none; }
 
 .border-right-none {
@@ -6815,7 +6817,7 @@ textarea.textarea-input, .tab-menu, .menu__categories, .inventory__categories .i
   border-color: #F8F8FF; }
 
 .border-cloud-burst, input.text-input,
-textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload {
+textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload {
   border-color: #243752; }
 
 .border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__order, .subtotal {
@@ -6924,7 +6926,7 @@ textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .
 .stroke-success {
   stroke: #22C371; }
 
-.fill-cloud-burst-5 {
+.fill-cloud-burst-5, .field--select-button .icon--sort-asc .sort-down, .field--select-button .icon--sort-desc .sort-up {
   fill: rgba(36, 55, 82, 0.5); }
 
 .fill-silver-4, .menu__cart .icon .logo-top {
@@ -6954,6 +6956,9 @@ textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .
   width: auto;
   cursor: pointer; }
 
+.button.button--small {
+  height: 28px; }
+
 .button-outline--ecru-white {
   border-color: #F2EDDC;
   color: #F2EDDC; }
@@ -6980,6 +6985,11 @@ textarea.textarea-input, .checkbox--standard .checkbox__icon, .checkbox--icon, .
   background-color: #C7C7C7;
   border-color: #C7C7C7;
   color: #FFFFFF; }
+
+.button-solid--cloud-burst {
+  background-color: #243752;
+  border-color: #243752;
+  color: #F2EDDC; }
 
 /* apply a natural box layout model to all elements */
 *,
@@ -7364,6 +7374,20 @@ textarea.textarea-input {
   left: 0;
   bottom: 11px; }
 
+.select {
+  transition: border-color 0.3s ease-in-out; }
+
+.field--select .icon--down {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%); }
+
+.field--select-button {
+  height: 50px; }
+
+.field--select-button .icon--sort svg {
+  width: 9px; }
+
 .checkbox--standard .checkbox__icon polyline {
   stroke-dashoffset: 40;
   stroke-dasharray: 40; }
@@ -7656,10 +7680,25 @@ input[type="file"] {
   width: 50px;
   height: 50px; }
 
+.table__cell {
+  padding: 18px 20px; }
+
+.table__cell .status {
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%); }
+
+.status {
+  width: 10px;
+  height: 10px; }
+
 .admin-wrapper,
 .admin-wrapper .content {
   height: 100%; }
 
 .admin-wrapper .content {
   grid-template-rows: auto 1fr; }
+
+.admin-main {
+  grid-template-rows: max-content; }
 

@@ -12,6 +12,7 @@
   @extend .padding-top-80,
   .padding-bottom-80,
   .align-items-start;
+  grid-template-rows: max-content;
 }
 
 .dashboard-content {

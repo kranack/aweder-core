@@ -1,0 +1,33 @@
+.field--select-button {
+  @extend .border-solid,
+  .border-width-1,
+  .border-cloud-burst,
+  .radius-5,
+  .padding-left-30,
+  .padding-right-30;
+  height: 50px;
+
+}
+
+.field--select-button .select-icon {
+  @extend .margin-right-10;
+}
+
+
+.select.select--button {
+  @extend .body-medium,
+  .border-bottom-none,
+  .padding-0;
+}
+
+.field--select-button .icon--sort svg {
+  width: 9px;
+}
+
+.field--select-button .icon--sort-asc .sort-down {
+  @extend .fill-cloud-burst-5;
+}
+
+.field--select-button .icon--sort-desc .sort-up {
+  @extend .fill-cloud-burst-5;
+}

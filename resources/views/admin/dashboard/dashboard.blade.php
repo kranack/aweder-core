@@ -24,65 +24,114 @@
                 <span class="metric__count">{{ $dashboardMetrics['Rejected'] ?? 0 }}</span>
             </div>
         </div>
+        <div class="dashboard-filters col-span-9 m-col-span-12 sm-col-span-6 inline-flex align-items-end">
+            <div class="dashboard__filter margin-right-40">
+                <form action={{ route('admin.dashboard') }} method="GET" id="dashboard-status-sort">
+                    <div class="field field--select field--select-button">
+                        <span class="select-icon icon icon--sort
+                        @if ($sort === 'asc')icon--sort-asc @endif
+                        @if ($sort === 'desc')icon--sort-desc @endif">
+                            @svg('sort', 'fill-cloud-burst')</span>
+                        <select name="sort" id="dashboard-status-filter-select"
+                                class="select select--button">
+                            <option value="">Sort</option>
+                            <option value="asc"
+                            @if ($sort === 'asc')
+                            selected
+                            @endif
+                            >Ascending</option>
+                            <option value="desc"
+                            @if ($sort === 'desc')
+                            selected
+                            @endif
+                            >Descending</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="dashboard__filter margin-right-40">
+                <form action={{ route('admin.dashboard') }} method="GET" id="dashboard-status-filter">
+                    <div class="field field--select field--select-button">
+                        <span class="select-icon icon icon--filter">@svg('filter', 'fill-cloud-burst')</span>
+                        <select name="status" id="dashboard-status-filter-select"
+                                class="select select--button">
+                            <option value="">Filter orders</option>
+                            @foreach ($filterOptions as $option => $label)
+                            <option value={{ $option }}
+                            @if ($option === $statusFilter)
+                            selected
+                            @endif
+                            >{{ $label }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <x-dashboard-search-component/>
+        </div>
         <div class="dashboard-table col-span-9 m-col-span-12 sm-col-span-6">
-            <table class="width-full">
+            <table class="table width-full">
                 <thead>
                     <tr>
                         <th>
-                            <div class="cell">Status</div>
+                            <div class="table__cell">Status</div>
                         </th>
                         <th>
-                            <div class="cell">Date</div>
+                            <div class="table__cell">Date</div>
                         </th>
                         <th>
-                            <div class="cell">Order #</div>
+                            <div class="table__cell">Order #</div>
                         </th>
                         <th>
-                            <div class="cell">Type</div>
+                            <div class="table__cell">Type</div>
                         </th>
                         <th>
-                            <div class="cell">Customer</div>
+                            <div class="table__cell">Customer</div>
                         </th>
                         <th>
-                            <div class="cell"></div>
+                            <div class="table__cell"></div>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach ($orders as $order)
                     <tr>
-                        <td class="table__status">
-                            <div class="cell">
-                                <span class="status status--new"></span> New
+                        <td>
+                            <div class="table__cell font-gibson-med">
+                                {{--@TODO add different classes to the status div--}}
+                                <span class="status status--new"></span>
+                                <a href="{{ route('admin.view-order', $order->url_slug) }}">{{ $order->getNiceFrontendStatus() }}</a>
                             </div>
                         </td>
                         <td>
-                            <div class="cell">
-                                24th April 2020, 14:15
+                            <div class="table__cell">
+                                {{$order->order_submitted->format('d M, H:i')}}
                             </div>
                         </td>
                         <td>
-                            <div class="cell">
-                                MUzBPJx5
+                            <div class="table__cell">
+                                <a href="{{ route('admin.view-order', $order->url_slug) }}">{{ $order->url_slug }}</a>
                             </div>
                         </td>
                         <td>
-                            <div class="cell">
-                                Collection
+                            <div class="table__cell">
+                                {{$order->getIsDeliveryOrCollection()}}
                             </div>
                         </td>
                         <td>
-                            <div class="cell">
-                                Kai Jones
+                            <div class="table__cell">
+                                <a href="{{ route('admin.view-order', $order->url_slug) }}">{{ $order->customer_name }}</a>
                             </div>
                         </td>
                         <td>
-                            <div class="cell">
-                                <a href="" class="button">
+                            <div class="table__cell">
+                                <a href="{{ route('admin.view-order', $order->url_slug) }}" class="button button--small button-solid--cloud-burst">
                                     <span class="button__content">View order</span>
                                 </a>
                             </div>
                         </td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
