@@ -20,6 +20,6 @@ class EditDetailsController extends Controller
     {
         $merchant = $auth->user()->merchants->first();
 
-        return response()->view('admin.details.edit', ['merchant' => $merchant, 'bodyClass' => 'body--auth']);
+        return response()->view('admin.details.edit', ['merchant' => $merchant]);
     }
 }

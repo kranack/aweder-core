@@ -1,0 +1,24 @@
+.field.field--select {
+  @extend .flex-row,
+  .align-items-center;
+}
+
+.select {
+  @extend .border-bottom-solid,
+  .border-width-1,
+  .border-cloud-burst,
+  .font-gibson-reg,
+  .color-cloud-burst,
+  .body-label,
+  .padding-top-30,
+  .padding-bottom-10,
+  .padding-right-30;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.field--select .icon--down {
+  @extend .absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}

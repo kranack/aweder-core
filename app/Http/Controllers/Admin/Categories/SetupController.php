@@ -33,7 +33,6 @@ class SetupController extends Controller
             [
                 'merchant' => $merchant,
                 'categories' => $categories,
-                'bodyClass' => 'body--auth',
                 'defaultCategories' => $defaultCategories,
             ]
         );

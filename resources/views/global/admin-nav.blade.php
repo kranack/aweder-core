@@ -8,7 +8,7 @@
         <ul class="admin-menu flex flex-col">
             <li class="admin-menu__item">
                 <a href="{{ route('admin.dashboard') }}" class="admin-menu__link">
-                    <span class="admin-menu__icon"></span>Merchant dashboard
+                    <span class="admin-menu__icon"></span>Dashboard
                 </a>
             </li>
             <li class="admin-menu__item">

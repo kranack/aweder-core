@@ -15,10 +15,20 @@
   cursor: pointer;
 }
 
+.button.button--small {
+  @extend .padding-left-20,
+  .padding-right-20;
+  height: 28px;
+}
+
 .button__content {
   @extend .flex,
   .font-gibson-med,
   .body-medium;
+}
+
+.button--small .button__content {
+  @extend .body-small;
 }
 
 .button__icon--right {
@@ -29,23 +39,10 @@
   @extend .margin-right-10;
 }
 
-.button--large {
-  height: 100px;
-}
-
-.button--large .button__icon--left {
-  @extend .margin-right-20;
-}
-
-.button--hover-casablanca:hover,
-.button--focus-casablanca:focus {
-  @extend .background-casablanca;
-}
-
 @include buttons(outline, transparent, ecru-white, ecru-white);
 @include buttons(solid, ecru-white, ecru-white, carnation);
 @include buttons(outline, transparent, carnation, carnation);
 @include buttons(solid, carnation, carnation, ecru-white);
 @include buttons(outline, transparent, silver, silver);
 @include buttons(solid, silver, silver, white);
-@include buttons(outline, transparent, cloud-burst, cloud-burst);
+@include buttons(solid, cloud-burst, cloud-burst, ecru-white);
