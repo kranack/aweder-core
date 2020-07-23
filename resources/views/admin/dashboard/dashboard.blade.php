@@ -78,7 +78,7 @@
                             <div class="table__cell">Status</div>
                         </th>
                         <th>
-                            <div class="table__cell">Date</div>
+                            <div class="table__cell">Ordered</div>
                         </th>
                         <th>
                             <div class="table__cell">Order #</div>
