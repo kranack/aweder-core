@@ -1204,7 +1204,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image {
+.margin-right-20, .button--large .button__icon--left, .service-type__button .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -5581,7 +5581,8 @@ textarea.textarea-input, .field--price:before, .select {
   .steps__col--content:after {
     background-color: #F25851; } }
 
-.background-casablanca, .steps__list-item:before, .checkbox-input:checked ~ .checkbox--icon, .radio__icon:before, .inventory__item:before, .status--processing {
+.background-casablanca, .button--hover-casablanca:hover, .service-type__button:hover,
+.button--focus-casablanca:focus, .service-type__button:focus, .steps__list-item:before, .checkbox-input:checked ~ .checkbox--icon, .radio__icon:before, .inventory__item:before, .status--processing {
   background-color: #F5B24D; }
 
 @media (max-width: 768px) {
@@ -6959,6 +6960,9 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .button.button--small {
   height: 28px; }
 
+.button--large, .service-type__button {
+  height: 100px; }
+
 .button-outline--ecru-white {
   border-color: #F2EDDC;
   color: #F2EDDC; }
@@ -6985,6 +6989,10 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   background-color: #C7C7C7;
   border-color: #C7C7C7;
   color: #FFFFFF; }
+
+.button-outline--cloud-burst, .service-type__button {
+  border-color: #243752;
+  color: #243752; }
 
 .button-solid--cloud-burst {
   background-color: #243752;
@@ -7590,6 +7598,12 @@ input[type="file"] {
 
 .inventory__button svg {
   width: 10px; }
+
+.service-type__button {
+  width: 100%; }
+
+.service-type__button svg {
+  height: 35px; }
 
 .popup {
   z-index: 10;
