@@ -48,6 +48,11 @@ export default {
       },
     };
   },
+  watch: {
+    orders() {
+      [this.activeOrder] = this.orders;
+    },
+  },
   methods: {
     selectOrder(order) {
       this.responsive.isCardView = true;
