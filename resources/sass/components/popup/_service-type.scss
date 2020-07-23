@@ -1,0 +1,12 @@
+.service-type__button {
+  @extend .button--large,
+  .button-outline--cloud-burst,
+  .button--hover-casablanca,
+  .button--focus-casablanca;
+
+  width: 100%;
+}
+
+.service-type__button svg {
+  height: 35px;
+}

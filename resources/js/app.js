@@ -4,6 +4,7 @@ import MerchantOrderTypes from '@/js/components/shared/business_details/Merchant
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import InventoryItem from '@/js/components/store/InventoryItem';
 import Popup from '@/js/components/shared/Popup';
+import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store';
@@ -42,6 +43,7 @@ new Vue({
     'merchant-order-types': MerchantOrderTypes,
     InventoryItem,
     Popup,
+    ServiceTypePopup,
   },
   store,
 }).$mount('#app');
