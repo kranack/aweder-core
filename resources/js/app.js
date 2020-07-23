@@ -5,7 +5,7 @@ import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import InventoryItem from '@/js/components/store/InventoryItem';
 import Popup from '@/js/components/shared/Popup';
 import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
-import OpenOrders from '@/js/components/admin/orders/OpenOrders';
+import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store';
@@ -36,6 +36,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 Vue.config.devtools = process.env.APP_ENV === 'local';
 Vue.config.productionTip = false;
 Vue.config.silent = false;
+Vue.use(require('vue-moment'));
 Vue.use(Vuex);
 
 new Vue({
@@ -45,7 +46,7 @@ new Vue({
     InventoryItem,
     Popup,
     ServiceTypePopup,
-    OpenOrders,
+    OrdersPanel,
   },
   store,
 }).$mount('#app');
