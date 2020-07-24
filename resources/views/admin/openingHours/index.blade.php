@@ -6,15 +6,15 @@
 
     <section class="dashboard-content width-full col-span-9 m-col-span-12 sm-col-span-6 inline-grid grid-cols-9 m-grid-col-12 sm-grid-cols-6">
         <form
-            class="col-span-8 m-col-span-12 sm-col-span-6"
+            class="col-span-6 m-col-span-12 sm-col-span-6"
             id="openingHoursForm"
             name="openingHoursForm"
             autocomplete="off"
             action="{{ route('admin.opening-hours.post') }}"
             method="POST">
             @csrf
-            <div class="form-inline panel inline-grid grid-cols-8 m-grid-cols-12 sm-grid-cols-6 width-full background-off-white">
-                <div class="field field--select opening-time col-span-4 m-col-span-6 sm-col-span-6">
+            <div class="form-inline inline-grid grid-cols-6 m-grid-cols-12 sm-grid-cols-6 width-full">
+                <div class="field field--select opening-time col-span-3 m-col-span-6 sm-col-span-6">
                     <span class="label opening-time__day">Monday</span>
                     <div class="opening-time__group">
                         <select class="select-input opening-time__select" id="monday-opening-hour" name="monday[opening][hour]">
@@ -46,7 +46,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="field field--select opening-time col-span-4 m-col-span-6 sm-col-span-6 row-start-2">
+                <div class="field field--select opening-time col-span-3 m-col-span-6 sm-col-span-6 row-start-2">
                     <span class="label opening-time__day">Tuesday</span>
                     <div class="opening-time__group">
                         <select class="select-input opening-time__select" id="tuesday-opening-hour" name="tuesday[opening][hour]">
@@ -78,7 +78,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="field field--select opening-time col-span-4 m-col-span-6 sm-col-span-6 row-start-3">
+                <div class="field field--select opening-time col-span-3 m-col-span-6 sm-col-span-6 row-start-3">
                     <span class="label opening-time__day">Wednesday</span>
                     <div class="opening-time__group">
                         <select class="select-input opening-time__select" id="wednesday-opening-hour" name="wednesday[opening][hour]">
@@ -110,7 +110,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="field field--select opening-time col-span-4 m-col-span-6 sm-col-span-6 row-start-4">
+                <div class="field field--select opening-time col-span-3 m-col-span-6 sm-col-span-6 row-start-4">
                     <span class="label opening-time__day">Thursday</span>
                     <div class="opening-time__group">
                         <select class="select-input opening-time__select" id="thursday-opening-hour" name="thursday[opening][hour]">
@@ -142,7 +142,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="field field--select opening-time col-span-4 m-col-span-6 sm-col-span-6">
+                <div class="field field--select opening-time col-span-3 m-col-span-6 sm-col-span-6">
                     <span class="label opening-time__day">Friday</span>
                     <div class="opening-time__group">
                         <select class="select-input opening-time__select" id="friday-opening-hour" name="friday[opening][hour]">
@@ -174,7 +174,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="field field--select opening-time col-span-4 m-col-span-6 sm-col-span-6">
+                <div class="field field--select opening-time col-span-3 m-col-span-6 sm-col-span-6">
                     <span class="label opening-time__day">Saturday</span>
                     <div class="opening-time__group">
                         <select class="select-input opening-time__select" id="saturday-opening-hour" name="saturday[opening][hour]">
@@ -206,7 +206,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="field field--select opening-time col-span-4 m-col-span-6 sm-col-span-66">
+                <div class="field field--select opening-time col-span-3 m-col-span-6 sm-col-span-66">
                     <span class="label opening-time__day">Sunday</span>
                     <div class="opening-time__group">
                         <select class="select-input opening-time__select" id="sunday-opening-hour" name="sunday[opening][hour]">
@@ -239,7 +239,7 @@
                     </div>
                 </div>
             </div>
-            <div class="field field--buttons col-span-8 m-col-span-12 sm-col-span-6 align-items-start s-align-items-stretch margin-top-50">
+            <div class="field field--buttons col-span-6 m-col-span-12 sm-col-span-6 align-items-start s-align-items-stretch margin-top-50">
                 <button type="submit" class="button button-solid--carnation s-width-full">
                     <span class="button__content">Save</span>
                 </button>

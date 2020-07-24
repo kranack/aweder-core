@@ -5176,7 +5176,7 @@ tr td:last-child .table__cell {
 
 /* BG COLOUR MIXINS ============================================================================= */
 .color-carnation, .site-menu__link.site-menu__button--solid, .site-menu__link.site-menu__link--solid, .admin-menu__link:hover,
-.admin-menu__link--active, .field__error, .label sup, .tab-menu__item.tab-menu__item--active, .inventory__add {
+.admin-menu__link--active, .field__error, .label sup, .tab-menu__item.tab-menu__item--active, .inventory__add, .dashboard-title {
   color: #F25851; }
 
 .color-casablanca, .inventory__button--added .inventory__add {
@@ -5207,6 +5207,9 @@ textarea.textarea-input, .field--price:before, .select, .opening-time__group:bef
 
 .color-success {
   color: #22C371; }
+
+.color-stripe {
+  color: #635BFF; }
 
 .color-cloud-burst-8, .inventory__price,
 .cart__price {
@@ -5616,6 +5619,9 @@ textarea.textarea-input, .field--price:before, .select {
 
 .background-success, .notification--success .notification__message, .status--completed {
   background-color: #22C371; }
+
+.background-stripe {
+  background-color: #635BFF; }
 
 .background-ecru-white-3, .steps__col--image {
   background-color: rgba(242, 237, 220, 0.3); }
@@ -6836,6 +6842,9 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .border-success {
   border-color: #22C371; }
 
+.border-stripe {
+  border-color: #635BFF; }
+
 .border-silver-5, .hero__image--border, .cart__service {
   border-color: rgba(199, 199, 199, 0.5); }
 
@@ -6897,6 +6906,9 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .fill-success {
   fill: #22C371; }
 
+.fill-stripe {
+  fill: #635BFF; }
+
 .stroke-carnation {
   stroke: #F25851; }
 
@@ -6926,6 +6938,9 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 
 .stroke-success {
   stroke: #22C371; }
+
+.stroke-stripe {
+  stroke: #635BFF; }
 
 .fill-cloud-burst-5, .field--select-button .icon--sort-asc .sort-down, .field--select-button .icon--sort-desc .sort-up {
   fill: rgba(36, 55, 82, 0.5); }
@@ -6998,6 +7013,15 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   background-color: #243752;
   border-color: #243752;
   color: #F2EDDC; }
+
+.button-outline--stripe {
+  border-color: #635BFF;
+  color: #635BFF; }
+
+.button-solid--stripe {
+  background-color: #635BFF;
+  border-color: #635BFF;
+  color: #FFFFFF; }
 
 /* apply a natural box layout model to all elements */
 *,

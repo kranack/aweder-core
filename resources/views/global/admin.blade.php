@@ -22,7 +22,7 @@
     </div>
 </div>
 @endif
-<div class="admin-wrapper row m-relative">
+<div class="admin-wrapper row m-relative" id="app">
     <div class="content">
         @include('global/admin-nav')
         @include('global/admin-header')
