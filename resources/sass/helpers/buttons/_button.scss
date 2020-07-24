@@ -21,6 +21,10 @@
   height: 28px;
 }
 
+.button--large {
+  height: 100px;
+}
+
 .button__content {
   @extend .flex,
   .font-gibson-med,
@@ -39,12 +43,12 @@
   @extend .margin-right-10;
 }
 
-.button--large {
-  height: 100px;
+.button__icon--left {
+  @extend .margin-right-20;
 }
 
-.button--large .button__icon--left {
-  @extend .margin-right-20;
+.button--large {
+  height: 100px;
 }
 
 .button--hover-casablanca:hover,
@@ -58,5 +62,6 @@
 @include buttons(solid, carnation, carnation, ecru-white);
 @include buttons(outline, transparent, silver, silver);
 @include buttons(solid, silver, silver, white);
+@include buttons(outline, transparent, cloud-burst, cloud-burst);
 @include buttons(solid, cloud-burst, cloud-burst, ecru-white);
 @include buttons(outline, transparent, cloud-burst, cloud-burst);
