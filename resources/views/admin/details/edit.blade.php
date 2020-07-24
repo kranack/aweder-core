@@ -1,118 +1,57 @@
 @extends('global.admin')
 @section('content')
-    <header class="dashboard__header col col--lg-12-10 col--sm-6-6 admin-inner-grid">
-        <div class="dashboard__title col col--lg-12-6 col--sm-6-6">
-            <h1 class="header header--three color--carnation">{{ $merchant->name }} details</h1>
-        </div>
-        <div class="dashboard__intro col col--lg-12-5 col--sm-6-5">
-            <p>Edit your business details</p>
-        </div>
+    <header class="dashboard-header col-span-9 m-col-span-12 sm-col-span-6">
+        <h1 class="dashboard-title header-one">{{ $merchant->name }} details</h1>
     </header>
-    <section class="registration registration--user-details col col--lg-12-10 col--sm-6-6 admin-inner-grid">
+    <section class="dashboard-content width-full col-span-9 m-col-span-12 sm-col-span-6 inline-grid grid-cols-9 m-grid-col-12 sm-grid-cols-6">
         <form
-            class="col col--lg-12-6 col--lg-offset-12-3 col--m-12-8 col--m-offset-12-2 col--sm-6-6 col--sm-offset-6-1 form form--background"
+            class="form-inline col-span-6 m-col-span-12 sm-col-span-6 inline-grid grid-cols-6 m-grid-cols-12 sm-grid-cols-6"
             id="categoryForm"
             name="categoryForm"
             autocomplete="off"
             action="{{ route('admin.details.edit.post') }}"
             method="POST"
             enctype="multipart/form-data">
-            @csrf
-
-            <div class="field field--upload col col--lg-12-2 col--m-12-3 col-sm-6-3">
+        @csrf
+            <div class="field field--upload col-span-2 m-col-span-4 sm-col-span-2 sm-col-start-3 s-col-span-4 s-col-start-2 row-start-1 row-span-2 sm-row-span-1">
                 <input type="file" name="logo" id="logo" class="upload-input" />
-                <label for="logo">
-                    <span class="icon icon--upload">@svg('upload')</span>
-                    <span class="upload-input-name">Click to upload your business logo</span>
+                <label class="upload" for="logo">
+                    <span class="upload__trigger">
+                        @if ($merchant->logo !== null)
+                            <img src="{{ $merchant->getTemporaryLogoLink() }}" alt="{{ $merchant->name }}" />
+                        @else
+                            <span class="upload__icon">@svg('upload', 'fill-casablanca')</span>
+                        @endif
+                        <span class="upload__label">Upload your business logo</span>
+                    </span>
                 </label>
             </div>
-            @if ($merchant->logo !== null)
-                <div class="field field--uploaded-file col col--lg-12-2 col--m-12-3 col-sm-6-3 spacer-bottom--30">
-                    <img src="{{ $merchant->getTemporaryLogoLink() }}" alt="{{ $merchant->name }}" />
-                    <p><i>Current Uploaded Logo</i></p>
-                </div>
-            @endif
-
-            <div class="field @error('description') input-error @enderror col col--lg-12-6 col--m-12-8 col-sm-6-6">
-                <br />
-                <label for="description">Description</label>
-                <textarea id="description" name="description">{{ old('description', $merchant->description) }}</textarea>
+            <div class="field col-span-4 m-col-span-8 sm-col-span-6">
+                <label class="label label--float" for="description">Enter a description about your business and/or any notes’ <sup>*</sup></label>
+                <textarea id="description" class="textarea-input" name="description" placeholder="Business description">{{ old('description') }}</textarea>
                 @error('description')
-                <p class="form__validation-error">{{ $message }}</p>
+                <p class="field__error">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="field @error('contact_number') input-error @enderror col col--lg-12-6 col--m-12-8 col-sm-6-6">
-                <label for="contact_number">Contact Number</label>
-                <input type="text"
-                       name="customer-phone-number"
-                       id="contact_number"
-                       tabindex="4"
-                       value="{{ old('customer-phone-number', $merchant->contact_number) }}" />
-                @error('contact_number')
-                <p class="form__validation-error">{{ $message }}</p>
+            <div class="field col-span-4 m-col-span-8 sm-col-span-6 @error('customer-phone-number') field--error @enderror">
+                <label class="label label--float" for="customer-phone-number">Contact number<sup>*</sup></label>
+                <input type="tel" name="customer-phone-number" tabindex="8" id="customer-phone-number" value="{{ old('customer-phone-number') }}" placeholder="Contact number" class="text-input" />
+                @error('customer-phone-number')
+                <p class="field__error">{{ $message }}</p>
                 @enderror
             </div>
             <merchant-order-types
-                :collection-types="'{{json_encode(old('collection_types', $merchant->getMerchantAcceptableOrderTypes())) }}'"
-                @error('collection_types') collection-type-validation-message="{{ $message  }}" @enderror
-                @error('delivery_radius') delivery-radius-validation-message="{{ $message }}" @enderror
-                @error('delivery_cost') delivery-cost-validation-message="{{ $message }}" @enderror
-                delivery-radius="{{ old('delivery_radius', $merchant->delivery_radius) }}"
-                delivery-cost="{{ old('delivery_cost', $merchant->delivery_cost) }}"
+                    @if (old('collection_types')) :collection-types="'{{json_encode(old('collection_types')) }}'" @endif
+            @error('collection_types') collection-type-validation-message="{{ $message  }}" @enderror
+            @error('delivery_radius') delivery-radius-validation-message="{{ $message }}" @enderror
+            @error('delivery_cost') delivery-cost-validation-message="{{ $message }}" @enderror
+            @if (old('delivery_radius')) delivery-radius="{{ old('delivery_radius') }}" @endif
+            @if (old('delivery_cost')) delivery-cost="{{ old('delivery_cost') }}" @endif
             ></merchant-order-types>
-
-            <div class="field field--wrapper col col--lg-12-6 col--m-12-8 col-sm-6-6">
-                <header class="section-title">
-                    <p>How will customers receive their orders <abbr title="required">*</abbr></p>
-                </header>
-                <div class="field field--radio">
-                    <input type="radio" name="collection_type"  data-collection-type="collection" class="collection--type"  id="allow-collection"  @if (old('collection_type') === 'collection' || ($merchant->allow_delivery === 0 && $merchant->allow_collection === 1)) checked="checked" @endif value="collection">
-                    <label for="allow-collection">Collection</label>
-                </div>
-                <div class="field field--radio">
-                    <input type="radio" name="collection_type" data-collection-type="delivery" class="collection--type" tabindex="7" @if (old('collection_type') === 'delivery' || ($merchant->allow_delivery === 1 && $merchant->allow_collection === 0)) checked="checked" @endif id="allow-delivery" value="delivery">
-                    <label for="allow-delivery">Delivery</label>
-                </div>
-                <div class="field field--radio">
-                    <input type="radio" name="collection_type" data-collection-type="delivery" class="collection--type" id="both"  @if (old('collection_type') === 'both' || ($merchant->allow_collection === 1 && $merchant->allow_delivery === 1)) checked="checked" @endif value="both">
-                    <label for="both">Delivery & Collection</label>
-                </div>
-                @error('collection_type')
-                <p class="form__validation-error">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="@if ($merchant->allow_delivery === 1) show @endif field field--price delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @error('delivery_cost') input-error @enderror">
-                <label for="delivery_cost">If delivery is chosen, what is the customer delivery charge (can be £0)</label>
-                <input type="text"
-                       name="delivery_cost"
-                       id="delivery_cost"
-                       tabindex="4"
-                       value="{{ old('delivery_cost', $merchant->getFormattedUKPriceAttribute($merchant->delivery_cost)) }}" />
-                @error('delivery_cost')
-                <p class="form__validation-error">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="@if ($merchant->allow_delivery === 1) show @endif field delivery col col--lg-12-6 col--m-12-8 col-sm-6-6 @error('delivery_radius') input-error @enderror">
-                <label for="delivery_radius">Delivery radius in miles</label>
-                <input type="text"
-                       name="delivery_radius"
-                       id="delivery_radius"
-                       tabindex="4"
-                       placeholder="Delivery radius in miles"
-                       value="{{ old('delivery_radius', $merchant->delivery_radius) }}" />
-                @error('name')
-                <p class="form__validation-error">{{ $message }}</p>
-                @enderror
-            </div>
-            <header class="section-title col col--lg-12-6 col--m-12-8 col-sm-6-6">
-                <h3 class="header header--five color--carnation spacer-bottom--30">Connect Payment Platform</h3>
-            </header>
             <x-stripe-payment-integration :merchant="$merchant" />
-
-            <div class="field field--button">
-                <button type="submit" class="button button--icon-right button--filled button--filled-carnation button--end">
+            <div class="field field--buttons col-span-6 m-col-span-12 sm-col-span-6 align-items-start s-align-items-stretch margin-top-50">
+                <button type="submit" class="button button-solid--carnation s-width-full">
                     <span class="button__content">Save</span>
-                    <span class="icon icon-right">@svg('arrow-right')</span>
                 </button>
             </div>
         </form>

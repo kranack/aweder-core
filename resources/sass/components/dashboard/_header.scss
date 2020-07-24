@@ -2,6 +2,10 @@
   @extend .margin-bottom-140;
 }
 
+.dashboard-title {
+  @extend .color-carnation;
+}
+
 .dashboard-header--copy {
   margin-bottom: 74px;
 }

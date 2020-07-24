@@ -1,21 +1,13 @@
 @extends('global.admin')
 @section('content')
-    <header class="dashboard__header col col--lg-12-10 col--sm-6-6 admin-inner-grid">
-        <div class="dashboard__title col col--lg-12-6 col--sm-6-6">
-            <h1 class="header header--three color--carnation">{{ $merchant->name }}</h1>
-        </div>
-        <div class="dashboard__intro col col--lg-12-5 col--sm-6-5">
-            @if(isset($signUpRoute) && $signUpRoute === true)
-                <p>Create your menu / order form below by adding each inventory item and clicking ‘add’ (the plus symbol) below. These can be amended at any point from your dashboard.</p>
-            @else
-                <p>Edit your menu / order form below:</p>
-            @endif
-        </div>
+    <header class="dashboard-header dashboard-header--copy col-span-9 m-col-span-12 sm-col-span-6">
+        <h1 class="dashboard-title header-one">Inventory</h1>
+        <p>Edit your menu / order form below</p>
     </header>
-    <section class="inventory col col--lg-12-10 col--sm-6-6 admin-inner-grid">
+    <section class="dashboard-content width-full col-span-9 m-col-span-12 sm-col-span-6 inline-grid grid-cols-9 m-grid-col-12 sm-grid-cols-6">
         @foreach ($fullInventory as $category)
             @if ($category->title !== null && !empty($category->title))
-            <div class="inventory__item col col--lg-12-10 col--sm-6-6">
+            <div class="inventory__item col-span-9">
                 <header class="inventory__header">
                     <h3 class="header header--five">{{ $category->title }}</h3>
                 </header>
