@@ -2,7 +2,12 @@
 @section('content')
     <header class="dashboard-header dashboard-header--copy col-span-9 m-col-span-12 sm-col-span-6">
         <h1 class="dashboard-title header-one">Inventory</h1>
-        <p>Edit your menu / order form below</p>
+        @if(isset($signUpRoute) && $signUpRoute === true)
+            <p>Create your menu below by adding each inventory item and clicking ‘add’ (the plus symbol) below. These can be amended at any point from your dashboard.</p>
+        @else
+            <p>Edit your menu / order form below:</p>
+        @endif
+
     </header>
     <section class="dashboard-content width-full col-span-9 m-col-span-12 sm-col-span-6 inline-grid grid-cols-9 m-grid-col-12 sm-grid-cols-6">
         @foreach ($fullInventory as $category)
