@@ -7367,6 +7367,9 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .button--large, .service-type__button {
   height: 100px; }
 
+.button--wide {
+  width: 100%; }
+
 .button-outline--ecru-white {
   border-color: #F2EDDC;
   color: #F2EDDC; }

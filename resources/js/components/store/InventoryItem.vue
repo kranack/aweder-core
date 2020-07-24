@@ -1,27 +1,27 @@
 <template>
   <div class="inventory__item">
     <div
-      v-if="image"
+      v-if="product.image"
       class="inventory__image"
     >
       <img
-        :src="image"
-        :alt="title"
+        :src="product.image"
+        :alt="product.title"
       >
     </div>
     <div class="inventory__details">
       <header class="inventory__header">
         <h3 class="inventory__title">
-          {{ title }}
+          {{ product.title }}
         </h3>
       </header>
       <p
-        v-if="description"
+        v-if="product.description"
         class="inventory__description"
       >
-        {{ description }}
+        {{ product.description }}
       </p>
-      <span class="inventory__price">£{{ price }}</span>
+      <span class="inventory__price">{{ product.price | currency }}</span>
       <div
         class="inventory__button"
         @click="add()"
@@ -45,34 +45,14 @@ export default {
     Add,
   },
   props: {
-    itemId: {
-      type: String,
-      default: '',
-    },
-    title: {
-      type: String,
-      default: '',
-    },
-    description: {
-      type: String,
-      default: '',
-    },
-    price: {
-      type: String,
-      default: '',
-    },
-    image: {
-      type: String,
-      default: '',
-    },
-    editable: {
-      type: Boolean,
-      default: false,
+    product: {
+      type: Object,
+      default: null,
     },
   },
   methods: {
     add() {
-      this.$emit('added', this.itemId);
+      this.$store.dispatch('activeProduct/setActiveProduct', this.product);
     },
   },
 };

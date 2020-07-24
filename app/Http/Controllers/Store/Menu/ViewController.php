@@ -33,7 +33,7 @@ class ViewController extends Controller
             $order->load('items', 'items.inventory');
         }
 
-        $merchant->load('categories', 'categories.inventoriesAvailable', 'openingHours');
+        $merchant->load('categories', 'categories.inventoriesAvailable.variants', 'openingHours');
 
         return response()->view(
             'merchant.inventory',

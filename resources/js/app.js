@@ -5,11 +5,12 @@ import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import InventoryItem from '@/js/components/store/InventoryItem';
 import Popup from '@/js/components/shared/Popup';
 import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
+import ItemOptionsPopup from '@/js/components/shared/store/ItemOptionsPopup';
 import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import store from './store';
 import VueMoment from 'vue-moment';
+import store from './store';
 
 // Classes
 import AdminMenu from './AdminMenu';
@@ -50,6 +51,7 @@ new Vue({
     InventoryItem,
     Popup,
     ServiceTypePopup,
+    ItemOptionsPopup,
     OrdersPanel,
   },
   store,

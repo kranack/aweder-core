@@ -1,14 +1,13 @@
 export default {
   ADD_TO_CART(state, payload) {
-    const stateProduct = state.products.find((product) => product.id === payload.id);
+    const stateProduct = state.products.find((product) => product.product.id === payload.product.id);
 
     if (stateProduct) {
-      stateProduct.quantity += 1;
+      stateProduct.quantity += payload.quantity;
     } else {
       state.products.push({
-        id: payload.id,
-        price: payload.price,
-        quantity: 1,
+        product: payload.product,
+        quantity: payload.quantity,
       });
     }
   },
