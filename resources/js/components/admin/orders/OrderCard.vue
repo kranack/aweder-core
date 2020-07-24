@@ -50,35 +50,35 @@
             Status: {{ order.status }}
           </li>
           <li class="margin-top-10">
-            <strong>£{{ order.total_cost }}</strong>
+            <strong>{{ order.total_cost | currency }}</strong>
           </li>
         </ul>
       </div>
     </div>
     <div class="padding-40">
-      <ul>
+      <ul v-if="order.items">
         <li
-          v-for="n in 6"
-          :key="n"
+          v-for="(item, index) in order.items"
+          :key="item.id"
           class="padding-bottom-20 margin-bottom-20"
-          :class="{ 'border-bottom-solid border-width-1 border-silver-5': n !== 6 }"
+          :class="{ 'border-bottom-solid border-width-1 border-silver-5': index !== order.items.length }"
         >
           <div class="flex">
             <div class="width-full flex align-items-center padding-right-20">
               <img
-                src="https://source.unsplash.com/random/50x50?food"
+                :src="item.order_inventory.image || 'https://source.unsplash.com/random/50x50?food'"
                 alt="Prawn crackers"
                 class="radius-5 margin-right-20"
               >
-              <strong>Prawn crackers</strong>
+              <strong>{{ item.order_inventory.title }}</strong>
             </div>
             <div class="width-full flex align-items-center">
-              <span class="body-large">1</span>
-              <span class="margin-left-auto body-large opacity-80">£1.95</span>
+              <span class="body-large">{{ item.quantity }}</span>
+              <span class="margin-left-auto body-large opacity-80">{{ item.price | currency }}</span>
             </div>
           </div>
           <div
-            v-if="n === 6 || n === 3"
+            v-if="false"
             class="color-cloud-burst margin-top-5 margin-left-70"
           >
             <div class="body-xsmall">
@@ -104,6 +104,9 @@ export default {
       type: Object,
       default: null,
     },
+  },
+  mounted() {
+    console.log(window.currency);
   },
   methods: {
     back() {

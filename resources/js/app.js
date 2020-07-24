@@ -9,6 +9,7 @@ import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store';
+import VueMoment from 'vue-moment';
 
 // Classes
 import AdminMenu from './AdminMenu';
@@ -20,6 +21,9 @@ import OrderFilters from './OrderFilters';
 import SlugChecker from './SlugChecker';
 import StripeElements from './StripeElements';
 import Upload from './Upload';
+
+// Filters
+import './filters/Currency';
 
 // SASS
 import '@/sass/app.scss';
@@ -36,7 +40,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 Vue.config.devtools = process.env.APP_ENV === 'local';
 Vue.config.productionTip = false;
 Vue.config.silent = false;
-Vue.use(require('vue-moment'));
+Vue.use(VueMoment);
 Vue.use(Vuex);
 
 new Vue({
