@@ -556,6 +556,43 @@ class OrderRepositoryTest extends TestCase
         $this->assertCount(2, $result);
     }
 
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnsOrdersWithOrderItemsThatRequireVariantIdAddingToThem()
+    {
+        factory(Order::class, 4)->state('With Variant Id Missing')->create();
+
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
+
+        $this->assertCount(4, $result);
+    }
+
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnNoOrdersWhenNoneExist()
+    {
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
+
+        $this->assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnsOrdersWithOrderItemsThaHaveVariantId()
+    {
+        factory(Order::class, 1)->state('With Variant Id')->create();
+
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
+
+        $this->assertCount(0, $result);
+    }
+
     public function statusDataProvider(): array
     {
         return [
@@ -569,7 +606,6 @@ class OrderRepositoryTest extends TestCase
             ['unacknowledged'],
         ];
     }
-
 
     public function submittedOrders(): array
     {
