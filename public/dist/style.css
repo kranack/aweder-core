@@ -1359,7 +1359,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .button--large .button__icon--left, .service-type__button .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image {
+.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -7349,6 +7349,9 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .button--large, .service-type__button {
   height: 100px; }
 
+.button--large, .service-type__button {
+  height: 100px; }
+
 .button-outline--ecru-white {
   border-color: #F2EDDC;
   color: #F2EDDC; }
@@ -7375,6 +7378,10 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   background-color: #C7C7C7;
   border-color: #C7C7C7;
   color: #FFFFFF; }
+
+.button-outline--cloud-burst, .service-type__button {
+  border-color: #243752;
+  color: #243752; }
 
 .button-solid--cloud-burst {
   background-color: #243752;
@@ -8096,8 +8103,9 @@ input[type="file"] {
   height: 30px;
   width: 30px;
   border-radius: 50%; }
-  .order__arrow.order__arrow--active svg {
-    fill: white; }
+
+.order__arrow--active svg {
+  fill: white; }
 
 .order__select select {
   font-weight: bold; }

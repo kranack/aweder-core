@@ -10,13 +10,12 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
-
-  &.order__arrow--active {
-    @extend .background-cloud-burst;
-  }
-
-  &.order__arrow--active svg {
-    fill: white;
-  }
 }
 
+.order__arrow.order__arrow--active {
+  @extend .background-cloud-burst;
+}
+
+.order__arrow--active svg {
+  fill: white;
+}
