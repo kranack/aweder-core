@@ -9,7 +9,7 @@
         <span class="status status--new" />
         <span>{{ order.customer_name }}</span>
       </div>
-      <div>
+      <div class="margin-left-20">
         <span>Table #4</span>
         <span class="margin-right-10 margin-left-10">&ndash;</span>
         <span class="body-small color-cloud-burst-8">
