@@ -54,6 +54,11 @@ class ViewAllOrdersController extends Controller
             'fulfilled'
         );
 
+        $outstanding->load('items', 'items.orderInventory');
+        $rejectedOrders->load('items', 'items.orderInventory');
+        $acknowledgedOrders->load('items', 'items.orderInventory');
+        $fulfilledOrders->load('items', 'items.orderInventory');
+
         return response()->view(
             'admin.order.view-all',
             [

@@ -82,30 +82,6 @@ class ViewAllOrdersControllerTest extends TestCase
     }
 
     /**
-     * @test
-     */
-    public function canViewOrderPageAndCanSeeOrdersForThem()
-    {
-        $user = factory(User::class)->create();
-
-        $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
-
-        $order = $this->createAndReturnOrderForStatus('Purchased Order', ['merchant_id' => $merchantOne->id]);
-
-        $user->merchants()->attach($merchantOne->id);
-
-        $this->actingAs($user);
-
-        $response = $this->get(route('admin.orders.view-all'));
-
-        $response->assertStatus(Response::HTTP_OK);
-
-        $response->assertSeeText('Waiting');
-
-        $response->assertSee('outstanding-orders__order col col--lg-12-5 col--sm-6-6 form--background');
-    }
-
-    /**
      *
      */
     public function canSeeOrdersAwaitingFulfillmentForCurrentMerchant()

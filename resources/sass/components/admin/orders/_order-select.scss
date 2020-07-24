@@ -1,0 +1,31 @@
+.order__select {
+  @extend .background-carnation,
+  .radius-5,
+  .flex,
+  .align-items-center,
+  .padding-10,
+  .padding-left-20,
+  .padding-right-20;
+}
+
+.order__select select {
+  @extend .color-white,
+  .body-large;
+
+  font-weight: bold;
+}
+
+.order__select-icon {
+  @extend .flex,
+  .align-items-center,
+  .justify-content-center;
+}
+
+.order__select-icon svg {
+  @extend .margin-left-10,
+  .body-large;
+
+  fill: white;
+  height: 12px;
+  width: 12px;
+}
