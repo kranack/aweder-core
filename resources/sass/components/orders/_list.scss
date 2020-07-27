@@ -1,0 +1,84 @@
+.orders {
+  @extend .grid,
+  .col-gap,
+  .grid-cols-9;
+
+  @include mq(l) {
+    @include _(l-col-gap);
+  }
+  @include mq(m) {
+    @include _(m-grid-cols-12);
+    @include _(m-col-gap);
+  }
+  @include mq(sm) {
+    @include _(sm-grid-cols-6);
+    @include _(sm-col-gap);
+  }
+  @include mq(s) {
+    @include _(s-col-gap);
+  }
+}
+
+.orders__list-item {
+  @extend .inline-flex,
+  .flex-col,
+  .relative,
+  .width-full,
+  .padding-top-20,
+  .padding-bottom-20,
+  .padding-right-20,
+  .border-width-1,
+  .border-bottom-solid,
+  .border-silver,
+  .cursor-pointer;
+}
+
+.orders__list-item:first-child {
+  @extend .padding-top-0;
+}
+
+.orders__customer {
+  @extend .flex,
+  .align-items-center,
+  .margin-right-20;
+}
+
+.orders__customer--details {
+  @extend .padding-left-20,
+  .margin-top-5;
+}
+
+.orders__arrow {
+  @extend .absolute,
+  .flex,
+  .align-items-center,
+  .justify-content-center,
+  .radius-100,
+  .border-width-1,
+  .border-silver,
+  .border-solid,
+  .background-white;
+  width: 30px;
+  height: 30px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.orders__arrow.order__arrow--active {
+  @extend .background-cloud-burst;
+}
+
+.orders__arrow.order__arrow--active svg {
+  @extend .fill-white;
+}
+
+.orders__name {
+  @extend .body-large,
+  .font-gibson-med;
+}
+
+.orders__date {
+  @extend .body-small,
+  .color-cloud-burst-8;
+}

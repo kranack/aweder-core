@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <nav class="tab-nav">
+  <div class="col-span-9 m-col-span-12 sm-col-span-6">
+    <nav class="tab-nav tab-nav--dashboard">
       <ul class="tab-menu">
         <li
           v-for="tab in tabs"
           :key="tab"
-          class="tab-menu__item margin-right-80 "
+          class="tab-menu__item"
           :class="{ 'tab-menu__item--active': tab === activeTab }"
         >
           <a
-            class="tab-menu__link cursor-pointer"
+            class="tab-menu__link"
             @click.prevent="selectTab(tab)"
           >
             {{ tab }}

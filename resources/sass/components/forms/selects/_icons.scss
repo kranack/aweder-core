@@ -1,12 +1,10 @@
 .field--select-button {
   @extend .border-solid,
   .border-width-1,
-  .border-cloud-burst,
   .radius-5,
   .padding-left-30,
   .padding-right-30;
   height: 50px;
-
 }
 
 .field--select-button .select-icon {

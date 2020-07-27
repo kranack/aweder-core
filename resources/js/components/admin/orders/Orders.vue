@@ -1,7 +1,7 @@
 <template>
-  <div class="grid col-gap grid-cols-9">
+  <div class="orders">
     <div
-      class="col-span-3"
+      class="orders__list col-span-3"
       :class="responsive.isCardView ? 'l-hidden' : 'l-col-span-12'"
     >
       <order-item

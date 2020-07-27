@@ -486,7 +486,7 @@ button {
 .margin-top-0, .cart--empty .cart__buttons {
   margin-top: 0; }
 
-.margin-top-5 {
+.margin-top-5, .orders__customer--details {
   margin-top: 5px; }
 
 .margin-top-10, .upload__label, .field__note, .inventory__description, .cart__options {
@@ -769,7 +769,7 @@ button {
 .margin-bottom-auto {
   margin-bottom: auto; }
 
-.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field.opening-time:nth-child(4), .inventory__categories:last-child, .cart__service .field {
+.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field.opening-time:nth-child(4), .inventory__categories:last-child, .cart__service .field, .single-order .field {
   margin-bottom: 0; }
 
 @media (max-width: 768px) {
@@ -777,7 +777,7 @@ button {
     margin-bottom: 0; } }
 
 .margin-bottom-5, .cart__option-title, .subtotal__item,
-.total__item {
+.total__item, .single-order__title h2, .single-order__list h4, .single-order__list li, .single-order__options-title {
   margin-bottom: 5px; }
 
 .margin-bottom-10, .timetable__hours, .hero__merchant-delivery p, .cart__item {
@@ -1070,7 +1070,7 @@ button {
   .s-margin-bottom-140 {
     margin-bottom: 140px; } }
 
-.margin-left-auto {
+.margin-left-auto, .single-order .field {
   margin-left: auto; }
 
 .margin-left-0 {
@@ -1079,13 +1079,13 @@ button {
 .margin-left-5 {
   margin-left: 5px; }
 
-.margin-left-10, .button__icon--right, .separator--small, .order__select-icon svg {
+.margin-left-10, .button__icon--right, .separator--small {
   margin-left: 10px; }
 
 .margin-left-15 {
   margin-left: 15px; }
 
-.margin-left-20, .site-menu__item, .merchant-times__icon, .separator--large, .metric__count {
+.margin-left-20, .site-menu__item, .merchant-times__icon, .separator--large, .metric__count, .single-order__title time {
   margin-left: 20px; }
 
 .margin-left-30 {
@@ -1349,7 +1349,7 @@ button {
 .margin-right-5 {
   margin-right: 5px; }
 
-.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .field--select-button .select-icon, .checkbox--standard .checkbox__icon--small, .radio--standard .radio__icon--small, .separator--small, .cart__title .icon, .status {
+.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .field--select-button .select-icon, .checkbox--standard .checkbox__icon--small, .radio--standard .radio__icon--small, .separator--small, .cart__title .icon, .status, .single-order select {
   margin-right: 10px; }
 
 @media (max-width: 1440px) {
@@ -1359,7 +1359,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image {
+.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image, .orders__customer {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -1635,7 +1635,7 @@ button {
 .padding-5 {
   padding: 5px; }
 
-.padding-10, .order__select {
+.padding-10 {
   padding: 10px; }
 
 .padding-15 {
@@ -1647,7 +1647,7 @@ button {
 .padding-30 {
   padding: 30px; }
 
-.padding-40, .merchant-times__timetable, .panel {
+.padding-40, .merchant-times__timetable, .panel, .single-order__header {
   padding: 40px; }
 
 @media (max-width: 768px) {
@@ -1911,7 +1911,7 @@ button {
 .padding-top-auto {
   padding-top: auto; }
 
-.padding-top-0 {
+.padding-top-0, .orders__list-item:first-child {
   padding-top: 0; }
 
 .padding-top-5 {
@@ -1923,14 +1923,14 @@ button {
 .padding-top-15 {
   padding-top: 15px; }
 
-.padding-top-20, .steps__buttons, .notification__message {
+.padding-top-20, .steps__buttons, .notification__message, .orders__list-item, .single-order__items, .single-order__item {
   padding-top: 20px; }
 
 .padding-top-30, input.text-input,
 textarea.textarea-input, .select {
   padding-top: 30px; }
 
-.padding-top-40 {
+.padding-top-40, .single-order__details {
   padding-top: 40px; }
 
 .padding-top-50 {
@@ -2203,13 +2203,13 @@ textarea.textarea-input, .select, .cart__order {
 .padding-bottom-15, .subtotal {
   padding-bottom: 15px; }
 
-.padding-bottom-20, .tab-menu__item, .notification__message, .cart__service {
+.padding-bottom-20, .tab-menu__item, .notification__message, .cart__service, .orders__list-item, .single-order__items, .single-order__item {
   padding-bottom: 20px; }
 
 .padding-bottom-30 {
   padding-bottom: 30px; }
 
-.padding-bottom-40, .admin-nav, .steps__buttons {
+.padding-bottom-40, .admin-nav, .steps__buttons, .single-order__details {
   padding-bottom: 40px; }
 
 .padding-bottom-50 {
@@ -2493,14 +2493,14 @@ textarea.textarea-input, .select, .cart__order {
 .padding-left-15, .cart__options {
   padding-left: 15px; }
 
-.padding-left-20, .button.button--small, .site-menu__button, .site-nav__burger, .admin-menu__link, .steps__list-item, .text-input--price, .checkbox--icon, .notification__message, .order__select {
+.padding-left-20, .button.button--small, .site-menu__button, .site-nav__burger, .admin-menu__link, .steps__list-item, .text-input--price, .checkbox--icon, .notification__message, .orders__customer--details, .single-order__details, .single-order__list {
   padding-left: 20px; }
 
 .padding-left-30, .button, .field--select-button {
   padding-left: 30px; }
 
 .padding-left-40, .admin-nav, tr th:first-child .table__cell,
-tr td:first-child .table__cell {
+tr td:first-child .table__cell, .single-order__items {
   padding-left: 40px; }
 
 .padding-left-50 {
@@ -2509,7 +2509,7 @@ tr td:first-child .table__cell {
 .padding-left-60, .steps__subtitle, .steps__list {
   padding-left: 60px; }
 
-.padding-left-70 {
+.padding-left-70, .single-order__options {
   padding-left: 70px; }
 
 .padding-left-80 {
@@ -2788,14 +2788,14 @@ tr td:first-child .table__cell {
 .padding-right-15 {
   padding-right: 15px; }
 
-.padding-right-20, .button.button--small, .site-menu__button, .site-nav__burger, .checkbox--icon, .notification__message, .order__select {
+.padding-right-20, .button.button--small, .site-menu__button, .site-nav__burger, .checkbox--icon, .notification__message, .orders__list-item, .single-order__details, .single-order__list {
   padding-right: 20px; }
 
 .padding-right-30, .button, .select, .field--select-button {
   padding-right: 30px; }
 
 .padding-right-40, .branding--admin, tr th:last-child .table__cell,
-tr td:last-child .table__cell {
+tr td:last-child .table__cell, .single-order__items {
   padding-right: 40px; }
 
 .padding-right-50 {
@@ -3057,7 +3057,7 @@ tr td:last-child .table__cell {
     padding-right: 140px; } }
 
 /* DISPLAY MIXINS ============================================================================= */
-.inline-flex, .button, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart, .metric {
+.inline-flex, .button, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart, .metric, .orders__list-item {
   display: inline-flex; }
 
 @media (max-width: 1440px) {
@@ -3076,7 +3076,7 @@ tr td:last-child .table__cell {
   .s-inline-flex {
     display: inline-flex; } }
 
-.grid, .content {
+.grid, .content, .orders {
   display: grid; }
 
 @media (max-width: 1440px) {
@@ -3096,7 +3096,7 @@ tr td:last-child .table__cell {
     display: grid; } }
 
 .inline-grid, .steps__wrapper, .cart__line, .cart__option-item, .subtotal__item,
-.total__item {
+.total__item, .single-order__line {
   display: inline-grid; }
 
 @media (max-width: 1440px) {
@@ -3172,7 +3172,7 @@ tr td:last-child .table__cell {
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
 .admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .popup, .cart__order, .cart__item, .cart__options, .subtotal,
-.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .order__arrow, .order__select, .order__select-icon {
+.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .orders__customer, .orders__arrow, .single-order__header, .single-order__title, .single-order__title h2, .single-order__details, .single-order__item, .single-order__image, .single-order__options {
   display: flex; }
 
 @media (max-width: 1440px) {
@@ -3235,7 +3235,7 @@ tr td:last-child .table__cell {
     flex-direction: row-reverse; } }
 
 .flex-col, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .merchant-times__timetable, .field, .upload, .upload__trigger, .inventory__details, .cart, .cart__order, .cart__item, .cart__options, .subtotal,
-.total {
+.total, .orders__list-item, .single-order__title, .single-order__item, .single-order__options {
   flex-direction: column; }
 
 @media (max-width: 768px) {
@@ -3640,7 +3640,7 @@ tr td:last-child .table__cell {
   .s-align-items-start {
     align-items: flex-start; } }
 
-.align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .popup, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .order__arrow, .order__select, .order__select-icon {
+.align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .popup, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .orders__customer, .orders__arrow, .single-order__header, .single-order__title h2, .single-order__line {
   align-items: center; }
 
 @media (max-width: 1440px) {
@@ -3872,7 +3872,7 @@ tr td:last-child .table__cell {
   .s-justify-content-start {
     justify-content: flex-start; } }
 
-.justify-content-center, .button, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value, .metric__count, .order__arrow, .order__select-icon {
+.justify-content-center, .button, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value, .metric__count, .orders__arrow {
   justify-content: center; }
 
 @media (max-width: 1024px) {
@@ -4131,7 +4131,7 @@ tr td:last-child .table__cell {
 .grid-cols-8 {
   grid-template-columns: repeat(8, [col-start] 1fr); }
 
-.grid-cols-9 {
+.grid-cols-9, .orders {
   grid-template-columns: repeat(9, [col-start] 1fr); }
 
 .grid-cols-10 {
@@ -4240,7 +4240,7 @@ tr td:last-child .table__cell {
     grid-template-columns: repeat(12, [col-start] 1fr); } }
 
 @media (max-width: 1024px) {
-  .admin-nav {
+  .admin-nav, .orders {
     grid-template-columns: repeat(12, [col-start] 1fr); } }
 
 @media (max-width: 768px) {
@@ -4268,7 +4268,7 @@ tr td:last-child .table__cell {
     grid-template-columns: repeat(6, [col-start] 1fr); } }
 
 @media (max-width: 768px) {
-  .content, .admin-nav, .form-inline, .field-wrapper {
+  .content, .admin-nav, .form-inline, .field-wrapper, .orders {
     grid-template-columns: repeat(6, [col-start] 1fr); } }
 
 @media (max-width: 768px) {
@@ -5263,7 +5263,7 @@ tr td:last-child .table__cell {
     grid-row-start: 6; } }
 
 /* GAP MIXINS ============================================================================= */
-.col-gap, .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .dashboard-content {
+.col-gap, .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .orders, .dashboard-content {
   column-gap: 40px; }
 
 @media (max-width: 1440px) {
@@ -5271,7 +5271,7 @@ tr td:last-child .table__cell {
     column-gap: 30px; } }
 
 @media (max-width: 1440px) {
-  .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .dashboard-content {
+  .content, .admin-main, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .orders, .dashboard-content {
     column-gap: 30px; } }
 
 @media (max-width: 1024px) {
@@ -5279,7 +5279,7 @@ tr td:last-child .table__cell {
     column-gap: 20px; } }
 
 @media (max-width: 1024px) {
-  .content, .admin-main, .admin-nav, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .dashboard-content {
+  .content, .admin-main, .admin-nav, .admin-header, .steps__wrapper, .form-inline, .field-wrapper, .orders, .dashboard-content {
     column-gap: 20px; } }
 
 @media (max-width: 768px) {
@@ -5287,7 +5287,7 @@ tr td:last-child .table__cell {
     column-gap: 20px; } }
 
 @media (max-width: 768px) {
-  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper, .dashboard-content {
+  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper, .orders, .dashboard-content {
     column-gap: 20px; } }
 
 @media (max-width: 500px) {
@@ -5295,7 +5295,7 @@ tr td:last-child .table__cell {
     column-gap: 10px; } }
 
 @media (max-width: 500px) {
-  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper, .dashboard-content {
+  .content, .admin-main, .admin-nav, .admin-header, .form-inline, .field-wrapper, .orders, .dashboard-content {
     column-gap: 10px; } }
 
 .row-gap-xl {
@@ -5395,7 +5395,7 @@ tr td:last-child .table__cell {
     grid-auto-flow: column dense; } }
 
 /* POSITION MIXINS ============================================================================= */
-.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .popup__box, .table__cell {
+.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .popup__box, .table__cell, .orders__list-item {
   position: relative; }
 
 @media (max-width: 768px) {
@@ -5422,7 +5422,7 @@ tr td:last-child .table__cell {
   .s-relative {
     position: relative; } }
 
-.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .field--select .icon--down, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .popup__mask, .table__cell .status {
+.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .field--select .icon--down, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .popup__mask, .table__cell .status, .orders__arrow {
   position: absolute; }
 
 @media (max-width: 1024px) {
@@ -5502,7 +5502,7 @@ tr td:last-child .table__cell {
   width: 100%; }
 
 .width-full, section, .row, .site-footer, .site-footer__branding .bowl, .site-footer__branding .icon--bowl, .site-footer__branding .icon--bowl svg, .hero__image .icon,
-.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button, .button.menu__view {
+.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button, .button.menu__view, .orders__list-item, .single-order__line {
   max-width: 100%;
   width: 100%; }
 
@@ -5548,7 +5548,7 @@ tr td:last-child .table__cell {
   .site-footer__statement {
     text-align: center; } }
 
-.text-right {
+.text-right, .single-order__price {
   text-align: right; }
 
 .text-justify {
@@ -5579,7 +5579,7 @@ textarea.textarea-input, .field--price:before, .select, .opening-time__group:bef
 .color-off-white {
   color: #F9F9F9; }
 
-.color-white, .order__select select {
+.color-white, .single-order select {
   color: #FFFFFF; }
 
 .color-black {
@@ -5592,7 +5592,7 @@ textarea.textarea-input, .field--price:before, .select, .opening-time__group:bef
   color: #635BFF; }
 
 .color-cloud-burst-8, .inventory__price,
-.cart__price {
+.cart__price, .orders__date, .single-order__price {
   color: rgba(36, 55, 82, 0.8); }
 
 .color-cloud-burst-6, .label.label--float {
@@ -5630,7 +5630,8 @@ textarea.textarea-input, .field--price:before, .select {
   font-display: swap; }
 
 .font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category-name h2, .inventory__subcategory, .inventory__title, .inventory__price, .inventory__add, .cart__title,
-.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .metric__count, th {
+.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .metric__count, th, .orders__name, .single-order select, .single-order__line p,
+.single-order__qty, .single-order__price, .single-order__options-title {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -5699,39 +5700,40 @@ textarea.textarea-input, .field--price:before, .select {
       line-height: 1.5;
       line-height: 42px; } }
 
-.body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+.body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .single-order__title h2 {
   font-size: 30px;
   font-size: 3rem;
   line-height: 1.5;
   line-height: 42px; }
   @media (max-width: 1440px) {
-    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .single-order__title h2 {
       font-size: 24px;
       font-size: 2.4rem;
       line-height: 1.5; } }
   @media (max-width: 1024px) {
-    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .single-order__title h2 {
       font-size: 22px;
       font-size: 2.2rem;
       line-height: 1.5; } }
   @media (max-width: 768px) {
-    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .single-order__title h2 {
       font-size: 18px;
       font-size: 1.8rem;
       line-height: 1.5; } }
 
-.body-large, .site-footer__link, .feature__copy, .steps__list-item, .dashboard-title + p, .metric__item p, .order__select select, .order__select-icon svg {
+.body-large, .site-footer__link, .feature__copy, .steps__list-item, .dashboard-title + p, .metric__item p, .orders__name, .single-order__title time, .single-order select, .single-order__list h4, .single-order__line p,
+.single-order__qty, .single-order__price {
   font-size: 18px;
   font-size: 1.8rem;
   line-height: 1.5; }
 
-.body-medium, .button__content, .admin-menu__link, .admin__name, .select.select--button, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add, th {
+.body-medium, .button__content, .admin-menu__link, .admin__name, .select.select--button, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add, th, .single-order__list li {
   font-size: 16px;
   font-size: 1.6rem;
   line-height: 1.5; }
 
 .body-small, .button--small .button__content, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .cart__title,
-.cart__price, .subtotal__title, .increment--small .increment__value, td {
+.cart__price, .subtotal__title, .increment--small .increment__value, td, .orders__date {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5; }
@@ -5804,7 +5806,7 @@ textarea.textarea-input, .field--price:before, .select {
   list-style-type: none; }
 
 /* TRUNCATE MIXINS ============================================================================= */
-.truncate, .cart__title {
+.truncate, .cart__title, .single-order__line p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
@@ -5840,7 +5842,7 @@ textarea.textarea-input, .field--price:before, .select {
 .capitalize {
   text-transform: capitalize; }
 
-.uppercase, .steps__title, .field__error, .label.label--float, .cart__option-title {
+.uppercase, .steps__title, .field__error, .label.label--float, .cart__option-title, .single-order__options-title {
   text-transform: uppercase; }
 
 .lowercase {
@@ -5952,7 +5954,7 @@ textarea.textarea-input, .field--price:before, .select {
   background-size: contain; }
 
 /* BG COLOUR MIXINS ============================================================================= */
-.background-carnation, .site-header, .admin-nav, .steps__col--content, .tab-menu__item:before, .notification--error .notification__message, .status--new, .order__select {
+.background-carnation, .site-header, .admin-nav, .steps__col--content, .tab-menu__item:before, .notification--error .notification__message, .status--new {
   background-color: #F25851; }
 
 @media (max-width: 1024px) {
@@ -5981,7 +5983,7 @@ textarea.textarea-input, .field--price:before, .select {
   background-color: #F8F8FF; }
 
 .background-cloud-burst, .site-footer, .admin__burger, .admin__burger:before,
-.admin__burger:after, .merchant-times__timetable, .separator, .menu__cat-link:before, .order__arrow.order__arrow--active {
+.admin__burger:after, .merchant-times__timetable, .separator, .menu__cat-link:before, .orders__arrow.order__arrow--active {
   background-color: #243752; }
 
 .background-silver, .status--rejected {
@@ -5991,7 +5993,7 @@ textarea.textarea-input, .field--price:before, .select {
 .admin-menu__link--active, .admin-header, .checkbox--icon, .upload, .menu__categories, .inventory__item, .inventory__image {
   background-color: #F9F9F9; }
 
-.background-white, .avatar, .order__arrow {
+.background-white, .avatar, .orders__arrow, .single-order {
   background-color: #FFFFFF; }
 
 .background-black, .popup__mask {
@@ -6022,17 +6024,17 @@ textarea.textarea-input, .field--price:before, .select {
 
 /* BORDER WIDTHS MIXINS ============================================================================= */
 .border-width-1, .button, .site-menu__button, .site-nav__burger, .admin-header, .hero__image--border, input.text-input,
-textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .increment__type, .order__arrow {
+textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .increment__type, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item {
   border-width: 1px; }
 
 /* BORDER RADIUS MIXINS ============================================================================= */
 .radius-0, .button.menu__view {
   border-radius: 0; }
 
-.radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .popup__box, .order__select {
+.radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .popup__box, .single-order, .single-order__image {
   border-radius: 5px; }
 
-.radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count, .status {
+.radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count, .status, .orders__arrow {
   border-radius: 100%; }
 
 @media (max-width: 1024px) {
@@ -6044,7 +6046,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   border-top-style: solid; }
 
 .border-bottom-solid, .admin-header, input.text-input,
-textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .cart__service, .cart__order, .subtotal, .order__arrow {
+textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .cart__service, .cart__order, .subtotal, .orders__list-item, .single-order__header, .single-order__details, .single-order__item {
   border-bottom-style: solid; }
 
 .border-right-solid, .inventory__item {
@@ -6053,7 +6055,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__cate
 .border-left-solid, .inventory__item {
   border-left-style: solid; }
 
-.border-solid, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type {
+.border-solid, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type, .orders__arrow {
   border-style: solid; }
 
 .border-top-dashed {
@@ -6089,7 +6091,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__cate
 .border-top-none, .panel--radius-bottom {
   border-top-style: none; }
 
-.border-bottom-none, .select.select--button {
+.border-bottom-none, .select.select--button, .single-order__item:last-child {
   border-bottom-style: none; }
 
 .border-right-none {
@@ -6098,7 +6100,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__cate
 .border-left-none {
   border-left-style: none; }
 
-.border-none {
+.border-none, .single-order .field {
   border-style: none; }
 
 .border-top-hidden {
@@ -7204,10 +7206,10 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__cate
   border-color: #F8F8FF; }
 
 .border-cloud-burst, input.text-input,
-textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload {
+textarea.textarea-input, .select, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload {
   border-color: #243752; }
 
-.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__order, .subtotal, .order__arrow {
+.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__order, .subtotal, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item {
   border-color: #C7C7C7; }
 
 .border-off-white {
@@ -7236,7 +7238,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   .site-menu {
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2); } }
 
-.shadow-order, .cart {
+.shadow-order, .cart, .single-order {
   box-shadow: 0 2px 14px 5px rgba(0, 0, 0, 0.06); }
 
 .shadow-cover {
@@ -7280,7 +7282,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .fill-off-white {
   fill: #F9F9F9; }
 
-.fill-white {
+.fill-white, .orders__arrow.order__arrow--active svg, .single-order .select-icon svg {
   fill: #FFFFFF; }
 
 .fill-black {
@@ -7341,8 +7343,293 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .stroke-2 {
   stroke-width: 2px; }
 
-.cursor-pointer {
+/* CURSOR MIXINS ============================================================================= */
+.cursor-auto {
+  cursor: auto; }
+
+.cursor-cell {
+  cursor: cell; }
+
+.cursor-crosshair {
+  cursor: crosshair; }
+
+.cursor-grab {
+  cursor: grab; }
+
+.cursor-grabbing {
+  cursor: grabbing; }
+
+.cursor-no-drop {
+  cursor: no-drop; }
+
+.cursor-none {
+  cursor: none; }
+
+.cursor-not-allowed {
+  cursor: not-allowed; }
+
+.cursor-pointer, .orders__list-item {
   cursor: pointer; }
+
+@media (max-width: 1440px) {
+  .l-cursor-auto {
+    cursor: auto; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-cell {
+    cursor: cell; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-crosshair {
+    cursor: crosshair; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-grab {
+    cursor: grab; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-grabbing {
+    cursor: grabbing; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-no-drop {
+    cursor: no-drop; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-none {
+    cursor: none; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-not-allowed {
+    cursor: not-allowed; } }
+
+@media (max-width: 1440px) {
+  .l-cursor-pointer {
+    cursor: pointer; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-auto {
+    cursor: auto; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-cell {
+    cursor: cell; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-crosshair {
+    cursor: crosshair; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-grab {
+    cursor: grab; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-grabbing {
+    cursor: grabbing; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-no-drop {
+    cursor: no-drop; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-none {
+    cursor: none; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-not-allowed {
+    cursor: not-allowed; } }
+
+@media (max-width: 1024px) {
+  .m-cursor-pointer {
+    cursor: pointer; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-auto {
+    cursor: auto; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-cell {
+    cursor: cell; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-crosshair {
+    cursor: crosshair; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-grab {
+    cursor: grab; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-grabbing {
+    cursor: grabbing; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-no-drop {
+    cursor: no-drop; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-none {
+    cursor: none; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-not-allowed {
+    cursor: not-allowed; } }
+
+@media (max-width: 768px) {
+  .sm-cursor-pointer {
+    cursor: pointer; } }
+
+@media (max-width: 500px) {
+  .s-cursor-auto {
+    cursor: auto; } }
+
+@media (max-width: 500px) {
+  .s-cursor-cell {
+    cursor: cell; } }
+
+@media (max-width: 500px) {
+  .s-cursor-crosshair {
+    cursor: crosshair; } }
+
+@media (max-width: 500px) {
+  .s-cursor-grab {
+    cursor: grab; } }
+
+@media (max-width: 500px) {
+  .s-cursor-grabbing {
+    cursor: grabbing; } }
+
+@media (max-width: 500px) {
+  .s-cursor-no-drop {
+    cursor: no-drop; } }
+
+@media (max-width: 500px) {
+  .s-cursor-none {
+    cursor: none; } }
+
+@media (max-width: 500px) {
+  .s-cursor-not-allowed {
+    cursor: not-allowed; } }
+
+@media (max-width: 500px) {
+  .s-cursor-pointer {
+    cursor: pointer; } }
+
+/* POINTER EVENTS MIXINS ============================================================================= */
+.pointer-none {
+  pointer-events: none; }
+
+.pointer-auto {
+  pointer-events: auto; }
+
+@media (max-width: 1440px) {
+  .l-pointer-none {
+    pointer-events: none; } }
+
+@media (max-width: 1440px) {
+  .l-pointer-auto {
+    pointer-events: auto; } }
+
+@media (max-width: 1024px) {
+  .m-pointer-none {
+    pointer-events: none; } }
+
+@media (max-width: 1024px) {
+  .m-pointer-auto {
+    pointer-events: auto; } }
+
+@media (max-width: 768px) {
+  .sm-pointer-none {
+    pointer-events: none; } }
+
+@media (max-width: 768px) {
+  .sm-pointer-auto {
+    pointer-events: auto; } }
+
+@media (max-width: 500px) {
+  .s-pointer-none {
+    pointer-events: none; } }
+
+@media (max-width: 500px) {
+  .s-pointer-auto {
+    pointer-events: auto; } }
+
+/* USER SELECT MIXINS ============================================================================= */
+.user-select-none {
+  user-select: none; }
+
+.user-select-text {
+  user-select: text; }
+
+.user-select-all {
+  user-select: all; }
+
+.user-select-auto {
+  user-select: auto; }
+
+@media (max-width: 1440px) {
+  .l-user-select-none {
+    user-select: none; } }
+
+@media (max-width: 1440px) {
+  .l-user-select-text {
+    user-select: text; } }
+
+@media (max-width: 1440px) {
+  .l-user-select-all {
+    user-select: all; } }
+
+@media (max-width: 1440px) {
+  .l-user-select-auto {
+    user-select: auto; } }
+
+@media (max-width: 1024px) {
+  .m-user-select-none {
+    user-select: none; } }
+
+@media (max-width: 1024px) {
+  .m-user-select-text {
+    user-select: text; } }
+
+@media (max-width: 1024px) {
+  .m-user-select-all {
+    user-select: all; } }
+
+@media (max-width: 1024px) {
+  .m-user-select-auto {
+    user-select: auto; } }
+
+@media (max-width: 768px) {
+  .sm-user-select-none {
+    user-select: none; } }
+
+@media (max-width: 768px) {
+  .sm-user-select-text {
+    user-select: text; } }
+
+@media (max-width: 768px) {
+  .sm-user-select-all {
+    user-select: all; } }
+
+@media (max-width: 768px) {
+  .sm-user-select-auto {
+    user-select: auto; } }
+
+@media (max-width: 500px) {
+  .s-user-select-none {
+    user-select: none; } }
+
+@media (max-width: 500px) {
+  .s-user-select-text {
+    user-select: text; } }
+
+@media (max-width: 500px) {
+  .s-user-select-all {
+    user-select: all; } }
+
+@media (max-width: 500px) {
+  .s-user-select-auto {
+    user-select: auto; } }
 
 .grid-overlay {
   width: 100%;
@@ -8123,21 +8410,35 @@ input[type="file"] {
   width: 10px;
   height: 10px; }
 
-.order__arrow {
-  height: 30px;
+.orders__arrow {
   width: 30px;
-  border-radius: 50%; }
+  height: 30px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%); }
 
-.order__arrow--active svg {
-  fill: white; }
+.single-order .select-icon svg {
+  width: 8px; }
 
-.order__select select {
-  font-weight: bold; }
+.single-order__list {
+  width: 50%; }
 
-.order__select-icon svg {
-  fill: white;
-  height: 12px;
-  width: 12px; }
+.single-order__line {
+  grid-template-columns: 50px auto auto auto;
+  grid-column-gap: 20px; }
+
+.single-order__image {
+  width: 50px;
+  height: 50px;
+  overflow: hidden; }
+
+.single-order__line p {
+  width: 250px; }
+
+.single-order__options-title {
+  font-size: 10px;
+  font-size: 1rem;
+  line-height: 20px; }
 
 .admin-wrapper,
 .admin-wrapper .content {
