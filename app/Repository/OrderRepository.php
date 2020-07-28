@@ -124,12 +124,16 @@ class OrderRepository implements OrderContract
         return true;
     }
 
-    public function addItemToOrder(Order $order, Inventory $inventoryItem, int $quantity): bool
+    /**
+     * @TODO refactor this method out of the codebase since the API now adds OrderItems
+     * @deprecated
+     */
+    public function addInventoryItemToOrder(Order $order, Inventory $inventoryItem, int $quantity = 1): bool
     {
         $orderItem = new OrderItem(
             [
                 'inventory_id' => $inventoryItem->id,
-                'quantity' => 1,
+                'quantity' => $quantity,
                 'price' => $inventoryItem->price,
             ]
         );
@@ -319,5 +323,12 @@ class OrderRepository implements OrderContract
         return $this->getModel()->whereHas('items', function (Builder $query) {
             $query->whereNull('variant_id');
         })->get();
+    }
+
+    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): Order
+    {
+        $order->items()->save($orderItem);
+
+        return $order;
     }
 }

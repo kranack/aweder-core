@@ -8,6 +8,7 @@ use App\Contract\Service\OrderContract;
 use App\Contract\Repositories\OrderContract as OrderRepositoryContract;
 use App\Merchant;
 use App\Order;
+use App\OrderItem;
 use Psr\Log\LoggerInterface;
 
 class OrderService implements OrderContract
@@ -69,7 +70,7 @@ class OrderService implements OrderContract
             $inventoryItem = $this->inventoryRepository->getItemById($itemId);
 
             if ($inventoryItem->merchant_id === $merchant->id) {
-                return $this->orderRepository->addItemToOrder($order, $inventoryItem, 1);
+                return $this->orderRepository->addInventoryItemToOrder($order, $inventoryItem, 1);
             }
 
             return false;
@@ -156,5 +157,16 @@ class OrderService implements OrderContract
     public function doesOrderBelongToMerchant(Order $order, Merchant $merchant): bool
     {
         return $order->merchant_id === $merchant->id;
+    }
+
+    public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool
+    {
+        $orderItem = new OrderItem();
+        $orderItem->order_id = $order->id;
+        $orderItem->fill($apiPayload);
+
+        $this->orderRepository->addOrderItemToOrder($order, $orderItem);
+
+        return true;
     }
 }

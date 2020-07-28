@@ -3,6 +3,7 @@
 namespace App\Contract\Repositories;
 
 use App\Inventory;
+use App\OrderItem;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -96,8 +97,16 @@ interface OrderContract
      * @param Inventory $inventoryItem
      * @param int $quantity
      * @return bool
+     * @deprecated
      */
-    public function addItemToOrder(Order $order, Inventory $inventoryItem, int $quantity): bool;
+    public function addInventoryItemToOrder(Order $order, Inventory $inventoryItem, int $quantity): bool;
+
+    /**
+     * @param Order $order
+     * @param OrderItem $orderItem
+     * @return Order
+     */
+    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): Order;
 
     /**
      * removes the order item from the DB

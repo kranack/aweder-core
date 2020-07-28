@@ -624,9 +624,8 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function addOrderItemWithVariantAndOptionsToOrder()
+    public function addOrderItemWithVariantAndOptionsToOrder(): void
     {
-        // create an order
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
         $order = $this->createAndReturnOrderForStatus('Purchased Order', ['merchant_id' => $merchant->id]);
         $inventory = factory(Inventory::class)->create(['merchant_id' => $merchant->id]);
@@ -652,14 +651,20 @@ class OrderRepositoryTest extends TestCase
 
         $this->inventoryVariantRepository->addVariantToInventoryItem($inventoryVariant, $inventory);
 
+        $randomPrice = random_int(1, 6000);
+
         $orderItem = $this->createAndReturnOrderItem([
             'variant_id' => $inventoryVariant->id,
-            'inventory_id' => $inventory->id
+            'inventory_id' => $inventory->id,
+            'price' => $randomPrice
         ]);
 
         $this->orderItemRepository->addOptionToOrderItem($orderItem, $inventoryOptionGroupItem);
         $this->assertEquals('Go Faster Stripes', $orderItem->inventoryOptions()->first()->name);
         $this->assertEquals('Electric Blue Keyboard', $orderItem->inventoryVariant()->first()->name);
+
+        $this->repository->addOrderItemToOrder($order, $orderItem);
+        $this->assertEquals($randomPrice, $order->items()->first()->price);
     }
 
     public function statusDataProvider(): array

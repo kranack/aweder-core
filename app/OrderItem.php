@@ -35,6 +35,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property-read \App\Inventory $orderInventory
  * @property-read string $formatted_u_k_price
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem multipleQuantity()
+ * @property int|null $variant_id
+ * @property string|null $title
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\InventoryOptionGroupItem[] $inventoryOptions
+ * @property-read int|null $inventory_options_count
+ * @property-read \App\InventoryVariant $inventoryVariant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereVariantId($value)
  */
 class OrderItem extends Model
 {
@@ -42,6 +49,7 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id',
+        'variant_id',
         'quantity',
         'price',
         'inventory_id',
