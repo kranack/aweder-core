@@ -1,6 +1,11 @@
 <template>
   <div class="single-order">
     <header class="single-order__header">
+      <a class="single-order__back button button-outline--cloud-burst"
+      @click.prevent="back()">
+        <span class="button__icon button__icon--left"><ArrowLeft /></span>
+        <span class="button__content">Return to orders</span>
+      </a>
       <div class="single-order__title">
         <h2>
           <span class="status status--new"></span>
@@ -51,6 +56,7 @@
           <span class="single-order__qty">{{ item.quantity }}</span>
           <span class="single-order__price">{{ item.price | currency }}</span>
         </div>
+        <!-- @TODO add variants choices -->
         <div class="single-order__options">
           <h5 class="single-order__options-title">Sauces</h5>
           <p>Curry sauce</p>
@@ -154,10 +160,12 @@
 
 <script>
 import ArrowDown from '@/js/components/svgs/ArrowDown';
+import ArrowLeft from '@/js/components/svgs/ArrowLeft';
 
 export default {
   components: {
     ArrowDown,
+    ArrowLeft,
   },
   props: {
     order: {

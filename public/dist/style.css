@@ -615,7 +615,7 @@ button {
     margin-top: 20px; } }
 
 @media (max-width: 1024px) {
-  .site-footer__menu {
+  .site-footer__menu, .dashboard-title + p {
     margin-top: 20px; } }
 
 @media (max-width: 1024px) {
@@ -707,6 +707,10 @@ button {
     margin-top: 100px; } }
 
 @media (max-width: 768px) {
+  .orders__card {
+    margin-top: 100px; } }
+
+@media (max-width: 768px) {
   .sm-margin-top-140 {
     margin-top: 140px; } }
 
@@ -732,6 +736,10 @@ button {
 
 @media (max-width: 500px) {
   .s-margin-top-20 {
+    margin-top: 20px; } }
+
+@media (max-width: 500px) {
+  .single-order__list:last-child {
     margin-top: 20px; } }
 
 @media (max-width: 500px) {
@@ -944,6 +952,10 @@ button {
 
 @media (max-width: 1024px) {
   .m-margin-bottom-100 {
+    margin-bottom: 100px; } }
+
+@media (max-width: 1024px) {
+  .dashboard-header {
     margin-bottom: 100px; } }
 
 @media (max-width: 1024px) {
@@ -1359,7 +1371,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image, .orders__customer {
+.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -1369,7 +1381,7 @@ button {
 .margin-right-30, .site-footer__item {
   margin-right: 30px; }
 
-.margin-right-40, .timetable__day {
+.margin-right-40, .timetable__day, .orders__customer {
   margin-right: 40px; }
 
 .margin-right-50 {
@@ -1705,7 +1717,7 @@ button {
     padding: 30px; } }
 
 @media (max-width: 1440px) {
-  .merchant-times__timetable, .panel {
+  .merchant-times__timetable, .panel, .single-order__header {
     padding: 30px; } }
 
 @media (max-width: 1440px) {
@@ -1761,7 +1773,7 @@ button {
     padding: 20px; } }
 
 @media (max-width: 1024px) {
-  .merchant-times__timetable {
+  .merchant-times__timetable, .single-order__header {
     padding: 20px; } }
 
 @media (max-width: 1024px) {
@@ -2542,6 +2554,10 @@ tr td:first-child .table__cell, .single-order__items {
     padding-left: 15px; } }
 
 @media (max-width: 1440px) {
+  .single-order__details, .single-order__list {
+    padding-left: 15px; } }
+
+@media (max-width: 1440px) {
   .l-padding-left-20 {
     padding-left: 20px; } }
 
@@ -2550,7 +2566,7 @@ tr td:first-child .table__cell, .single-order__items {
     padding-left: 30px; } }
 
 @media (max-width: 1440px) {
-  .admin-nav {
+  .admin-nav, .single-order__items {
     padding-left: 30px; } }
 
 @media (max-width: 1440px) {
@@ -2598,6 +2614,10 @@ tr td:first-child .table__cell, .single-order__items {
     padding-left: 10px; } }
 
 @media (max-width: 1024px) {
+  .single-order__details, .single-order__list {
+    padding-left: 10px; } }
+
+@media (max-width: 1024px) {
   .m-padding-left-15 {
     padding-left: 15px; } }
 
@@ -2606,7 +2626,7 @@ tr td:first-child .table__cell, .single-order__items {
     padding-left: 20px; } }
 
 @media (max-width: 1024px) {
-  .admin-nav {
+  .admin-nav, .single-order__items {
     padding-left: 20px; } }
 
 @media (max-width: 1024px) {
@@ -2837,6 +2857,10 @@ tr td:last-child .table__cell, .single-order__items {
     padding-right: 15px; } }
 
 @media (max-width: 1440px) {
+  .single-order__details, .single-order__list {
+    padding-right: 15px; } }
+
+@media (max-width: 1440px) {
   .l-padding-right-20 {
     padding-right: 20px; } }
 
@@ -2845,7 +2869,7 @@ tr td:last-child .table__cell, .single-order__items {
     padding-right: 30px; } }
 
 @media (max-width: 1440px) {
-  .branding--admin {
+  .branding--admin, .single-order__items {
     padding-right: 30px; } }
 
 @media (max-width: 1440px) {
@@ -2893,6 +2917,10 @@ tr td:last-child .table__cell, .single-order__items {
     padding-right: 10px; } }
 
 @media (max-width: 1024px) {
+  .single-order__details, .single-order__list {
+    padding-right: 10px; } }
+
+@media (max-width: 1024px) {
   .m-padding-right-15 {
     padding-right: 15px; } }
 
@@ -2901,7 +2929,7 @@ tr td:last-child .table__cell, .single-order__items {
     padding-right: 20px; } }
 
 @media (max-width: 1024px) {
-  .admin-nav, .branding--admin {
+  .admin-nav, .branding--admin, .single-order__items {
     padding-right: 20px; } }
 
 @media (max-width: 1024px) {
@@ -3138,7 +3166,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-block {
     display: block; } }
 
-.hidden, .body-steps .site-footer, .tab-menu::-webkit-scrollbar, .menu__cat-list::-webkit-scrollbar {
+.hidden, .body-steps .site-footer, .tab-menu::-webkit-scrollbar, .menu__cat-list::-webkit-scrollbar, .single-order__back {
   display: none; }
 
 @media (max-width: 768px) {
@@ -3188,7 +3216,7 @@ tr td:last-child .table__cell, .single-order__items {
     display: flex; } }
 
 @media (max-width: 768px) {
-  .body-steps .site-footer {
+  .body-steps .site-footer, .single-order__back {
     display: flex; } }
 
 @media (max-width: 500px) {
@@ -4049,7 +4077,7 @@ tr td:last-child .table__cell, .single-order__items {
     flex-shrink: 0; } }
 
 /* FLEX WRAP MIXINS ============================================================================= */
-.wrap {
+.wrap, .orders__customer--details {
   flex-wrap: wrap; }
 
 @media (max-width: 1440px) {
@@ -4066,6 +4094,10 @@ tr td:last-child .table__cell, .single-order__items {
 
 @media (max-width: 500px) {
   .s-wrap {
+    flex-wrap: wrap; } }
+
+@media (max-width: 500px) {
+  .single-order__details {
     flex-wrap: wrap; } }
 
 .nowrap {
@@ -5395,7 +5427,7 @@ tr td:last-child .table__cell, .single-order__items {
     grid-auto-flow: column dense; } }
 
 /* POSITION MIXINS ============================================================================= */
-.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .popup__box, .table__cell, .orders__list-item {
+.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .popup__box, .table__cell, .orders__list-item, .single-order {
   position: relative; }
 
 @media (max-width: 768px) {
@@ -5422,7 +5454,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-relative {
     position: relative; } }
 
-.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .field--select .icon--down, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .popup__mask, .table__cell .status, .orders__arrow {
+.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .field--select .icon--down, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .popup__mask, .table__cell .status, .orders__arrow, .single-order__back {
   position: absolute; }
 
 @media (max-width: 1024px) {
@@ -7273,7 +7305,7 @@ textarea.textarea-input, .select, .checkbox--standard .checkbox__icon, .checkbox
 .fill-ghost-white {
   fill: #F8F8FF; }
 
-.fill-cloud-burst, .branding .icon--logo-mobile .logo-top, .hero__image .icon--logo-mark .logo-top, .menu__cart--added .icon .logo-bottom {
+.fill-cloud-burst, .branding .icon--logo-mobile .logo-top, .hero__image .icon--logo-mark .logo-top, .menu__cart--added .icon .logo-bottom, .single-order__back svg {
   fill: #243752; }
 
 .fill-silver {
@@ -8390,6 +8422,9 @@ input[type="file"] {
 
 .dashboard-header--copy {
   margin-bottom: 74px; }
+  @media (max-width: 1024px) {
+    .dashboard-header--copy {
+      margin-bottom: 54px; } }
 
 .dashboard-header p a {
   color: inherit; }
@@ -8420,8 +8455,18 @@ input[type="file"] {
 .single-order .select-icon svg {
   width: 8px; }
 
+.single-order__back {
+  left: 0;
+  top: -100px; }
+
+.single-order__back svg {
+  width: 6px; }
+
 .single-order__list {
   width: 50%; }
+  @media (max-width: 500px) {
+    .single-order__list {
+      width: 100%; } }
 
 .single-order__line {
   grid-template-columns: 50px auto auto auto;

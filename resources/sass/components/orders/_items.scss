@@ -3,6 +3,15 @@
   .padding-bottom-20,
   .padding-left-40,
   .padding-right-40;
+
+  @include mq(l) {
+    @include _(l-padding-left-30);
+    @include _(l-padding-right-30);
+  }
+  @include mq(m) {
+    @include _(m-padding-left-20);
+    @include _(m-padding-right-20);
+  }
 }
 
 .single-order__item {

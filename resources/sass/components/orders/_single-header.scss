@@ -1,6 +1,13 @@
+.orders__card {
+  @include mq(sm) {
+    @include _(sm-margin-top-100);
+  }
+}
+
 .single-order {
   @extend .background-white,
   .radius-5,
+  .relative,
   .shadow-order;
 }
 
@@ -11,6 +18,13 @@
   .border-silver,
   .border-width-1,
   .border-bottom-solid;
+
+  @include mq(l) {
+    @include _(l-padding-30);
+  }
+  @include mq(m) {
+    @include _(m-padding-20);
+  }
 }
 
 .single-order__title {
@@ -46,4 +60,20 @@
 .single-order .select-icon svg {
   @extend .fill-white;
   width: 8px;
+}
+
+.single-order__back {
+  @extend .absolute,
+  .hidden;
+  left: 0;
+  top: -100px;
+
+  @include mq(sm) {
+    @include _(sm-flex);
+  }
+}
+
+.single-order__back svg {
+  @extend .fill-cloud-burst;
+  width: 6px;
 }
