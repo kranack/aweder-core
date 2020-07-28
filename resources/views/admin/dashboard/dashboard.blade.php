@@ -28,7 +28,7 @@
         <div class="dashboard-filters col-span-9 m-col-span-12 sm-col-span-6 inline-flex align-items-end">
             <div class="dashboard__filter margin-right-40">
                 <form action={{ route('admin.dashboard') }} method="GET" id="dashboard-status-sort">
-                    <div class="field field--select field--select-button">
+                    <div class="field field--select field--select-button border-cloud-burst">
                         <span class="select-icon icon icon--sort
                         @if ($sort === 'asc')icon--sort-asc @endif
                         @if ($sort === 'desc')icon--sort-desc @endif">
@@ -52,7 +52,7 @@
             </div>
             <div class="dashboard__filter margin-right-40">
                 <form action={{ route('admin.dashboard') }} method="GET" id="dashboard-status-filter">
-                    <div class="field field--select field--select-button">
+                    <div class="field field--select field--select-button border-cloud-burst">
                         <span class="select-icon icon icon--filter">@svg('filter', 'fill-cloud-burst')</span>
                         <select name="status" id="dashboard-status-filter-select"
                                 class="select select--button">

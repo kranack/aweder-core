@@ -1,8 +1,8 @@
 <template>
-  <div class="grid col-gap grid-cols-9">
+  <div class="orders">
     <div
-      class="col-span-3"
-      :class="responsive.isCardView ? 'l-hidden' : 'l-col-span-12'"
+      class="orders__list col-span-3 m-col-span-4"
+      :class="responsive.isCardView ? 'sm-hidden' : 'sm-col-span-6'"
     >
       <order-item
         v-for="(order, index) in orders"
@@ -14,8 +14,8 @@
       />
     </div>
     <div
-      class="col-span-5"
-      :class="responsive.isCardView ? 'l-col-span-12' : 'l-hidden'"
+      class="orders__card col-span-5 l-col-span-6 sm-col-span-6 m-col-span-8"
+      :class="responsive.isCardView ? 'sm-col-span-6' : 'sm-hidden'"
     >
       <order-card
         :order="activeOrder"
