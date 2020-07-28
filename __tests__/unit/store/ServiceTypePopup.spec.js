@@ -1,20 +1,23 @@
 import { mount, shallowMount } from '@vue/test-utils';
-import Popup from '@/js/components/shared/store/ServiceTypePopup';
+import Popup from '@/js/components/store/ServiceTypePopup';
 
 describe('ServiceTypePopup', () => {
+  const propsData = {
+    isActive: true,
+    takeAwayUrl: '/take-away',
+    tableServiceUrl: '/table-service',
+  };
+
   it('is inactive and hidden by default', () => {
     const wrapper = shallowMount(Popup);
 
     expect(wrapper.vm.isActive).toBe(false);
-
     expect(wrapper.find('.popup').exists()).toBe(false);
   });
 
   it('is visible when active', () => {
     const wrapper = mount(Popup, {
-      propsData: {
-        isActive: true,
-      },
+      propsData,
     });
 
     expect(wrapper.find('.popup').exists()).toBe(true);
@@ -22,15 +25,10 @@ describe('ServiceTypePopup', () => {
 
   it('has service links', () => {
     const wrapper = mount(Popup, {
-      propsData: {
-        isActive: true,
-        takeAwayUrl: '/take-away',
-        tableServiceUrl: '/table-service',
-      },
+      propsData,
     });
 
     expect(wrapper.findComponent({ ref: 'take_away' }).attributes('href')).toBe('/take-away');
-
     expect(wrapper.findComponent({ ref: 'table_service' }).attributes('href')).toBe('/table-service');
   });
 });

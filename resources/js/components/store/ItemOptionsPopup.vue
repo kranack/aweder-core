@@ -1,10 +1,11 @@
 <template>
   <popup
     v-if="product"
+    ref="item_options"
     :is-active="!!product"
     @close="close()"
   >
-    <div >
+    <div>
       <h2 class="body-xlarge border-bottom-solid border-silver-5 border-width-1 margin-bottom-20 padding-bottom-30">
         {{ product.title }}
       </h2>
@@ -92,6 +93,7 @@
         min="1"
       >
       <button
+        ref="add_item"
         class="button button-solid--carnation button--wide margin-top-20"
         @click="add()"
       >
@@ -103,6 +105,8 @@
 
 <script>
 import Popup from '@/js/components/shared/Popup';
+import orderApi from '@/js/api/order/order';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -116,15 +120,18 @@ export default {
     };
   },
   computed: {
-    product() {
-      return this.$store.state.activeProduct.product;
-    },
-  },
-  mounted() {
-    // this.$refs.take_away.focus();
+    ...mapState({
+      product: (state) => state.activeProduct.product,
+    }),
   },
   methods: {
     add() {
+      orderApi.create({})
+        .then((res) => {
+        })
+        .catch((err) => {
+        });
+
       this.$store.dispatch('cart/addToCart', {
         product: this.product,
         variant: this.selectedVariant,

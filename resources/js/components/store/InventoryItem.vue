@@ -24,7 +24,7 @@
       <span class="inventory__price">{{ product.price | currency }}</span>
       <div
         class="inventory__button"
-        @click="add()"
+        @click="setActiveProduct(product)"
       >
         <p class="inventory__add">
           Add
@@ -39,6 +39,7 @@
 
 <script>
 import Add from '@/js/components/svgs/Add';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
@@ -51,9 +52,9 @@ export default {
     },
   },
   methods: {
-    add() {
-      this.$store.dispatch('activeProduct/setActiveProduct', this.product);
-    },
+    ...mapActions({
+      setActiveProduct: 'activeProduct/setActiveProduct',
+    }),
   },
 };
 </script>
