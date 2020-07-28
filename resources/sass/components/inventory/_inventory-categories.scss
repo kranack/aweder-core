@@ -6,11 +6,20 @@
   }
 }
 
+.inventory--editable .inventory__categories {
+  @extend .border-bottom-solid,
+  .border-width-1,
+  .border-silver,
+  .padding-bottom-40,
+  .margin-bottom-40;
+}
+
 .inventory__categories:last-child {
   @extend .margin-bottom-0;
 }
 
-.inventory__category-name {
+.inventory__category-name,
+.inventory__add {
   @extend .margin-bottom-50;
 
   @include mq(m) {

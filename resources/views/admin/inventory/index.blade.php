@@ -9,8 +9,13 @@
         @endif
     </header>
     <section class="dashboard-content width-full col-span-9 m-col-span-12 sm-col-span-6 inline-grid grid-cols-9 m-grid-col-12 sm-grid-cols-6">
-        <div class="inventory col-span-6 m-col-span-7 sm-col-span-6">
-            <add-category></add-category>
+        <div class="inventory inventory--editable col-span-6 m-col-span-7 sm-col-span-6">
+            <div class="inventory__categories inventory__categories--editable width-full">
+                <add-category></add-category>
+                <div class="inventory__group inline-flex flex-col width-full">
+                    <add-item></add-item>
+                </div>
+            </div>
             {{--<div class="inventory__categories inline-flex flex-col width-full">--}}
                 {{--<header class="inventory__category-name">--}}
                     {{--<h2 class="header-three">Starters</h2>--}}
