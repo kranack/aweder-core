@@ -1,0 +1,9 @@
+.inventory__add {
+  @extend .flex,
+  .align-items-center;
+}
+
+.inventory__add-category {
+  @extend .header-three,
+  .color-cloud-burst-5;
+}

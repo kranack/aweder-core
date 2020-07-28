@@ -6,6 +6,7 @@ import InventoryItem from '@/js/components/store/InventoryItem';
 import Popup from '@/js/components/shared/Popup';
 import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
 import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
+import AddCategory from '@/js/components/admin/inventory/AddCategory';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store';
@@ -51,6 +52,7 @@ new Vue({
     Popup,
     ServiceTypePopup,
     OrdersPanel,
+    AddCategory,
   },
   store,
 }).$mount('#app');

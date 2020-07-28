@@ -22,11 +22,11 @@
 }
 
 .inventory__category-name h2,
-.inventory__subcategory {
+.inventory__sub-title {
   @extend .font-gibson-med;
 }
 
-.inventory__subcategory {
+.inventory__sub-title {
   @extend .body-xlarge,
   .margin-bottom-30;
 }
