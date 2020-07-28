@@ -39,3 +39,7 @@
   animation-duration: .8s;
   transition: all 0.3s ease-in-out;
 }
+
+.checkbox-input:checked ~ .checkbox--standard .checkbox__icon--small {
+  background-color: $casablanca;
+}

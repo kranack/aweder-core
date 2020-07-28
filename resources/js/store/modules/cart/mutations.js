@@ -1,6 +1,6 @@
 export default {
   ADD_TO_CART(state, payload) {
-    const stateProduct = state.products.find((product) => product.product.id === payload.product.id);
+    const stateProduct = state.products.find((item) => item.product.id === payload.product.id);
 
     if (stateProduct) {
       stateProduct.quantity += payload.quantity;
@@ -12,14 +12,14 @@ export default {
     }
   },
   REMOVE_FROM_CART(state, payload) {
-    const stateProduct = state.products.find((product) => product.id === payload.id);
+    const stateProduct = state.products.find((item) => item.product.id === payload.id);
 
     if (stateProduct) {
       stateProduct.quantity -= 1;
     }
 
     if (stateProduct && stateProduct.quantity < 1) {
-      state.products = state.products.filter((product) => product.id !== payload.id);
+      state.products = state.products.filter((item) => item.product.id !== payload.id);
     }
   },
 };

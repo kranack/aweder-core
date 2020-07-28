@@ -7259,7 +7259,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   opacity: 1; }
 
 /* SVG COLOUR MIXINS ============================================================================= */
-.fill-carnation, .hero__image .icon--logo-mark .logo-bottom, .menu__cart--added .icon .logo-top, .inventory__button svg {
+.fill-carnation, .hero__image .icon--logo-mark .logo-bottom, .menu__cart.menu__cart--added .icon .logo-top, .inventory__button svg {
   fill: #F25851; }
 
 .fill-casablanca, .inventory__button--added.inventory__button svg {
@@ -7271,7 +7271,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .fill-ghost-white {
   fill: #F8F8FF; }
 
-.fill-cloud-burst, .branding .icon--logo-mobile .logo-top, .hero__image .icon--logo-mark .logo-top, .menu__cart--added .icon .logo-bottom {
+.fill-cloud-burst, .branding .icon--logo-mobile .logo-top, .hero__image .icon--logo-mark .logo-top, .menu__cart.menu__cart--added .icon .logo-bottom {
   fill: #243752; }
 
 .fill-silver {
@@ -7835,6 +7835,9 @@ textarea.textarea-input {
   animation-duration: .8s;
   transition: all 0.3s ease-in-out; }
 
+.checkbox-input:checked ~ .checkbox--standard .checkbox__icon--small {
+  background-color: #F5B24D; }
+
 .checkbox--icon {
   transition: background 0.3s ease-in-out; }
 
@@ -8075,6 +8078,10 @@ input[type="file"] {
   width: 120px; }
 
 .cart__title .icon svg {
+  width: 8px;
+  height: 8px; }
+
+.cart__subtitle .icon svg {
   width: 8px;
   height: 8px; }
 

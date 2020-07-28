@@ -3,6 +3,8 @@ import 'regenerator-runtime/runtime';
 import MerchantOrderTypes from '@/js/components/shared/business_details/MerchantOrderTypes';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import InventoryItem from '@/js/components/store/InventoryItem';
+import Basket from '@/js/components/store/Basket';
+import MiniCart from '@/js/components/store/MiniCart';
 import Popup from '@/js/components/shared/Popup';
 import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
 import ItemOptionsPopup from '@/js/components/shared/store/ItemOptionsPopup';
@@ -49,6 +51,8 @@ new Vue({
     UrlSlugChecker,
     'merchant-order-types': MerchantOrderTypes,
     InventoryItem,
+    MiniCart,
+    Basket,
     Popup,
     ServiceTypePopup,
     ItemOptionsPopup,
