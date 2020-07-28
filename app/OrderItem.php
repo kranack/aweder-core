@@ -6,6 +6,8 @@ use App\Traits\HelperTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\OrderItem
@@ -61,12 +63,25 @@ class OrderItem extends Model
         return $this->belongsTo(Inventory::class, 'inventory_id');
     }
 
+    public function inventoryVariant(): HasOne
+    {
+        return $this->hasOne(InventoryVariant::class, 'id', 'variant_id');
+    }
+
     /**
      * @return BelongsTo
      */
     public function orderInventory(): BelongsTo
     {
         return $this->belongsTo(Inventory::class, 'inventory_id')->withTrashed();
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function inventoryOptions(): BelongsToMany
+    {
+        return $this->belongsToMany(InventoryOptionGroupItem::class);
     }
 
     /**

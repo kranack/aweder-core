@@ -17,4 +17,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AddToOrder extends TestCase
 {
     use RefreshDatabase;
+    // create an order
+    // assert order has no inventory
+    // create inventory
+    // create options
+    // create variant
+    // use api endpoint to add to order
+    // assert added
 }

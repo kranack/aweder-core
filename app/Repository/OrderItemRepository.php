@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Contract\Repositories\OrderItemContract;
+use App\InventoryOptionGroupItem;
 use App\OrderItem;
 use Illuminate\Database\Eloquent\Collection;
 use Psr\Log\LoggerInterface;
@@ -39,5 +40,14 @@ class OrderItemRepository implements OrderItemContract
         return $this->getModel()
             ->where('variant_id', '=', null)
             ->get();
+    }
+
+    public function addOptionToOrderItem(
+        OrderItem $orderItem,
+        InventoryOptionGroupItem $inventoryOptionGroupItem
+    ): OrderItem {
+        $orderItem->inventoryOptions()->save($inventoryOptionGroupItem);
+
+        return $orderItem;
     }
 }
