@@ -651,7 +651,7 @@ class OrderRepositoryTest extends TestCase
 
         $this->inventoryVariantRepository->addVariantToInventoryItem($inventoryVariant, $inventory);
 
-        $randomPrice = random_int(1, 6000);
+        $randomPrice = $this->faker->numberBetween(1, 5000);
 
         $orderItem = $this->createAndReturnOrderItem([
             'variant_id' => $inventoryVariant->id,

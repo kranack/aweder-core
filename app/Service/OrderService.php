@@ -165,8 +165,10 @@ class OrderService implements OrderContract
         $orderItem->order_id = $order->id;
         $orderItem->fill($apiPayload);
 
-        $this->orderRepository->addOrderItemToOrder($order, $orderItem);
+        if ($this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
+            return true;
+        }
 
-        return true;
+        return false;
     }
 }

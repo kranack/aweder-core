@@ -104,9 +104,9 @@ interface OrderContract
     /**
      * @param Order $order
      * @param OrderItem $orderItem
-     * @return Order
+     * @return bool
      */
-    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): Order;
+    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): bool;
 
     /**
      * removes the order item from the DB

@@ -12,10 +12,18 @@ use Illuminate\Database\Eloquent\Collection;
  */
 interface OrderItemContract
 {
+    /**
+     * @return Collection|null
+     */
     public function getOrderItemsWithMissingVariantIds(): ?Collection;
 
+    /**
+     * @param OrderItem $orderItem
+     * @param InventoryOptionGroupItem $inventoryOptionGroupItem
+     * @return bool
+     */
     public function addOptionToOrderItem(
         OrderItem $orderItem,
         InventoryOptionGroupItem $inventoryOptionGroupItem
-    ): OrderItem;
+    ): bool;
 }

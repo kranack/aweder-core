@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
  * Class AddController
@@ -26,20 +27,17 @@ class AddController extends Controller
 
         if (!$orderService->doesItemBelongToMerchant($merchant->id, $request->get('inventory_id'))) {
             return response()->json([
-                'message' => 'The item you appear to be adding doesnt belong to this store.'
-            ], 400);
+                'message' => 'The item you appear to be adding doesn\'t belong to this store.'
+            ], Response::HTTP_BAD_REQUEST);
         }
 
-        $apiPayload = json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR);
-
-        try {
-            $orderService->addOrderItemToOrderFromApiPayload($order, $apiPayload);
+        if ($orderService->addOrderItemToOrderFromApiPayload($order, $request->input())) {
             $orderService->updateOrderTotal($order);
-            return response()->json($order, 200);
-        } catch (\Exception $e) {
+            return response()->json($order, Response::HTTP_OK);
+        } else {
             return response()->json([
                 'message' => 'There was an error adding the item to your order'
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 }

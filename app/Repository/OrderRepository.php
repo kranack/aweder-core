@@ -325,10 +325,8 @@ class OrderRepository implements OrderContract
         })->get();
     }
 
-    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): Order
+    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): bool
     {
-        $order->items()->save($orderItem);
-
-        return $order;
+        return (bool) $order->items()->save($orderItem);
     }
 }

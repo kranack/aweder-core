@@ -45,9 +45,7 @@ class OrderItemRepository implements OrderItemContract
     public function addOptionToOrderItem(
         OrderItem $orderItem,
         InventoryOptionGroupItem $inventoryOptionGroupItem
-    ): OrderItem {
-        $orderItem->inventoryOptions()->save($inventoryOptionGroupItem);
-
-        return $orderItem;
+    ): bool {
+        return (bool) $orderItem->inventoryOptions()->save($inventoryOptionGroupItem);
     }
 }

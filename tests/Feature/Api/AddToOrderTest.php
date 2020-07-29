@@ -103,7 +103,7 @@ class AddToOrderTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonFragment(['id' => $order->id]);
 
-        $refreshedOrder = Order::find($order->id);
-        $this->assertCount(1, $refreshedOrder->items()->get());
+        $order = $order->fresh();
+        $this->assertCount(1, $order->items()->get());
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Middleware\Api;
 
 use App\Merchant;
 use Closure;
+use Illuminate\Http\Response;
 
 class ApiWithMerchant
 {
@@ -20,7 +21,7 @@ class ApiWithMerchant
         $merchant = Merchant::whereUrlSlug($request->merchant)->first();
 
         if (!$merchant) {
-            return response()->json(['message' => 'No merchant found'], 400);
+            return response()->json(['message' => 'No merchant found'], Response::HTTP_BAD_REQUEST);
         }
 
         $request->merchant = $merchant;
