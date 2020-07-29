@@ -511,7 +511,7 @@ button {
 .margin-top-50 {
   margin-top: 50px; }
 
-.margin-top-60, .inventory__content + .inventory__sub-categories,
+.margin-top-60, .inventory__group + .inventory__sub-categories,
 .inventory__sub-categories + .inventory__sub-categories {
   margin-top: 60px; }
 
@@ -778,7 +778,7 @@ button {
 .margin-bottom-auto {
   margin-bottom: auto; }
 
-.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field.opening-time:nth-child(4), .inventory__categories:last-child, .cart__service .field, .single-order .field {
+.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field.opening-time:nth-child(4), .inventory__categories:last-child, .inventory__categories .inventory__sub-categories .inventory__categories, .cart__service .field, .single-order .field {
   margin-bottom: 0; }
 
 @media (max-width: 768px) {
@@ -2206,7 +2206,7 @@ textarea.textarea-input, .select {
 .padding-bottom-auto {
   padding-bottom: auto; }
 
-.padding-bottom-0 {
+.padding-bottom-0, .inventory__categories .inventory__sub-categories .inventory__categories {
   padding-bottom: 0; }
 
 .padding-bottom-5 {
@@ -6133,7 +6133,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--edit
 .border-top-none, .panel--radius-bottom {
   border-top-style: none; }
 
-.border-bottom-none, .select.select--button, .single-order__item:last-child {
+.border-bottom-none, .select.select--button, .inventory__categories .inventory__sub-categories .inventory__categories, .single-order__item:last-child {
   border-bottom-style: none; }
 
 .border-right-none {

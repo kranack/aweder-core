@@ -51,7 +51,13 @@
   @extend .margin-left-auto;
 }
 
-.inventory__content + .inventory__sub-categories,
+.inventory__group + .inventory__sub-categories,
 .inventory__sub-categories + .inventory__sub-categories {
   @extend .margin-top-60;
+}
+
+.inventory__categories .inventory__sub-categories .inventory__categories {
+  @extend .margin-bottom-0,
+  .padding-bottom-0,
+  .border-bottom-none;
 }
