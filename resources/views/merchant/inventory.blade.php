@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                             <div class="cart__buttons">
-                                <button class="button button-solid--carnation">
+                                <button class="button button-solid--carnation pointer-none">
                                     <span class="button__content">Place order</span>
                                 </button>
                             </div>

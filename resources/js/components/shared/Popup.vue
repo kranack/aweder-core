@@ -6,7 +6,7 @@
     <div
       class="popup__mask"
       @click="close()"
-    />
+    ></div>
     <div class="content">
       <div class="popup__box col-span-6 col-start-4 m-col-span-12 m-col-start-1 padding-40 m-padding-20">
         <slot />

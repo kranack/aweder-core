@@ -8,12 +8,12 @@
           class="tab-menu__item"
           :class="{ 'tab-menu__item--active': tab === activeTab }"
         >
-          <a
+          <span
             class="tab-menu__link"
             @click.prevent="selectTab(tab)"
           >
             {{ tab }}
-          </a>
+          </span>
         </li>
       </ul>
     </nav>

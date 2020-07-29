@@ -1,16 +1,16 @@
 <template>
   <popup :is-active="isActive">
-    <h2 class="body-xlarge margin-bottom-50">
-      Did you want to do a...
-    </h2>
-
-    <div class="content">
+    <header class="popup__header margin-bottom-50">
+      <h2 class="body-xlarge">
+        Did you want to do a...
+      </h2>
+    </header>
+    <div class="popup__content content">
       <div class="col-span-6">
         <a
           ref="take_away"
           :href="takeAwayUrl"
-          class="button service-type__button"
-        >
+          class="button service-type__button">
           <span class="button__icon button__icon--left"><Delivery /></span>
           <span class="button_content body-large">Take away</span>
         </a>
@@ -19,8 +19,7 @@
         <a
           ref="table_service"
           :href="tableServiceUrl"
-          class="button service-type__button"
-        >
+          class="button service-type__button">
           <span class="button__icon button__icon--left"><Table /></span>
           <span class="button_content body-large">Table service</span>
         </a>

@@ -72,5 +72,6 @@
 }
 
 .tab-menu__link {
+  @extend .cursor-pointer;
   color: inherit;
 }

@@ -7416,7 +7416,7 @@ textarea.textarea-input, .select, .checkbox--standard .checkbox__icon, .checkbox
 .cursor-not-allowed {
   cursor: not-allowed; }
 
-.cursor-pointer, .orders__list-item {
+.cursor-pointer, .tab-menu__link, .orders__list-item {
   cursor: pointer; }
 
 @media (max-width: 1440px) {
