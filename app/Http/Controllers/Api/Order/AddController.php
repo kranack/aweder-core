@@ -39,13 +39,14 @@ class AddController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        if ($orderService->addOrderItemToOrderFromApiPayload($order, $apiPayload)) {
-            $orderService->updateOrderTotal($order);
-            return response()->json($order, Response::HTTP_OK);
-        } else {
+        if (!$orderService->addOrderItemToOrderFromApiPayload($order, $apiPayload)) {
             return response()->json([
                 'message' => 'There was an error adding the item to your order'
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
+
+        $orderService->updateOrderTotal($order);
+
+        return response()->json($order, Response::HTTP_OK);
     }
 }
