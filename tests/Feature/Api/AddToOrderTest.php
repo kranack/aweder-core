@@ -100,6 +100,7 @@ class AddToOrderTest extends TestCase
             '/api/v1/order/' . $order->url_slug . '/item',
             $orderItemPayload
         );
+
         $response->assertStatus(200);
         $response->assertJsonFragment(['id' => $order->id]);
 

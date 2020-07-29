@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\Order;
 
 use App\Contract\Service\OrderContract;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Order\ApiAddItemToOrderRequest;
+use App\Merchant;
 use App\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,21 +19,28 @@ class AddController extends Controller
 {
     /**
      * @param Order $order
-     * @param Request $request
+     * @param ApiAddItemToOrderRequest $request
      * @param OrderContract $orderService
      * @return JsonResponse
      */
-    public function __invoke(Order $order, Request $request, OrderContract $orderService): JsonResponse
+    public function __invoke(Order $order, ApiAddItemToOrderRequest $request, OrderContract $orderService): JsonResponse
     {
-        $merchant = $request->merchant;
+        $apiPayload = $request->validated();
+        $merchant = Merchant::whereUrlSlug($apiPayload['merchant'])->first();
 
-        if (!$orderService->doesItemBelongToMerchant($merchant->id, $request->get('inventory_id'))) {
+        if (!$merchant) {
+            return response()->json([
+                'message' => 'This store does not exist.'
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
+        if (!$orderService->doesItemBelongToMerchant($merchant->id, $apiPayload['inventory_id'])) {
             return response()->json([
                 'message' => 'The item you appear to be adding doesn\'t belong to this store.'
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        if ($orderService->addOrderItemToOrderFromApiPayload($order, $request->input())) {
+        if ($orderService->addOrderItemToOrderFromApiPayload($order, $apiPayload)) {
             $orderService->updateOrderTotal($order);
             return response()->json($order, Response::HTTP_OK);
         } else {
