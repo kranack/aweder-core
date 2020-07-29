@@ -16,18 +16,7 @@
                     <add-item></add-item>
                 </div>
             </div>
-            {{--<div class="inventory__categories inline-flex flex-col width-full">--}}
-                {{--<header class="inventory__category-name">--}}
-                    {{--<h2 class="header-three">Starters</h2>--}}
-                    {{--<div class="inventory__group inline-flex flex-col width-full">--}}
-                    {{--</div>--}}
-                {{--</header>--}}
-                {{--<div class="inventory__sub-categories inline-flex flex-col width-full">--}}
-                    {{--<h3 class="inventory__sub-title">Sub category</h3>--}}
-                    {{--<div class="inventory__group inline-flex flex-col width-full">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+            <categories></categories>
         </div>
         {{--@foreach ($fullInventory as $category)--}}
             {{--@if ($category->title !== null && !empty($category->title))--}}
@@ -186,9 +175,3 @@
 
 
 @endsection
-<script>
-  import AddCategory from '../../../js/components/admin/inventory/AddCategory'
-  export default {
-    components: { AddCategory }
-  }
-</script>

@@ -8,6 +8,7 @@ import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
 import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
 import AddCategory from '@/js/components/admin/inventory/AddCategory';
 import AddItem from '@/js/components/admin/inventory/AddItem';
+import Categories from '@/js/components/admin/inventory/Categories';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import store from './store';
@@ -55,6 +56,7 @@ new Vue({
     OrdersPanel,
     AddCategory,
     AddItem,
+    Categories,
   },
   store,
 }).$mount('#app');

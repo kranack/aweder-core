@@ -30,12 +30,31 @@
   }
 }
 
+.inventory__category-name,
+.inventory__subcategory-name {
+  @extend .flex,
+  .align-items-center;
+}
+
 .inventory__category-name h2,
 .inventory__sub-title {
   @extend .font-gibson-med;
 }
 
+.inventory__subcategory-name {
+  @extend .margin-bottom-30;
+}
+
 .inventory__sub-title {
-  @extend .body-xlarge,
-  .margin-bottom-30;
+  @extend .body-xlarge;
+}
+
+.inventory__category-name .button,
+.inventory__subcategory-name .button {
+  @extend .margin-left-auto;
+}
+
+.inventory__group + .inventory__sub-categories,
+.inventory__sub-categories + .inventory__sub-categories {
+  @extend .margin-top-60;
 }
