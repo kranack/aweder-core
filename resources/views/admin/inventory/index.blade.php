@@ -18,19 +18,11 @@
             </div>
             @if (!$fullInventory->isEmpty())
                 @foreach ($fullInventory as $category)
-                    @foreach ($category->inventories as $item)
-                        <div class="inventory__categories inline-flex flex-col width-full">
-                            <categories
-                                category-name="{{ $category->title }}"></categories>
-                            {{--@TODO LOOP THROUGH SUB CATEGORIES--}}
-                            <div class="inventory__sub-categories inline-flex flex-col width-full">
-                                <categories
-                                    category-id="{{$category->id}}"
-                                    category-name="{{ $category->title }}">
-                                </categories>
-                            </div>
-                        </div>
-                    @endforeach
+                    <categories
+                        category-name="{{ $category->title }}"
+                        :sub-category="1"
+                        :inventory-items="{{ json_encode($category->inventories->toArray()) }}">
+                    </categories>
                 @endforeach
             @endif
         </div>
