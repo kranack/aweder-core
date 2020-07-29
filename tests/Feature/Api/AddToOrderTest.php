@@ -8,7 +8,6 @@ use App\Contract\Repositories\InventoryVariantContract;
 use App\Contract\Repositories\OrderContract;
 use App\Contract\Repositories\OrderItemContract;
 use App\Inventory;
-use App\Order;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
