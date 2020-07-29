@@ -30,31 +30,28 @@
   }
 }
 
-.inventory__category-name,
-.inventory__subcategory-name {
+.inventory__category-name {
   @extend .flex,
   .align-items-center;
 }
 
-.inventory__category-name h2,
-.inventory__sub-title {
+.inventory__category-name h2 {
   @extend .font-gibson-med;
 }
 
-.inventory__subcategory-name {
+.inventory__sub-categories .inventory__category-name {
   @extend .margin-bottom-30;
 }
 
-.inventory__sub-title {
+.inventory__sub-categories h2 {
   @extend .body-xlarge;
 }
 
-.inventory__category-name .button,
-.inventory__subcategory-name .button {
+.inventory__category-name .button {
   @extend .margin-left-auto;
 }
 
-.inventory__group + .inventory__sub-categories,
+.inventory__content + .inventory__sub-categories,
 .inventory__sub-categories + .inventory__sub-categories {
   @extend .margin-top-60;
 }

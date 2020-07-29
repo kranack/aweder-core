@@ -16,7 +16,23 @@
                     <add-item></add-item>
                 </div>
             </div>
-            <categories></categories>
+            @if (!$fullInventory->isEmpty())
+                @foreach ($fullInventory as $category)
+                    @foreach ($category->inventories as $item)
+                        <div class="inventory__categories inline-flex flex-col width-full">
+                            <categories
+                                category-name="{{ $category->title }}"></categories>
+                            {{--@TODO LOOP THROUGH SUB CATEGORIES--}}
+                            <div class="inventory__sub-categories inline-flex flex-col width-full">
+                                <categories
+                                    category-id="{{$category->id}}"
+                                    category-name="{{ $category->title }}">
+                                </categories>
+                            </div>
+                        </div>
+                    @endforeach
+                @endforeach
+            @endif
         </div>
         {{--@foreach ($fullInventory as $category)--}}
             {{--@if ($category->title !== null && !empty($category->title))--}}

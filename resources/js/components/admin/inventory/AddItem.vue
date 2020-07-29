@@ -3,16 +3,20 @@
     <div class="inventory__image"></div>
     <div class="inventory__details">
       <header class="inventory__header">
-        <h3 class="inventory__title">Example menu title</h3>
+        <h3 class="inventory__title">
+          Example menu title
+        </h3>
       </header>
-      <p class="inventory__description">Example menu description</p>
+      <p class="inventory__description">
+        Example menu description
+      </p>
       <span class="inventory__price">£0.00</span>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'AddItem',
-  };
+export default {
+  name: 'AddItem',
+};
 </script>
