@@ -1,16 +1,12 @@
 <template>
-  <popup :is-active="isActive">
-    <header class="popup__header margin-bottom-50">
-      <h2 class="body-xlarge">
-        Did you want to do a...
-      </h2>
-    </header>
-    <div class="popup__content content">
+  <modal :is-active="isActive">
+    <div class="modal__content content">
       <div class="col-span-6">
         <a
           ref="take_away"
           :href="takeAwayUrl"
-          class="button service-type__button">
+          class="button service-type__button"
+        >
           <span class="button__icon button__icon--left"><Delivery /></span>
           <span class="button_content body-large">Take away</span>
         </a>
@@ -25,17 +21,17 @@
         </a>
       </div>
     </div>
-  </popup>
+  </modal>
 </template>
 
 <script>
-import Popup from '@/js/components/shared/Popup';
+import Modal from '@/js/components/shared/modal/Modal';
 import Delivery from '@/js/components/svgs/Delivery';
 import Table from '@/js/components/svgs/Table';
 
 export default {
   components: {
-    Popup,
+    Modal,
     Delivery,
     Table,
   },

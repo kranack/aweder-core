@@ -9,7 +9,8 @@
       </span>
     </header>
     <div class="inventory__group inline-flex flex-col width-full">
-      <edit-item
+      <add-item />
+      <inventory-item
         v-for="(item, index) in inventoryItems"
         :key="index"
         :item-id="item.id"
@@ -33,13 +34,15 @@
 
 <script>
 import Categories from './Categories';
-import EditItem from './EditItem';
+import InventoryItem from './InventoryItem';
+import AddItem from './AddItem';
 
 export default {
   name: 'Categories',
   components: {
     Categories,
-    EditItem,
+    InventoryItem,
+    AddItem,
   },
   props: {
     subCategory: {

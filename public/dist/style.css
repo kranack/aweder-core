@@ -3204,7 +3204,7 @@ tr td:last-child .table__cell, .single-order__items {
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
 .admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__category-name, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button,
-.inventory__add, .popup, .cart__order, .cart__item, .cart__options, .subtotal,
+.inventory__add, .modal, .cart__order, .cart__item, .cart__options, .subtotal,
 .total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .orders__customer, .orders__arrow, .single-order__header, .single-order__title, .single-order__title h2, .single-order__details, .single-order__item, .single-order__image, .single-order__options {
   display: flex; }
 
@@ -3674,7 +3674,7 @@ tr td:last-child .table__cell, .single-order__items {
     align-items: flex-start; } }
 
 .align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__category-name, .inventory__image, .inventory__button,
-.inventory__add, .popup, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .orders__customer, .orders__arrow, .single-order__header, .single-order__title h2, .single-order__line {
+.inventory__add, .modal, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .orders__customer, .orders__arrow, .single-order__header, .single-order__title h2, .single-order__line {
   align-items: center; }
 
 @media (max-width: 1440px) {
@@ -5433,7 +5433,7 @@ tr td:last-child .table__cell, .single-order__items {
     grid-auto-flow: column dense; } }
 
 /* POSITION MIXINS ============================================================================= */
-.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .popup__box, .table__cell, .orders__list-item, .single-order {
+.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .modal__box, .table__cell, .orders__list-item, .single-order {
   position: relative; }
 
 @media (max-width: 768px) {
@@ -5460,7 +5460,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-relative {
     position: relative; } }
 
-.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .field--select .icon--down, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .popup__mask, .table__cell .status, .orders__arrow, .single-order__back {
+.absolute, .site-footer__branding .icon--bowl, .admin-burger, .hero__image--square img, .merchant-times__timetable, .steps__number, .steps__list-item:before, .field__error, .label.label--float, .field--price:before, .field--select .icon--down, .tab-menu__item:before, .opening-time__group:before, .notification, .menu__cat-link:before, .inventory__item:before, .inventory__button, .modal__mask, .table__cell .status, .orders__arrow, .single-order__back {
   position: absolute; }
 
 @media (max-width: 1024px) {
@@ -5492,7 +5492,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-absolute {
     position: absolute; } }
 
-.fixed, .grid-overlay, .popup, .button.menu__view.menu__view--active {
+.fixed, .grid-overlay, .modal, .button.menu__view.menu__view--active {
   position: fixed; }
 
 @media (max-width: 1440px) {
@@ -6021,7 +6021,7 @@ textarea.textarea-input, .field--price:before, .select {
 .admin__greeting--open .admin__burger:after, .timetable__hours .separator, .menu__view .separator {
   background-color: #F2EDDC; }
 
-.background-ghost-white, .popup__box, td {
+.background-ghost-white, .modal__box, td {
   background-color: #F8F8FF; }
 
 .background-cloud-burst, .site-footer, .admin__burger, .admin__burger:before,
@@ -6038,7 +6038,7 @@ textarea.textarea-input, .field--price:before, .select {
 .background-white, .avatar, .orders__arrow, .single-order {
   background-color: #FFFFFF; }
 
-.background-black, .popup__mask {
+.background-black, .modal__mask {
   background-color: #000000; }
 
 .background-success, .notification--success .notification__message, .status--completed {
@@ -6073,7 +6073,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .radius-0, .button.menu__view {
   border-radius: 0; }
 
-.radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .popup__box, .single-order, .single-order__image {
+.radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .modal__box, .single-order, .single-order__image {
   border-radius: 5px; }
 
 .radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count, .status, .orders__arrow {
@@ -7293,7 +7293,7 @@ textarea.textarea-input, .select, .checkbox--standard .checkbox__icon, .checkbox
 .opacity-0, .merchant-times__timetable, .hero__merchant-delivery .hollow, .field__error, .field--error .label.label--float, .checkbox__icon .hollow {
   opacity: 0; }
 
-.opacity-50, .popup__mask {
+.opacity-50, .modal__mask {
   opacity: 0.5; }
 
 .opacity-80 {
@@ -8348,29 +8348,32 @@ input[type="file"] {
 .inventory__add-category svg {
   width: 26px; }
 
-.service-type__button {
-  width: 100%; }
-
-.service-type__button svg {
-  height: 35px; }
-
-.popup {
+.modal {
   z-index: 10;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0; }
 
-.popup__box {
+.modal .content {
+  grid-template-rows: auto; }
+
+.modal__box {
   z-index: 1;
   max-height: 90vh;
   overflow-y: auto; }
 
-.popup__mask {
+.modal__mask {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0; }
+
+.service-type__button {
+  width: 100%; }
+
+.service-type__button svg {
+  height: 35px; }
 
 .cart {
   top: 60px; }
@@ -8502,7 +8505,7 @@ input[type="file"] {
 .admin-wrapper .content {
   height: 100%; }
 
-.admin-wrapper .content {
+.admin-wrapper > .content {
   grid-template-rows: auto 1fr; }
 
 .admin-main {
