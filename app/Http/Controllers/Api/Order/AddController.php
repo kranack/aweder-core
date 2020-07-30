@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Order;
 use App\Contract\Service\OrderContract;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Order\ApiAddItemToOrderRequest;
-use App\Merchant;
 use App\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
