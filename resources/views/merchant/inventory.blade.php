@@ -77,7 +77,9 @@
                             @endforeach
                         </div>
                     @endif
-                    <mini-cart></mini-cart>
+                    <mini-cart
+                        :merchant="{{ json_encode($merchant) }}"
+                    ></mini-cart>
                 </div>
             </div>
             <div class="button button-solid--carnation hidden menu__view" id="menu__view">

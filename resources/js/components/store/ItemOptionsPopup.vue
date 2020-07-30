@@ -15,7 +15,9 @@
         v-if="product.variants.length"
         class="item-options__field"
       >
-        <h3 class="item-options__field-title">Variants</h3>
+        <h3 class="item-options__field-title">
+          Variants
+        </h3>
 
         <div
           v-for="variant in product.variants"
@@ -25,7 +27,7 @@
           <input
             :id="variant.name"
             v-model="selectedVariant"
-            :value="variant.id"
+            :value="variant"
             type="radio"
             name="ariant.name"
             class="radio-input hidden"
@@ -62,8 +64,8 @@
           >
             <input
               :id="item.name + item.id"
-              v-model="options"
-              :value="item.id"
+              v-model="options[group.name]"
+              :value="item"
               type="checkbox"
               :name="item.id"
               class="checkbox-input hidden"
@@ -134,7 +136,7 @@ export default {
   data() {
     return {
       quantity: 1,
-      options: [],
+      options: {},
       selectedVariant: null,
     };
   },
@@ -142,6 +144,13 @@ export default {
     ...mapState({
       product: (state) => state.activeProduct.product,
     }),
+  },
+  watch: {
+    product(value) {
+      if (value) {
+        this.reset();
+      }
+    },
   },
   methods: {
     add() {
@@ -161,7 +170,6 @@ export default {
       this.close();
     },
     close() {
-      this.quantity = 1;
       this.$store.dispatch('activeProduct/removeActiveProduct');
     },
     increment() {
@@ -171,6 +179,17 @@ export default {
       this.quantity = this.quantity > 1
         ? this.quantity - 1
         : 1;
+    },
+    createOptionGroups() {
+      this.product.option_groups.forEach((group) => {
+        this.options[group.name] = [];
+      });
+    },
+    reset() {
+      this.quantity = 1;
+      this.options = {};
+      this.selectedVariant = null;
+      this.createOptionGroups();
     },
   },
 };

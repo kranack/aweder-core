@@ -1346,7 +1346,7 @@ button {
 .margin-right-0, .site-footer__item:last-child, .tab-nav--dashboard .tab-menu__item:last-child, .menu__cat-item:last-child, .metric__item:last-child {
   margin-right: 0; }
 
-.margin-right-5 {
+.margin-right-5, .cart__subtitle .icon svg {
   margin-right: 5px; }
 
 .margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .field--select-button .select-icon, .checkbox--standard .checkbox__icon--small, .radio--standard .radio__icon--small, .separator--small, .cart__title .icon, .status {
@@ -5731,7 +5731,7 @@ textarea.textarea-input, .field--price:before, .select {
   line-height: 1.5; }
 
 .body-small, .button--small .button__content, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .cart__title,
-.cart__price, .subtotal__title, .increment--small .increment__value, td {
+.cart__price, .cart__subtitle, .subtotal__title, .increment--small .increment__value, td {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5; }

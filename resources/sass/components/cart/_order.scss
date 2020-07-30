@@ -80,6 +80,15 @@
 }
 
 .cart__subtitle .icon svg {
+  @extend .margin-right-5;
   width: 8px;
   height: 8px;
+}
+
+.cart__subtitle {
+  @extend .body-small;
+}
+
+.cart__price {
+  @extend .body-small;
 }

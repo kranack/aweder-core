@@ -9,7 +9,7 @@
           <input
             id="delivery"
             v-model="serviceType"
-            value="Delivery"
+            value="delivery"
             type="radio"
             name="service"
             class="radio-input hidden"
@@ -26,7 +26,7 @@
           <input
             id="collection"
             v-model="serviceType"
-            value="Collection"
+            value="collection"
             type="radio"
             name="service"
             class="radio-input hidden"
@@ -47,11 +47,13 @@
           class="cart__item"
         >
           <div class="cart__line">
-            <p class="cart__title">{{ item.product.title }}</p>
+            <p class="cart__title">
+              {{ item.product.title }}
+            </p>
             <div class="increment increment--small">
               <span
                 class="increment__type increment__type--down"
-                @click="removeFromCart(item.product)"
+                @click="removeFromCart(item.id)"
               >
                 <Minus />
               </span>
@@ -62,39 +64,64 @@
               >
               <span
                 class="increment__type increment__type--up"
-                @click="addToCart(singleProduct(item.product))"
+                @click="incrementProduct(item.id)"
               >
                 <Add />
               </span>
             </div>
             <span class="cart__price text-right">{{ item.product.price | currency }}</span>
           </div>
-          <div class="cart__options">
-            <h5 class="cart__option-title">Sauces</h5>
-            <div class="cart__option-item">
+          <div
+            v-for="(group, groupName) in item.options"
+            :key="groupName"
+            class="cart__options"
+          >
+            <h5 class="cart__option-title">
+              {{ groupName }}
+            </h5>
+            <div
+              v-for="option in group"
+              :key="option.id"
+              class="cart__option-item"
+            >
               <p class="cart__subtitle">
                 <span class="icon icon-add"><Add /></span>
-                Curry sauce
+                {{ option.name }}
               </p>
-              <span class="cart__price text-right">£1.95</span>
+              <span class="cart__price text-right">{{ option.price_modified | currency }}</span>
             </div>
           </div>
         </div>
       </div>
       <div class="subtotal">
         <div class="subtotal__item">
-          <p class="subtotal__title">Subtotal</p>
-          <span class="cart__price text-right">{{ total | currency }}</span>
+          <p class="subtotal__title">
+            Subtotal
+          </p>
+          <span class="cart__price text-right">{{ subtotal | currency }}</span>
         </div>
         <div class="subtotal__item subtotal__item--light">
-          <p class="subtotal__title">Delivery</p>
-          <!-- <span class="cart__price text-right">£{{ $merchant->getFormattedUKPriceAttribute($merchant->delivery_cost) }}</span> -->
+          <p class="subtotal__title">
+            Delivery
+          </p>
+          <span
+            v-if="isDelivery"
+            class="cart__price text-right"
+          >
+            {{ merchant.delivery_cost | currency }}
+          </span>
+          <span
+            v-else
+            class="cart__price text-right"
+          >
+            £--.--
+          </span>
         </div>
       </div>
       <div class="total">
         <div class="total__item">
           <p class="total__title">Total</p>
-          <!-- <span class="cart__price text-right">£{{ $order->getFormattedUKPriceAttribute($order->total_cost, $merchant->delivery_cost) }}</span> -->
+          <span class="cart__price text-right">{{ total | currency }}</span>
         </div>
       </div>
     </div>
@@ -120,11 +147,14 @@ export default {
     Minus,
   },
   props: {
-
+    merchant: {
+      type: Object,
+      default: null,
+    },
   },
   data() {
     return {
-      serviceType: 'Delivery',
+      serviceType: 'delivery',
     };
   },
   computed: {
@@ -132,21 +162,31 @@ export default {
       'cart',
     ]),
     ...mapGetters({
-      total: 'cart/total',
+      subtotal: 'cart/subtotal',
       quantity: 'cart/quantity',
     }),
+    total() {
+      return this.subtotal + this.extraCharges;
+    },
+    extraCharges() {
+      if (this.isDelivery && this.deliveryCost) {
+        return this.deliveryCost;
+      }
+      return 0;
+    },
+    isDelivery() {
+      return this.serviceType === 'delivery';
+    },
+    deliveryCost() {
+      return this.merchant.delivery_cost;
+    },
   },
   methods: {
     ...mapActions({
       addToCart: 'cart/addToCart',
       removeFromCart: 'cart/removeFromCart',
+      incrementProduct: 'cart/incrementProduct',
     }),
-    singleProduct(product) {
-      return {
-        product,
-        quantity: 1,
-      };
-    },
   },
 };
 </script>
