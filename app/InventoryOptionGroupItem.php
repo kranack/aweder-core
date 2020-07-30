@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\InventoryOptionGroupItem withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\InventoryOptionGroupItem withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \App\InventoryOptionGroup $optionGroup
  */
 class InventoryOptionGroupItem extends Model
 {
