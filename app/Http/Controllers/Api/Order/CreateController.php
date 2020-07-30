@@ -18,12 +18,21 @@ class CreateController extends Controller
     public function __invoke(ApiCreateOrderRequest $request, OrderContract $orderService): JsonResponse
     {
         $merchant = $request->getMerchant();
+
+        if (!$merchant) {
+            return response()->json([
+                'message' => 'Could not create order for merchant'
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
         $order = $orderService->createNewOrderForMerchant($merchant);
 
         if ($order instanceof Order) {
             return response()->json($order, Response::HTTP_CREATED);
         }
 
-        return response()->json(['message' => 'Could not create order for merchant.'], Response::HTTP_BAD_REQUEST);
+        return response()->json([
+            'message' => 'Could not create order for merchant.'
+        ], Response::HTTP_BAD_REQUEST);
     }
 }

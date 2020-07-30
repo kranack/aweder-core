@@ -2,12 +2,6 @@
 
 namespace Tests\Feature\Api;
 
-use App\Contract\Repositories\InventoryOptionGroupContract;
-use App\Contract\Repositories\InventoryOptionGroupItemContract;
-use App\Contract\Repositories\InventoryVariantContract;
-use App\Contract\Repositories\OrderContract;
-use App\Contract\Repositories\OrderItemContract;
-use App\Inventory;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -31,14 +25,57 @@ class CreateOrderTest extends TestCase
     /**
      * @test
      */
-    public function canCreateOrderForMerchant()
+    public function cannotCreateOrderForMerchantWithoutMerchantId()
+    {
+        $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
+
+        $this->assertCount(0, $merchant->orders()->get());
+
+        $orderItemPayload = [];
+
+        $response = $this->json(
+            'POST',
+            '/api/v1/order',
+            $orderItemPayload
+        );
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $this->assertCount(0, $merchant->orders()->get());
+    }
+
+    /**
+     * @test
+     */
+    public function cannotCreateOrderForMerchantWithInvalidMerchantId()
     {
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
         $this->assertCount(0, $merchant->orders()->get());
 
         $orderItemPayload = [
-            'merchant' => $merchant->url_slug
+            'merchant' => 'rubbish'
+        ];
+
+        $response = $this->json(
+            'POST',
+            '/api/v1/order',
+            $orderItemPayload
+        );
+
+        $response->assertStatus(Response::HTTP_BAD_REQUEST);
+        $this->assertCount(0, $merchant->orders()->get());
+    }
+
+    /**
+     * @test
+     */
+    public function canCreateOrderForMerchant()
+    {
+        $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
+        $this->assertCount(0, $merchant->orders()->get());
+
+        $orderItemPayload = [
+            'merchant' => $merchant->url_slug,
         ];
 
         $response = $this->json(
