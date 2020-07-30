@@ -46,6 +46,8 @@ class OrderItemRepository implements OrderItemContract
         OrderItem $orderItem,
         InventoryOptionGroupItem $inventoryOptionGroupItem
     ): bool {
-        return (bool) $orderItem->inventoryOptions()->save($inventoryOptionGroupItem);
+        $return = $orderItem->inventoryOptions()->save($inventoryOptionGroupItem);
+
+        return $return instanceof InventoryOptionGroupItem;
     }
 }

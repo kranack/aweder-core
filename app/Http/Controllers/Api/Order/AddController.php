@@ -25,7 +25,7 @@ class AddController extends Controller
     public function __invoke(Order $order, ApiAddItemToOrderRequest $request, OrderContract $orderService): JsonResponse
     {
         $apiPayload = $request->validated();
-        $merchant = Merchant::whereUrlSlug($apiPayload['merchant'])->first();
+        $merchant = $request->getMerchant();
 
         if (!$merchant) {
             return response()->json([

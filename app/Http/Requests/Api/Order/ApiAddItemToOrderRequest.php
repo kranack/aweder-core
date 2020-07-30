@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api\Order;
 
+use App\Merchant;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ApiAddItemToOrderRequest extends FormRequest
@@ -28,5 +29,13 @@ class ApiAddItemToOrderRequest extends FormRequest
             'variant_id' => ['required', 'integer'],
             'merchant' => ['required', 'string']
         ];
+    }
+
+    /**
+     * @return Merchant|null
+     */
+    public function getMerchant(): ?Merchant
+    {
+        return Merchant::whereUrlSlug($this->merchant)->first();
     }
 }
