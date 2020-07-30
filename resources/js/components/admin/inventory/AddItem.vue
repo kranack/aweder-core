@@ -1,19 +1,20 @@
 <template>
   <div
     class="inventory__item inventory__item--add"
-    @click="showCreateModal"
   >
-    <div class="inventory__image" />
-    <div class="inventory__details">
-      <header class="inventory__header">
-        <h3 class="inventory__title">
-          Example menu title
-        </h3>
-      </header>
-      <p class="inventory__description">
-        Example menu description
-      </p>
-      <span class="inventory__price">£0.00</span>
+    <div @click="showCreateModal" class="width-full flex">
+      <div class="inventory__image" />
+      <div class="inventory__details">
+        <header class="inventory__header">
+          <h3 class="inventory__title">
+            Example menu title
+          </h3>
+        </header>
+        <p class="inventory__description">
+          Example menu description
+        </p>
+        <span class="inventory__price">£0.00</span>
+      </div>
     </div>
     <create-inventory-item
       :is-active="isActive"
