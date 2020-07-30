@@ -43,3 +43,13 @@
 .checkbox-input:checked ~ .checkbox--standard .checkbox__icon--small {
   background-color: $casablanca;
 }
+
+.checkbox--standard .checkbox__icon--large{
+  @extend .margin-right-20;
+  width: 50px;
+  height: 50px;
+}
+
+.checkbox-input:checked ~ .checkbox--standard .checkbox__icon--large {
+  background-color: $casablanca;
+}

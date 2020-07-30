@@ -505,7 +505,7 @@ button {
   .site-footer__statement {
     margin-top: 30px; } }
 
-.margin-top-40, .feature__buttons, .dashboard-title + p {
+.margin-top-40, .feature__buttons, .item-options__submit, .dashboard-title + p {
   margin-top: 40px; }
 
 .margin-top-50 {
@@ -786,11 +786,11 @@ button {
 .margin-bottom-15 {
   margin-bottom: 15px; }
 
-.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .cart__service, .cart__order, .subtotal,
+.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal,
 .total {
   margin-bottom: 20px; }
 
-.margin-bottom-30, .site-footer__branding .icon--cross, .hero__merchant-times, .field, .inventory__subcategory {
+.margin-bottom-30, .site-footer__branding .icon--cross, .hero__merchant-times, .field, .inventory__subcategory, .item-options__field-title {
   margin-bottom: 30px; }
 
 @media (max-width: 768px) {
@@ -1359,7 +1359,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image {
+.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--standard .checkbox__icon--large, .checkbox--icon .checkbox__icon, .radio__icon, .radio--standard .radio__icon--large, .separator--large, .inventory__image {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -2206,7 +2206,7 @@ textarea.textarea-input, .select, .cart__order {
 .padding-bottom-20, .tab-menu__item, .notification__message, .cart__service {
   padding-bottom: 20px; }
 
-.padding-bottom-30 {
+.padding-bottom-30, .item-options__heading {
   padding-bottom: 30px; }
 
 .padding-bottom-40, .admin-nav, .steps__buttons {
@@ -2493,10 +2493,10 @@ textarea.textarea-input, .select, .cart__order {
 .padding-left-15, .cart__options {
   padding-left: 15px; }
 
-.padding-left-20, .button.button--small, .site-menu__button, .site-nav__burger, .admin-menu__link, .steps__list-item, .text-input--price, .checkbox--icon, .notification__message, .order__select {
+.padding-left-20, .button.button--small, .button--small.item-options__submit, .site-menu__button, .site-nav__burger, .admin-menu__link, .steps__list-item, .text-input--price, .checkbox--icon, .notification__message, .order__select {
   padding-left: 20px; }
 
-.padding-left-30, .button, .field--select-button {
+.padding-left-30, .button, .item-options__submit, .field--select-button {
   padding-left: 30px; }
 
 .padding-left-40, .admin-nav, tr th:first-child .table__cell,
@@ -2788,10 +2788,10 @@ tr td:first-child .table__cell {
 .padding-right-15 {
   padding-right: 15px; }
 
-.padding-right-20, .button.button--small, .site-menu__button, .site-nav__burger, .checkbox--icon, .notification__message, .order__select {
+.padding-right-20, .button.button--small, .button--small.item-options__submit, .site-menu__button, .site-nav__burger, .checkbox--icon, .notification__message, .order__select {
   padding-right: 20px; }
 
-.padding-right-30, .button, .select, .field--select-button {
+.padding-right-30, .button, .item-options__submit, .select, .field--select-button {
   padding-right: 30px; }
 
 .padding-right-40, .branding--admin, tr th:last-child .table__cell,
@@ -3057,7 +3057,7 @@ tr td:last-child .table__cell {
     padding-right: 140px; } }
 
 /* DISPLAY MIXINS ============================================================================= */
-.inline-flex, .button, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart, .metric {
+.inline-flex, .button, .item-options__submit, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart, .metric {
   display: inline-flex; }
 
 @media (max-width: 1440px) {
@@ -3172,7 +3172,7 @@ tr td:last-child .table__cell {
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
 .admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .popup, .cart__order, .cart__item, .cart__options, .subtotal,
-.total, .button.menu__view .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .order__arrow, .order__select, .order__select-icon {
+.total, .button.menu__view .button__icon, .menu__view.item-options__submit .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .order__arrow, .order__select, .order__select-icon {
   display: flex; }
 
 @media (max-width: 1440px) {
@@ -3640,7 +3640,7 @@ tr td:last-child .table__cell {
   .s-align-items-start {
     align-items: flex-start; } }
 
-.align-items-center, .button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .popup, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .order__arrow, .order__select, .order__select-icon {
+.align-items-center, .button, .item-options__submit, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__image, .inventory__button, .popup, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .order__arrow, .order__select, .order__select-icon {
   align-items: center; }
 
 @media (max-width: 1440px) {
@@ -3872,7 +3872,7 @@ tr td:last-child .table__cell {
   .s-justify-content-start {
     justify-content: flex-start; } }
 
-.justify-content-center, .button, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value, .metric__count, .order__arrow, .order__select-icon {
+.justify-content-center, .button, .item-options__submit, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value, .metric__count, .order__arrow, .order__select-icon {
   justify-content: center; }
 
 @media (max-width: 1024px) {
@@ -5454,7 +5454,7 @@ tr td:last-child .table__cell {
   .s-absolute {
     position: absolute; } }
 
-.fixed, .grid-overlay, .popup, .button.menu__view.menu__view--active {
+.fixed, .grid-overlay, .popup, .button.menu__view.menu__view--active, .menu__view.menu__view--active.item-options__submit {
   position: fixed; }
 
 @media (max-width: 1440px) {
@@ -5502,7 +5502,7 @@ tr td:last-child .table__cell {
   width: 100%; }
 
 .width-full, section, .row, .site-footer, .site-footer__branding .bowl, .site-footer__branding .icon--bowl, .site-footer__branding .icon--bowl svg, .hero__image .icon,
-.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button, .button.menu__view {
+.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button, .cart__buttons .item-options__submit, .button.menu__view, .menu__view.item-options__submit {
   max-width: 100%;
   width: 100%; }
 
@@ -5512,7 +5512,7 @@ tr td:last-child .table__cell {
     width: 100%; } }
 
 @media (max-width: 500px) {
-  .feature__buttons .button, .steps__buttons .button {
+  .feature__buttons .button, .feature__buttons .item-options__submit, .steps__buttons .button, .steps__buttons .item-options__submit {
     max-width: 100%;
     width: 100%; } }
 
@@ -5630,7 +5630,7 @@ textarea.textarea-input, .field--price:before, .select {
   font-display: swap; }
 
 .font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category-name h2, .inventory__subcategory, .inventory__title, .inventory__price, .inventory__add, .cart__title,
-.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .metric__count, th {
+.cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .increment--large .increment__value, .metric__count, th {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -5638,7 +5638,7 @@ textarea.textarea-input, .field--price:before, .select {
 
 .font-gibson-semi, .header-one,
 .header-two,
-.header-three, .timetable__day {
+.header-three, .item-options__heading, .timetable__day {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -5681,46 +5681,46 @@ textarea.textarea-input, .field--price:before, .select {
       line-height: 1.5;
       line-height: 38px; } }
 
-.header-three {
+.header-three, .item-options__heading {
   font-size: 48px;
   font-size: 4.8rem;
   line-height: 1.5;
   line-height: 52px; }
   @media (max-width: 1440px) {
-    .header-three {
+    .header-three, .item-options__heading {
       font-size: 36px;
       font-size: 3.6rem;
       line-height: 1.5;
       line-height: 38px; } }
   @media (max-width: 1024px) {
-    .header-three {
+    .header-three, .item-options__heading {
       font-size: 30px;
       font-size: 3rem;
       line-height: 1.5;
       line-height: 42px; } }
 
-.body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+.body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .item-options__field-title {
   font-size: 30px;
   font-size: 3rem;
   line-height: 1.5;
   line-height: 42px; }
   @media (max-width: 1440px) {
-    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .item-options__field-title {
       font-size: 24px;
       font-size: 2.4rem;
       line-height: 1.5; } }
   @media (max-width: 1024px) {
-    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .item-options__field-title {
       font-size: 22px;
       font-size: 2.2rem;
       line-height: 1.5; } }
   @media (max-width: 768px) {
-    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory {
+    .body-xlarge, .merchant-times__status, .merchant-times__hours, .tab-menu__item, .inventory__subcategory, .item-options__field-title {
       font-size: 18px;
       font-size: 1.8rem;
       line-height: 1.5; } }
 
-.body-large, .site-footer__link, .feature__copy, .steps__list-item, .dashboard-title + p, .metric__item p, .order__select select, .order__select-icon svg {
+.body-large, .site-footer__link, .feature__copy, .steps__list-item, .increment--large .increment__value, .dashboard-title + p, .metric__item p, .order__select select, .order__select-icon svg {
   font-size: 18px;
   font-size: 1.8rem;
   line-height: 1.5; }
@@ -6021,15 +6021,15 @@ textarea.textarea-input, .field--price:before, .select {
   background-color: rgba(249, 249, 249, 0); }
 
 /* BORDER WIDTHS MIXINS ============================================================================= */
-.border-width-1, .button, .site-menu__button, .site-nav__burger, .admin-header, .hero__image--border, input.text-input,
-textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .increment__type, .order__arrow {
+.border-width-1, .button, .item-options__submit, .site-menu__button, .site-nav__burger, .admin-header, .hero__image--border, input.text-input,
+textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory__item, .inventory__image, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .increment__type, .order__arrow {
   border-width: 1px; }
 
 /* BORDER RADIUS MIXINS ============================================================================= */
-.radius-0, .button.menu__view {
+.radius-0, .button.menu__view, .menu__view.item-options__submit {
   border-radius: 0; }
 
-.radius-5, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .popup__box, .order__select {
+.radius-5, .button, .item-options__submit, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .popup__box, .order__select {
   border-radius: 5px; }
 
 .radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count, .status {
@@ -6044,7 +6044,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   border-top-style: solid; }
 
 .border-bottom-solid, .admin-header, input.text-input,
-textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .cart__service, .cart__order, .subtotal, .order__arrow {
+textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__categories .inventory__item:last-child, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .order__arrow {
   border-bottom-style: solid; }
 
 .border-right-solid, .inventory__item {
@@ -6053,7 +6053,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory__cate
 .border-left-solid, .inventory__item {
   border-left-style: solid; }
 
-.border-solid, .button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type {
+.border-solid, .button, .item-options__submit, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type {
   border-style: solid; }
 
 .border-top-dashed {
@@ -7225,7 +7225,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .border-stripe {
   border-color: #635BFF; }
 
-.border-silver-5, .hero__image--border, .cart__service {
+.border-silver-5, .hero__image--border, .item-options__heading, .item-options__field, .cart__service {
   border-color: rgba(199, 199, 199, 0.5); }
 
 /* BOX SHADOW MIXINS ============================================================================= */
@@ -7353,12 +7353,12 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   height: 100vh; }
 
 /* BUTTON MIXINS ============================================================================= */
-.button {
+.button, .item-options__submit {
   height: 50px;
   width: auto;
   cursor: pointer; }
 
-.button.button--small {
+.button.button--small, .button--small.item-options__submit {
   height: 28px; }
 
 .button--large, .service-type__button {
@@ -7367,7 +7367,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
 .button--large, .service-type__button {
   height: 100px; }
 
-.button--wide {
+.button--wide, .item-options__submit {
   width: 100%; }
 
 .button-outline--ecru-white {
@@ -7383,7 +7383,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   border-color: #F25851;
   color: #F25851; }
 
-.button-solid--carnation {
+.button-solid--carnation, .item-options__submit {
   background-color: #F25851;
   border-color: #F25851;
   color: #F2EDDC; }
@@ -7838,6 +7838,13 @@ textarea.textarea-input {
 .checkbox-input:checked ~ .checkbox--standard .checkbox__icon--small {
   background-color: #F5B24D; }
 
+.checkbox--standard .checkbox__icon--large {
+  width: 50px;
+  height: 50px; }
+
+.checkbox-input:checked ~ .checkbox--standard .checkbox__icon--large {
+  background-color: #F5B24D; }
+
 .checkbox--icon {
   transition: background 0.3s ease-in-out; }
 
@@ -7876,6 +7883,14 @@ textarea.textarea-input {
 
 .radio-input:checked ~ .radio--standard .radio__icon:before {
   transform: scale(1); }
+
+.radio--standard .radio__icon--large {
+  width: 50px;
+  height: 50px; }
+
+.radio--standard .radio__icon--large:before {
+  width: 42px;
+  height: 42px; }
 
 input[type="file"] {
   position: absolute;
@@ -8089,11 +8104,11 @@ input[type="file"] {
 .total__item {
   grid-template-columns: 1fr 1fr; }
 
-.button.menu__view {
+.button.menu__view, .menu__view.item-options__submit {
   left: 0;
   bottom: 0; }
 
-.button.menu__view svg {
+.button.menu__view svg, .menu__view.item-options__submit svg {
   max-width: 14px;
   width: 100%; }
 
@@ -8109,6 +8124,17 @@ input[type="file"] {
 
 .increment--small svg {
   width: 6px;
+  height: auto; }
+
+.increment--large .increment__type {
+  width: 50px;
+  height: 50px; }
+
+.increment--large .increment__value {
+  width: 50px; }
+
+.increment--large svg {
+  width: 12px;
   height: auto; }
 
 .dashboard-header--copy {

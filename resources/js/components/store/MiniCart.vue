@@ -100,7 +100,7 @@
     </div>
     <div class="cart__buttons">
       <button
-        class="button "
+        class="button"
         :class="quantity ? 'button-solid--carnation' : 'button-outline--silver'"
       >
         <span class="button__content">Place order</span>

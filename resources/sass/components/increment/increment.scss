@@ -38,3 +38,19 @@
   width: 6px;
   height: auto;
 }
+
+.increment--large .increment__type {
+  width: 50px;
+  height: 50px;
+}
+
+.increment--large .increment__value {
+  @extend .body-large,
+  .font-gibson-med;
+  width: 50px;
+}
+
+.increment--large svg {
+  width: 12px;
+  height: auto;
+}
