@@ -1,30 +1,23 @@
 <template>
   <div
-    class="flex align-items-center justify-content-between border-silver border-bottom-solid border-width-1 padding-bottom-20 cursor-pointer"
-    :class="{ 'padding-top-20': !firstOfItem }"
-    @click="selectOrder(order)"
-  >
-    <div>
-      <div class="flex align-items-center margin-bottom-10">
-        <span class="status status--new" />
-        <span>{{ order.customer_name }}</span>
-      </div>
-      <div class="margin-left-20">
-        <span>Table #4</span>
-        <span class="margin-right-10 margin-left-10">&ndash;</span>
-        <span class="body-small color-cloud-burst-8">
-          {{ order.available_time | moment('Mo MMMM YYYY, HH:mm') }}
-        </span>
-      </div>
+    class="orders__list-item"
+    @click="selectOrder(order)">
+    <div class="orders__customer">
+      <span class="status status--new"></span>
+      <p class="orders__name">{{ order.customer_name }}</p>
     </div>
-    <div>
-      <div
-        class="order__arrow margin-right-20"
-        :class="{ 'order__arrow--active': isActive}"
-      >
-        <ArrowRight />
-      </div>
+    <div class="orders__customer orders__customer--details">
+      <!-- @TODO add table number or service type-->
+      <p class="orders__type">Table #4</p>
+      <span class="separator separator--small"></span>
+      <span class="orders__date">
+        {{ order.available_time | moment('Mo MMMM YYYY, HH:mm') }}
+      </span>
     </div>
+    <span class="orders__arrow"
+      :class="{ 'order__arrow--active': isActive}">
+      <ArrowRight />
+    </span>
   </div>
 </template>
 
@@ -41,10 +34,6 @@ export default {
       default: null,
     },
     isActive: {
-      type: Boolean,
-      default: false,
-    },
-    firstOfItem: {
       type: Boolean,
       default: false,
     },

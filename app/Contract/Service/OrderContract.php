@@ -105,4 +105,12 @@ interface OrderContract
      * @return bool
      */
     public function doesOrderBelongToMerchant(Order $order, Merchant $merchant): bool;
+
+    /**
+     * Tries to add an order item sent from the API
+     * @param Order $order
+     * @param array $apiPayload
+     * @return bool
+     */
+    public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool;
 }

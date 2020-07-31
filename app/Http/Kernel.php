@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Api\ApiWithMerchant;
 use App\Http\Middleware\CheckMerchantHasCompletedSetup;
 use App\Http\Middleware\DoesOrderBelongToMerchant;
 use App\Http\Middleware\HasOrderGonePastStageMiddleware;
@@ -73,6 +74,7 @@ class Kernel extends HttpKernel
         'has-order-gone-past-stage' => HasOrderGonePastStageMiddleware::class,
         'has-user-completed-merchant-signup' => UserHasCompletedMerchantRegistration::class,
         'has-user-completed-registration-stage' => HasUserCompletedCurrentStage::class,
-        'is-correct-order-type' => IsCorrectOrderTypeMiddleware::class
+        'is-correct-order-type' => IsCorrectOrderTypeMiddleware::class,
+        'api-with-merchant' => ApiWithMerchant::class
     ];
 }
