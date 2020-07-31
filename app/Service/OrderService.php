@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Contract\Repositories\InventoryContract;
 use App\Contract\Repositories\MerchantContract;
+use App\Contract\Service\InventoryOptionGroupItemContract;
 use App\Contract\Service\OrderContract;
 use App\Contract\Repositories\OrderContract as OrderRepositoryContract;
 use App\Merchant;
@@ -30,22 +31,26 @@ class OrderService implements OrderContract
     protected InventoryContract $inventoryRepository;
 
     /**
+     * @var InventoryOptionGroupItemContract
+     */
+    protected InventoryOptionGroupItemContract $inventoryOptionGroupItemService;
+
+    /**
      * @var LoggerInterface
      */
     protected LoggerInterface $logger;
 
     public function __construct(
         OrderRepositoryContract $orderRepository,
-        MerchantContract $merchantRepo,
-        InventoryContract $inventoryRepo,
+        MerchantContract $merchantRepository,
+        InventoryContract $inventoryRepository,
+        InventoryOptionGroupItemContract $inventoryOptionGroupItemService,
         LoggerInterface $logger
     ) {
         $this->orderRepository = $orderRepository;
-
-        $this->merchantRepository = $merchantRepo;
-
-        $this->inventoryRepository = $inventoryRepo;
-
+        $this->merchantRepository = $merchantRepository;
+        $this->inventoryRepository = $inventoryRepository;
+        $this->inventoryOptionGroupItemService = $inventoryOptionGroupItemService;
         $this->logger = $logger;
     }
 
@@ -161,9 +166,22 @@ class OrderService implements OrderContract
 
     public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool
     {
+        if (!$this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
+            collect($apiPayload['inventory_options']),
+            $order->merchant()->first()
+        )) {
+            return false;
+        }
+
         $orderItem = new OrderItem();
         $orderItem->order_id = $order->id;
         $orderItem->fill($apiPayload);
+
+        $hydratedOptions = $this->inventoryOptionGroupItemService->hydrateOrderItemsFromArray(
+            $apiPayload['inventory_options']
+        );
+
+        $orderItem->inventoryOptions()->attach($hydratedOptions);
 
         if ($this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
             return true;

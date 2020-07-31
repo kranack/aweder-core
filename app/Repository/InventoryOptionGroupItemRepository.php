@@ -5,8 +5,11 @@ namespace App\Repository;
 use App\Contract\Repositories\InventoryOptionGroupItemContract;
 use App\InventoryOptionGroup;
 use App\InventoryOptionGroupItem;
+use App\Merchant;
 use App\Traits\HelperTrait;
+use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
+use DB;
 
 class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemContract
 {
@@ -41,5 +44,15 @@ class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemCont
         $inventoryOptionGroup->items()->save($inventoryOptionGroupItem);
 
         return $inventoryOptionGroupItem;
+    }
+
+    public function getItemCountByIdForMerchant(Collection $itemIds, Merchant $merchant): ?Collection
+    {
+        return $this->getModel()
+            ->select('name', DB::raw('count(*) count'))
+            ->where('merchant_id', $merchant->id)
+            ->whereIn('id', $itemIds)
+            ->groupBy('name')
+            ->get();
     }
 }

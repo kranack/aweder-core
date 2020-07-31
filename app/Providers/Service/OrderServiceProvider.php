@@ -4,6 +4,7 @@ namespace App\Providers\Service;
 
 use App\Contract\Repositories\InventoryContract;
 use App\Contract\Repositories\MerchantContract;
+use App\Contract\Service\InventoryOptionGroupItemContract;
 use App\Contract\Service\OrderContract;
 use App\Service\OrderService;
 use Illuminate\Foundation\Application;
@@ -22,15 +23,19 @@ class OrderServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->bind(OrderContract::class, function (Application $app) {
-            $orderRepo = $app->make(OrderRepositoryContract::class);
-
-            $merchantRepo = $app->make(MerchantContract::class);
-
-            $inventoryRepo = $app->make(InventoryContract::class);
-
+            $orderRepository = $app->make(OrderRepositoryContract::class);
+            $merchantRepository = $app->make(MerchantContract::class);
+            $inventoryRepository = $app->make(InventoryContract::class);
+            $inventoryOptionGroupItemService = $app->make(InventoryOptionGroupItemContract::class);
             $logger = $app->make(LoggerInterface::class);
 
-            return new OrderService($orderRepo, $merchantRepo, $inventoryRepo, $logger);
+            return new OrderService(
+                $orderRepository,
+                $merchantRepository,
+                $inventoryRepository,
+                $inventoryOptionGroupItemService,
+                $logger
+            );
         });
     }
 }
