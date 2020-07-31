@@ -90,5 +90,7 @@
             </div>
         </div>
     </section>
-    <item-options-popup></item-options-popup>
+    <item-options-popup
+        :merchant="{{ json_encode($merchant) }}"
+    ></item-options-popup>
 @endsection

@@ -3,6 +3,7 @@ import storeConfig from '@/js/store/config';
 import MiniCart from '@/js/components/store/MiniCart';
 import Vuex from 'vuex';
 import { productsWithoutVariant, productsWithVariant } from './mocks/MiniCart';
+import orderApi from '@/js/api/order/order';
 import '@/js/filters/Currency';
 
 describe('MiniCart', () => {
@@ -115,4 +116,20 @@ describe('MiniCart', () => {
 
     expect(wrapper.find('.cart__title').exists()).toBe(false);
   });
+
+  // it('calls creates an order on first item added', async () => {
+  //   storeConfig.modules.cart.state = productsWithoutVariant;
+
+  //   const wrapper = shallowMount(MiniCart, {
+  //     propsData,
+  //     store: new Vuex.Store(storeConfig),
+  //     localVue,
+  //   });
+
+  //   const spy = jest.spyOn(orderApi, 'create');
+
+  //   wrapper.vm.addToCart({});
+
+  //   expect(spy).toBeCalled();
+  // });
 });

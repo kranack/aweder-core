@@ -24,4 +24,7 @@ export default {
 
     stateProduct.quantity += 1;
   },
+  SET_ORDER(state, payload) {
+    state.order = payload;
+  },
 };

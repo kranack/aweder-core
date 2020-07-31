@@ -133,6 +133,12 @@ export default {
     Add,
     Minus,
   },
+  props: {
+    merchant: {
+      type: Object,
+      default: null,
+    },
+  },
   data() {
     return {
       quantity: 1,
@@ -143,6 +149,7 @@ export default {
   computed: {
     ...mapState({
       product: (state) => state.activeProduct.product,
+      order: (state) => state.cart.order,
     }),
   },
   watch: {
@@ -154,11 +161,9 @@ export default {
   },
   methods: {
     add() {
-      orderApi.create({})
-        .then((res) => {
-        })
-        .catch((err) => {
-        });
+      if (this.order === null) {
+        this.createOrder();
+      }
 
       this.$store.dispatch('cart/addToCart', {
         product: this.product,
@@ -190,6 +195,15 @@ export default {
       this.options = {};
       this.selectedVariant = null;
       this.createOptionGroups();
+    },
+    async createOrder() {
+      const res = await orderApi.create({ merchant: this.merchant.url_slug });
+
+      if (res.status === 201) {
+        this.$store.dispatch('cart/setOrder', res.data.url_slug);
+
+        window.history.pushState(null, '', `?order=${res.data.url_slug}`);
+      }
     },
   },
 };

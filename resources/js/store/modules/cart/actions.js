@@ -9,3 +9,6 @@ export const removeFromCart = ({ commit }, payload) => {
 export const incrementProduct = ({ commit }, payload) => {
   commit('INCREMENT_PRODUCT', payload);
 };
+export const setOrder = ({ commit }, payload) => {
+  commit('SET_ORDER', payload);
+};

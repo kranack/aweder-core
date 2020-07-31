@@ -135,6 +135,7 @@
       <button
         class="button"
         :class="quantity ? 'button-solid--carnation' : 'button-outline--silver'"
+        @click="checkout"
       >
         <span class="button__content">Place order</span>
       </button>
@@ -186,10 +187,12 @@ export default {
     deliveryCost() {
       return this.merchant.delivery_cost;
     },
+    checkoutUrl() {
+      return '/checkout';
+    }
   },
   methods: {
     ...mapActions({
-      addToCart: 'cart/addToCart',
       removeFromCart: 'cart/removeFromCart',
       incrementProduct: 'cart/incrementProduct',
     }),
@@ -205,7 +208,7 @@ export default {
       return this.isVariant(item)
         ? item.variant.price
         : item.product.price;
-    },
+    }
   },
 };
 </script>
