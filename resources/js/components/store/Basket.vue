@@ -4,8 +4,12 @@
     :class="{ 'menu__cart--added': quantity }"
   >
     <span class="icon icon--logo-mark flex margin-right-20"><Logo /></span>
-    <p v-if="quantity">Add more items - {{ total | currency }}</p>
-    <p v-else>Your order is empty</p>
+    <p v-if="quantity">
+      Add more items - {{ subtotal | currency }}
+    </p>
+    <p v-else>
+      Your order is empty
+    </p>
   </div>
 </template>
 
@@ -20,7 +24,7 @@ export default {
   computed: {
     ...mapGetters({
       quantity: 'cart/quantity',
-      total: 'cart/total',
+      subtotal: 'cart/subtotal',
     }),
   },
 };

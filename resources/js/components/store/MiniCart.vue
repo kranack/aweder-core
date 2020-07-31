@@ -48,7 +48,7 @@
         >
           <div class="cart__line">
             <p class="cart__title">
-              {{ item.product.title }}
+              {{ getProductTitle(item) }}
             </p>
             <div class="increment increment--small">
               <span
@@ -69,10 +69,11 @@
                 <Add />
               </span>
             </div>
-            <span class="cart__price text-right">{{ item.product.price | currency }}</span>
+            <span class="cart__price text-right">{{ getProductPrice(item) | currency }}</span>
           </div>
           <div
             v-for="(group, groupName) in item.options"
+            v-show="group.length"
             :key="groupName"
             class="cart__options"
           >
@@ -100,7 +101,10 @@
           </p>
           <span class="cart__price text-right">{{ subtotal | currency }}</span>
         </div>
-        <div class="subtotal__item subtotal__item--light">
+        <div
+          ref="delivery"
+          class="subtotal__item subtotal__item--light"
+        >
           <p class="subtotal__title">
             Delivery
           </p>
@@ -120,7 +124,9 @@
       </div>
       <div class="total">
         <div class="total__item">
-          <p class="total__title">Total</p>
+          <p class="total__title">
+            Total
+          </p>
           <span class="cart__price text-right">{{ total | currency }}</span>
         </div>
       </div>
@@ -187,6 +193,19 @@ export default {
       removeFromCart: 'cart/removeFromCart',
       incrementProduct: 'cart/incrementProduct',
     }),
+    isVariant(item) {
+      return !!item.variant;
+    },
+    getProductTitle(item) {
+      return this.isVariant(item)
+        ? `${item.variant.name} - ${item.product.title}`
+        : item.product.title;
+    },
+    getProductPrice(item) {
+      return this.isVariant(item)
+        ? item.variant.price
+        : item.product.price;
+    },
   },
 };
 </script>
