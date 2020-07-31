@@ -40,6 +40,7 @@ class CreateOrderTest extends TestCase
         );
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertJsonFragment(['The merchant field is required.']);
         $this->assertCount(0, $merchant->orders()->get());
     }
 
@@ -63,6 +64,7 @@ class CreateOrderTest extends TestCase
         );
 
         $response->assertStatus(Response::HTTP_BAD_REQUEST);
+        $response->assertJsonFragment(['Could not create order for merchant']);
         $this->assertCount(0, $merchant->orders()->get());
     }
 
