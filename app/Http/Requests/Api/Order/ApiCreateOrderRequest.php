@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api\Order;
 use App\Traits\RequestGetMerchantTrait;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ApiAddItemToOrderRequest extends FormRequest
+class ApiCreateOrderRequest extends FormRequest
 {
     use RequestGetMerchantTrait;
 
@@ -27,8 +27,6 @@ class ApiAddItemToOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'inventory_id' => ['required', 'integer'],
-            'variant_id' => ['required', 'integer'],
             'merchant' => ['required', 'string']
         ];
     }
