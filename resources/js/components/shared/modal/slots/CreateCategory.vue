@@ -2,7 +2,7 @@
   <modal :is-active="isActive" @close="close()">
     <header class="modal__header margin-bottom-50">
       <h2 class="header-three">
-        Create inventory pop up
+        Create category
       </h2>
     </header>
   </modal>
@@ -12,7 +12,7 @@
 import Modal from '@/js/components/shared/modal/Modal';
 
 export default {
-  name: 'CreateInventoryItem',
+  name: 'CreateCategory',
   components: {
     Modal,
   },

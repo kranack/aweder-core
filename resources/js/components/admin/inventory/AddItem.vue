@@ -2,7 +2,9 @@
   <div
     class="inventory__item inventory__item--add"
   >
-    <div @click="showCreateModal" class="width-full flex">
+    <div class="width-full flex"
+         @click="showCreateModal"
+    >
       <div class="inventory__image" />
       <div class="inventory__details">
         <header class="inventory__header">

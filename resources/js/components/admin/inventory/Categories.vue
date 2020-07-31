@@ -4,9 +4,12 @@
       <h2 class="header-three">
         {{ categoryName }}
       </h2>
-      <span class="button button--small button-outline--silver">
+      <a
+        class="button button--small button-outline--silver"
+        @click="showEditCategoryModal"
+      >
         <span class="button__content">Edit</span>
-      </span>
+      </a>
     </header>
     <div class="inventory__group inline-flex flex-col width-full">
       <add-item />
@@ -29,10 +32,15 @@
         :sub-category="0"
       />
     </div>
+    <edit-category
+      :is-active="isActive"
+      @close="hideEditCategoryModal()"
+    />
   </div>
 </template>
 
 <script>
+import EditCategory from '@/js/components/shared/modal/slots/EditCategory';
 import Categories from './Categories';
 import InventoryItem from './InventoryItem';
 import AddItem from './AddItem';
@@ -40,6 +48,7 @@ import AddItem from './AddItem';
 export default {
   name: 'Categories',
   components: {
+    EditCategory,
     Categories,
     InventoryItem,
     AddItem,
@@ -60,6 +69,19 @@ export default {
     inventoryItems: {
       type: Array,
       default: () => [],
+    },
+  },
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    showEditCategoryModal() {
+      this.isActive = true;
+    },
+    hideEditCategoryModal() {
+      this.isActive = false;
     },
   },
 };
