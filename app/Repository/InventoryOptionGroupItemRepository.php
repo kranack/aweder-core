@@ -9,7 +9,6 @@ use App\Merchant;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
-use DB;
 
 class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemContract
 {

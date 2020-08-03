@@ -174,10 +174,12 @@ class OrderService implements OrderContract
 
     public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool
     {
-        if (!$this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
+        $belongsToMerchant = $this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
             collect($apiPayload['inventory_options']),
             $order->merchant()->first()
-        )) {
+        );
+
+        if (!$belongsToMerchant) {
             return false;
         }
 
