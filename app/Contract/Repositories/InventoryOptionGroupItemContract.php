@@ -22,12 +22,12 @@ interface InventoryOptionGroupItemContract
     /**
      * @param Collection $itemIds
      * @param Merchant $merchant
-     * @return mixed
+     * @return int
      */
     public function getItemCountByIdForMerchant(
         Collection $itemIds,
         Merchant $merchant
-    );
+    ): int;
 
     /**
      * @param array $ids

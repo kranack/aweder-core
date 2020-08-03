@@ -56,7 +56,7 @@ class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemCont
             ->get();
     }
 
-    public function getItemCountByIdForMerchant(Collection $itemIds, Merchant $merchant)
+    public function getItemCountByIdForMerchant(Collection $itemIds, Merchant $merchant): int
     {
         return $this->getModel()
             ->join(
