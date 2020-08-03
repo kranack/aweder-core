@@ -136,7 +136,7 @@ export default {
   props: {
     merchant: {
       type: Object,
-      default: null,
+      default: () => {},
     },
   },
   data() {
@@ -160,18 +160,11 @@ export default {
     },
   },
   methods: {
-    add() {
+    async add() {
       if (this.order === null) {
-        this.createOrder();
+        await this.createOrder();
       }
-
-      this.$store.dispatch('cart/addToCart', {
-        product: this.product,
-        variant: this.selectedVariant,
-        options: this.options,
-        quantity: this.quantity,
-      });
-
+      await this.addItem();
       this.close();
     },
     close() {
@@ -198,11 +191,25 @@ export default {
     },
     async createOrder() {
       const res = await orderApi.create({ merchant: this.merchant.url_slug });
-
       if (res.status === 201) {
         this.$store.dispatch('cart/setOrder', res.data.url_slug);
-
         window.history.pushState(null, '', `?order=${res.data.url_slug}`);
+      }
+    },
+    async addItem() {
+      const res = await orderApi.addItem(this.order, {
+        inventory_id: this.product.id,
+        variant_id: 1,
+        merchant: this.merchant.url_slug,
+      });
+
+      if (res.status === 200) {
+        this.$store.dispatch('cart/addToCart', {
+          product: this.product,
+          variant: this.selectedVariant,
+          options: this.options,
+          quantity: this.quantity,
+        });
       }
     },
   },

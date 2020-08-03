@@ -1,8 +1,13 @@
 import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import Popup from '@/js/components/store/ItemOptionsPopup';
 import orderApi from '@/js/api/order/order';
+import flushPromises from 'flush-promises';
 import Vuex from 'vuex';
-import { mockInactiveStore, mockActiveStore, mockActiveStoreWithOrder } from './mocks/ItemOptionsPopup';
+import defautCartState from './mocks/active_product/default';
+import activeProductState from './mocks/active_product/activeProduct';
+import activeProductWithOrderState from './mocks/active_product/activeProductWithOrder';
+import createOrderSuccessResponse from './mocks/api/order/create/success';
+import addItemSuccessResponse from './mocks/api/order/add_item/success';
 
 describe('ItemOptionsPopup', () => {
   const localVue = createLocalVue();
@@ -10,7 +15,7 @@ describe('ItemOptionsPopup', () => {
 
   it('is hidden by default', () => {
     const wrapper = shallowMount(Popup, {
-      store: new Vuex.Store(mockInactiveStore),
+      store: new Vuex.Store(defautCartState),
       localVue,
     });
 
@@ -19,7 +24,7 @@ describe('ItemOptionsPopup', () => {
 
   it('is visible when a product is active', () => {
     const wrapper = shallowMount(Popup, {
-      store: new Vuex.Store(mockActiveStore),
+      store: new Vuex.Store(activeProductState),
       localVue,
     });
 
@@ -29,65 +34,85 @@ describe('ItemOptionsPopup', () => {
   it('adds an item on submission', async () => {
     const wrapper = shallowMount(Popup, {
       propsData: {
-        merchant: { slug: 'test-merchant' },
+        merchant: {},
       },
-      store: new Vuex.Store(mockActiveStore),
+      store: new Vuex.Store(activeProductState),
       localVue,
     });
 
-    const spy = jest.spyOn(orderApi, 'create');
+    wrapper.setData({ selectedVariant: { id: 1, name: 'Variant', price: 500 } });
+
+    jest.spyOn(orderApi, 'create')
+      .mockImplementation(createOrderSuccessResponse);
+
+    jest.spyOn(orderApi, 'addItem')
+      .mockImplementation(addItemSuccessResponse);
 
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
+    await flushPromises();
 
-    expect(spy).toBeCalled();
-    expect(mockActiveStore.actions['cart/addToCart']).toBeCalled();
-    expect(mockActiveStore.actions['activeProduct/removeActiveProduct']).toBeCalled();
+    expect(activeProductState.actions['cart/addToCart']).toBeCalled();
+    expect(activeProductState.actions['activeProduct/removeActiveProduct']).toBeCalled();
   });
 
   it('dispatches setOrder on submit', async () => {
     const wrapper = shallowMount(Popup, {
       propsData: {
-        merchant: { slug: 'test-merchant' },
+        merchant: {},
       },
-      store: new Vuex.Store(mockActiveStore),
+      store: new Vuex.Store(activeProductState),
       localVue,
     });
 
     const spy = jest.spyOn(orderApi, 'create')
-      .mockImplementation(() => {
-        return {
-          data: {
-            url_slug: 'test-slug',
-          },
-          status: 201,
-        };
-      });
+      .mockImplementation(createOrderSuccessResponse);
 
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
 
     expect(spy).toBeCalled();
-    expect(mockActiveStore.actions['cart/setOrder']).toBeCalled();
+    expect(activeProductState.actions['cart/setOrder']).toBeCalled();
   });
 
   it('doesnt dispatch setOrder if an order is set', async () => {
     const wrapper = shallowMount(Popup, {
-      store: new Vuex.Store(mockActiveStoreWithOrder),
+      propsData: {
+        merchant: {},
+      },
+      store: new Vuex.Store(activeProductWithOrderState),
       localVue,
     });
 
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
 
-    expect(mockActiveStoreWithOrder.actions['cart/setOrder']).toHaveBeenCalledTimes(0);
+    expect(activeProductWithOrderState.actions['cart/setOrder']).toHaveBeenCalledTimes(0);
+  });
+
+  it('makes an add item request on submit', async () => {
+    const wrapper = shallowMount(Popup, {
+      propsData: {
+        merchant: { url_slug: 'test-merchant' },
+      },
+      store: new Vuex.Store(activeProductWithOrderState),
+      localVue,
+    });
+
+    wrapper.setData({ selectedVariant: { id: 1 } });
+
+    const spy = jest.spyOn(orderApi, 'addItem');
+
+    await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
+
+    expect(spy).toBeCalled();
   });
 
   it('removes the activeProduct on close', () => {
     const wrapper = mount(Popup, {
-      store: new Vuex.Store(mockActiveStore),
+      store: new Vuex.Store(activeProductState),
       localVue,
     });
 
     wrapper.find('.popup__mask').trigger('click');
 
-    expect(mockActiveStore.actions['activeProduct/removeActiveProduct']).toBeCalled();
+    expect(activeProductState.actions['activeProduct/removeActiveProduct']).toBeCalled();
   });
 });

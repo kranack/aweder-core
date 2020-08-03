@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import InventoryItem from '@/js/components/store/InventoryItem';
-import mockInventoryItem from './mocks/InventoryItem';
+import defaultActiveproductState from './mocks/active_product/default';
 import '@/js/filters/Currency';
 
 describe('InventoryItem', () => {
@@ -19,7 +19,7 @@ describe('InventoryItem', () => {
   it('displays the available contents', async () => {
     const wrapper = shallowMount(InventoryItem, {
       propsData,
-      store: new Vuex.Store(mockInventoryItem),
+      store: new Vuex.Store(defaultActiveproductState),
       localVue,
     });
 
@@ -31,12 +31,12 @@ describe('InventoryItem', () => {
   it('dispatches the setActiveProduct action', () => {
     const wrapper = shallowMount(InventoryItem, {
       propsData,
-      store: new Vuex.Store(mockInventoryItem),
+      store: new Vuex.Store(defaultActiveproductState),
       localVue,
     });
 
     wrapper.find('.inventory__button').trigger('click');
 
-    expect(mockInventoryItem.actions['activeProduct/setActiveProduct']).toHaveBeenCalled();
+    expect(defaultActiveproductState.actions['activeProduct/setActiveProduct']).toHaveBeenCalled();
   });
 });

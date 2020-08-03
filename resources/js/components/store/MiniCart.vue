@@ -42,7 +42,7 @@
       </div>
       <div class="cart__order">
         <div
-          v-for="(item, index) in cart.products"
+          v-for="(item, index) in products"
           :key="index"
           class="cart__item"
         >
@@ -132,13 +132,13 @@
       </div>
     </div>
     <div class="cart__buttons">
-      <button
+      <a
+        :href="checkoutUrl"
         class="button"
         :class="quantity ? 'button-solid--carnation' : 'button-outline--silver'"
-        @click="checkout"
       >
         <span class="button__content">Place order</span>
-      </button>
+      </a>
     </div>
   </div>
 </template>
@@ -156,7 +156,7 @@ export default {
   props: {
     merchant: {
       type: Object,
-      default: null,
+      default: () => {},
     },
   },
   data() {
@@ -165,9 +165,10 @@ export default {
     };
   },
   computed: {
-    ...mapState([
-      'cart',
-    ]),
+    ...mapState({
+      products: (state) => state.cart.products,
+      order: (state) => state.cart.order,
+    }),
     ...mapGetters({
       subtotal: 'cart/subtotal',
       quantity: 'cart/quantity',
@@ -188,8 +189,11 @@ export default {
       return this.merchant.delivery_cost;
     },
     checkoutUrl() {
-      return '/checkout';
-    }
+      if (!this.order) {
+        return '';
+      }
+      return `/${this.merchant.url_slug}/table-order/${this.order}/order-details`;
+    },
   },
   methods: {
     ...mapActions({
@@ -208,7 +212,7 @@ export default {
       return this.isVariant(item)
         ? item.variant.price
         : item.product.price;
-    }
+    },
   },
 };
 </script>
