@@ -145,6 +145,11 @@ class Merchant extends Model
         return $this->hasMany(Category::class);
     }
 
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'merchant_id', 'id');
+    }
+
     /**
      * @return HasMany
      */
