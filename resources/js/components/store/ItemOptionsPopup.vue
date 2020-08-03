@@ -186,7 +186,7 @@ export default {
     reset() {
       this.quantity = 1;
       this.options = {};
-      this.selectedVariant = null;
+      [this.selectedVariant] = this.product.variants;
       this.createOptionGroups();
     },
     async createOrder() {

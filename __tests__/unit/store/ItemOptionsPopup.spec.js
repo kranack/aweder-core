@@ -3,6 +3,7 @@ import Popup from '@/js/components/store/ItemOptionsPopup';
 import orderApi from '@/js/api/order/order';
 import flushPromises from 'flush-promises';
 import Vuex from 'vuex';
+import '@/js/filters/Currency';
 import defautCartState from './mocks/active_product/default';
 import activeProductState from './mocks/active_product/activeProduct';
 import activeProductWithOrderState from './mocks/active_product/activeProductWithOrder';
@@ -39,8 +40,6 @@ describe('ItemOptionsPopup', () => {
       store: new Vuex.Store(activeProductState),
       localVue,
     });
-
-    wrapper.setData({ selectedVariant: { id: 1, name: 'Variant', price: 500 } });
 
     jest.spyOn(orderApi, 'create')
       .mockImplementation(createOrderSuccessResponse);
@@ -96,8 +95,6 @@ describe('ItemOptionsPopup', () => {
       localVue,
     });
 
-    wrapper.setData({ selectedVariant: { id: 1 } });
-
     const spy = jest.spyOn(orderApi, 'addItem');
 
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
@@ -114,5 +111,16 @@ describe('ItemOptionsPopup', () => {
     wrapper.find('.popup__mask').trigger('click');
 
     expect(activeProductState.actions['activeProduct/removeActiveProduct']).toBeCalled();
+  });
+
+  it('default selects the first variant', () => {
+    const wrapper = mount(Popup, {
+      store: new Vuex.Store(activeProductState),
+      localVue,
+    });
+
+    wrapper.vm.reset();
+
+    expect(wrapper.vm.selectedVariant.id).toEqual(wrapper.vm.$store.state.activeProduct.product.variants[0].id);
   });
 });
