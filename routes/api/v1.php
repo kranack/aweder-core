@@ -7,4 +7,6 @@ Route::group(['prefix' => 'order'], function (Router $router) {
         ->name('api.order.create');
     $router->post('/{order}/item', ['uses' => 'Api\\Order\\AddController'])
         ->name('api.order.add');
+    $router->get('/{order}', ['uses' => 'Api\\Order\\ShowController'])
+        ->name('api.order.show');
 });
