@@ -19,8 +19,15 @@ interface InventoryOptionGroupItemContract
         InventoryOptionGroup $inventoryOptionGroupOptionGroup
     ): InventoryOptionGroupItem;
 
+    /**
+     * @param Collection $itemIds
+     * @param Merchant $merchant
+     * @return mixed
+     */
     public function getItemCountByIdForMerchant(
         Collection $itemIds,
         Merchant $merchant
-    ): ?Collection;
+    );
+
+    public function getItemsFromIdArray(array $ids): ?Collection;
 }

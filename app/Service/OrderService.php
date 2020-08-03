@@ -7,6 +7,7 @@ use App\Contract\Repositories\MerchantContract;
 use App\Contract\Service\InventoryOptionGroupItemContract;
 use App\Contract\Service\OrderContract;
 use App\Contract\Repositories\OrderContract as OrderRepositoryContract;
+use App\Contract\Repositories\InventoryOptionGroupItemContract as InventoryOptionsRepository;
 use App\Merchant;
 use App\Order;
 use App\OrderItem;
@@ -40,17 +41,24 @@ class OrderService implements OrderContract
      */
     protected LoggerInterface $logger;
 
+    /**
+     * @var InventoryOptionsRepository
+     */
+    private InventoryOptionsRepository $inventoryOptionGroupItemRepository;
+
     public function __construct(
         OrderRepositoryContract $orderRepository,
         MerchantContract $merchantRepository,
         InventoryContract $inventoryRepository,
         InventoryOptionGroupItemContract $inventoryOptionGroupItemService,
+        InventoryOptionsRepository $inventoryOptionsRepository,
         LoggerInterface $logger
     ) {
         $this->orderRepository = $orderRepository;
         $this->merchantRepository = $merchantRepository;
         $this->inventoryRepository = $inventoryRepository;
         $this->inventoryOptionGroupItemService = $inventoryOptionGroupItemService;
+        $this->inventoryOptionGroupItemRepository = $inventoryOptionsRepository;
         $this->logger = $logger;
     }
 
@@ -177,16 +185,20 @@ class OrderService implements OrderContract
         $orderItem->order_id = $order->id;
         $orderItem->fill($apiPayload);
 
-        $hydratedOptions = $this->inventoryOptionGroupItemService->hydrateOrderItemsFromArray(
+        $hydratedOptions = $this->inventoryOptionGroupItemRepository->getItemsFromIdArray(
             $apiPayload['inventory_options']
         );
 
-        $orderItem->inventoryOptions()->attach($hydratedOptions);
-
-        if ($this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
-            return true;
+        if (!$this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
+            return false;
         }
 
-        return false;
+        $orderItem->fresh();
+
+        foreach ($hydratedOptions as $option) {
+            $orderItem->inventoryOptions()->save($option);
+        }
+
+        return true;
     }
 }

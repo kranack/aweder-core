@@ -46,13 +46,34 @@ class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemCont
         return $inventoryOptionGroupItem;
     }
 
-    public function getItemCountByIdForMerchant(Collection $itemIds, Merchant $merchant): ?Collection
+    /**
+     * @param array $inventoryOptions
+     * @return Collection|null
+     */
+    public function getItemsFromIdArray(array $inventoryOptions): ?Collection
     {
         return $this->getModel()
-            ->select('name', DB::raw('count(*) count'))
-            ->where('merchant_id', $merchant->id)
-            ->whereIn('id', $itemIds)
-            ->groupBy('name')
+            ->whereIn('id', $inventoryOptions)
             ->get();
+    }
+
+    public function getItemCountByIdForMerchant(Collection $itemIds, Merchant $merchant)
+    {
+        return $this->getModel()
+            ->join(
+                'inventory_option_groups',
+                'inventory_option_groups.id',
+                '=',
+                'inventory_option_group_items.inventory_option_group_id'
+            )
+            ->join(
+                'inventories',
+                'inventories.id',
+                '=',
+                'inventory_option_groups.inventory_id'
+            )
+            ->where('inventories.merchant_id', $merchant->id)
+            ->whereIn('inventory_option_group_items.id', $itemIds)
+            ->count();
     }
 }

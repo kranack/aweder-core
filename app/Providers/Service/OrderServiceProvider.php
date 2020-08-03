@@ -27,6 +27,9 @@ class OrderServiceProvider extends ServiceProvider
             $merchantRepository = $app->make(MerchantContract::class);
             $inventoryRepository = $app->make(InventoryContract::class);
             $inventoryOptionGroupItemService = $app->make(InventoryOptionGroupItemContract::class);
+            $inventoryOptionGroupItemRepository = $app->make(
+                \App\Contract\Repositories\InventoryOptionGroupItemContract::class
+            );
             $logger = $app->make(LoggerInterface::class);
 
             return new OrderService(
@@ -34,6 +37,7 @@ class OrderServiceProvider extends ServiceProvider
                 $merchantRepository,
                 $inventoryRepository,
                 $inventoryOptionGroupItemService,
+                $inventoryOptionGroupItemRepository,
                 $logger
             );
         });

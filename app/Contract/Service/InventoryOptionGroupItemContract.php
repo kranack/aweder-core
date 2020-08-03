@@ -14,11 +14,4 @@ interface InventoryOptionGroupItemContract
      * @return bool
      */
     public function validateOrderItemsBelongToMerchant(Collection $inventoryOptions, Merchant $merchant): bool;
-
-    /**
-     * Hydrate IDs into Collection of entities
-     * @param array $inventoryOptions
-     * @return Collection|null
-     */
-    public function hydrateOrderItemsFromArray(array $inventoryOptions): ?Collection;
 }
