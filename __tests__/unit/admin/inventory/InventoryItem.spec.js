@@ -17,4 +17,12 @@ describe('InventoryItem', () => {
 
     expect(wrapper.find('.inventory__price').text()).toContain('£5.00');
   });
+
+  it('triggers the edit inventory modal to open', () => {
+    const wrapper = mount(InventoryItem);
+
+    wrapper.find('.inventory__trigger').trigger('click');
+
+    expect(wrapper.vm.isActive).toBe(true);
+  });
 });

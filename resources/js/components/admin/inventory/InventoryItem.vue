@@ -1,6 +1,6 @@
 <template>
   <div class="inventory__item inventory__item--edit">
-    <div class="width-full flex"
+    <div class="inventory__trigger width-full flex"
          @click="showEditModal"
     >
       <div
@@ -69,10 +69,6 @@ export default {
     image: {
       type: String,
       default: '',
-    },
-    editable: {
-      type: Boolean,
-      default: false,
     },
   },
   data() {
