@@ -51,14 +51,12 @@ class OrderService implements OrderContract
         MerchantContract $merchantRepository,
         InventoryContract $inventoryRepository,
         InventoryOptionGroupItemContract $inventoryOptionGroupItemService,
-        InventoryOptionsRepository $inventoryOptionsRepository,
         LoggerInterface $logger
     ) {
         $this->orderRepository = $orderRepository;
         $this->merchantRepository = $merchantRepository;
         $this->inventoryRepository = $inventoryRepository;
         $this->inventoryOptionGroupItemService = $inventoryOptionGroupItemService;
-        $this->inventoryOptionGroupItemRepository = $inventoryOptionsRepository;
         $this->logger = $logger;
     }
 
@@ -187,7 +185,7 @@ class OrderService implements OrderContract
         $orderItem->order_id = $order->id;
         $orderItem->fill($apiPayload);
 
-        $hydratedOptions = $this->inventoryOptionGroupItemRepository->getItemsFromIdArray(
+        $hydratedOptions = $this->inventoryOptionGroupItemService->getItemsFromIdArray(
             $apiPayload['inventory_options']
         );
 

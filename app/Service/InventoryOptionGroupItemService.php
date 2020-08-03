@@ -42,4 +42,9 @@ class InventoryOptionGroupItemService implements InventoryOptionGroupItemContrac
             inventoryOptionGroupItemRepository
                 ->getItemCountByIdForMerchant($inventoryOptions, $merchant);
     }
+
+    public function getItemsFromIdArray(array $ids): ?Collection
+    {
+        return $this->inventoryOptionGroupItemRepository->getItemsFromIdArray($ids);
+    }
 }

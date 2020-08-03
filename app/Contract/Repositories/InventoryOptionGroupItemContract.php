@@ -29,5 +29,9 @@ interface InventoryOptionGroupItemContract
         Merchant $merchant
     );
 
+    /**
+     * @param array $ids
+     * @return Collection|null
+     */
     public function getItemsFromIdArray(array $ids): ?Collection;
 }

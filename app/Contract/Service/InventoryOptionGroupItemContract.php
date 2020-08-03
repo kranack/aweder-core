@@ -14,4 +14,10 @@ interface InventoryOptionGroupItemContract
      * @return bool
      */
     public function validateOrderItemsBelongToMerchant(Collection $inventoryOptions, Merchant $merchant): bool;
+
+    /**
+     * @param array $ids
+     * @return Collection|null
+     */
+    public function getItemsFromIdArray(array $ids): ?Collection;
 }
