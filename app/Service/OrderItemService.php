@@ -56,7 +56,7 @@ class OrderItemService implements OrderItemServiceContract
         $orderItem->fill($payload->toArray());
 
         if (isset($payload['inventory_options'])) {
-            if (!$this->updateOrderItemOptions($orderItem, $payload['inventory_options'])) {
+            if (!$this->updateOrderItemOptions($orderItem, collect($payload['inventory_options']))) {
                 return false;
             }
         }

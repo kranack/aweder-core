@@ -48,13 +48,15 @@ class UpdateItemController extends Controller
         $orderItem = $orderItemRepository->getOrderItemByOrderAndId($order, $itemId);
 
         if (!$orderItem) {
-            return response()->json(['message' => 'Could not find correct Order and Order item'], Response::HTTP_BAD_REQUEST);
+            return response()->json([
+                'message' => 'Could not find correct Order and Order item'
+            ], Response::HTTP_BAD_REQUEST);
         }
 
         if ($orderItemService->updateOrderItemWithPayload($orderItem, collect($request->validated()))) {
             return response()->json($orderItem->fresh(), Response::HTTP_OK);
         }
 
-//        return response()->json($orderItem, Response::HTTP_OK);
+        return response()->json($orderItem, Response::HTTP_NO_CONTENT);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Contract\Repositories\OrderItemContract;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -17,9 +18,15 @@ class UpdateItemOnOrderTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
+    /**
+     * @var OrderItemContract
+     */
+    protected $orderItemRepository;
+
     public function setUp(): void
     {
         parent::setUp();
+        $this->orderItemRepository = $this->app->make(OrderItemContract::class);
     }
 
     /**
@@ -180,5 +187,67 @@ class UpdateItemOnOrderTest extends TestCase
         );
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+    }
+
+    /**
+     * @test
+     */
+    public function canUpdateOptionsOnOrderItem(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $inventory = $this->createAndReturnInventoryItem(['merchant_id' => $merchant->id]);
+
+        $optionGroup = $this->createAndReturnInventoryOptionGroup(
+            [
+                'inventory_id' => $inventory
+            ]
+        );
+
+        $option1 = $this->createAndReturnInventoryOptionGroupItem([
+            'inventory_option_group_id' => $optionGroup->id,
+            'name' => 'Option1'
+        ]);
+
+        $option2 = $this->createAndReturnInventoryOptionGroupItem([
+            'inventory_option_group_id' => $optionGroup->id,
+            'name' => 'Option2'
+        ]);
+
+        $option3 = $this->createAndReturnInventoryOptionGroupItem([
+            'inventory_option_group_id' => $optionGroup->id,
+            'name' => 'Option3'
+        ]);
+
+        $order = $this->createAndReturnOrderForStatus('Fulfilled', [
+            'merchant_id' => $merchant->id
+        ]);
+
+        $orderItem = $this->createAndReturnOrderItem(['order_id' => $order->id]);
+
+        $this->orderItemRepository->addOptionToOrderItem($orderItem, $option1);
+        $this->orderItemRepository->addOptionToOrderItem($orderItem, $option2);
+
+        $this->assertCount(2, $orderItem->inventoryOptions()->get());
+
+        $response = $this->json(
+            'PATCH',
+            '/api/v1/order/' . $order->url_slug . '/item/' . $orderItem->id,
+            [
+                'price' => 3255,
+                'merchant' => $merchant->url_slug,
+                'inventory_options' => [
+                    $option3->id
+                ]
+            ]
+        );
+
+        $response->assertStatus(Response::HTTP_OK);
+        $orderItem->fresh();
+        $this->assertEquals('Option3', $orderItem->inventoryOptions()->first()->name);
+    }
+
+    public function cannotUpdateOptionsWhenDoNotBelongToMerchant(): void
+    {
+
     }
 }

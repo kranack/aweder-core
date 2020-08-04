@@ -123,8 +123,8 @@ class OrderItem extends Model
     /**
      * @return Merchant
      */
-    public function getMerchant(): Merchant
+    public function getMerchant(): ?Merchant
     {
-        $this->getOrder()->merchant()->first();
+        return $this->getOrder()->merchant()->first();
     }
 }
