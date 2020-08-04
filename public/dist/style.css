@@ -5486,7 +5486,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-absolute {
     position: absolute; } }
 
-.fixed, .grid-overlay, .popup, .button.menu__view.menu__view--active {
+.fixed, .grid-overlay, .notification--ajax, .popup, .button.menu__view.menu__view--active {
   position: fixed; }
 
 @media (max-width: 1440px) {
@@ -8268,6 +8268,9 @@ input[type="file"] {
   top: 90px;
   left: 50%;
   transform: translateX(-50%); }
+
+.notification--ajax {
+  z-index: 10; }
 
 .menu__categories {
   height: 60px;
