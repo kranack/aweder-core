@@ -27,4 +27,10 @@ export default {
   SET_ORDER(state, payload) {
     state.order = payload;
   },
+  SET_SERVICE_TYPE(state, payload) {
+    state.serviceType = payload;
+  },
+  SET_DATETIME(state, payload) {
+    state.datetime = payload;
+  },
 };

@@ -93,4 +93,8 @@
     <item-options-popup
         :merchant="{{ json_encode($merchant) }}"
     ></item-options-popup>
+    
+    <order-type-popup
+        v-if="{{ Request::segment(2) === 'take-away' ? 'true' : 'false' }}"
+    ></order-type-popup>
 @endsection

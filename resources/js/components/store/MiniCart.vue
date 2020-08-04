@@ -4,41 +4,16 @@
     :class="{ 'cart--empty': !quantity }"
   >
     <div v-if="quantity">
-      <div class="cart__service flex align-items-center">
-        <div class="field field--radio">
-          <input
-            id="delivery"
-            v-model="serviceType"
-            value="delivery"
-            type="radio"
-            name="service"
-            class="radio-input hidden"
-          >
-          <label
-            for="delivery"
-            class="radio radio--standard"
-          >
-            <span class="radio__icon radio__icon--small" />
-            <span class="radio__label radio__label--small">Delivery</span>
-          </label>
-        </div>
-        <div class="field field--radio">
-          <input
-            id="collection"
-            v-model="serviceType"
-            value="collection"
-            type="radio"
-            name="service"
-            class="radio-input hidden"
-          >
-          <label
-            for="collection"
-            class="radio radio--standard"
-          >
-            <span class="radio__icon radio__icon--small" />
-            <span class="radio__label radio__label--small">Collection</span>
-          </label>
-        </div>
+      <div
+      class="cart__service flex align-items-center">
+        <Add width="10" />
+        <span class="cart__service__date-content">{{ serviceType | capitalize }}, {{ datetime | moment('Do MMM, hh:mm') }}</span>
+        <span
+          class="cart__service__date-button"
+          @click="changeOrderType()"
+        >
+          Change
+        </span>
       </div>
       <div class="cart__order">
         <div
@@ -159,15 +134,12 @@ export default {
       default: () => {},
     },
   },
-  data() {
-    return {
-      serviceType: 'delivery',
-    };
-  },
   computed: {
     ...mapState({
       products: (state) => state.cart.products,
       order: (state) => state.cart.order,
+      serviceType: (state) => state.cart.serviceType,
+      datetime: (state) => state.cart.datetime,
     }),
     ...mapGetters({
       subtotal: 'cart/subtotal',
@@ -211,6 +183,9 @@ export default {
       return this.isVariant(item)
         ? item.variant.price
         : item.product.price;
+    },
+    changeOrderType() {
+      this.$store.dispatch('modals/setOrderType', true);
     },
   },
 };

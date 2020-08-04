@@ -6,6 +6,7 @@ import InventoryItem from '@/js/components/store/InventoryItem';
 import Basket from '@/js/components/store/Basket';
 import MiniCart from '@/js/components/store/MiniCart';
 import ServiceTypePopup from '@/js/components/store/ServiceTypePopup';
+import OrderTypePopup from '@/js/components/store/OrderTypePopup';
 import ItemOptionsPopup from '@/js/components/store/ItemOptionsPopup';
 import Popup from '@/js/components/shared/Popup';
 import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
@@ -26,6 +27,7 @@ import StripeElements from './StripeElements';
 import Upload from './Upload';
 
 // Filters
+import './filters/Capitalize';
 import './filters/Currency';
 
 // SASS
@@ -54,6 +56,7 @@ new Vue({
     MiniCart,
     Basket,
     Popup,
+    OrderTypePopup,
     ServiceTypePopup,
     ItemOptionsPopup,
     OrdersPanel,

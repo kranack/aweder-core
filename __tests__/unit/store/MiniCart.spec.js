@@ -5,11 +5,15 @@ import Vuex from 'vuex';
 import productsWithoutVariant from './mocks/cart/productsWithoutVariant';
 import productsWithVariant from './mocks/cart/productsWithVariant';
 import '@/js/filters/Currency';
+import '@/js/filters/Capitalize';
+
+const localVue = createLocalVue();
+
+localVue.use(require('vue-moment'));
+
+localVue.use(Vuex);
 
 describe('MiniCart', () => {
-  const localVue = createLocalVue();
-  localVue.use(Vuex);
-
   const propsData = {
     merchant: { delivery_cost: 599 },
   };
@@ -21,20 +25,6 @@ describe('MiniCart', () => {
     });
 
     expect(wrapper.find('.cart--empty').exists()).toBe(true);
-  });
-
-  it('defaults to delivery', () => {
-    storeConfig.modules.cart.state = productsWithoutVariant;
-
-    const wrapper = shallowMount(MiniCart, {
-      propsData,
-      store: new Vuex.Store(storeConfig),
-      localVue,
-    });
-
-    expect(wrapper.vm.isDelivery).toBe(true);
-    expect(wrapper.vm.deliveryCost).toBe(599);
-    expect(wrapper.findComponent({ ref: 'delivery' }).text()).toContain('£5.99');
   });
 
   it('shows cart items', async () => {

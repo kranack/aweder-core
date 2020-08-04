@@ -1,4 +1,5 @@
 import cart from './modules/cart';
+import modals from './modules/modals';
 import activeProduct from './modules/active-product';
 
 export default {
@@ -6,5 +7,6 @@ export default {
   modules: {
     cart,
     activeProduct,
+    modals,
   },
 };

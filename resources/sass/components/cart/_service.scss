@@ -3,13 +3,25 @@
   .margin-bottom-20,
   .border-width-1,
   .border-bottom-solid,
-  .border-silver-5;
+  .border-silver;
 }
 
-.cart__service .field {
-  @extend .margin-bottom-0;
+.cart__service__date {
+  @extend .margin-top-40,
+  .flex,
+  .align-items-center;
 }
 
-.cart__service .field:first-child {
-  @extend .margin-right-60;
+.cart__service__date-content {
+  @extend .margin-left-20,
+  .font-600,
+  .body-small,
+  .font-gibson-med;
+}
+
+.cart__service__date-button {
+  @extend .margin-left-auto,
+  .color-carnation,
+  .font-600,
+  .cursor-pointer;
 }

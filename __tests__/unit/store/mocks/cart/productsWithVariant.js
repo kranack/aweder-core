@@ -22,4 +22,6 @@ export default () => ({
       },
     },
   ],
+  serviceType: 'delivery',
+  datetime: '0000-01-01 00:00:00',
 });
