@@ -3,16 +3,14 @@ import 'regenerator-runtime/runtime';
 import MerchantOrderTypes from '@/js/components/shared/business_details/MerchantOrderTypes';
 import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import InventoryItem from '@/js/components/store/InventoryItem';
-import Modal from '@/js/components/shared/modal/Modal';
-import ServiceType from '@/js/components/shared/modal/slots/ServiceType';
+import Popup from '@/js/components/shared/Popup';
+import Notification from '@/js/components/shared/Notification';
+import ServiceTypePopup from '@/js/components/shared/store/ServiceTypePopup';
 import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
-import AddCategory from '@/js/components/admin/inventory/AddCategory';
-import AddItem from '@/js/components/admin/inventory/AddItem';
-import Categories from '@/js/components/admin/inventory/Categories';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import store from './store';
 import VueMoment from 'vue-moment';
+import store from './store';
 
 // Classes
 import AdminMenu from './AdminMenu';
@@ -51,12 +49,10 @@ new Vue({
     UrlSlugChecker,
     'merchant-order-types': MerchantOrderTypes,
     InventoryItem,
-    Modal,
-    ServiceType,
+    Popup,
+    Notification,
+    ServiceTypePopup,
     OrdersPanel,
-    AddCategory,
-    AddItem,
-    Categories,
   },
   store,
 }).$mount('#app');

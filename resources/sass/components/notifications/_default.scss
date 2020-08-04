@@ -10,6 +10,11 @@
   transform: translateX(-50%);
 }
 
+.notification--ajax {
+  @extend .fixed;
+  z-index: 10;
+}
+
 .notification__message {
   @extend .padding-top-20,
   .padding-bottom-20,
