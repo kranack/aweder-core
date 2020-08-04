@@ -1,6 +1,8 @@
-.inventory__add {
+.inventory__editable-add {
   @extend .flex,
-  .align-items-center;
+  .align-items-center,
+  .margin-bottom-50,
+  .cursor-pointer;
 }
 
 .inventory__add-category {

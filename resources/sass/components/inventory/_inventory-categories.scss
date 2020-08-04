@@ -18,8 +18,7 @@
   @extend .margin-bottom-0;
 }
 
-.inventory__category-name,
-.inventory__add {
+.inventory__category-name {
   @extend .margin-bottom-50;
 
   @include mq(m) {
@@ -35,7 +34,7 @@
   .align-items-center;
 }
 
-.inventory__category-name h2 {
+.inventory__category__title {
   @extend .font-gibson-med;
 }
 
@@ -43,7 +42,7 @@
   @extend .margin-bottom-30;
 }
 
-.inventory__sub-categories h2 {
+.inventory__sub-categories .inventory__category__title {
   @extend .body-xlarge;
 }
 

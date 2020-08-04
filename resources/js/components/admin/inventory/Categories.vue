@@ -1,7 +1,7 @@
 <template>
   <div class="inventory__categories inline-flex flex-col width-full">
     <header class="inventory__category-name">
-      <h2 class="header-three">
+      <h2 class="header-three inventory__category__title">
         {{ categoryName }}
       </h2>
       <a

@@ -75,12 +75,12 @@
                                 @if (!$category->inventoriesAvailable->isEmpty())
                                     <div class="inventory__categories inline-flex flex-col width-full" id="{{$category->title}}">
                                         <header class="inventory__category-name">
-                                            <h2 class="header-three">{{$category->title}}</h2>
+                                            <h2 class="header-three inventory__category__title">{{$category->title}}</h2>
                                         </header>
                                         {{--@TODO add if sub category--}}
                                         <div class="inventory__sub-categories width-full">
-                                            <header class="inventory__subcategory-name">
-                                                <h3 class="inventory__sub-title">Sub category</h3>
+                                            <header class="inventory__category-name">
+                                                <h3 class="header-three inventory__category__title">Sub category</h3>
                                             </header>
                                             <div class="inventory__group width-full">
                                                 @foreach ($category->inventoriesAvailable as $inventory)

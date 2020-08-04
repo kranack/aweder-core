@@ -1,5 +1,5 @@
 <template>
-  <div class="inventory__add">
+  <div class="inventory__editable-add">
     <a
       class="inventory__add-category"
       @click="showCreateModal"
