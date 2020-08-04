@@ -3,8 +3,8 @@
 namespace App\Service;
 
 use App\Contract\Repositories\InventoryOptionGroupItemContract as InventoryOptionGroupItemRepository;
-use App\Contract\Repositories\MerchantContract;
 use App\Contract\Service\InventoryOptionGroupItemContract;
+use App\Contract\Service\OrderItem;
 use App\Merchant;
 use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
@@ -21,18 +21,11 @@ class InventoryOptionGroupItemService implements InventoryOptionGroupItemContrac
      */
     protected InventoryOptionGroupItemRepository $inventoryOptionGroupItemRepository;
 
-    /**
-     * @var MerchantContract
-     */
-    protected MerchantContract $merchantRepository;
-
     public function __construct(
         InventoryOptionGroupItemRepository $inventoryOptionGroupItemRepository,
-        MerchantContract $merchantRepository,
         LoggerInterface $logger
     ) {
         $this->inventoryOptionGroupItemRepository = $inventoryOptionGroupItemRepository;
-        $this->merchantRepository = $merchantRepository;
         $this->logger = $logger;
     }
 

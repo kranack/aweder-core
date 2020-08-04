@@ -3,6 +3,7 @@
 namespace App\Contract\Repositories;
 
 use App\InventoryOptionGroupItem;
+use App\Order;
 use App\OrderItem;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -26,4 +27,11 @@ interface OrderItemContract
         OrderItem $orderItem,
         InventoryOptionGroupItem $inventoryOptionGroupItem
     ): bool;
+
+    /**
+     * @param Order $order
+     * @param int $itemId
+     * @return OrderItem|null
+     */
+    public function getOrderItemByOrderAndId(Order $order, int $itemId): ?OrderItem;
 }

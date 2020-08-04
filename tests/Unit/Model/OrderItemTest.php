@@ -82,6 +82,14 @@ class OrderItemTest extends TestCase
     /**
      * @test
      */
+    public function canGetItemByOrderAndId(): void
+    {
+
+    }
+
+    /**
+     * @test
+     */
     public function checkQuantityScope(): void
     {
         $inventory1 = factory(Inventory::class)->create();
