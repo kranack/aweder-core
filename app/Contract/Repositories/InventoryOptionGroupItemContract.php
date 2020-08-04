@@ -33,5 +33,5 @@ interface InventoryOptionGroupItemContract
      * @param array $ids
      * @return Collection|null
      */
-    public function getItemsFromIdArray(array $ids): ?Collection;
+    public function getItemsFromIdArray(array $ids): Collection;
 }
