@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Contract\Repositories\InventoryOptionGroupItemContract as InventoryOptionGroupItemRepository;
 use App\Contract\Service\InventoryOptionGroupItemContract;
-use App\Contract\Service\OrderItem;
 use App\Merchant;
 use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;

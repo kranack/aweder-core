@@ -8,7 +8,6 @@ use App\Contract\Service\OrderItemServiceContract;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Order\UpdateOrderItemRequest;
 use App\Order;
-use App\Service\InventoryOptionGroupItemService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
