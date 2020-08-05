@@ -59,7 +59,7 @@ class AddToOrderTest extends TestCase
     /**
      * @test
      */
-    public function canAddItemToOrder()
+    public function canAddItemToOrder(): void
     {
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
         $order = $this->createAndReturnOrderForStatus('Purchased Order', ['merchant_id' => $merchant->id]);
@@ -72,8 +72,17 @@ class AddToOrderTest extends TestCase
             ['name' => 'Go Faster Stripes']
         );
 
+        $inventoryOptionGroupItem2 = $this->createAndReturnInventoryOptionGroupItem(
+            ['name' => 'Yellow Keys']
+        );
+
         $this->inventoryOptionGroupItemRepository->addItemToOptionGroup(
             $inventoryOptionGroupItem,
+            $inventoryOptionGroup
+        );
+
+        $this->inventoryOptionGroupItemRepository->addItemToOptionGroup(
+            $inventoryOptionGroupItem2,
             $inventoryOptionGroup
         );
 
@@ -90,6 +99,10 @@ class AddToOrderTest extends TestCase
             'merchant' => $merchant->url_slug,
             'variant_id' => $inventoryVariant->id,
             'inventory_id' => $inventory->id,
+            'inventory_options' => [
+                $inventoryOptionGroupItem->id,
+                $inventoryOptionGroupItem2->id
+            ]
         ];
 
         $this->assertCount(0, $order->items()->get());
@@ -105,5 +118,6 @@ class AddToOrderTest extends TestCase
 
         $order = $order->fresh();
         $this->assertCount(1, $order->items()->get());
+        $this->assertCount(2, $order->items()->first()->inventoryOptions()->get());
     }
 }
