@@ -43,14 +43,12 @@ class DeleteItemController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        if ($orderItemRepository->deleteOrderItem($orderItem)) {
+        if (!$orderItemRepository->deleteOrderItem($orderItem)) {
             return response()->json([
-                'message' => 'Item deleted'
-            ], Response::HTTP_OK);
+                'message' => 'Could not delete item'
+            ], Response::HTTP_BAD_REQUEST);
         }
 
-        return response()->json([
-            'message' => 'Error deleting item'
-        ], Response::HTTP_BAD_REQUEST);
+        return response()->json(['message' => 'Item deleted'], Response::HTTP_OK);
     }
 }

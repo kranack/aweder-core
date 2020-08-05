@@ -38,14 +38,8 @@ class OrderItemService implements OrderItemServiceContract
             return false;
         }
 
-        $orderItem->inventoryOptions()->delete();
-
-        $hydratedInventoryOptions = $this->inventoryOptionGroupItemService->getItemsFromIdArray(
-            $inventoryOptions->toArray()
-        );
-
-        foreach ($hydratedInventoryOptions as $option) {
-            $orderItem->inventoryOptions()->save($option);
+        if (!$orderItem->inventoryOptions()->sync($inventoryOptions->toArray())) {
+            return false;
         }
 
         return true;
@@ -61,10 +55,10 @@ class OrderItemService implements OrderItemServiceContract
             }
         }
 
-        if ($orderItem->save()) {
-            return true;
+        if (!$orderItem->save()) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 }
