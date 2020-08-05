@@ -29,7 +29,7 @@
         </button>
       </div>
       <div class="order-type__date col-span-12">
-        <Table width="30" />
+        <Timer width="30" />
         <span class="order-type__date-content">{{ datetime | moment('Do MMM, hh:mm') }}</span>
         <span
           class="order-type__date-button"
@@ -67,7 +67,7 @@
 import { mapState } from 'vuex';
 import Popup from '@/js/components/shared/Popup';
 import Delivery from '@/js/components/svgs/Delivery';
-import Table from '@/js/components/svgs/Table';
+import Timer from '@/js/components/svgs/Timer';
 import Collection from '@/js/components/svgs/Collection';
 import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
@@ -76,7 +76,7 @@ export default {
   components: {
     Popup,
     Delivery,
-    Table,
+    Timer,
     Collection,
     VueCtkDateTimePicker,
   },

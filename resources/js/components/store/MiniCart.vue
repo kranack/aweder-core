@@ -6,7 +6,7 @@
     <div v-if="quantity">
       <div
       class="cart__service flex align-items-center">
-        <Add width="10" />
+        <Timer width="10" />
         <span class="cart__service__date-content">{{ serviceType | capitalize }}, {{ datetime | moment('Do MMM, hh:mm') }}</span>
         <span
           class="cart__service__date-button"
@@ -119,6 +119,7 @@
 </template>
 
 <script>
+import Timer from '@/js/components/svgs/Timer';
 import Add from '@/js/components/svgs/Add';
 import Minus from '@/js/components/svgs/Minus';
 import { mapState, mapGetters, mapActions } from 'vuex';
@@ -127,6 +128,7 @@ export default {
   components: {
     Add,
     Minus,
+    Timer,
   },
   props: {
     merchant: {
