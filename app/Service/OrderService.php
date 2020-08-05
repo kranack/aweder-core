@@ -194,10 +194,7 @@ class OrderService implements OrderContract
         }
 
         $orderItem->fresh();
-
-        foreach ($hydratedOptions as $option) {
-            $orderItem->inventoryOptions()->save($option);
-        }
+        $orderItem->inventoryOptions()->saveMany($hydratedOptions);
 
         return true;
     }

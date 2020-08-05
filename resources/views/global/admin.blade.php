@@ -27,6 +27,7 @@
         @include('global/admin-nav')
         @include('global/admin-header')
         @include('shared/notification')
+        <notification></notification>
         <main class="admin-main col-span-9 col-start-4 m-col-span-12 m-col-start-1 sm-col-span-6 sm-col-start-1 inline-grid grid-cols-9 m-grid-col-12 sm-grid-cols-6">
             @yield('content')
         </main>

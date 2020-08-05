@@ -1,27 +1,27 @@
 import { mount, shallowMount } from '@vue/test-utils';
-import Popup from '@/js/components/shared/store/ServiceTypePopup';
+import Modal from '@/js/components/shared/modal/slots/ServiceType';
 
-describe('ServiceTypePopup', () => {
+describe('ServiceType', () => {
   it('is inactive and hidden by default', () => {
-    const wrapper = shallowMount(Popup);
+    const wrapper = shallowMount(Modal);
 
     expect(wrapper.vm.isActive).toBe(false);
 
-    expect(wrapper.find('.popup').exists()).toBe(false);
+    expect(wrapper.find('.modal').exists()).toBe(false);
   });
 
   it('is visible when active', () => {
-    const wrapper = mount(Popup, {
+    const wrapper = mount(Modal, {
       propsData: {
         isActive: true,
       },
     });
 
-    expect(wrapper.find('.popup').exists()).toBe(true);
+    expect(wrapper.find('.modal').exists()).toBe(true);
   });
 
   it('has service links', () => {
-    const wrapper = mount(Popup, {
+    const wrapper = mount(Modal, {
       propsData: {
         isActive: true,
         takeAwayUrl: '/take-away',

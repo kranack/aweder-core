@@ -49,7 +49,7 @@ class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemCont
      * @param array $inventoryOptions
      * @return Collection|null
      */
-    public function getItemsFromIdArray(array $inventoryOptions): ?Collection
+    public function getItemsFromIdArray(array $inventoryOptions): Collection
     {
         return $this->getModel()
             ->whereIn('id', $inventoryOptions)
