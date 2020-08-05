@@ -73,6 +73,6 @@ class Kernel extends HttpKernel
         'has-order-gone-past-stage' => HasOrderGonePastStageMiddleware::class,
         'has-user-completed-merchant-signup' => UserHasCompletedMerchantRegistration::class,
         'has-user-completed-registration-stage' => HasUserCompletedCurrentStage::class,
-        'is-correct-order-type' => IsCorrectOrderTypeMiddleware::class
+        'is-correct-order-type' => IsCorrectOrderTypeMiddleware::class,
     ];
 }
