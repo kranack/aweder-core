@@ -1,27 +1,27 @@
 import { mount } from '@vue/test-utils';
-import Popup from '@/js/components/shared/Popup';
+import Modal from '@/js/components/shared/modal/Modal';
 
-describe('Popup', () => {
+describe('Modal', () => {
   it('is inactive and hidden by default', () => {
-    const wrapper = mount(Popup);
+    const wrapper = mount(Modal);
 
     expect(wrapper.vm.isActive).toBe(false);
 
-    expect(wrapper.find('.popup').exists()).toBe(false);
+    expect(wrapper.find('.modal').exists()).toBe(false);
   });
 
   it('is visible when active', () => {
-    const wrapper = mount(Popup, {
+    const wrapper = mount(Modal, {
       propsData: {
         isActive: true,
       },
     });
 
-    expect(wrapper.find('.popup').exists()).toBe(true);
+    expect(wrapper.find('.modal').exists()).toBe(true);
   });
 
   it('displays slot contents', () => {
-    const wrapper = mount(Popup, {
+    const wrapper = mount(Modal, {
       propsData: {
         isActive: true,
       },
@@ -30,17 +30,17 @@ describe('Popup', () => {
       },
     });
 
-    expect(wrapper.find('.popup__box').text()).toContain('Test slot text');
+    expect(wrapper.find('.modal__box').text()).toContain('Test slot text');
   });
 
   it('fires a close event on background click', () => {
-    const wrapper = mount(Popup, {
+    const wrapper = mount(Modal, {
       propsData: {
         isActive: true,
       },
     });
 
-    wrapper.find('.popup__mask').trigger('click');
+    wrapper.find('.modal__mask').trigger('click');
 
     expect(wrapper.emitted().close).toBeTruthy();
   });
