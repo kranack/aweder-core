@@ -25,6 +25,7 @@
 <div class="site-wrapper" id="app">
     @include('global/header')
     @include('shared/notification')
+    <notification></notification>
     <main class="flex flex-col align-items-center">
         @yield('content')
     </main>

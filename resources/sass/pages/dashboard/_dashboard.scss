@@ -4,7 +4,7 @@
   height: 100%;
 }
 
-.admin-wrapper .content {
+.admin-wrapper > .content {
   grid-template-rows: auto 1fr;
 }
 

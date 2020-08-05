@@ -63,15 +63,21 @@
                                 @if (!$category->inventoriesAvailable->isEmpty())
                                     <div class="inventory__categories inline-flex flex-col width-full" id="{{$category->title}}">
                                         <header class="inventory__category-name">
-                                            <h2 class="header-three">{{$category->title}}</h2>
+                                            <h2 class="header-three inventory__category__title">{{$category->title}}</h2>
                                         </header>
                                         {{--@TODO add if sub category--}}
-                                        <h3 class="inventory__subcategory">Sub category</h3>
-                                        @foreach ($category->inventoriesAvailable as $inventory)
-                                            <inventory-item
-                                                :product="{{ json_encode($inventory) }}"
-                                            ></inventory-item>
-                                        @endforeach
+                                        <div class="inventory__sub-categories width-full">
+                                            <header class="inventory__category-name">
+                                                <h3 class="header-three inventory__category__title">Sub category</h3>
+                                            </header>
+                                            <div class="inventory__group width-full">
+                                                @foreach ($category->inventoriesAvailable as $inventory)
+                                                    <inventory-item
+                                                        :product="{{ json_encode($inventory) }}"
+                                                    ></inventory-item>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
                                 @endif
                             @endforeach

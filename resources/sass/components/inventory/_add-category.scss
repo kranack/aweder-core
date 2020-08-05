@@ -1,0 +1,21 @@
+.inventory__editable-add {
+  @extend .flex,
+  .align-items-center,
+  .margin-bottom-50,
+  .cursor-pointer;
+}
+
+.inventory__add-category {
+  @extend .font-gibson-med,
+  .header-three,
+  .color-cloud-burst-5;
+}
+
+.inventory__add-category .icon {
+  @extend .margin-left-20;
+}
+
+.inventory__add-category svg {
+  @extend .fill-cloud-burst-5;
+  width: 26px;
+}

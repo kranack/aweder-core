@@ -4,8 +4,10 @@ namespace App\Service;
 
 use App\Contract\Repositories\InventoryContract;
 use App\Contract\Repositories\MerchantContract;
+use App\Contract\Service\InventoryOptionGroupItemContract;
 use App\Contract\Service\OrderContract;
 use App\Contract\Repositories\OrderContract as OrderRepositoryContract;
+use App\Contract\Repositories\InventoryOptionGroupItemContract as InventoryOptionsRepository;
 use App\Merchant;
 use App\Order;
 use App\OrderItem;
@@ -30,22 +32,31 @@ class OrderService implements OrderContract
     protected InventoryContract $inventoryRepository;
 
     /**
+     * @var InventoryOptionGroupItemContract
+     */
+    protected InventoryOptionGroupItemContract $inventoryOptionGroupItemService;
+
+    /**
      * @var LoggerInterface
      */
     protected LoggerInterface $logger;
 
+    /**
+     * @var InventoryOptionsRepository
+     */
+    private InventoryOptionsRepository $inventoryOptionGroupItemRepository;
+
     public function __construct(
         OrderRepositoryContract $orderRepository,
-        MerchantContract $merchantRepo,
-        InventoryContract $inventoryRepo,
+        MerchantContract $merchantRepository,
+        InventoryContract $inventoryRepository,
+        InventoryOptionGroupItemContract $inventoryOptionGroupItemService,
         LoggerInterface $logger
     ) {
         $this->orderRepository = $orderRepository;
-
-        $this->merchantRepository = $merchantRepo;
-
-        $this->inventoryRepository = $inventoryRepo;
-
+        $this->merchantRepository = $merchantRepository;
+        $this->inventoryRepository = $inventoryRepository;
+        $this->inventoryOptionGroupItemService = $inventoryOptionGroupItemService;
         $this->logger = $logger;
     }
 
@@ -161,14 +172,30 @@ class OrderService implements OrderContract
 
     public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool
     {
+        $belongsToMerchant = $this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
+            collect($apiPayload['inventory_options']),
+            $order->merchant()->first()
+        );
+
+        if (!$belongsToMerchant) {
+            return false;
+        }
+
         $orderItem = new OrderItem();
         $orderItem->order_id = $order->id;
         $orderItem->fill($apiPayload);
 
-        if ($this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
-            return true;
+        $hydratedOptions = $this->inventoryOptionGroupItemService->getItemsFromIdArray(
+            $apiPayload['inventory_options']
+        );
+
+        if (!$this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
+            return false;
         }
 
-        return false;
+        $orderItem->fresh();
+        $orderItem->inventoryOptions()->saveMany($hydratedOptions);
+
+        return true;
     }
 }
