@@ -96,11 +96,11 @@
             </div>
         </div>
     </section>
-    <item-options-popup
+    <item-options
         :merchant="{{ json_encode($merchant) }}"
-    ></item-options-popup>
+    ></item-options>
     
-    <order-type-popup
+    <order-type
         v-if="{{ Request::segment(2) === 'take-away' ? 'true' : 'false' }}"
-    ></order-type-popup>
+    ></order-type>
 @endsection

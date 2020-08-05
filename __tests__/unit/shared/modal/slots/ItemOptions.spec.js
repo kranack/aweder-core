@@ -41,6 +41,8 @@ describe('ItemOptions', () => {
       localVue,
     });
 
+    wrapper.setData({ selectedVariant: { id: 1 } });
+
     jest.spyOn(orderApi, 'create')
       .mockImplementation(createOrderSuccessResponse);
 
@@ -63,6 +65,8 @@ describe('ItemOptions', () => {
       localVue,
     });
 
+    wrapper.setData({ selectedVariant: { id: 1 } });
+
     const spy = jest.spyOn(orderApi, 'create')
       .mockImplementation(createOrderSuccessResponse);
 
@@ -81,6 +85,8 @@ describe('ItemOptions', () => {
       localVue,
     });
 
+    wrapper.setData({ selectedVariant: { id: 1 } });
+
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
 
     expect(activeProductWithOrderState.actions['cart/setOrder']).toHaveBeenCalledTimes(0);
@@ -94,6 +100,8 @@ describe('ItemOptions', () => {
       store: new Vuex.Store(activeProductWithOrderState),
       localVue,
     });
+
+    wrapper.setData({ selectedVariant: { id: 1 } });
 
     const spy = jest.spyOn(orderApi, 'addItem');
 

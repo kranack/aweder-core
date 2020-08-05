@@ -199,7 +199,7 @@ export default {
     async addItem() {
       const res = await orderApi.addItem(this.order, {
         inventory_id: this.product.id,
-        variant_id: 1,
+        variant_id: this.selectedVariant.id,
         merchant: this.merchant.url_slug,
       });
 

@@ -5,8 +5,8 @@ import UrlSlugChecker from '@/js/components/registration/UrlSlugChecker';
 import InventoryItem from '@/js/components/store/InventoryItem';
 import Basket from '@/js/components/store/Basket';
 import MiniCart from '@/js/components/store/MiniCart';
-import OrderTypePopup from '@/js/components/store/OrderTypePopup';
-import ItemOptionsPopup from '@/js/components/store/ItemOptionsPopup';
+import OrderType from '@/js/components/shared/modal/slots/OrderType';
+import ItemOptions from '@/js/components/shared/modal/slots/ItemOptions';
 import Modal from '@/js/components/shared/modal/Modal';
 import ServiceType from '@/js/components/shared/modal/slots/ServiceType';
 import OrdersPanel from '@/js/components/admin/orders/OrdersPanel';
@@ -59,8 +59,8 @@ new Vue({
     InventoryItem,
     MiniCart,
     Basket,
-    OrderTypePopup,
-    ItemOptionsPopup,
+    OrderType,
+    ItemOptions,
     Modal,
     ServiceType,
     OrdersPanel,
