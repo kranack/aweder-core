@@ -1,0 +1,88 @@
+<template>
+  <div class="inventory__categories inline-flex flex-col width-full">
+    <header class="inventory__category-name">
+      <h2 class="header-three inventory__category__title">
+        {{ categoryName }}
+      </h2>
+      <a
+        class="button button--small button-outline--silver"
+        @click="showEditCategoryModal"
+      >
+        <span class="button__content">Edit</span>
+      </a>
+    </header>
+    <div class="inventory__group inline-flex flex-col width-full">
+      <add-item />
+      <inventory-item
+        v-for="(item, index) in inventoryItems"
+        :key="index"
+        :item-id="item.id"
+        :title="item.title"
+        :description="item.description"
+        :price="item.price"
+      />
+    </div>
+    <div
+      v-for="(category, subCategoryIndex) in subCategory"
+      :key="subCategoryIndex"
+      class="inventory__sub-categories inline-flex flex-col width-full"
+    >
+      <categories
+        name="1"
+        :sub-category="0"
+      />
+    </div>
+    <edit-category
+      :is-active="isActive"
+      @close="hideEditCategoryModal()"
+    />
+  </div>
+</template>
+
+<script>
+import EditCategory from '@/js/components/shared/modal/slots/EditCategory';
+import Categories from './Categories';
+import InventoryItem from './InventoryItem';
+import AddItem from './AddItem';
+
+export default {
+  name: 'Categories',
+  components: {
+    EditCategory,
+    Categories,
+    InventoryItem,
+    AddItem,
+  },
+  props: {
+    subCategory: {
+      type: Number,
+      default: 3,
+    },
+    categoryName: {
+      type: String,
+      default: '',
+    },
+    categoryId: {
+      type: String,
+      default: '',
+    },
+    inventoryItems: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    showEditCategoryModal() {
+      this.isActive = true;
+    },
+    hideEditCategoryModal() {
+      this.isActive = false;
+    },
+  },
+};
+</script>

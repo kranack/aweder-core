@@ -119,3 +119,9 @@
 .inventory__button--added.inventory__button svg {
   @extend .fill-casablanca;
 }
+
+.inventory__item--add .inventory__title,
+.inventory__item--add .inventory__description,
+.inventory__item--add .inventory__price {
+  @extend .color-cloud-burst-5;
+}
