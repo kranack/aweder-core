@@ -1,5 +1,27 @@
 @extends('global.app')
 @section('content')
+    <section class="checkout">
+        <div class="row">
+            <div class="content">
+                <header class="checkout__header col-span-4 col-start-5 m-col-span-6 m-col-start-4 sm-col-start-1">
+                    <h1 class="header-two color-carnation">Order details</h1>
+                </header>
+                <div class="checkout__merchant col-span-4 col-start-5 m-col-span-6 m-col-start-4 sm-col-start-1">
+                    <div class="checkout__merchant-image">
+                        <img src="https://via.placeholder.com/150" alt="" />
+                    </div>
+                    <div class="checkout__merchant-details">
+                        <h2 class="body-xlarge">DimSum</h2>
+                        <p class="checkout__merchant-address">145 Warwick Avenue • New Southgate • London • NW7 9EH</p>
+                        <p class="checkout__merchant-phone">0208 967 5468</p>
+                    </div>
+                </div>
+                <div class="checkout__confirmation col-span-4 col-start-5 m-col-span-6 m-col-start-4 sm-col-start-1 panel">
+                    <form class="width-full"></form>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="hero background-off-white border-silver border-width-1 border-bottom-solid">
         <div class="row">
             <div class="content align-items-center">
