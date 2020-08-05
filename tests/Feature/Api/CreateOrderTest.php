@@ -86,7 +86,7 @@ class CreateOrderTest extends TestCase
             $orderItemPayload
         );
 
-        $response->assertStatus(201);
+        $response->assertStatus(Response::HTTP_CREATED);
         $this->assertCount(1, $merchant->orders()->get());
     }
 }
