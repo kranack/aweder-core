@@ -81,7 +81,7 @@ jobs:
 
       - run:
           name: Run PHPUnit
-          command: php -c ./docker/php/x-debug-off.ini vendor/bin/phpunit --testdox
+          command: php -c ./docker/php/x-debug-off.ini vendor/bin/phpunit -d memory_limit=3999M--testdox
       - run:
           name: Run Jest
           command: yarn run test:unit
