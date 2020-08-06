@@ -1,0 +1,9 @@
+.checkout--form {
+  @extend .flex,
+  .flex-col,
+  .padding-top-40;
+}
+
+.checkout--form .field--button {
+  @extend .margin-bottom-0;
+}
