@@ -42,13 +42,14 @@ class DeleteOrderItemTest extends TestCase
         );
 
         $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson(['message' => 'Item deleted']);
         $this->assertCount(0, $order->fresh()->items()->get());
     }
 
     /**
      * @test
      */
-    public function cannotDeleteItemIdOnDifferentOrder()
+    public function cannotDeleteItemIdOnDifferentOrder(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -71,7 +72,30 @@ class DeleteOrderItemTest extends TestCase
         );
 
         $response->assertStatus(Response::HTTP_BAD_REQUEST);
+        $response->assertJson(['message' => 'Could not find correct Order and Order item']);
         $this->assertCount(1, $order->fresh()->items()->get());
         $this->assertCount(1, $order2->fresh()->items()->get());
+    }
+
+    /**
+     * @test
+     */
+    public function cannotDeleteItemWithoutMerchant(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
+        $orderItem = $this->createAndReturnOrderItem(['order_id' => $order->id]);
+
+        $this->assertCount(1, $order->items()->get());
+
+        $response = $this->json(
+            'DELETE',
+            '/api/v1/order/' . $order->url_slug . '/item/' . $orderItem->id,
+            []
+        );
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertJsonFragment(['The merchant field is required.']);
+        $this->assertCount(1, $order->fresh()->items()->get());
     }
 }
