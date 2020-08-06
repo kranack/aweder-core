@@ -11,6 +11,13 @@ textarea.textarea-input {
   transition: border-color 0.3s ease-in-out;
 }
 
+input.text-input.text-input--small,
+textarea.textarea-input.textarea-input--small {
+  @extend .body-medium,
+  .padding-bottom-5,
+  .padding-top-20;
+}
+
 .text-input--price {
   @extend .padding-left-20;
 }

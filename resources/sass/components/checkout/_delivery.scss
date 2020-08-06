@@ -1,0 +1,21 @@
+.checkout__delivery {
+  @extend .flex,
+  .align-items-center,
+  .padding-bottom-40,
+  .border-width-1,
+  .border-bottom-solid,
+  .border-silver;
+}
+
+.checkout__delivery .icon {
+  @extend .margin-right-20;
+}
+
+.checkout__delivery svg {
+  width: 30px;
+}
+
+.checkout__delivery p {
+  @extend .body-large,
+  .font-gibson-med;
+}
