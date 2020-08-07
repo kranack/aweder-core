@@ -16,6 +16,7 @@
         "intersection-observer": "^0.7.0",
         "regenerator-runtime": "^0.13.2",
         "vue": "^2.6.11",
+        "vue-input-tag": "^2.0.7",
         "vue-moment": "^4.1.0",
         "vuedraggable": "^2.24.0",
         "vuex": "^3.5.1",

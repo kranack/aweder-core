@@ -1,0 +1,39 @@
+.modal--inventory .field--toggle {
+  @extend .margin-bottom-0;
+}
+
+.modal--inventory .upload {
+  @extend .margin-right-40,
+  .background-ghost-white;
+  width: 76px;
+  height: 76px;
+}
+
+.modal--inventory .upload__icon svg {
+  @extend .fill-silver-6;
+  width: 38px;
+}
+
+.modal--inventory .field--checkbox {
+  max-width: 290px;
+  width: 100%;
+
+  @include mq(sm) {
+    @include _(sm-width-full);
+  }
+}
+
+.modal--inventory .checkboxes .field--checkbox:first-child {
+  @extend .margin-right-40;
+
+  @include mq(l) {
+    @include _(l-margin-right-30);
+  }
+  @include mq(m) {
+    @include _(m-margin-right-20);
+  }
+}
+
+.modal--inventory .checkbox--icon {
+  @extend .background-ghost-white;
+}
