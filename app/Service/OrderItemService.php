@@ -55,10 +55,6 @@ class OrderItemService implements OrderItemServiceContract
             }
         }
 
-        if (!$orderItem->save()) {
-            return false;
-        }
-
-        return true;
+        return $orderItem->save();
     }
 }

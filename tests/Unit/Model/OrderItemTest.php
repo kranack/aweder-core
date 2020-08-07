@@ -84,7 +84,14 @@ class OrderItemTest extends TestCase
      */
     public function canGetItemByOrderAndId(): void
     {
+        $order = $this->createAndReturnOrderForStatus('Purchased Order');
+        $orderItem = $this->createAndReturnOrderItem([
+            'order_id' => $order,
+            'title' => 'Blurnsball'
+        ]);
 
+        $orderItem = $this->repository->getOrderItemByOrderAndId($order, $orderItem->id);
+        $this->assertEquals('Blurnsball', $orderItem->title);
     }
 
     /**

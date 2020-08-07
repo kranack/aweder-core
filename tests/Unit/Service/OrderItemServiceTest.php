@@ -20,7 +20,7 @@ class OrderItemServiceTest extends TestCase
     /**
      * @var OrderItemService
      */
-    protected $orderItemService;
+    protected OrderItemService $orderItemService;
 
     public function setUp(): void
     {
