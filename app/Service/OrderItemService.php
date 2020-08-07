@@ -38,17 +38,11 @@ class OrderItemService implements OrderItemServiceContract
             return false;
         }
 
-        $orderItem->inventoryOptions()->delete();
-
-        $hydratedInventoryOptions = $this->inventoryOptionGroupItemService->getItemsFromIdArray(
-            $inventoryOptions->toArray()
-        );
-
-        foreach ($hydratedInventoryOptions as $option) {
-            $orderItem->inventoryOptions()->save($option);
+        if (!$orderItem->inventoryOptions()->sync($inventoryOptions->toArray())) {
+            return false;
         }
 
-        return true;
+        return false;
     }
 
     public function updateOrderItemWithPayload(OrderItem $orderItem, Collection $payload): bool

@@ -117,7 +117,7 @@ class OrderItem extends Model
      */
     public function getOrder(): Order
     {
-        return $this->order()->get()->first();
+        return $this->order()->first();
     }
 
     /**

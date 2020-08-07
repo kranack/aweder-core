@@ -10,7 +10,7 @@ interface OrderItemServiceContract
     /**
      * Removes all options then readds them to the OrderItem from Collection of IDs
      * @param OrderItem $orderItem
-     * @param array $inventoryOptions
+     * @param Collection $inventoryOptions
      * @return bool
      */
     public function updateOrderItemOptions(OrderItem $orderItem, Collection $inventoryOptions): bool;
