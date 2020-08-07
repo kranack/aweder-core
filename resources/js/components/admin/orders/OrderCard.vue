@@ -1,14 +1,16 @@
 <template>
   <div class="single-order">
     <header class="single-order__header">
-      <a class="single-order__back button button-outline--cloud-burst"
-      @click.prevent="back()">
+      <a
+        class="single-order__back button button-outline--cloud-burst"
+        @click.prevent="back()"
+      >
         <span class="button__icon button__icon--left"><ArrowLeft /></span>
         <span class="button__content">Return to orders</span>
       </a>
       <div class="single-order__title">
         <h2>
-          <span class="status status--new"></span>
+          <span class="status status--new" />
           <!-- @TODO table number or service type-->
           #Table 4
         </h2>
@@ -17,9 +19,15 @@
         </time>
       </div>
       <div class="field field--select field--select-button background-carnation">
-        <select name="status">
-          <option value="pending">Pending</option>
-          <option value="complete">Complete</option>
+        <select
+          name="status"
+        >
+          <option value="pending">
+            Pending
+          </option>
+          <option value="complete">
+            Complete
+          </option>
         </select>
         <span class="select-icon"><ArrowDown /></span>
       </div>
@@ -38,19 +46,28 @@
         <h4>Payment information</h4>
         <ul>
           <li>{{ order.status }}</li>
-          <li class="font-gibson-med">{{ order.total_cost | currency }}</li>
+          <li class="font-gibson-med">
+            {{ order.total_cost | currency }}
+          </li>
         </ul>
       </div>
     </div>
-    <div class="single-order__items" v-if="order.items">
-      <div class="single-order__item"
-           v-for="(item, index) in order.items"
-           :key="item.id">
+    <div
+      v-if="order.items"
+      class="single-order__items"
+    >
+      <div
+        class="single-order__item"
+        v-for="(item, index) in order.items"
+        :key="item.id"
+      >
         <div class="single-order__line">
           <div class="single-order__image">
             <img
-            :src="item.order_inventory.image || 'https://source.unsplash.com/random/50x50?food'"
-            alt="" class="width-full">
+              :src="item.order_inventory.image || 'https://source.unsplash.com/random/50x50?food'"
+              alt=""
+              class="width-full"
+            >
           </div>
           <p>{{ item.order_inventory.title }}</p>
           <span class="single-order__qty">{{ item.quantity }}</span>
@@ -58,9 +75,11 @@
         </div>
         <!-- @TODO add variants choices -->
         <div class="single-order__options">
-          <h5 class="single-order__options-title">Sauces</h5>
+          <h5 class="single-order__options-title">
+            Sauces
+          </h5>
           <p>Curry sauce</p>
-          <span class="single-order__subprice"></span>
+          <span class="single-order__subprice" />
         </div>
       </div>
     </div>

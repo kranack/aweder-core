@@ -1,0 +1,36 @@
+.modal {
+  @extend
+  .fixed,
+  .flex,
+  .align-items-center;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.modal .content {
+  grid-template-rows: auto;
+}
+
+.modal__box {
+  @extend
+  .relative,
+  .radius-5,
+  .background-ghost-white;
+  z-index: 1;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal__mask {
+  @extend
+  .absolute,
+  .background-black,
+  .opacity-50;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

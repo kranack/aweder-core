@@ -1,0 +1,62 @@
+.inventory__categories {
+  @extend .margin-bottom-80;
+
+  @include mq(m) {
+    @include _(m-margin-bottom-60);
+  }
+}
+
+.inventory--editable .inventory__categories {
+  @extend .border-bottom-solid,
+  .border-width-1,
+  .border-silver,
+  .padding-bottom-40,
+  .margin-bottom-40;
+}
+
+.inventory__categories:last-child {
+  @extend .margin-bottom-0;
+}
+
+.inventory__category-name {
+  @extend .margin-bottom-50;
+
+  @include mq(m) {
+    @include _(m-margin-bottom-30);
+  }
+  @include mq(sm) {
+    @include _(sm-margin-bottom-20);
+  }
+}
+
+.inventory__category-name {
+  @extend .flex,
+  .align-items-center;
+}
+
+.inventory__category__title {
+  @extend .font-gibson-med;
+}
+
+.inventory__sub-categories .inventory__category-name {
+  @extend .margin-bottom-30;
+}
+
+.inventory__sub-categories .inventory__category__title {
+  @extend .body-xlarge;
+}
+
+.inventory__category-name .button {
+  @extend .margin-left-auto;
+}
+
+.inventory__group + .inventory__sub-categories,
+.inventory__sub-categories + .inventory__sub-categories {
+  @extend .margin-top-60;
+}
+
+.inventory__categories .inventory__sub-categories .inventory__categories {
+  @extend .margin-bottom-0,
+  .padding-bottom-0,
+  .border-bottom-none;
+}

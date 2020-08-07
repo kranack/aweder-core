@@ -9,6 +9,10 @@
   @extend .margin-bottom-0;
 }
 
+.field.field--small {
+  @extend .margin-bottom-20;
+}
+
 .field-wrapper {
   @extend .col-gap;
 
