@@ -4,10 +4,11 @@
     :class="{ 'cart--empty': !quantity }"
   >
     <div v-if="quantity">
-      <div
-      class="cart__service flex align-items-center">
+      <div class="cart__service flex align-items-center">
         <Timer width="10" />
-        <span class="cart__service__date-content">{{ serviceType | capitalize }}, {{ datetime | moment('Do MMM, hh:mm') }}</span>
+        <span class="cart__service__date-content">
+          {{ serviceType | capitalize }}, {{ datetime | moment('Do MMM, hh:mm') }}
+        </span>
         <span
           class="cart__service__date-button"
           @click="changeOrderType()"

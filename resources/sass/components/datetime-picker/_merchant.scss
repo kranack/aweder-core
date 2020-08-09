@@ -1,0 +1,18 @@
+.datetime-merchant {
+  @extend .margin-top-40,
+  .flex,
+  .align-items-center;
+}
+
+.datetime-merchant__button {
+  @extend .margin-left-auto,
+  .color-carnation,
+  .font-600,
+  .cursor-pointer;
+}
+
+.datetime-merchant input {
+  @extend .margin-left-20,
+  .font-600,
+  .cursor-pointer;
+}

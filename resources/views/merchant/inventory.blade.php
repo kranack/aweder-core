@@ -102,5 +102,6 @@
     
     <order-type
         v-if="{{ Request::segment(2) === 'take-away' ? 'true' : 'false' }}"
+        :merchant="{{ json_encode($merchant) }}"
     ></order-type>
 @endsection

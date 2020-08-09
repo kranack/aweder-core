@@ -151,6 +151,9 @@ export default {
       product: (state) => state.activeProduct.product,
       order: (state) => state.cart.order,
     }),
+    selectedOptions() {
+      return (Object.values(this.options)).flat(1);
+    },
   },
   watch: {
     product(value) {
@@ -201,6 +204,8 @@ export default {
         inventory_id: this.product.id,
         variant_id: this.selectedVariant.id,
         merchant: this.merchant.url_slug,
+        // inventory_options: this.selectedOptions,
+        inventory_options: [],
       });
 
       if (res.status === 200) {

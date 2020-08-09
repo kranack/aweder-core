@@ -28,26 +28,10 @@
           <span class="button_content body-large">Collection</span>
         </button>
       </div>
-      <div class="order-type__date col-span-12">
-        <Timer width="30" />
-        <span class="order-type__date-content">{{ datetime | moment('Do MMM, hh:mm') }}</span>
-        <span
-          class="order-type__date-button"
-          @click="toggleCalendar()"
-        >
-          Change
-        </span>
-      </div>
       <div class="col-span-12">
-        <VueCtkDateTimePicker
-          v-if="showCalendar"
+        <merchant-date-time-picker
           v-model="datetime"
-          format="YYYY-MM-DD HH:mm:ss"
-          class="margin-top-40 border-black border-width-1 border-solid"
-          color="#F5B24D"
-          button-color="#F25851"
-          :inline="showCalendar"
-          :no-button-now="true"
+          :merchant-hours="merchantHours"
         />
       </div>
       <div class="col-span-12 margin-top-40">
@@ -66,19 +50,22 @@
 <script>
 import { mapState } from 'vuex';
 import Modal from '@/js/components/shared/modal/Modal';
+import MerchantDateTimePicker from '@/js/components/shared/MerchantDateTimePicker';
 import Delivery from '@/js/components/svgs/Delivery';
-import Timer from '@/js/components/svgs/Timer';
 import Collection from '@/js/components/svgs/Collection';
-import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
-import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
 export default {
   components: {
     Modal,
     Delivery,
-    Timer,
     Collection,
-    VueCtkDateTimePicker,
+    MerchantDateTimePicker,
+  },
+  props: {
+    merchant: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {
@@ -91,12 +78,16 @@ export default {
     ...mapState({
       isActive: (state) => state.modals.orderType,
     }),
-  },
-  mounted() {
-    this.datetime = this.$moment().format('YYYY-MM-DD HH:mm:ss');
+    merchantHours() {
+      return this.merchant.opening_hours.map((hours) => ({
+        ...hours,
+        day_of_week: hours.day_of_week - 1,
+      }));
+    },
   },
   methods: {
     toggleCalendar() {
+      console.log(this.$refs.datePicker);
       this.showCalendar = !this.showCalendar;
     },
     setType(type) {
