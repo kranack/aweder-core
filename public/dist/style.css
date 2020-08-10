@@ -778,7 +778,7 @@ button {
 .margin-bottom-auto {
   margin-bottom: auto; }
 
-.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field--tags .vue-input-tag-wrapper .new-tag, .field--tags .vue-input-tag-wrapper .input-tag:first-of-type, .field.opening-time:nth-child(4), .inventory__categories:last-child, .inventory__categories .inventory__sub-categories .inventory__categories, .modal--inventory .field--toggle, .cart__service .field, .single-order .field, .checkout--form .field--button, .checkout__cart .total {
+.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field--tags .vue-input-tag-wrapper .new-tag, .field--tags .vue-input-tag-wrapper .input-tag:first-of-type, .field.opening-time:nth-child(4), .inventory__categories:last-child, .inventory__categories .inventory__sub-categories .inventory__categories, .modal--inventory .field--toggle, .cart__service .field, .single-order .field, .checkout--form .field--buttons, .checkout__cart .total {
   margin-bottom: 0; }
 
 @media (max-width: 768px) {

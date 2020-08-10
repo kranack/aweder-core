@@ -113,6 +113,22 @@
           validate="text"
         />
       </div>
+      <div
+        class="field field--buttons"
+      >
+        <button
+          class="button button-solid--silver"
+          type="reset"
+        >
+          <span class="button__content">Delete category</span>
+        </button>
+        <button
+          class="button button-solid--carnation"
+          type="submit"
+        >
+          <span class="button__content">Save category</span>
+        </button>
+      </div>
     </form>
   </modal>
 </template>
