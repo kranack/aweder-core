@@ -1083,7 +1083,7 @@ button {
   .s-margin-bottom-140 {
     margin-bottom: 140px; } }
 
-.margin-left-auto, .field--tags .vue-input-tag-wrapper .input-tag .remove, .inventory__category-name .button, .single-order .field {
+.margin-left-auto, .field--tags .vue-input-tag-wrapper .input-tag .remove, .inventory__category-name .button, .modal--inventory .field--buttons, .single-order .field {
   margin-left: auto; }
 
 .margin-left-0 {
@@ -1372,7 +1372,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image, .checkout__delivery .icon {
+.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--icon .checkbox__icon, .radio__icon, .separator--large, .inventory__image, .modal--inventory .field--buttons button:first-child, .checkout__delivery .icon {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -1382,7 +1382,8 @@ button {
 .margin-right-30, .site-footer__item {
   margin-right: 30px; }
 
-.margin-right-40, .timetable__day, .modal--inventory .upload, .modal--inventory .checkboxes .field--checkbox:first-child, .orders__customer {
+.margin-right-40, .timetable__day, .modal--inventory .upload, .modal--inventory .checkboxes .field--checkbox:first-child,
+.modal--inventory .input-row .field--small-input:first-child, .orders__customer {
   margin-right: 40px; }
 
 .margin-right-50 {
@@ -1432,7 +1433,8 @@ button {
     margin-right: 30px; } }
 
 @media (max-width: 1440px) {
-  .modal--inventory .checkboxes .field--checkbox:first-child {
+  .modal--inventory .checkboxes .field--checkbox:first-child,
+  .modal--inventory .input-row .field--small-input:first-child {
     margin-right: 30px; } }
 
 @media (max-width: 1440px) {
@@ -1492,7 +1494,8 @@ button {
     margin-right: 20px; } }
 
 @media (max-width: 1024px) {
-  .modal--inventory .checkboxes .field--checkbox:first-child {
+  .modal--inventory .checkboxes .field--checkbox:first-child,
+  .modal--inventory .input-row .field--small-input:first-child {
     margin-right: 20px; } }
 
 @media (max-width: 1024px) {
@@ -5547,7 +5550,7 @@ tr td:last-child .table__cell, .single-order__items {
   width: 100%; }
 
 .width-full, section, .row, .site-footer, .site-footer__branding .bowl, .site-footer__branding .icon--bowl, .site-footer__branding .icon--bowl svg, .hero__image .icon,
-.hero__image .icon--logo-mark svg, .hero__image--square img, .field--tags .vue-input-tag-wrapper .new-tag, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button, .button.menu__view, .orders__list-item, .single-order__line, .checkout__merchant-image img {
+.hero__image .icon--logo-mark svg, .hero__image--square img, .field--tags .vue-input-tag-wrapper .new-tag, .tab-menu, .avatar img, .notification, .menu__categories, .modal--inventory .upload__label, .cart__buttons .button, .button.menu__view, .orders__list-item, .single-order__line, .checkout__merchant-image img {
   max-width: 100%;
   width: 100%; }
 
@@ -5574,7 +5577,8 @@ tr td:last-child .table__cell, .single-order__items {
   width: 100%; }
 
 @media (max-width: 768px) {
-  .modal--inventory .field--checkbox, .cart.cart--active {
+  .modal--inventory .field--checkbox,
+  .modal--inventory .field--small-input, .cart.cart--active {
     max-width: 100%;
     width: 100%; } }
 
@@ -8447,7 +8451,8 @@ textarea.textarea-input {
 .modal--inventory .upload__icon svg {
   width: 38px; }
 
-.modal--inventory .field--checkbox {
+.modal--inventory .field--checkbox,
+.modal--inventory .field--small-input {
   max-width: 290px;
   width: 100%; }
 

@@ -9,12 +9,17 @@
   height: 76px;
 }
 
+.modal--inventory .upload__label {
+  @extend .width-full;
+}
+
 .modal--inventory .upload__icon svg {
   @extend .fill-silver-6;
   width: 38px;
 }
 
-.modal--inventory .field--checkbox {
+.modal--inventory .field--checkbox,
+.modal--inventory .field--small-input {
   max-width: 290px;
   width: 100%;
 
@@ -23,7 +28,8 @@
   }
 }
 
-.modal--inventory .checkboxes .field--checkbox:first-child {
+.modal--inventory .checkboxes .field--checkbox:first-child,
+.modal--inventory .input-row .field--small-input:first-child {
   @extend .margin-right-40;
 
   @include mq(l) {
@@ -36,4 +42,12 @@
 
 .modal--inventory .checkbox--icon {
   @extend .background-ghost-white;
+}
+
+.modal--inventory .field--buttons {
+  @extend .margin-left-auto;
+}
+
+.modal--inventory .field--buttons button:first-child {
+  @extend .margin-right-20;
 }
