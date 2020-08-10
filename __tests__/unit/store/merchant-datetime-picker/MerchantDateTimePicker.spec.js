@@ -3,11 +3,11 @@ import Vuex from 'vuex';
 import storeConfig from '@/js/store/config';
 import MerchantDateTimePicker from '@/js/components/shared/MerchantDateTimePicker';
 
-describe('InventoryItem', () => {
-  const localVue = createLocalVue();
-  localVue.use(Vuex);
-  localVue.use(require('vue-moment'));
+const localVue = createLocalVue();
+localVue.use(Vuex);
+localVue.use(require('vue-moment'));
 
+describe('InventoryItem', () => {
   const propsData = {
     merchantHours: [
       {
@@ -23,36 +23,22 @@ describe('InventoryItem', () => {
     ],
   };
 
-  it('sets available days', async () => {
-    const wrapper = shallowMount(MerchantDateTimePicker, {
-      propsData,
-      store: new Vuex.Store(storeConfig),
-      localVue,
-    });
+  const wrapper = shallowMount(MerchantDateTimePicker, {
+    propsData,
+    store: new Vuex.Store(storeConfig),
+    localVue,
+  });
 
+  it('sets available days', async () => {
     expect(wrapper.vm.availableDays).toEqual([0, 1]);
   });
 
   it('sets unavailable days', async () => {
-    const wrapper = shallowMount(MerchantDateTimePicker, {
-      propsData,
-      store: new Vuex.Store(storeConfig),
-      localVue,
-    });
-
     expect(wrapper.vm.unavailableDays).toEqual([2, 3, 4, 5, 6]);
   });
 
   it('sets the selected day', async () => {
-    const wrapper = shallowMount(MerchantDateTimePicker, {
-      propsData,
-      store: new Vuex.Store(storeConfig),
-      localVue,
-    });
-
-    // A Friday
     wrapper.setData({ datetime: '2020-08-07' });
-
     expect(wrapper.vm.selectedDay).toEqual(5);
   });
 });

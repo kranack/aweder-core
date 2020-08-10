@@ -164,9 +164,7 @@ export default {
       return this.merchant.delivery_cost;
     },
     checkoutUrl() {
-      return this.order
-        ? `/${this.merchant.url_slug}/table-order/${this.order}/order-details`
-        : '';
+      return this.order ? `/${this.merchant.url_slug}/table-order/${this.order}/order-details` : '';
     },
   },
   methods: {
