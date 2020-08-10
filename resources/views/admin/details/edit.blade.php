@@ -15,7 +15,7 @@
         @csrf
             <div class="field field--upload col-span-2 m-col-span-4 sm-col-span-2 sm-col-start-3 s-col-span-4 s-col-start-2 row-start-1 row-span-2 sm-row-span-1">
                 <input type="file" name="logo" id="logo" class="upload-input" />
-                <label class="upload" for="logo">
+                <label class="upload width-full" for="logo">
                     <span class="upload__trigger">
                         @if ($merchant->logo !== null)
                             <img src="{{ $merchant->getTemporaryLogoLink() }}" alt="{{ $merchant->name }}" />
