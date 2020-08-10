@@ -12,6 +12,7 @@ use App\Merchant;
 use App\Order;
 use App\OrderItem;
 use Psr\Log\LoggerInterface;
+use DB;
 
 class OrderService implements OrderContract
 {
@@ -172,29 +173,36 @@ class OrderService implements OrderContract
 
     public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool
     {
-        $belongsToMerchant = $this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
-            collect($apiPayload['inventory_options']),
-            $order->merchant()->first()
-        );
-
-        if (!$belongsToMerchant) {
-            return false;
-        }
-
         $orderItem = new OrderItem();
         $orderItem->order_id = $order->id;
         $orderItem->fill($apiPayload);
 
-        $hydratedOptions = $this->inventoryOptionGroupItemService->getItemsFromIdArray(
-            $apiPayload['inventory_options']
-        );
+        if (isset($apiPayload['inventory_options'])) {
+            $belongsToMerchant = $this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
+                collect($apiPayload['inventory_options']),
+                $order->merchant()->first()
+            );
+
+            if (!$belongsToMerchant) {
+                return false;
+            }
+        }
+
+        DB::beginTransaction();
 
         if (!$this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
+            // Nothing to rollback yet, so not required here.
             return false;
         }
 
-        $orderItem->fresh();
-        $orderItem->inventoryOptions()->saveMany($hydratedOptions);
+        if (isset($apiPayload['inventory_options'])) {
+            if (!$orderItem->inventoryOptions()->sync($apiPayload['inventory_options'])) {
+                DB::rollBack();
+                return false;
+            }
+        }
+
+        DB::commit();
 
         return true;
     }
