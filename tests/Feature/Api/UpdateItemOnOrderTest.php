@@ -241,13 +241,8 @@ class UpdateItemOnOrderTest extends TestCase
             ]
         );
 
-        $response->assertStatus(Response::HTTP_OK);
+        $response->assertStatus(Response::HTTP_NO_CONTENT);
         $orderItem->fresh();
         $this->assertEquals('Option3', $orderItem->inventoryOptions()->first()->name);
-    }
-
-    public function cannotUpdateOptionsWhenDoNotBelongToMerchant(): void
-    {
-
     }
 }
