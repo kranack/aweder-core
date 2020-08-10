@@ -241,7 +241,7 @@ class UpdateItemOnOrderTest extends TestCase
             ]
         );
 
-        $response->assertStatus(Response::HTTP_NO_CONTENT);
+        $response->assertStatus(Response::HTTP_OK);
         $orderItem->fresh();
         $this->assertEquals('Option3', $orderItem->inventoryOptions()->first()->name);
     }
