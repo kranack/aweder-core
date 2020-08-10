@@ -245,9 +245,4 @@ class UpdateItemOnOrderTest extends TestCase
         $orderItem->fresh();
         $this->assertEquals('Option3', $orderItem->inventoryOptions()->first()->name);
     }
-
-    public function cannotUpdateOptionsWhenDoNotBelongToMerchant(): void
-    {
-
-    }
 }
