@@ -107,7 +107,7 @@ interface OrderContract
     public function doesOrderBelongToMerchant(Order $order, Merchant $merchant): bool;
 
     /**
-     * Tries to add an order item sent from the API
+     * Tries to add an order item with an atomic commit, from an API payload
      * @param Order $order
      * @param array $apiPayload
      * @return bool
