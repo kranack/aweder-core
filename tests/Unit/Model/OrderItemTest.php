@@ -116,7 +116,6 @@ class OrderItemTest extends TestCase
         $this->assertDatabaseHas('order_items', ['id' => $orderItem2->id]);
         $this->assertCount(1, $inventory1->orderItems()->get());
         $this->assertCount(1, $inventory2->orderItems()->get());
-
         $this->assertCount(1, OrderItem::multipleQuantity()->get());
     }
 }
