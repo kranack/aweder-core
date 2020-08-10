@@ -28,25 +28,25 @@
             </div>
             <div class="field col-span-4 m-col-span-8 sm-col-span-6">
                 <label class="label label--float" for="description">Enter a description about your business and/or any notes’ <sup>*</sup></label>
-                <textarea id="description" class="textarea-input" name="description" placeholder="Business description">{{ old('description') }}</textarea>
+                <textarea id="description" class="textarea-input" name="description" placeholder="Business description">{{ old('description', $merchant->description) }}</textarea>
                 @error('description')
                 <p class="field__error">{{ $message }}</p>
                 @enderror
             </div>
             <div class="field col-span-4 m-col-span-8 sm-col-span-6 @error('customer-phone-number') field--error @enderror">
                 <label class="label label--float" for="customer-phone-number">Contact number<sup>*</sup></label>
-                <input type="tel" name="customer-phone-number" tabindex="8" id="customer-phone-number" value="{{ old('customer-phone-number') }}" placeholder="Contact number" class="text-input" />
+                <input type="tel" name="customer-phone-number" tabindex="8" id="customer-phone-number" value="{{ old('customer-phone-number', $merchant->contact_number) }}" placeholder="Contact number" class="text-input" />
                 @error('customer-phone-number')
                 <p class="field__error">{{ $message }}</p>
                 @enderror
             </div>
             <merchant-order-types
-                    @if (old('collection_types')) :collection-types="'{{json_encode(old('collection_types')) }}'" @endif
+            @if (old('collection_types')) :collection-types="'{{json_encode(old('collection_types')) }}'" @endif
             @error('collection_types') collection-type-validation-message="{{ $message  }}" @enderror
-            @error('delivery_radius') delivery-radius-validation-message="{{ $message }}" @enderror
-            @error('delivery_cost') delivery-cost-validation-message="{{ $message }}" @enderror
-            @if (old('delivery_radius')) delivery-radius="{{ old('delivery_radius') }}" @endif
-            @if (old('delivery_cost')) delivery-cost="{{ old('delivery_cost') }}" @endif
+            @error('delivery_radius', $merchant->delivery_radius) delivery-radius-validation-message="{{ $message }}" @enderror
+            @error(old('delivery_cost', $merchant->getFormattedUKPriceAttribute($merchant->delivery_cost))) delivery-cost-validation-message="{{ $message }}" @enderror
+            @if (old('delivery_radius', $merchant->delivery_radius)) delivery-radius="{{ old('delivery_radius') }}" @endif
+            @if (old('delivery_cost', $merchant->getFormattedUKPriceAttribute($merchant->delivery_cost))) delivery-cost="{{ old('delivery_cost') }}" @endif
             ></merchant-order-types>
             <x-stripe-payment-integration :merchant="$merchant" />
             <div class="field field--buttons col-span-6 m-col-span-12 sm-col-span-6 align-items-start s-align-items-stretch margin-top-50">
