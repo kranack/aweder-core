@@ -20,7 +20,7 @@
   @extend .inline-grid,
   .flow-col,
   .align-items-start;
-  grid-template-columns: auto 70px auto;
+  grid-template-columns: 70px auto auto;
   grid-column-gap: 20px;
 }
 

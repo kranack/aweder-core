@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Contract\Repositories\OrderItemContract;
 use App\InventoryOptionGroupItem;
+use App\Order;
 use App\OrderItem;
 use Illuminate\Database\Eloquent\Collection;
 use Psr\Log\LoggerInterface;
@@ -49,5 +50,24 @@ class OrderItemRepository implements OrderItemContract
         $return = $orderItem->inventoryOptions()->save($inventoryOptionGroupItem);
 
         return $return instanceof InventoryOptionGroupItem;
+    }
+
+    public function getOrderItemByOrderAndId(Order $order, int $itemId): ?OrderItem
+    {
+        return $this
+            ->getModel()
+            ->where('order_id', '=', $order->id)
+            ->where('id', '=', $itemId)
+            ->get()
+            ->first();
+    }
+
+    public function deleteOrderItem(OrderItem $orderItem): bool
+    {
+        try {
+            return $orderItem->delete();
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

@@ -12,6 +12,10 @@
   top: 0;
 }
 
+.label--small.label--float {
+  @include rem2px(font-size, 1);
+}
+
 .label sup {
   @extend .color-carnation;
 }

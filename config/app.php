@@ -192,6 +192,7 @@ return [
         App\Providers\Service\OrderServiceProvider::class,
         App\Providers\Service\InventoryServiceProvider::class,
         App\Providers\Service\InventoryOptionGroupItemServiceProvider::class,
+        App\Providers\Service\OrderItemServiceProvider::class,
 
         /*
          * Application Service Providers...

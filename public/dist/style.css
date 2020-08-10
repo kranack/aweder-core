@@ -495,10 +495,10 @@ button {
 .margin-top-15 {
   margin-top: 15px; }
 
-.margin-top-20, .cart__buttons {
+.margin-top-20, .cart__buttons, .checkout__cart {
   margin-top: 20px; }
 
-.margin-top-30, .site-footer__branding .icon--cross, .auth__header p {
+.margin-top-30, .site-footer__branding .icon--cross {
   margin-top: 30px; }
 
 @media (max-width: 1024px) {
@@ -778,7 +778,7 @@ button {
 .margin-bottom-auto {
   margin-bottom: auto; }
 
-.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field.opening-time:nth-child(4), .inventory__categories:last-child, .inventory__categories .inventory__sub-categories .inventory__categories, .single-order .field {
+.margin-bottom-0, .timetable__hours:last-child, .field.field--buttons, .field.opening-time:nth-child(4), .inventory__categories:last-child, .inventory__categories .inventory__sub-categories .inventory__categories, .single-order .field, .checkout--form .field--button, .checkout__cart .total {
   margin-bottom: 0; }
 
 @media (max-width: 768px) {
@@ -795,7 +795,7 @@ button {
 .margin-bottom-15 {
   margin-bottom: 15px; }
 
-.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal,
+.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .field.field--small, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal,
 .total {
   margin-bottom: 20px; }
 
@@ -806,13 +806,13 @@ button {
   .field.opening-time:nth-child(4) {
     margin-bottom: 30px; } }
 
-.margin-bottom-40, .feature__header, .steps__header, .steps__title, .inventory--editable .inventory__categories {
+.margin-bottom-40, .feature__header, .steps__header, .steps__title, .auth__header, .inventory--editable .inventory__categories, .checkout__merchant {
   margin-bottom: 40px; }
 
 .margin-bottom-50, .inventory__category-name, .inventory__editable-add {
   margin-bottom: 50px; }
 
-.margin-bottom-60, .auth__header, .register {
+.margin-bottom-60, .checkout__header, .register {
   margin-bottom: 60px; }
 
 .margin-bottom-70 {
@@ -1104,7 +1104,7 @@ button {
 .margin-left-30 {
   margin-left: 30px; }
 
-.margin-left-40 {
+.margin-left-40, .checkout__merchant-image + .checkout__merchant-details {
   margin-left: 40px; }
 
 .margin-left-50 {
@@ -1372,7 +1372,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--standard .checkbox__icon--large, .checkbox--icon .checkbox__icon, .radio__icon, .radio--standard .radio__icon--large, .separator--large, .inventory__image {
+.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--standard .checkbox__icon--large, .checkbox--icon .checkbox__icon, .radio__icon, .radio--standard .radio__icon--large, .separator--large, .inventory__image, .checkout__delivery .icon {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -1936,14 +1936,15 @@ button {
 .padding-top-15 {
   padding-top: 15px; }
 
-.padding-top-20, .steps__buttons, .notification__message, .orders__list-item, .single-order__items, .single-order__item {
+.padding-top-20, .steps__buttons, input.text-input.text-input--small,
+textarea.textarea-input.textarea-input--small, .notification__message, .orders__list-item, .single-order__items, .single-order__item {
   padding-top: 20px; }
 
 .padding-top-30, input.text-input,
 textarea.textarea-input, .select, .order-type__button {
   padding-top: 30px; }
 
-.padding-top-40, .single-order__details {
+.padding-top-40, .single-order__details, .checkout--form, .checkout__cart {
   padding-top: 40px; }
 
 .padding-top-50 {
@@ -1961,7 +1962,7 @@ textarea.textarea-input, .select, .order-type__button {
 .padding-top-100 {
   padding-top: 100px; }
 
-.padding-top-140, .hero, .auth__header, .register {
+.padding-top-140, .hero, .auth__header, .checkout__header, .register {
   padding-top: 140px; }
 
 @media (max-width: 1440px) {
@@ -2021,7 +2022,7 @@ textarea.textarea-input, .select, .order-type__button {
     padding-top: 100px; } }
 
 @media (max-width: 1440px) {
-  .hero, .auth__header, .register {
+  .hero, .checkout__header, .register {
     padding-top: 100px; } }
 
 @media (max-width: 1440px) {
@@ -2077,7 +2078,7 @@ textarea.textarea-input, .select, .order-type__button {
     padding-top: 80px; } }
 
 @media (max-width: 1024px) {
-  .hero, .auth__header, .register {
+  .hero, .checkout__header, .register {
     padding-top: 80px; } }
 
 @media (max-width: 1024px) {
@@ -2206,7 +2207,8 @@ textarea.textarea-input, .select, .order-type__button {
 .padding-bottom-0, .inventory__categories .inventory__sub-categories .inventory__categories {
   padding-bottom: 0; }
 
-.padding-bottom-5 {
+.padding-bottom-5, input.text-input.text-input--small,
+textarea.textarea-input.textarea-input--small {
   padding-bottom: 5px; }
 
 .padding-bottom-10, input.text-input,
@@ -2222,7 +2224,7 @@ textarea.textarea-input, .select, .cart__order {
 .padding-bottom-30, .item-options__heading, .order-type__button {
   padding-bottom: 30px; }
 
-.padding-bottom-40, .admin-nav, .steps__buttons, .inventory--editable .inventory__categories, .single-order__details {
+.padding-bottom-40, .admin-nav, .steps__buttons, .inventory--editable .inventory__categories, .single-order__details, .checkout__delivery {
   padding-bottom: 40px; }
 
 .padding-bottom-50 {
@@ -3086,7 +3088,7 @@ tr td:last-child .table__cell, .single-order__items {
     padding-right: 140px; } }
 
 /* DISPLAY MIXINS ============================================================================= */
-.inline-flex, .button, .item-options__submit, .order-type__button, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart, .metric, .orders__list-item {
+.inline-flex, .button, .item-options__submit, .order-type__button, .site-footer__navigation, .site-footer__branding, .site-footer__statement, .hero__image, .hero__merchant-times, .steps__buttons, .menu__cart, .cart, .metric, .orders__list-item, .checkout__merchant {
   display: inline-flex; }
 
 @media (max-width: 1440px) {
@@ -3201,7 +3203,7 @@ tr td:last-child .table__cell, .single-order__items {
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
 .admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__category-name, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .inventory__editable-add, .order-type__date, .modal, .cart__service__date, .cart__order, .cart__item, .cart__options, .subtotal,
-.total, .button.menu__view .button__icon, .menu__view.item-options__submit .button__icon, .menu__view.order-type__button .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .orders__customer, .orders__arrow, .single-order__header, .single-order__title, .single-order__title h2, .single-order__details, .single-order__item, .single-order__image, .single-order__options, .datetime-merchant {
+.total, .button.menu__view .button__icon, .menu__view.item-options__submit .button__icon, .menu__view.order-type__button .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .orders__customer, .orders__arrow, .single-order__header, .single-order__title, .single-order__title h2, .single-order__details, .single-order__item, .single-order__image, .single-order__options, .datetime-merchant, .checkout__merchant-image, .checkout__delivery, .checkout--form {
   display: flex; }
 
 @media (max-width: 1440px) {
@@ -3264,7 +3266,7 @@ tr td:last-child .table__cell, .single-order__items {
     flex-direction: row-reverse; } }
 
 .flex-col, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .merchant-times__timetable, .field, .upload, .upload__trigger, .inventory__details, .cart, .cart__order, .cart__item, .cart__options, .subtotal,
-.total, .orders__list-item, .single-order__title, .single-order__item, .single-order__options {
+.total, .orders__list-item, .single-order__title, .single-order__item, .single-order__options, .checkout--form {
   flex-direction: column; }
 
 @media (max-width: 768px) {
@@ -3669,7 +3671,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-align-items-start {
     align-items: flex-start; } }
 
-.align-items-center, .button, .item-options__submit, .order-type__button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__category-name, .inventory__image, .inventory__button, .inventory__editable-add, .order-type__date, .modal, .cart__service__date, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .orders__customer, .orders__arrow, .single-order__header, .single-order__title h2, .single-order__line, .datetime-merchant {
+.align-items-center, .button, .item-options__submit, .order-type__button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__category-name, .inventory__image, .inventory__button, .inventory__editable-add, .order-type__date, .modal, .cart__service__date, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .orders__customer, .orders__arrow, .single-order__header, .single-order__title h2, .single-order__line, .datetime-merchant, .checkout__merchant-image, .checkout__delivery {
   align-items: center; }
 
 @media (max-width: 1440px) {
@@ -3901,7 +3903,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-justify-content-start {
     justify-content: flex-start; } }
 
-.justify-content-center, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value, .metric__count, .orders__arrow {
+.justify-content-center, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger-wrapper, .site-footer__branding .bowl, .admin__trigger, .steps .row, .checkbox__icon, .radio__icon, .upload, .upload__trigger, .avatar, .inventory__image, .increment__type, .increment__value, .metric__count, .orders__arrow, .checkout__merchant-image {
   justify-content: center; }
 
 @media (max-width: 1024px) {
@@ -4058,7 +4060,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-shrink-1 {
     flex-shrink: 1; } }
 
-.shrink-0, .merchant-times__status, .tab-menu__item, .menu__cat-item, .inventory__title, .increment, .increment__type, .increment__value {
+.shrink-0, .merchant-times__status, .tab-menu__item, .menu__cat-item, .inventory__title, .increment, .increment__type, .increment__value, .checkout__merchant-image {
   flex-shrink: 0; }
 
 @media (max-width: 1440px) {
@@ -5428,7 +5430,7 @@ tr td:last-child .table__cell, .single-order__items {
     grid-auto-flow: column dense; } }
 
 /* POSITION MIXINS ============================================================================= */
-.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .modal__box, .table__cell, .orders__list-item, .single-order {
+.relative, .site-nav__burger, .site-header, .site-footer__branding, .site-footer__branding .bowl, .site-footer__branding .icon, .admin__greeting, .hero__image--border, .merchant-times__current, .steps__col, .steps__subtitle, .steps__list-item, .field, .upload, .tab-menu__item, .opening-time__group, .menu__cat-link, .inventory__item, .inventory__details, .inventory__description, .modal__box, .table__cell, .orders__list-item, .single-order, .checkout__merchant-image {
   position: relative; }
 
 @media (max-width: 768px) {
@@ -5535,7 +5537,7 @@ tr td:last-child .table__cell, .single-order__items {
   width: 100%; }
 
 .width-full, section, .row, .site-footer, .site-footer__branding .bowl, .site-footer__branding .icon--bowl, .site-footer__branding .icon--bowl svg, .hero__image .icon,
-.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button, .cart__buttons .item-options__submit, .cart__buttons .order-type__button, .button.menu__view, .menu__view.item-options__submit, .menu__view.order-type__button, .orders__list-item, .single-order__line {
+.hero__image .icon--logo-mark svg, .hero__image--square img, .tab-menu, .avatar img, .notification, .menu__categories, .cart__buttons .button, .cart__buttons .item-options__submit, .cart__buttons .order-type__button, .button.menu__view, .menu__view.item-options__submit, .menu__view.order-type__button, .orders__list-item, .single-order__line, .checkout__merchant-image img {
   max-width: 100%;
   width: 100%; }
 
@@ -5666,7 +5668,7 @@ textarea.textarea-input, .field--price:before, .select {
 
 .font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category__title, .inventory__title, .inventory__price, .inventory__add, .inventory__add-category, .cart__service__date-content, .cart__title,
 .cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .increment--large .increment__value, .metric__count, th, .orders__name, .single-order select, .single-order__line p,
-.single-order__qty, .single-order__price, .single-order__options-title {
+.single-order__qty, .single-order__price, .single-order__options-title, .checkout__delivery p {
   font-family: "canada-type-gibson", sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -5756,12 +5758,13 @@ textarea.textarea-input, .field--price:before, .select {
       line-height: 1.5; } }
 
 .body-large, .site-footer__link, .feature__copy, .steps__list-item, .increment--large .increment__value, .dashboard-title + p, .metric__item p, .orders__name, .single-order__title time, .single-order select, .single-order__list h4, .single-order__line p,
-.single-order__qty, .single-order__price {
+.single-order__qty, .single-order__price, .checkout__delivery p {
   font-size: 18px;
   font-size: 1.8rem;
   line-height: 1.5; }
 
-.body-medium, .button__content, .admin-menu__link, .admin__name, .select.select--button, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add, th, .single-order__list li {
+.body-medium, .button__content, .admin-menu__link, .admin__name, input.text-input.text-input--small,
+textarea.textarea-input.textarea-input--small, .select.select--button, .checkbox__label--large, .radio__label--large, .opening-time__group:before, .opening-time__select, .notification, .menu__cart p, .inventory__title, .inventory__add, th, .single-order__list li {
   font-size: 16px;
   font-size: 1.6rem;
   line-height: 1.5; }
@@ -6058,14 +6061,14 @@ textarea.textarea-input, .field--price:before, .select {
 
 /* BORDER WIDTHS MIXINS ============================================================================= */
 .border-width-1, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger, .admin-header, .hero__image--border, input.text-input,
-textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .increment__type, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item {
+textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .increment__type, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item, .checkout__merchant-image, .checkout__delivery, .checkout__cart {
   border-width: 1px; }
 
 /* BORDER RADIUS MIXINS ============================================================================= */
 .radius-0, .button.menu__view, .menu__view.item-options__submit, .menu__view.order-type__button {
   border-radius: 0; }
 
-.radius-5, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .modal__box, .single-order, .single-order__image {
+.radius-5, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .upload, .panel, .notification__message, .inventory__categories .inventory__item:only-of-type, .inventory__image, .modal__box, .single-order, .single-order__image, .checkout__merchant-image {
   border-radius: 5px; }
 
 .radius-100, .steps__list-item:before, .radio--standard .radio__icon, .radio__icon:before, .avatar, .increment__type, .metric__count, .status, .orders__arrow {
@@ -6076,11 +6079,11 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
     border-radius: 100%; } }
 
 /* BORDER STYLES MIXINS ============================================================================= */
-.border-top-solid, .inventory__item {
+.border-top-solid, .inventory__item, .checkout__cart {
   border-top-style: solid; }
 
 .border-bottom-solid, .admin-header, input.text-input,
-textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--editable .inventory__categories, .inventory__categories .inventory__item:last-child, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .orders__list-item, .single-order__header, .single-order__details, .single-order__item {
+textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--editable .inventory__categories, .inventory__categories .inventory__item:last-child, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .orders__list-item, .single-order__header, .single-order__details, .single-order__item, .checkout__delivery {
   border-bottom-style: solid; }
 
 .border-right-solid, .inventory__item {
@@ -6089,7 +6092,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--edit
 .border-left-solid, .inventory__item {
   border-left-style: solid; }
 
-.border-solid, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type, .orders__arrow {
+.border-solid, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger, .hero__image--border, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .panel, .avatar, .inventory__image, .increment__type, .orders__arrow, .checkout__merchant-image {
   border-style: solid; }
 
 .border-top-dashed {
@@ -7243,7 +7246,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--edit
 textarea.textarea-input, .select, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload {
   border-color: #243752; }
 
-.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item {
+.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item, .checkout__merchant-image, .checkout__delivery, .checkout__cart {
   border-color: #C7C7C7; }
 
 .border-off-white {
@@ -8116,6 +8119,10 @@ body {
   left: 0;
   top: 0; }
 
+.label--small.label--float {
+  font-size: 10px;
+  font-size: 1rem; }
+
 .field--error .label.label--float {
   visibility: hidden; }
 
@@ -8422,7 +8429,7 @@ input[type="file"] {
     z-index: 3; } }
 
 .cart__line {
-  grid-template-columns: auto 70px auto;
+  grid-template-columns: 70px auto auto;
   grid-column-gap: 20px; }
 
 .cart__title {
@@ -10194,6 +10201,13 @@ span.flatpickr-day.nextMonthDay.selected {
     -webkit-flex: 1 0 auto;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto; } }
+
+.checkout__merchant-image {
+  width: 130px;
+  height: 130px; }
+
+.checkout__delivery svg {
+  width: 30px; }
 
 .admin-wrapper,
 .admin-wrapper .content {

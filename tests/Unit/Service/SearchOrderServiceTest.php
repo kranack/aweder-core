@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 /**
- * Class AboutHowItWorksControllerTest
+ * Class SearchOrderServiceTest
  * @package Tests\Services
  * @coversDefaultClass \App\Providers\Service\SearchOrderServiceProvider
  */
