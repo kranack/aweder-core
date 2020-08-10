@@ -126,7 +126,8 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
                     'title' => 'Chilli cheese fries',
-                    'description' => 'Skin-on fries topped with a rich chunky beef & black bean beef chilli, red onion, jalapeños & cheese.',
+                    'description' => 'Skin-on fries topped with a rich chunky
+                    beef & black bean beef chilli, red onion, jalapeños & cheese.',
                     'price' => 500,
                     'available' => 1,
                 ]
@@ -137,7 +138,9 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
                     'title' => 'Beef Burger',
-                    'description' => '100% prime short rib and chuck beef patty served in a toasted brioche bun smothered in a creamy tomato and gherkin sauce. With caramelised onions, beef tomato and baby gem.',
+                    'description' => '100% prime short rib and chuck beef patty served
+                    in a toasted brioche bun smothered in a creamy tomato and gherkin sauce.
+                    With caramelised onions, beef tomato and baby gem.',
                     'price' => 800,
                     'available' => 1,
                 ]

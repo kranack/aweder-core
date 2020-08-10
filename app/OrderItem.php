@@ -111,4 +111,20 @@ class OrderItem extends Model
     {
         return $query->where('quantity', '>', 1);
     }
+
+    /**
+     * @return Order
+     */
+    public function getOrder(): Order
+    {
+        return $this->order()->first();
+    }
+
+    /**
+     * @return Merchant
+     */
+    public function getMerchant(): ?Merchant
+    {
+        return $this->getOrder()->merchant()->first();
+    }
 }

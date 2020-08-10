@@ -1,0 +1,11 @@
+.checkout__header {
+  @extend .padding-top-140,
+  .margin-bottom-60;
+
+  @include mq(l) {
+    @include _(l-padding-top-100);
+  }
+  @include mq(m) {
+    @include _(m-padding-top-80);
+  }
+}
