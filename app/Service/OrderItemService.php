@@ -42,7 +42,7 @@ class OrderItemService implements OrderItemServiceContract
             return false;
         }
 
-        return false;
+        return true;
     }
 
     public function updateOrderItemWithPayload(OrderItem $orderItem, Collection $payload): bool
@@ -55,10 +55,6 @@ class OrderItemService implements OrderItemServiceContract
             }
         }
 
-        if ($orderItem->save()) {
-            return true;
-        }
-
-        return false;
+        return $orderItem->save();
     }
 }

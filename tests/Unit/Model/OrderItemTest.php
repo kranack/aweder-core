@@ -84,7 +84,14 @@ class OrderItemTest extends TestCase
      */
     public function canGetItemByOrderAndId(): void
     {
+        $order = $this->createAndReturnOrderForStatus('Purchased Order');
+        $orderItem = $this->createAndReturnOrderItem([
+            'order_id' => $order,
+            'title' => 'Blurnsball'
+        ]);
 
+        $orderItem = $this->repository->getOrderItemByOrderAndId($order, $orderItem->id);
+        $this->assertEquals('Blurnsball', $orderItem->title);
     }
 
     /**
@@ -109,7 +116,6 @@ class OrderItemTest extends TestCase
         $this->assertDatabaseHas('order_items', ['id' => $orderItem2->id]);
         $this->assertCount(1, $inventory1->orderItems()->get());
         $this->assertCount(1, $inventory2->orderItems()->get());
-
         $this->assertCount(1, OrderItem::multipleQuantity()->get());
     }
 }

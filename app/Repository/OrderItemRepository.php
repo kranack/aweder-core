@@ -61,4 +61,13 @@ class OrderItemRepository implements OrderItemContract
             ->get()
             ->first();
     }
+
+    public function deleteOrderItem(OrderItem $orderItem): bool
+    {
+        try {
+            return $orderItem->delete();
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

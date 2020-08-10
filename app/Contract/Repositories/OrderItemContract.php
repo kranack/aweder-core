@@ -34,4 +34,10 @@ interface OrderItemContract
      * @return OrderItem|null
      */
     public function getOrderItemByOrderAndId(Order $order, int $itemId): ?OrderItem;
+
+    /**
+     * @param OrderItem $orderItem
+     * @return bool
+     */
+    public function deleteOrderItem(OrderItem $orderItem): bool;
 }

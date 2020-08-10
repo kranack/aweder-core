@@ -17,7 +17,7 @@ interface OrderItemServiceContract
 
     /**
      * @param OrderItem $orderItem
-     * @param array $payload
+     * @param Collection $payload
      * @return bool
      */
     public function updateOrderItemWithPayload(OrderItem $orderItem, Collection $payload): bool;
