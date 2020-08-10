@@ -5,9 +5,9 @@
   >
     <div v-if="quantity">
       <div class="cart__service flex align-items-center">
-        <Timer width="10" />
+        <Timer width="20" />
         <span class="cart__service__date-content">
-          {{ serviceType | capitalize }}, {{ datetime | moment('Do MMM, hh:mm') }}
+          {{ serviceType | capitalize }}, {{ datetime | moment('Do MMM, HH:mm') }}
         </span>
         <span
           class="cart__service__date-button"

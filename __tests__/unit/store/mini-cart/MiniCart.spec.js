@@ -58,4 +58,10 @@ describe('MiniCart', () => {
         productsWithoutVariantState.$store.state.cart.products[0].id,
       );
   });
+
+  it('formats cart service content', () => {
+    const wrapper = createWrapper(productsWithoutVariantState);
+
+    expect(wrapper.find('.cart__service__date-content').text()).toContain('Delivery, 1st Jan, 00:00');
+  });
 });
