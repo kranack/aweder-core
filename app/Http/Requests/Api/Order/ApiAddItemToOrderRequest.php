@@ -30,7 +30,7 @@ class ApiAddItemToOrderRequest extends FormRequest
             'inventory_id' => ['required', 'integer'],
             'variant_id' => ['required', 'integer'],
             'merchant' => ['required', 'string'],
-            'inventory_options' => ['nullable']
+            'inventory_options' => ['nullable', 'array']
         ];
     }
 }
