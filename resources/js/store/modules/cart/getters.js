@@ -4,7 +4,7 @@ export const subtotal = (state) => {
   state.products.forEach((item) => {
     if (item.options) {
       const items = item.options.map((group) => group.items);
-      const options = [].concat(...items).map((optionItem) => optionItem);
+      const options = [].concat(...items);
       total += options.reduce((acc, option) => acc + option.price_modified * item.quantity, 0);
     }
 

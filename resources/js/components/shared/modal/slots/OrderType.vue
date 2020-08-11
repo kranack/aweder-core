@@ -87,7 +87,6 @@ export default {
   },
   methods: {
     toggleCalendar() {
-      console.log(this.$refs.datePicker);
       this.showCalendar = !this.showCalendar;
     },
     setType(type) {

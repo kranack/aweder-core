@@ -177,7 +177,7 @@ export default {
     close() {
       this.$store.dispatch('activeProduct/removeActiveProduct');
     },
-    async increment() {
+    increment() {
       this.quantity += 1;
     },
     decrement() {
