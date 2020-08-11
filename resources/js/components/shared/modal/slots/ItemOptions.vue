@@ -204,8 +204,7 @@ export default {
         inventory_id: this.product.id,
         variant_id: this.selectedVariant.id,
         merchant: this.merchant.url_slug,
-        // inventory_options: this.selectedOptions,
-        inventory_options: [],
+        inventory_options: this.selectedOptions,
       });
 
       if (res.status === 200) {

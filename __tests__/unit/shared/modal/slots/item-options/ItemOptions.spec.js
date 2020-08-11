@@ -1,134 +1,115 @@
-import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
+import { mount, shallowMount } from '@vue/test-utils';
 import Modal from '@/js/components/shared/modal/slots/ItemOptions';
 import orderApi from '@/js/api/order/order';
 import flushPromises from 'flush-promises';
-import Vuex from 'vuex';
 import '@/js/filters/Currency';
-import defautCartState from '../../../store/mocks/active_product/default';
-import activeProductState from '../../../store/mocks/active_product/activeProduct';
-import activeProductWithOrderState from '../../../store/mocks/active_product/activeProductWithOrder';
-import createOrderSuccessResponse from '../../../store/mocks/api/order/create/success';
-import addItemSuccessResponse from '../../../store/mocks/api/order/add_item/success';
+import defaultState from './mocks/default';
+import activeProductState from './mocks/active-product';
+import activeProductWithOrderState from './mocks/active-product-with-order';
+import createOrderSuccessResponse from '../../../../mocks/api/order/create/success';
+import addItemSuccessResponse from '../../../../mocks/api/order/add_item/success';
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
+const createWrapper = (mocks, options = {}) => shallowMount(Modal, { mocks, ...options });
 
 describe('ItemOptions', () => {
-  const localVue = createLocalVue();
-  localVue.use(Vuex);
-
   it('is hidden by default', () => {
-    const wrapper = shallowMount(Modal, {
-      store: new Vuex.Store(defautCartState),
-      localVue,
-    });
-
+    const wrapper = createWrapper(defaultState);
     expect(wrapper.findComponent({ ref: 'item_options' }).exists()).toBe(false);
   });
 
   it('is visible when a product is active', () => {
-    const wrapper = shallowMount(Modal, {
-      store: new Vuex.Store(activeProductState),
-      localVue,
-    });
-
+    const wrapper = createWrapper(activeProductState);
     expect(wrapper.findComponent({ ref: 'item_options' }).exists()).toBe(true);
   });
 
   it('adds an item on submission', async () => {
-    const wrapper = shallowMount(Modal, {
+    const wrapper = createWrapper(activeProductState, {
       propsData: {
         merchant: {},
       },
-      store: new Vuex.Store(activeProductState),
-      localVue,
     });
 
-    wrapper.setData({ selectedVariant: { id: 1 } });
+    // sets the selected
+    wrapper.vm.reset();
 
     jest.spyOn(orderApi, 'create')
       .mockImplementation(createOrderSuccessResponse);
-
     jest.spyOn(orderApi, 'addItem')
       .mockImplementation(addItemSuccessResponse);
 
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
     await flushPromises();
 
-    expect(activeProductState.actions['cart/addToCart']).toBeCalled();
-    expect(activeProductState.actions['activeProduct/removeActiveProduct']).toBeCalled();
+    expect(activeProductState.$store.dispatch).toHaveBeenCalledWith('cart/setOrder', 'test-slug');
+    expect(activeProductState.$store.dispatch).toHaveBeenCalledWith('activeProduct/removeActiveProduct');
+    expect(activeProductState.$store.dispatch).toHaveBeenCalledWith('cart/addToCart', {
+      product: activeProductState.$store.state.activeProduct.product,
+      variant: activeProductState.$store.state.activeProduct.product.variants[0],
+      options: {},
+      quantity: 1,
+    });
   });
 
   it('dispatches setOrder on submit', async () => {
-    const wrapper = shallowMount(Modal, {
+    const wrapper = createWrapper(activeProductState, {
       propsData: {
         merchant: {},
       },
-      store: new Vuex.Store(activeProductState),
-      localVue,
     });
 
-    wrapper.setData({ selectedVariant: { id: 1 } });
-
+    wrapper.vm.reset();
     const spy = jest.spyOn(orderApi, 'create')
       .mockImplementation(createOrderSuccessResponse);
 
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
-
     expect(spy).toBeCalled();
-    expect(activeProductState.actions['cart/setOrder']).toBeCalled();
+    expect(activeProductState.$store.dispatch).toHaveBeenCalledWith('cart/setOrder', 'test-slug');
   });
 
   it('doesnt dispatch setOrder if an order is set', async () => {
-    const wrapper = shallowMount(Modal, {
+    const wrapper = createWrapper(activeProductWithOrderState, {
       propsData: {
         merchant: {},
       },
-      store: new Vuex.Store(activeProductWithOrderState),
-      localVue,
     });
 
     wrapper.setData({ selectedVariant: { id: 1 } });
-
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
-
-    expect(activeProductWithOrderState.actions['cart/setOrder']).toHaveBeenCalledTimes(0);
+    expect(activeProductState.$store.dispatch).not.toHaveBeenCalledWith('cart/setOrder', 'test-slug');
   });
 
   it('makes an add item request on submit', async () => {
-    const wrapper = shallowMount(Modal, {
+    const wrapper = createWrapper(activeProductWithOrderState, {
       propsData: {
-        merchant: { url_slug: 'test-merchant' },
+        merchant: {},
       },
-      store: new Vuex.Store(activeProductWithOrderState),
-      localVue,
     });
 
     wrapper.setData({ selectedVariant: { id: 1 } });
-
     const spy = jest.spyOn(orderApi, 'addItem');
-
     await wrapper.findComponent({ ref: 'add_item' }).trigger('click');
-
     expect(spy).toBeCalled();
   });
 
   it('removes the activeProduct on close', () => {
     const wrapper = mount(Modal, {
-      store: new Vuex.Store(activeProductState),
-      localVue,
+      mocks: activeProductState,
     });
 
     wrapper.find('.modal__mask').trigger('click');
-
-    expect(activeProductState.actions['activeProduct/removeActiveProduct']).toBeCalled();
+    expect(activeProductState.$store.dispatch).toBeCalledWith('activeProduct/removeActiveProduct');
   });
 
   it('default selects the first variant', () => {
     const wrapper = mount(Modal, {
-      store: new Vuex.Store(activeProductState),
-      localVue,
+      mocks: activeProductState,
     });
 
     wrapper.vm.reset();
-
     expect(wrapper.vm.selectedVariant.id).toEqual(wrapper.vm.$store.state.activeProduct.product.variants[0].id);
   });
 });
