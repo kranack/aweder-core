@@ -5,8 +5,11 @@ export default {
         products: [
           {
             id: '1596187347277',
-            quantity: 1,
-            variant: null,
+            quantity: 2,
+            variant: {
+              name: 'Variant',
+              price: 1100,
+            },
             product: {
               id: 1,
               price: 500,
@@ -32,7 +35,7 @@ export default {
     },
     getters: {
       'cart/subtotal': 500,
-      'cart/quantity': 1,
+      'cart/quantity': 2,
     },
     actions: {
       'cart/removeFromCart': jest.fn(() => Promise.resolve()),

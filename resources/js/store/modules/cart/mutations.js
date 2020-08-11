@@ -1,7 +1,7 @@
 export default {
   ADD_TO_CART(state, payload) {
     state.products.push({
-      id: Date.now(),
+      id: payload.id,
       product: payload.product,
       quantity: payload.quantity,
       variant: payload.variant,
@@ -9,20 +9,12 @@ export default {
     });
   },
   REMOVE_FROM_CART(state, payload) {
-    const stateProduct = state.products.find((item) => item.id === payload);
-
-    if (stateProduct) {
-      stateProduct.quantity -= 1;
-    }
-
-    if (stateProduct && stateProduct.quantity < 1) {
-      state.products = state.products.filter((item) => item.id !== payload);
-    }
+    state.products = state.products.filter((item) => item.id !== payload);
   },
-  INCREMENT_PRODUCT(state, payload) {
-    const stateProduct = state.products.find((item) => item.id === payload);
+  UPDATE_PRODUCT(state, payload) {
+    const stateProduct = state.products.find((item) => item.id === payload.id);
 
-    stateProduct.quantity += 1;
+    stateProduct.quantity = payload.quantity;
   },
   SET_ORDER(state, payload) {
     state.order = payload;

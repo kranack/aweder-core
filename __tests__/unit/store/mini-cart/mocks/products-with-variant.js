@@ -15,14 +15,17 @@ export default {
               price: 500,
               title: 'Nachos,Cheese & Chilli',
             },
-            options: {
-              'Option Group': [
-                {
-                  name: 'Option 1',
-                  price_modified: 499,
-                },
-              ],
-            },
+            options: [
+              {
+                group: 'Option Group',
+                items: [
+                  {
+                    name: 'Option 1',
+                    price_modified: 499,
+                  },
+                ],
+              },
+            ],
           },
         ],
         serviceType: 'delivery',

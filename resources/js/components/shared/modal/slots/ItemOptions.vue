@@ -48,14 +48,16 @@
 
       <!-- Product options -->
       <div
-        v-if="product.option_groups.length"
+        v-if="product.option_groups.length && options.length"
         class="item-options__field"
       >
         <div
-          v-for="group in product.option_groups"
+          v-for="(group, index) in product.option_groups"
           :key="group.id"
         >
-          <h3 class="item-options__field-title">{{ group.title }}</h3>
+          <h3 class="item-options__field-title">
+            {{ group.title }}
+          </h3>
 
           <div
             v-for="item in group.items"
@@ -64,7 +66,7 @@
           >
             <input
               :id="item.name + item.id"
-              v-model="options[group.name]"
+              v-model="options[index].items"
               :value="item"
               type="checkbox"
               :name="item.id"
@@ -142,7 +144,7 @@ export default {
   data() {
     return {
       quantity: 1,
-      options: {},
+      options: [],
       selectedVariant: null,
     };
   },
@@ -150,9 +152,11 @@ export default {
     ...mapState({
       product: (state) => state.activeProduct.product,
       order: (state) => state.cart.order,
+      cartProducts: (state) => state.cart.products,
     }),
     selectedOptions() {
-      return (Object.values(this.options)).flat(1);
+      const items = this.options.map((group) => group.items);
+      return [].concat(...items).map((item) => item.id);
     },
   },
   watch: {
@@ -173,7 +177,7 @@ export default {
     close() {
       this.$store.dispatch('activeProduct/removeActiveProduct');
     },
-    increment() {
+    async increment() {
       this.quantity += 1;
     },
     decrement() {
@@ -183,12 +187,15 @@ export default {
     },
     createOptionGroups() {
       this.product.option_groups.forEach((group) => {
-        this.options[group.name] = [];
+        this.options.push({
+          group: group.name,
+          items: [],
+        });
       });
     },
     reset() {
       this.quantity = 1;
-      this.options = {};
+      this.options = [];
       [this.selectedVariant] = this.product.variants;
       this.createOptionGroups();
     },
@@ -209,12 +216,19 @@ export default {
 
       if (res.status === 200) {
         this.$store.dispatch('cart/addToCart', {
+          id: this.findMissingItemId(res.data.items),
           product: this.product,
           variant: this.selectedVariant,
           options: this.options,
           quantity: this.quantity,
         });
       }
+    },
+    findMissingItemId(items) {
+      // since the api response includes all items,
+      // we need to find the one just added that isn't in our local cart
+      const cartIds = this.cartProducts.map((product) => product.id);
+      return items.find((item) => !cartIds.includes(item.id)).id;
     },
   },
 };

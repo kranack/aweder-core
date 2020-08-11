@@ -20,11 +20,33 @@ export default {
               price: 500,
             },
           ],
-          option_groups: [],
+          option_groups: [
+            {
+              id: 1,
+              name: 'Extras',
+              title: 'Modify your order',
+              items: [
+                {
+                  id: 1,
+                  name: 'Option 1',
+                  price_modified: 150,
+                },
+                {
+                  id: 2,
+                  name: 'Option 2',
+                  price_modified: 250,
+                },
+              ],
+            },
+          ],
         },
       },
       cart: {
         order: null,
+        products: [
+          { id: 111 },
+          { id: 222 },
+        ],
       },
     },
     actions: {

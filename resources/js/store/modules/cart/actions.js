@@ -6,8 +6,8 @@ export const removeFromCart = ({ commit }, payload) => {
   commit('REMOVE_FROM_CART', payload);
 };
 
-export const incrementProduct = ({ commit }, payload) => {
-  commit('INCREMENT_PRODUCT', payload);
+export const updateProduct = ({ commit }, payload) => {
+  commit('UPDATE_PRODUCT', payload);
 };
 
 export const setOrder = ({ commit }, payload) => {

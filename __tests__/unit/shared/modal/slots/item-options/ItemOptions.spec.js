@@ -33,9 +33,7 @@ describe('ItemOptions', () => {
       },
     });
 
-    // sets the selected
     wrapper.vm.reset();
-
     jest.spyOn(orderApi, 'create')
       .mockImplementation(createOrderSuccessResponse);
     jest.spyOn(orderApi, 'addItem')
@@ -47,9 +45,15 @@ describe('ItemOptions', () => {
     expect(activeProductState.$store.dispatch).toHaveBeenCalledWith('cart/setOrder', 'test-slug');
     expect(activeProductState.$store.dispatch).toHaveBeenCalledWith('activeProduct/removeActiveProduct');
     expect(activeProductState.$store.dispatch).toHaveBeenCalledWith('cart/addToCart', {
+      id: 333,
       product: activeProductState.$store.state.activeProduct.product,
       variant: activeProductState.$store.state.activeProduct.product.variants[0],
-      options: {},
+      options: [
+        {
+          group: 'Extras',
+          items: [],
+        },
+      ],
       quantity: 1,
     });
   });
@@ -111,5 +115,44 @@ describe('ItemOptions', () => {
 
     wrapper.vm.reset();
     expect(wrapper.vm.selectedVariant.id).toEqual(wrapper.vm.$store.state.activeProduct.product.variants[0].id);
+  });
+
+  it('sets option groups', () => {
+    const wrapper = mount(Modal, {
+      mocks: activeProductState,
+    });
+
+    wrapper.vm.reset();
+    expect(wrapper.vm.options[0].group).toEqual('Extras');
+  });
+
+  it('sets the correct selectedOptions ids', () => {
+    const wrapper = mount(Modal, {
+      mocks: activeProductState,
+    });
+
+    wrapper.vm.reset();
+    wrapper.setData({
+      options: [{
+        group: 'Extras',
+        items: [
+          { id: 2 },
+          { id: 6 },
+        ],
+      },
+      {
+        group: 'More Extras',
+        items: [
+          { id: 12 },
+        ],
+      }],
+    });
+
+    expect(wrapper.vm.selectedOptions).toEqual([2, 6, 12]);
+  });
+
+  it('can find the id of newly added item from the api response', () => {
+    const wrapper = createWrapper(activeProductWithOrderState);
+    expect(wrapper.vm.findMissingItemId(addItemSuccessResponse().data.items)).toEqual(333);
   });
 });

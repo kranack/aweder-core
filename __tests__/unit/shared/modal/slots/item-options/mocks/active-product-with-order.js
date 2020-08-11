@@ -25,6 +25,10 @@ export default {
       },
       cart: {
         order: 'test-order',
+        products: [
+          { id: 111 },
+          { id: 222 },
+        ],
       },
     },
     actions: {

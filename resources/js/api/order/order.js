@@ -13,6 +13,9 @@ const orderApi = {
   updateItem(orderId, itemId, data) {
     return HTTP.patch(`api/v1/order/${orderId}/item/${itemId}`, data);
   },
+  deleteItem(orderId, itemId, data) {
+    return HTTP.delete(`api/v1/order/${orderId}/item/${itemId}`, { data });
+  },
 };
 
 export default orderApi;

@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="cart panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1"
     :class="{ 'cart--empty': !quantity }"
   >
@@ -24,12 +24,12 @@
         >
           <div class="cart__line">
             <p class="cart__title">
-              {{ getProductTitle(item) }}
+              {{ item.variant.name }} - {{ item.product.title }}
             </p>
             <div class="increment increment--small">
               <span
                 class="increment__type increment__type--down"
-                @click="removeFromCart(item.id)"
+                @click="decrementProduct(item)"
               >
                 <Minus />
               </span>
@@ -40,24 +40,24 @@
               >
               <span
                 class="increment__type increment__type--up"
-                @click="incrementProduct(item.id)"
+                @click="incrementProduct(item)"
               >
                 <Add />
               </span>
             </div>
-            <span class="cart__price text-right">{{ getProductPrice(item) | currency }}</span>
+            <span class="cart__price text-right">{{ item.variant.price| currency }}</span>
           </div>
           <div
-            v-for="(group, groupName) in item.options"
-            v-show="group.length"
-            :key="groupName"
+            v-for="group in item.options"
+            v-show="group.items.length"
+            :key="group.group"
             class="cart__options"
           >
             <h5 class="cart__option-title">
-              {{ groupName }}
+              {{ group.group }}
             </h5>
             <div
-              v-for="option in group"
+              v-for="option in group.items"
               :key="option.id"
               class="cart__option-item"
             >
@@ -123,7 +123,8 @@
 import Timer from '@/js/components/svgs/Timer';
 import Add from '@/js/components/svgs/Add';
 import Minus from '@/js/components/svgs/Minus';
-import { mapState, mapGetters, mapActions } from 'vuex';
+import orderApi from '@/js/api/order/order';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -168,22 +169,36 @@ export default {
     },
   },
   methods: {
-    ...mapActions({
-      removeFromCart: 'cart/removeFromCart',
-      incrementProduct: 'cart/incrementProduct',
-    }),
-    isVariant(item) {
-      return !!item.variant;
+    incrementProduct(item) {
+      this.updateProductQuantity(
+        item.id,
+        (item.quantity + 1).toString(),
+      );
     },
-    getProductTitle(item) {
-      return this.isVariant(item)
-        ? `${item.variant.name} - ${item.product.title}`
-        : item.product.title;
+    decrementProduct(item) {
+      if (item.quantity <= 1) {
+        this.deleteProduct(item.id);
+      } else {
+        this.updateProductQuantity(
+          item.id,
+          (item.quantity - 1).toString(),
+        );
+      }
     },
-    getProductPrice(item) {
-      return this.isVariant(item)
-        ? item.variant.price
-        : item.product.price;
+    async updateProductQuantity(id, quantity) {
+      const res = await orderApi.updateItem(this.order, id, {
+        quantity,
+        merchant: this.merchant.url_slug,
+      });
+      if (res.status === 200) {
+        this.$store.dispatch('cart/updateProduct', res.data);
+      }
+    },
+    async deleteProduct(id) {
+      const res = await orderApi.deleteItem(this.order, id, { merchant: this.merchant.url_slug });
+      if (res.status === 200) {
+        this.$store.dispatch('cart/removeFromCart', id);
+      }
     },
     changeOrderType() {
       this.$store.dispatch('modals/setOrderType', true);
