@@ -45,7 +45,7 @@ class OrderServiceTest extends TestCase
 
         $newTableNumber = $this->faker->numberBetween(0, 30);
         $return = $this->orderService->setTableNumberOnOrder($order, $newTableNumber);
-        $this->assertEquals(true, $return);
+        $this->assertTrue($return);
 
         $this->assertDatabaseHas(
             'orders',
@@ -73,7 +73,7 @@ class OrderServiceTest extends TestCase
 
         $this->expectException(\TypeError::class);
         $return = $this->orderService->setTableNumberOnOrder($order, 'boo!');
-        $this->assertEquals(false, $return);
+        $this->assertFalse($return);
 
         $this->assertDatabaseHas(
             'orders',
@@ -101,7 +101,7 @@ class OrderServiceTest extends TestCase
 
         $tableNumber = $this->faker->numberBetween(0, 20);
         $return = $this->orderService->setTableNumberOnOrder($order, $tableNumber);
-        $this->assertEquals(false, $return);
+        $this->assertFalse($return);
 
         $this->assertDatabaseHas(
             'orders',

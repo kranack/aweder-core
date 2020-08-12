@@ -151,14 +151,13 @@ class UpdateTableNumberTest extends TestCase
             'Purchased Order',
             [
                 'merchant_id' => $merchant->id,
-                'table_number' => $originalTableNumber,
+                'table_number' => null,
                 'is_table_service' => false,
             ]
         );
 
         $this->assertDatabaseHas('orders', [
             'id' => $order->id,
-            'table_number' => $originalTableNumber
         ]);
 
         $newTableNumber = $this->faker->numberBetween(0, 35);
@@ -176,7 +175,7 @@ class UpdateTableNumberTest extends TestCase
 
         $this->assertDatabaseHas('orders', [
             'id' => $order->id,
-            'table_number' => $originalTableNumber
+            'table_number' => null
         ]);
     }
 }
