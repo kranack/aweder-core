@@ -1,15 +1,21 @@
-.cart__service {
+.cart-service {
   @extend .padding-bottom-20,
   .margin-bottom-20,
   .border-width-1,
   .border-bottom-solid,
-  .border-silver-5;
+  .border-silver;
 }
 
-.cart__service .field {
-  @extend .margin-bottom-0;
+.cart-service__date-content {
+  @extend .margin-left-20,
+  .font-600,
+  .body-small,
+  .font-gibson-med;
 }
 
-.cart__service .field:first-child {
-  @extend .margin-right-60;
+.cart-service__date-button {
+  @extend .margin-left-auto,
+  .color-carnation,
+  .font-600,
+  .cursor-pointer;
 }

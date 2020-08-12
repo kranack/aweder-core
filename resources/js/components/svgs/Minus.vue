@@ -1,0 +1,12 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 1.2">
+    <title>minus</title>
+    <path d="M.6,0H5.4A.6.6,0,0,1,6,.6H6a.6.6,0,0,1-.6.6H.6A.6.6,0,0,1,0,.6H0A.6.6,0,0,1,.6,0Z"></path>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: 'Minus',
+};
+</script>

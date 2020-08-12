@@ -1,26 +1,28 @@
 export default {
   ADD_TO_CART(state, payload) {
-    const stateProduct = state.products.find((product) => product.id === payload.id);
-
-    if (stateProduct) {
-      stateProduct.quantity += 1;
-    } else {
-      state.products.push({
-        id: payload.id,
-        price: payload.price,
-        quantity: 1,
-      });
-    }
+    state.products.push({
+      id: payload.id,
+      product: payload.product,
+      quantity: payload.quantity,
+      variant: payload.variant,
+      options: payload.options,
+    });
   },
   REMOVE_FROM_CART(state, payload) {
-    const stateProduct = state.products.find((product) => product.id === payload.id);
+    state.products = state.products.filter((item) => item.id !== payload);
+  },
+  UPDATE_PRODUCT(state, payload) {
+    const stateProduct = state.products.find((item) => item.id === payload.id);
 
-    if (stateProduct) {
-      stateProduct.quantity -= 1;
-    }
-
-    if (stateProduct && stateProduct.quantity < 1) {
-      state.products = state.products.filter((product) => product.id !== payload.id);
-    }
+    stateProduct.quantity = payload.quantity;
+  },
+  SET_ORDER(state, payload) {
+    state.order = payload;
+  },
+  SET_SERVICE_TYPE(state, payload) {
+    state.serviceType = payload;
+  },
+  SET_DATETIME(state, payload) {
+    state.datetime = payload;
   },
 };
