@@ -32,7 +32,7 @@
             @error('categories')
                 <p class="form__general-error">{{ $message }}</p>
             @enderror
-            <div class="field field--button">
+            <div class="field field--buttons">
                 <button type="submit" class="button button--icon-right button--filled button--filled-carnation button--end">
                     <span class="button__content">Save</span>
                     <span class="icon icon-right">@svg('arrow-right')</span>

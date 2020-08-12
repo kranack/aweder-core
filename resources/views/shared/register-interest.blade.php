@@ -42,7 +42,7 @@
             <p class="form__validation-error">{{ $message }}</p>
         @enderror
     </div>
-    <div class="field field--button">
+    <div class="field field--buttons">
         <button type="submit" class="button button--green">
             <span class="button__content">Register interest</span>
         </button>

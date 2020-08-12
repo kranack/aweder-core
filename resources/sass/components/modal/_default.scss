@@ -1,7 +1,3 @@
-@import 'service-type';
-@import 'item-options';
-@import 'order-type';
-
 .modal {
   @extend
   .fixed,
@@ -37,4 +33,12 @@
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.modal__header {
+  @extend .border-bottom-solid,
+  .border-width-1,
+  .border-silver,
+  .padding-bottom-40,
+  .margin-bottom-40;
 }

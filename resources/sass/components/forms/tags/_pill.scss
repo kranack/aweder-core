@@ -1,0 +1,61 @@
+.field--tags .vue-input-tag-wrapper .input-tag {
+  @extend .flex,
+  .align-items-center,
+  .border-width-1,
+  .border-cloud-burst,
+  .border-solid,
+  .background-off-white-0,
+  .radius-5,
+  .padding-left-40,
+  .padding-right-40,
+  .margin-bottom-10,
+  .relative;
+  height: 66px;
+}
+
+.input-tag:before,
+.input-tag:after {
+  @extend .background-carnation,
+  .flex,
+  .absolute;
+  content: '';
+  width: 10px;
+  height: 2px;
+  right: 40px;
+  top: 50%;
+}
+
+.input-tag:before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.input-tag:after {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.input-tag span {
+  @extend .body-medium,
+  .color-cloud-burst;
+}
+
+.field--tags .vue-input-tag-wrapper .input-tag .remove {
+  @extend .relative,
+  .margin-left-auto,
+  .color-carnation;
+  z-index: 1;
+}
+
+.field--tags .vue-input-tag-wrapper .input-tag .remove:empty:before {
+  @extend .body-medium,
+  .font-gibson-med,
+  .padding-right-20;
+  content: 'Remove';
+}
+
+.input-tag:last-of-type {
+  @extend .margin-top-30;
+}
+
+.field--tags .vue-input-tag-wrapper .input-tag:first-of-type {
+  @extend .margin-bottom-0;
+}

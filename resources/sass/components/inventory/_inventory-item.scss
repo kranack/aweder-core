@@ -120,6 +120,10 @@
   @extend .fill-casablanca;
 }
 
+.inventory__categories--editable .inventory__item--add {
+  @extend .pointer-none;
+}
+
 .inventory__item--add .inventory__title,
 .inventory__item--add .inventory__description,
 .inventory__item--add .inventory__price {

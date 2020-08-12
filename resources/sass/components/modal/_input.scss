@@ -1,0 +1,22 @@
+.modal__input {
+  @extend .header-three,
+  .font-gibson-med,
+  .color-cloud-burst;
+}
+
+.modal__input::-webkit-input-placeholder {
+  color: rgba($cloud-burst, 0.6);
+}
+
+.modal__input::-moz-placeholder { /* Firefox 18- */
+  color: rgba($cloud-burst, 0.6);
+}
+
+.modal__input:-moz-placeholder { /* Firefox 18- */
+  color: rgba($cloud-burst, 0.6);
+}
+
+
+.modal__input:-ms-input-placeholder {
+  color: rgba($cloud-burst, 0.6);
+}
