@@ -98,6 +98,6 @@ describe('MiniCart', () => {
 
   it('formats cart service content', () => {
     const wrapper = createWrapper(productsWithVariantState);
-    expect(wrapper.find('.cart__service__date-content').text()).toContain('Delivery, 1st Jan, 00:00');
+    expect(wrapper.find('.cart-service__date-content').text()).toContain('Delivery, 1st Jan, 00:00');
   });
 });

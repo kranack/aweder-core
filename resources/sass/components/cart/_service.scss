@@ -1,4 +1,4 @@
-.cart__service {
+.cart-service {
   @extend .padding-bottom-20,
   .margin-bottom-20,
   .border-width-1,
@@ -6,20 +6,14 @@
   .border-silver;
 }
 
-.cart__service__date {
-  @extend .margin-top-40,
-  .flex,
-  .align-items-center;
-}
-
-.cart__service__date-content {
+.cart-service__date-content {
   @extend .margin-left-20,
   .font-600,
   .body-small,
   .font-gibson-med;
 }
 
-.cart__service__date-button {
+.cart-service__date-button {
   @extend .margin-left-auto,
   .color-carnation,
   .font-600,

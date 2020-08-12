@@ -29,7 +29,7 @@
             v-model="selectedVariant"
             :value="variant"
             type="radio"
-            name="ariant.name"
+            :name="variant.name"
             class="radio-input hidden"
           >
           <label
@@ -37,9 +37,9 @@
             class="radio radio--standard"
           >
             <span class="radio__icon radio__icon--large" />
-            <span class="radio__label radio__label--large">
+            <span class="radio__label radio__label--large flex align-items-center">
               {{ variant.name }}
-              <span class="margin-left-5 margin-right-5">&ndash;</span>
+              <span class="separator separator--small" />
               {{ variant.price | currency }}
             </span>
           </label>
@@ -77,9 +77,9 @@
               class="checkbox checkbox--standard"
             >
               <span class="checkbox__icon checkbox__icon--large" />
-              <span class="checkbox__label checkbox__label--large">
+              <span class="checkbox__label checkbox__label--large flex align-items-center">
                 {{ item.name }}
-                <span class="margin-left-5 margin-right-5">&ndash;</span>
+                <span class="separator separator--small" />
                 {{ item.price_modified | currency }}
               </span>
             </label>

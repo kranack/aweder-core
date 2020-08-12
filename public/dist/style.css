@@ -505,7 +505,7 @@ button {
   .site-footer__statement {
     margin-top: 30px; } }
 
-.margin-top-40, .feature__buttons, .item-options__submit, .order-type__date, .cart__service__date, .dashboard-title + p, .datetime-merchant {
+.margin-top-40, .feature__buttons, .item-options__submit, .order-type__date, .dashboard-title + p, .datetime-merchant {
   margin-top: 40px; }
 
 .margin-top-50 {
@@ -795,7 +795,7 @@ button {
 .margin-bottom-15 {
   margin-bottom: 15px; }
 
-.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .field.field--small, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal,
+.margin-bottom-20, .hero__merchant-delivery, .steps__list-item, .field.field--small, .item-options__heading, .item-options__field, .cart-service, .cart__order, .subtotal,
 .total {
   margin-bottom: 20px; }
 
@@ -1083,7 +1083,7 @@ button {
   .s-margin-bottom-140 {
     margin-bottom: 140px; } }
 
-.margin-left-auto, .inventory__category-name .button, .inventory__category-name .item-options__submit, .inventory__category-name .order-type__button, .order-type__date-button, .cart__service__date-button, .single-order .field, .datetime-merchant__button {
+.margin-left-auto, .inventory__category-name .button, .inventory__category-name .item-options__submit, .inventory__category-name .order-type__button, .order-type__date-button, .cart-service__date-button, .single-order .field, .datetime-merchant__button {
   margin-left: auto; }
 
 .margin-left-0 {
@@ -1098,7 +1098,7 @@ button {
 .margin-left-15 {
   margin-left: 15px; }
 
-.margin-left-20, .site-menu__item, .merchant-times__icon, .separator--large, .inventory__add-category .icon, .order-type__date-content input, .cart__service__date-content, .metric__count, .single-order__title time, .datetime-merchant input {
+.margin-left-20, .site-menu__item, .merchant-times__icon, .separator--large, .inventory__add-category .icon, .order-type__date-content input, .cart-service__date-content, .metric__count, .single-order__title time, .datetime-merchant input {
   margin-left: 20px; }
 
 .margin-left-30 {
@@ -2218,7 +2218,7 @@ textarea.textarea-input, .select, .cart__order {
 .padding-bottom-15, .subtotal {
   padding-bottom: 15px; }
 
-.padding-bottom-20, .tab-menu__item, .notification__message, .cart__service, .orders__list-item, .single-order__items, .single-order__item {
+.padding-bottom-20, .tab-menu__item, .notification__message, .cart-service, .orders__list-item, .single-order__items, .single-order__item {
   padding-bottom: 20px; }
 
 .padding-bottom-30, .item-options__heading, .order-type__button {
@@ -3202,7 +3202,7 @@ tr td:last-child .table__cell, .single-order__items {
 
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
-.admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__category-name, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .inventory__editable-add, .order-type__date, .modal, .cart__service__date, .cart__order, .cart__item, .cart__options, .subtotal,
+.admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__category-name, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .inventory__editable-add, .order-type__date, .modal, .cart__order, .cart__item, .cart__options, .subtotal,
 .total, .button.menu__view .button__icon, .menu__view.item-options__submit .button__icon, .menu__view.order-type__button .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .orders__customer, .orders__arrow, .single-order__header, .single-order__title, .single-order__title h2, .single-order__details, .single-order__item, .single-order__image, .single-order__options, .datetime-merchant, .checkout__merchant-image, .checkout__delivery, .checkout--form {
   display: flex; }
 
@@ -3671,7 +3671,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-align-items-start {
     align-items: flex-start; } }
 
-.align-items-center, .button, .item-options__submit, .order-type__button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__category-name, .inventory__image, .inventory__button, .inventory__editable-add, .order-type__date, .modal, .cart__service__date, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .orders__customer, .orders__arrow, .single-order__header, .single-order__title h2, .single-order__line, .datetime-merchant, .checkout__merchant-image, .checkout__delivery {
+.align-items-center, .button, .item-options__submit, .order-type__button, .site-menu__item, .site-menu__button, .site-nav__burger, .site-header, .branding, .site-footer__menu, .site-footer__branding .bowl, .site-footer__statement, .admin-menu__link, .hero__image, .hero__merchant-times, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .steps__col--image .steps__wrapper, .field.field--select, .checkbox, .checkbox__icon, .radio, .radio__icon, .upload, .upload__trigger, .tab-menu, .field.opening-time, .opening-time__group, .avatar, .notification, .menu__cat-link, .menu__cart, .inventory__category-name, .inventory__image, .inventory__button, .inventory__editable-add, .order-type__date, .modal, .increment, .increment__type, .metric__item, .metric__count, .table__cell, .orders__customer, .orders__arrow, .single-order__header, .single-order__title h2, .single-order__line, .datetime-merchant, .checkout__merchant-image, .checkout__delivery {
   align-items: center; }
 
 @media (max-width: 1440px) {
@@ -5591,7 +5591,7 @@ tr td:last-child .table__cell, .single-order__items {
 
 /* BG COLOUR MIXINS ============================================================================= */
 .color-carnation, .site-menu__link.site-menu__button--solid, .site-menu__link.site-menu__link--solid, .admin-menu__link:hover,
-.admin-menu__link--active, .field__error, .label sup, .tab-menu__item.tab-menu__item--active, .inventory__add, .order-type__date-button, .cart__service__date-button, .dashboard-title, .datetime-merchant__button {
+.admin-menu__link--active, .field__error, .label sup, .tab-menu__item.tab-menu__item--active, .inventory__add, .order-type__date-button, .cart-service__date-button, .dashboard-title, .datetime-merchant__button {
   color: #F25851; }
 
 .color-casablanca, .inventory__button--added .inventory__add {
@@ -5666,7 +5666,7 @@ textarea.textarea-input, .field--price:before, .select {
   font-weight: 400;
   font-display: swap; }
 
-.font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category__title, .inventory__title, .inventory__price, .inventory__add, .inventory__add-category, .cart__service__date-content, .cart__title,
+.font-gibson-med, .button__content, .merchant-times__status, .opening-time__day, .menu__cart p, .inventory__category__title, .inventory__title, .inventory__price, .inventory__add, .inventory__add-category, .cart-service__date-content, .cart__title,
 .cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .increment--large .increment__value, .metric__count, th, .orders__name, .single-order select, .single-order__line p,
 .single-order__qty, .single-order__price, .single-order__options-title, .checkout__delivery p {
   font-family: "canada-type-gibson", sans-serif;
@@ -5769,7 +5769,7 @@ textarea.textarea-input.textarea-input--small, .select.select--button, .checkbox
   font-size: 1.6rem;
   line-height: 1.5; }
 
-.body-small, .button--small .button__content, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .cart__service__date-content, .cart__title,
+.body-small, .button--small .button__content, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .cart-service__date-content, .cart__title,
 .cart__price, .cart__subtitle, .subtotal__title, .increment--small .increment__value, td, .orders__date {
   font-size: 14px;
   font-size: 1.4rem;
@@ -5901,7 +5901,7 @@ textarea.textarea-input, .field--price:before, .select {
 .font-500 {
   font-weight: 500; }
 
-.font-600, .order-type__date-content input, .order-type__date-button, .cart__service__date-content, .cart__service__date-button, .datetime-merchant__button, .datetime-merchant input {
+.font-600, .order-type__date-content input, .order-type__date-button, .cart-service__date-content, .cart-service__date-button, .datetime-merchant__button, .datetime-merchant input {
   font-weight: 600; }
 
 .font-700 {
@@ -6061,7 +6061,7 @@ textarea.textarea-input, .field--price:before, .select {
 
 /* BORDER WIDTHS MIXINS ============================================================================= */
 .border-width-1, .button, .item-options__submit, .order-type__button, .site-menu__button, .site-nav__burger, .admin-header, .hero__image--border, input.text-input,
-textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .increment__type, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item, .checkout__merchant-image, .checkout__delivery, .checkout__cart {
+textarea.textarea-input, .select, .field--select-button, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .item-options__heading, .item-options__field, .cart-service, .cart__order, .subtotal, .increment__type, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item, .checkout__merchant-image, .checkout__delivery, .checkout__cart {
   border-width: 1px; }
 
 /* BORDER RADIUS MIXINS ============================================================================= */
@@ -6083,7 +6083,7 @@ textarea.textarea-input, .select, .field--select-button, .checkbox--standard .ch
   border-top-style: solid; }
 
 .border-bottom-solid, .admin-header, input.text-input,
-textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--editable .inventory__categories, .inventory__categories .inventory__item:last-child, .item-options__heading, .item-options__field, .cart__service, .cart__order, .subtotal, .orders__list-item, .single-order__header, .single-order__details, .single-order__item, .checkout__delivery {
+textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--editable .inventory__categories, .inventory__categories .inventory__item:last-child, .item-options__heading, .item-options__field, .cart-service, .cart__order, .subtotal, .orders__list-item, .single-order__header, .single-order__details, .single-order__item, .checkout__delivery {
   border-bottom-style: solid; }
 
 .border-right-solid, .inventory__item {
@@ -7246,7 +7246,7 @@ textarea.textarea-input, .select, .tab-menu, .menu__categories, .inventory--edit
 textarea.textarea-input, .select, .checkbox--standard .checkbox__icon, .checkbox--icon, .radio--standard .radio__icon, .upload {
   border-color: #243752; }
 
-.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .cart__service, .cart__order, .subtotal, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item, .checkout__merchant-image, .checkout__delivery, .checkout__cart {
+.border-silver, .admin-header, .tab-menu, .panel, .avatar, .menu__categories, .inventory--editable .inventory__categories, .inventory__item, .inventory__image, .cart-service, .cart__order, .subtotal, .orders__list-item, .orders__arrow, .single-order__header, .single-order__details, .single-order__item, .checkout__merchant-image, .checkout__delivery, .checkout__cart {
   border-color: #C7C7C7; }
 
 .border-off-white {
@@ -7405,7 +7405,7 @@ textarea.textarea-input, .select, .checkbox--standard .checkbox__icon, .checkbox
 .cursor-not-allowed {
   cursor: not-allowed; }
 
-.cursor-pointer, .tab-menu__link, .inventory__editable-add, .order-type__date-content input, .order-type__date-button, .cart__service__date-button, .orders__list-item, .datetime-merchant__button, .datetime-merchant input {
+.cursor-pointer, .tab-menu__link, .inventory__editable-add, .order-type__date-content input, .order-type__date-button, .cart-service__date-button, .orders__list-item, .datetime-merchant__button, .datetime-merchant input {
   cursor: pointer; }
 
 @media (max-width: 1440px) {
