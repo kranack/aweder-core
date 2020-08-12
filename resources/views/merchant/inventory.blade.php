@@ -84,6 +84,7 @@
                         </div>
                     @endif
                     <mini-cart
+                        service-type="{{ Request::segment(2) === 'take-away' ? 'take-away' : 'table-order' }}"
                         :merchant="{{ json_encode($merchant) }}"
                     ></mini-cart>
                 </div>
@@ -104,4 +105,9 @@
         v-if="{{ Request::segment(2) === 'take-away' ? 'true' : 'false' }}"
         :merchant="{{ json_encode($merchant) }}"
     ></order-type>
+
+    <select-table
+        v-if="{{ Request::segment(2) === 'table-order' ? 'true' : 'false' }}"
+        :merchant="{{ json_encode($merchant) }}"
+    ></select-table>
 @endsection

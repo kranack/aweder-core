@@ -4,14 +4,31 @@
     :class="{ 'cart--empty': !quantity }"
   >
     <div v-if="quantity">
-      <div class="cart-service flex align-items-center">
+      <div
+        v-if="serviceType === 'take-away'"
+        class="cart-service flex align-items-center"
+      >
         <Timer width="20" />
-        <span class="cart-service__date-content">
-          {{ serviceType | capitalize }}, {{ datetime | moment('Do MMM, HH:mm') }}
+        <span class="cart-service__content">
+          {{ orderType | capitalize }}, {{ datetime | moment('Do MMM, HH:mm') }}
         </span>
         <span
-          class="cart-service__date-button"
+          class="cart-service__button"
           @click="changeOrderType()"
+        >
+          Change
+        </span>
+      </div>
+      <div
+        v-if="serviceType === 'table-order'"
+        class="cart-service flex align-items-center"
+      >
+        <div class="cart-service__content">
+          Table: {{ table }}
+        </div>
+        <span
+          class="cart-service__button"
+          @click="changeTableNumber()"
         >
           Change
         </span>
@@ -137,13 +154,18 @@ export default {
       type: Object,
       default: () => {},
     },
+    serviceType: {
+      type: String,
+      default: 'take-away',
+    },
   },
   computed: {
     ...mapState({
       products: (state) => state.cart.products,
       order: (state) => state.cart.order,
-      serviceType: (state) => state.cart.serviceType,
+      orderType: (state) => state.cart.orderType,
       datetime: (state) => state.cart.datetime,
+      table: (state) => state.cart.table,
     }),
     ...mapGetters({
       subtotal: 'cart/subtotal',
@@ -159,7 +181,7 @@ export default {
       return 0;
     },
     isDelivery() {
-      return this.serviceType === 'delivery';
+      return this.orderType === 'delivery';
     },
     deliveryCost() {
       return this.merchant.delivery_cost;
@@ -202,6 +224,9 @@ export default {
     },
     changeOrderType() {
       this.$store.dispatch('modals/setOrderType', true);
+    },
+    changeTableNumber() {
+      this.$store.dispatch('modals/setSelectTable', true);
     },
   },
 };

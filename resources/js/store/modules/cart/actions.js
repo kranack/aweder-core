@@ -14,10 +14,14 @@ export const setOrder = ({ commit }, payload) => {
   commit('SET_ORDER', payload);
 };
 
-export const setServiceType = ({ commit }, payload) => {
-  commit('SET_SERVICE_TYPE', payload);
+export const setOrderType = ({ commit }, payload) => {
+  commit('SET_ORDER_TYPE', payload);
 };
 
 export const setDatetime = ({ commit }, payload) => {
   commit('SET_DATETIME', payload);
+};
+
+export const setTable = ({ commit }, payload) => {
+  commit('SET_TABLE', payload);
 };

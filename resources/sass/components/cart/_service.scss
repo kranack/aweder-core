@@ -6,14 +6,17 @@
   .border-silver;
 }
 
-.cart-service__date-content {
-  @extend .margin-left-20,
-  .font-600,
+.cart-service svg {
+  @extend .margin-right-20;
+}
+
+.cart-service__content {
+  @extend .font-600,
   .body-small,
   .font-gibson-med;
 }
 
-.cart-service__date-button {
+.cart-service__button {
   @extend .margin-left-auto,
   .color-carnation,
   .font-600,

@@ -19,10 +19,13 @@ export default {
   SET_ORDER(state, payload) {
     state.order = payload;
   },
-  SET_SERVICE_TYPE(state, payload) {
-    state.serviceType = payload;
+  SET_ORDER_TYPE(state, payload) {
+    state.orderType = payload;
   },
   SET_DATETIME(state, payload) {
     state.datetime = payload;
+  },
+  SET_TABLE(state, payload) {
+    state.table = payload;
   },
 };
