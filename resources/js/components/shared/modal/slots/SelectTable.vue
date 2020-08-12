@@ -74,7 +74,7 @@ export default {
     },
   },
   mounted() {
-    // this.$refs.table.focus();
+    this.$refs.table.focus();
   },
   methods: {
     save() {
