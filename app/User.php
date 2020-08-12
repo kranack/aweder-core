@@ -52,6 +52,7 @@ use Illuminate\Notifications\Notifiable;
  * \Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|
  * \Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

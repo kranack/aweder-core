@@ -27,8 +27,12 @@ class CreateController extends Controller
 
         $order = $orderService->createNewOrderForMerchant($merchant);
 
+        if ($request->has('table_number')) {
+            $orderService->setTableNumberOnOrder($order, $request->get('table_number'));
+        }
+
         if ($order instanceof Order) {
-            return response()->json($order, Response::HTTP_CREATED);
+            return response()->json($order->fresh(), Response::HTTP_CREATED);
         }
 
         return response()->json([

@@ -206,4 +206,16 @@ class OrderService implements OrderContract
 
         return true;
     }
+
+    public function setTableNumberOnOrder(Order $order, int $tableNumber): bool
+    {
+        if (!$order->isTableService()) {
+            return false;
+        }
+
+        $order->table_number = $tableNumber;
+        $order->save();
+
+        return true;
+    }
 }

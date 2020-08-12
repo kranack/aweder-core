@@ -70,6 +70,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $is_collection
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsCollection($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsTableService($value)
+ * @property int $table_number
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereTableNumber($value)
  */
 class Order extends Model
 {
@@ -511,6 +513,14 @@ class Order extends Model
     public function hasPaymentDetails(): bool
     {
         return $this->payment_id !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTableService(): bool
+    {
+        return (bool) $this->is_table_service;
     }
 
     /**
