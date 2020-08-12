@@ -1,3 +1,7 @@
+@import 'service-type';
+@import 'item-options';
+@import 'order-type';
+
 .modal {
   @extend
   .fixed,

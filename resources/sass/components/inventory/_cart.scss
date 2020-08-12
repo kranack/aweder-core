@@ -25,10 +25,10 @@
   @extend .fill-silver-6;
 }
 
-.menu__cart--added .icon .logo-top {
+.menu__cart.menu__cart--added .icon .logo-top {
   @extend .fill-carnation;
 }
 
-.menu__cart--added .icon .logo-bottom {
+.menu__cart.menu__cart--added .icon .logo-bottom {
   @extend .fill-cloud-burst;
 }

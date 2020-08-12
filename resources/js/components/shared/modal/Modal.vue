@@ -9,8 +9,11 @@
     />
     <div class="content justify-content-center align-items-center">
       <div
-        class="modal__box col-span-6 col-start-4
-         m-col-span-8 m-col-start-3 sm-col-span-6 sm-col-start-1 padding-40 m-padding-20"
+        class="modal__box m-col-span-12 m-col-start-1 padding-40 m-padding-20"
+        :class="{
+          'col-span-6 col-start-4': size === 'medium',
+          'col-span-4 col-start-5': size === 'small',
+        }"
       >
         <slot />
       </div>
@@ -24,6 +27,10 @@ export default {
     isActive: {
       type: Boolean,
       default: false,
+    },
+    size: {
+      type: String,
+      default: 'medium',
     },
   },
   methods: {

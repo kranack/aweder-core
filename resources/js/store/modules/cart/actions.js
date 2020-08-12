@@ -1,7 +1,23 @@
-export const addToCart = ({ commit }, product) => {
-  commit('ADD_TO_CART', product);
+export const addToCart = ({ commit }, payload) => {
+  commit('ADD_TO_CART', payload);
 };
 
-export const removeFromCart = ({ commit }, product) => {
-  commit('REMOVE_FROM_CART', product);
+export const removeFromCart = ({ commit }, payload) => {
+  commit('REMOVE_FROM_CART', payload);
+};
+
+export const updateProduct = ({ commit }, payload) => {
+  commit('UPDATE_PRODUCT', payload);
+};
+
+export const setOrder = ({ commit }, payload) => {
+  commit('SET_ORDER', payload);
+};
+
+export const setServiceType = ({ commit }, payload) => {
+  commit('SET_SERVICE_TYPE', payload);
+};
+
+export const setDatetime = ({ commit }, payload) => {
+  commit('SET_DATETIME', payload);
 };

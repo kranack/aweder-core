@@ -3,7 +3,6 @@
 namespace App\Providers\Service;
 
 use App\Contract\Repositories\InventoryOptionGroupItemContract as InventoryOptionGroupItemRepository;
-use App\Contract\Repositories\MerchantContract;
 use App\Contract\Service\InventoryOptionGroupItemContract;
 use App\Service\InventoryOptionGroupItemService;
 use Illuminate\Foundation\Application;
@@ -26,11 +25,8 @@ class InventoryOptionGroupItemServiceProvider extends ServiceProvider
                 InventoryOptionGroupItemRepository::class
             );
 
-            $merchantRepository = $app->make(MerchantContract::class);
-
             return new InventoryOptionGroupItemService(
                 $inventoryOptionGroupItemRepository,
-                $merchantRepository,
                 $logger
             );
         });

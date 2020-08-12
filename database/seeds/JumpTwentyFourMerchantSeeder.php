@@ -1,7 +1,10 @@
 <?php
 
 use App\Category;
+use App\Contract\Repositories\OrderItemContract;
 use App\Inventory;
+use App\InventoryOptionGroup;
+use App\InventoryOptionGroupItem;
 use App\Merchant;
 use App\MerchantPayment;
 use App\Order;
@@ -123,7 +126,8 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryOne->id,
                     'title' => 'Chilli cheese fries',
-                    'description' => 'Skin-on fries topped with a rich chunky beef & black bean beef chilli, red onion, jalapeños & cheese.',
+                    'description' => 'Skin-on fries topped with a rich chunky
+                    beef & black bean beef chilli, red onion, jalapeños & cheese.',
                     'price' => 500,
                     'available' => 1,
                 ]
@@ -134,7 +138,9 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                     'merchant_id' => $merchant->id,
                     'category_id' => $categoryTwo->id,
                     'title' => 'Beef Burger',
-                    'description' => '100% prime short rib and chuck beef patty served in a toasted brioche bun smothered in a creamy tomato and gherkin sauce. With caramelised onions, beef tomato and baby gem.',
+                    'description' => '100% prime short rib and chuck beef patty served
+                    in a toasted brioche bun smothered in a creamy tomato and gherkin sauce.
+                    With caramelised onions, beef tomato and baby gem.',
                     'price' => 800,
                     'available' => 1,
                 ]
@@ -294,6 +300,40 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                 ]
             );
 
+
+            // inventory options seeding
+            $inventoryOptionGroup = factory(InventoryOptionGroup::class)->create(
+                [
+                    'name' => 'Extras',
+                    'title' => 'Modify your order',
+                    'inventory_id' => $mainsInventory->id
+                ]
+            );
+
+            $inventoryOptionGroupItem1 = factory(InventoryOptionGroupItem::class)->create(
+                [
+                    'name' => 'Extra chips',
+                    'price_modified' => 150,
+                    'inventory_option_group_id' => $inventoryOptionGroup->id
+                ]
+            );
+
+            $inventoryOptionGroupItem2 = factory(InventoryOptionGroupItem::class)->create(
+                [
+                    'name' => 'Side salad',
+                    'price_modified' => 400,
+                    'inventory_option_group_id' => $inventoryOptionGroup->id
+                ]
+            );
+
+            $inventoryOptionGroupItem3 = factory(InventoryOptionGroupItem::class)->create(
+                [
+                    'name' => 'Upgrade to large',
+                    'price_modified' => 290,
+                    'inventory_option_group_id' => $inventoryOptionGroup->id
+                ]
+            );
+
             for ($i = 0; $i < 5; $i++) {
                 $orderOne = factory(Order::class)->state('Incomplete Order')
                     ->create(
@@ -364,6 +404,23 @@ class JumpTwentyFourMerchantSeeder extends Seeder
                         'price' => $mainsInventory->price,
                     ]
                 );
+
+                $orderItemRepository = app()->make(OrderItemContract::class);
+
+                random_int(0, 1) ? $orderItemRepository->addOptionToOrderItem(
+                    $orderItemMains,
+                    $inventoryOptionGroupItem1
+                ) : null;
+
+                random_int(0, 1) ? $orderItemRepository->addOptionToOrderItem(
+                    $orderItemMains,
+                    $inventoryOptionGroupItem2
+                ) : null;
+
+                random_int(0, 1) ? $orderItemRepository->addOptionToOrderItem(
+                    $orderItemMains,
+                    $inventoryOptionGroupItem3
+                ) : null;
 
                 $orderItemSides = factory(OrderItem::class)->create(
                     [

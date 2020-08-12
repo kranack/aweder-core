@@ -50,19 +50,7 @@
                             </ul>
                         </nav>
                     @endif
-                    @if (isset($order))
-                        @if (!$order->items->isEmpty())
-                            <div class="menu__cart menu__cart--added col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-hidden">
-                                <span class="icon icon--logo-mark flex margin-right-20">@svg('aweder-logo-small')</span>
-                                <p>Add more items - £{{ $order->getFormattedUKPriceAttribute($order->total_cost) }}</p>
-                            </div>
-                        @endif
-                    @else
-                        <div class="menu__cart col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-hidden">
-                            <span class="icon icon--logo-mark flex margin-right-20">@svg('aweder-logo-small')</span>
-                            <p>Your order is empty</p>
-                        </div>
-                    @endif
+                    <basket></basket>
                 </div>
             </div>
         </header>
@@ -85,13 +73,7 @@
                                             <div class="inventory__group width-full">
                                                 @foreach ($category->inventoriesAvailable as $inventory)
                                                     <inventory-item
-                                                        @added=""
-                                                        item-id="{{ $inventory->id }}"
-                                                        title="{{ $inventory->title }}"
-                                                        description="{{ $inventory->description }}"
-                                                        price="{{ $inventory->getFormattedUKPriceAttribute($inventory->price) }}"
-                                                        {{-- image="{{ $inventory->getTemporaryInventoryImageLink() }}" --}}
-                                                        :editable="{{ $editable ? 'true' : 'false' }}"
+                                                        :product="{{ json_encode($inventory) }}"
                                                     ></inventory-item>
                                                 @endforeach
                                             </div>
@@ -101,79 +83,9 @@
                             @endforeach
                         </div>
                     @endif
-                    @if (isset($order))
-                        @if (!$order->items->isEmpty())
-                        <div class="cart panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1">
-                            <div class="cart__service flex align-items-center">
-                                <div class="field field--radio">
-                                    <input type="radio" name="service" id="delivery" class="radio-input hidden">
-                                    <label for="delivery" class="radio radio--standard">
-                                        <span class="radio__icon radio__icon--small"></span>
-                                        <span class="radio__label radio__label--small">Delivery</span>
-                                    </label>
-                                </div>
-                                <div class="field field--radio">
-                                    <input type="radio" name="service" id="collection" class="radio-input hidden">
-                                    <label for="collection" class="radio radio--standard">
-                                        <span class="radio__icon radio__icon--small"></span>
-                                        <span class="radio__label radio__label--small">Collection</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="cart__order">
-                                <div class="cart__item">
-                                    <div class="cart__line">
-                                        <p class="cart__title">{{ $item->inventory->title }}</p>
-                                        <div class="increment increment--small">
-                                            <span class="increment__type increment__type--down">@svg('minus', 'fill-casablanca')</span>
-                                            <input type="text" class="increment__value" value="{{ $item->quantity }}" />
-                                            <span class="increment__type increment__type--up">@svg('add', 'fill-casablanca')</span>
-                                        </div>
-                                        <span class="cart__price text-right">£{{ $item->getFormattedUKPriceAttribute($item->price) }}</span>
-                                    </div>
-                                    <div class="cart__options">
-                                        <h5 class="cart__option-title">Sauces</h5>
-                                        <div class="cart__option-item">
-                                            <p class="cart__subtitle">
-                                                <span class="icon icon-add">@svg('add', 'fill-cloud-burst')</span>
-                                                Curry sauce</p>
-                                            <span class="cart__price text-right">£1.95</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="subtotal">
-                                <div class="subtotal__item">
-                                    <p class="subtotal__title">Subtotal</p>
-                                    <span class="cart__price text-right">£{{ $order->getFormattedUKPriceAttribute($order->total_cost) }}</span>
-                                </div>
-                                <div class="subtotal__item subtotal__item--light">
-                                    <p class="subtotal__title">Delivery</p>
-                                    <span class="cart__price text-right">£{{ $merchant->getFormattedUKPriceAttribute($merchant->delivery_cost) }}</span>
-                                </div>
-                            </div>
-                            <div class="total">
-                                <div class="total__item">
-                                    <p class="total__title">Total</p>
-                                    <span class="cart__price text-right">£{{ $order->getFormattedUKPriceAttribute($order->total_cost, $merchant->delivery_cost) }}</span>
-                                </div>
-                            </div>
-                            <div class="cart__buttons">
-                                <button class="button button-solid--carnation pointer-none">
-                                    <span class="button__content">Place order</span>
-                                </button>
-                            </div>
-                        </div>
-                        @endif
-                    @else
-                        <div class="cart cart--empty panel panel--radius-bottom background-off-white col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-5 sm-col-span-6 sm-col-start-1 sm-hidden">
-                            <div class="cart__buttons">
-                                <button class="button button-outline--silver">
-                                    <span class="button__content">Place order</span>
-                                </button>
-                            </div>
-                        </div>
-                    @endif
+                    <mini-cart
+                        :merchant="{{ json_encode($merchant) }}"
+                    ></mini-cart>
                 </div>
             </div>
             <div class="button button-solid--carnation hidden menu__view" id="menu__view">
@@ -184,4 +96,12 @@
             </div>
         </div>
     </section>
+    <item-options
+        :merchant="{{ json_encode($merchant) }}"
+    ></item-options>
+    
+    <order-type
+        v-if="{{ Request::segment(2) === 'take-away' ? 'true' : 'false' }}"
+        :merchant="{{ json_encode($merchant) }}"
+    ></order-type>
 @endsection

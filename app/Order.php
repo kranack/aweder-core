@@ -166,6 +166,7 @@ class Order extends Model
         'order_submitted',
         'payment_id',
         'customer_note',
+        'table_number'
     ];
 
     protected $dates = [

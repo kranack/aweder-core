@@ -8,6 +8,7 @@ use App\Contract\Repositories\InventoryVariantContract;
 use App\Contract\Repositories\OrderContract;
 use App\Contract\Repositories\OrderItemContract;
 use App\Inventory;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -113,7 +114,7 @@ class AddToOrderTest extends TestCase
             $orderItemPayload
         );
 
-        $response->assertStatus(200);
+        $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonFragment(['id' => $order->id]);
 
         $order = $order->fresh();
