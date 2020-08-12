@@ -1,0 +1,19 @@
+.field--tags .vue-input-tag-wrapper {
+  @extend .background-off-white-0,
+  .border-none,
+  .padding-0,
+  .flex-col-reverse;
+}
+
+.field--tags .vue-input-tag-wrapper .new-tag {
+  @extend .border-bottom-solid,
+  .border-width-1,
+  .border-cloud-burst,
+  .font-gibson-reg,
+  .color-cloud-burst,
+  .body-label,
+  .padding-top-10,
+  .padding-bottom-10,
+  .margin-bottom-0,
+  .width-full;
+}

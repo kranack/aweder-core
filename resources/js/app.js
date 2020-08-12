@@ -31,6 +31,7 @@ import OrderFilters from './OrderFilters';
 import SlugChecker from './SlugChecker';
 import StripeElements from './StripeElements';
 import Upload from './Upload';
+import InputTag from 'vue-input-tag';
 
 // Filters
 import './filters/Capitalize';
@@ -58,6 +59,7 @@ Vue.use(VueMoment);
 Vue.use(Vuex);
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('input-tag', InputTag);
 
 new Vue({
   components: {

@@ -34,20 +34,21 @@
         </div>
       </div>
     </div>
-    <edit-inventory-item
+    <form-inventory-item
       :is-active="isActive"
+      :item="item"
       @close="hideEditModal()"
     />
   </div>
 </template>
 
 <script>
-import EditInventoryItem from '@/js/components/shared/modal/slots/EditInventoryItem';
+import FormInventoryItem from '@/js/components/shared/modal/slots/FormInventoryItem';
 
 export default {
   name: 'EditItem',
   components: {
-    EditInventoryItem,
+    FormInventoryItem,
   },
   props: {
     itemId: {
@@ -75,6 +76,17 @@ export default {
     return {
       isActive: false,
     };
+  },
+  computed: {
+    item() {
+      return {
+        itemId: this.itemId,
+        title: this.title,
+        description: this.description,
+        price: this.price,
+        image: this.image,
+      };
+    },
   },
   methods: {
     showEditModal() {

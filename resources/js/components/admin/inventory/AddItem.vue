@@ -19,7 +19,7 @@
         <span class="inventory__price">£0.00</span>
       </div>
     </div>
-    <create-inventory-item
+    <form-inventory-item
       :is-active="isActive"
       @close="hideCreateModal()"
     />
@@ -27,12 +27,12 @@
 </template>
 
 <script>
-import CreateInventoryItem from '@/js/components/shared/modal/slots/CreateInventoryItem';
+import FormInventoryItem from '@/js/components/shared/modal/slots/FormInventoryItem';
 
 export default {
   name: 'AddItem',
   components: {
-    CreateInventoryItem,
+    FormInventoryItem,
   },
   data() {
     return {

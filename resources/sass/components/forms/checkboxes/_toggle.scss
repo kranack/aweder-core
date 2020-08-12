@@ -1,0 +1,39 @@
+.toggle {
+  @extend
+  .flex,
+  .align-items-center;
+}
+
+.toggle__label {
+  @extend .margin-right-10;
+}
+
+.toggle__container {
+  @extend .flex,
+  .align-items-center,
+  .radius-25,
+  .padding-left-5,
+  .padding-right-5,
+  .border-width-1,
+  .border-solid,
+  .border-cloud-burst;
+  width: 70px;
+  height: 30px;
+}
+
+
+.toggle__thumb {
+  @extend .flex,
+  .background-silver,
+  .radius-100;
+  transform: translateX(36px);
+  height: 22px;
+  width: 22px;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle-input:checked ~ .toggle .toggle__thumb {
+  @extend .justify-content-start,
+  .background-casablanca;
+  transform: translateX(0);
+}

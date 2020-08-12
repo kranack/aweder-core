@@ -144,7 +144,7 @@
                                 </div>
                             @endif
                         @endif
-                        <div class="field field--button margin-top-30">
+                        <div class="field field--buttons margin-top-30">
                             <input type="hidden" name="order_no" value="{{ $order->url_slug }}"/>
                             <button type="submit"
                                 @if ($intentSecret !== null) id="submit_button" data-secret="{{ $intentSecret }}" @endif
