@@ -28,7 +28,7 @@ export default {
             ],
           },
         ],
-        serviceType: 'delivery',
+        orderType: 'delivery',
         order: null,
         datetime: '2020-01-01 00:00:00',
       },

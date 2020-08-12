@@ -43,6 +43,9 @@
           <span class="button__content">Save</span>
         </button>
       </div>
+      <div class="col-span-12 margin-top-20">
+        <a :href="tableOrderUrl">Eating in? Click here.</a>
+      </div>
     </div>
   </modal>
 </template>
@@ -84,6 +87,9 @@ export default {
         day_of_week: hours.day_of_week - 1,
       }));
     },
+    tableOrderUrl() {
+      return `/${this.merchant.url_slug}/table-order`;
+    },
   },
   methods: {
     toggleCalendar() {
@@ -93,7 +99,7 @@ export default {
       this.type = type;
     },
     save() {
-      this.$store.dispatch('cart/setServiceType', this.type);
+      this.$store.dispatch('cart/setOrderType', this.type);
       this.$store.dispatch('cart/setDatetime', this.datetime);
       this.$store.dispatch('modals/setOrderType', false);
     },

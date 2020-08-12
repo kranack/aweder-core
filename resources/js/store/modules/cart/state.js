@@ -1,8 +1,9 @@
 export const getState = () => ({
   products: [],
   order: null,
-  serviceType: null,
+  orderType: null,
   datetime: null,
+  table: null,
 });
 
 export default getState();

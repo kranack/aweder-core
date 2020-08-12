@@ -3,7 +3,7 @@ export default {
     state: {
       cart: {
         products: [],
-        serviceType: null,
+        orderType: null,
         order: null,
         datetime: null,
       },
