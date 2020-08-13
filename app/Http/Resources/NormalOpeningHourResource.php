@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class NormalOpeningHourResource extends JsonResource
 {
@@ -16,8 +17,8 @@ class NormalOpeningHourResource extends JsonResource
     {
         return [
             'day_of_week' => $this->day_of_week,
-            'open_time' => $this->open_time,
-            'close_time' => $this->close_time
+            'open_time' => Carbon::make($this->open_time)->format('H:i'),
+            'close_time' => Carbon::make($this->close_time)->format('H:i')
         ];
     }
 }
