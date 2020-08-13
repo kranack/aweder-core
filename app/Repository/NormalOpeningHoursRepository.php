@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Contract\Repositories\NormalOpeningHoursContract;
+use App\Merchant;
 use App\NormalOpeningHour;
 use Illuminate\Database\Eloquent\Collection;
 use Psr\Log\LoggerInterface;
@@ -139,7 +140,10 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
 
     public function getOpeningHoursForMerchant(int $merchantId): Collection
     {
-        return $this->getModel()->where('merchant_id', $merchantId)->get();
+        return $this->getModel()
+            ->where('merchant_id', $merchantId)
+            ->where('is_delivery_hours', 1)
+            ->get();
     }
 
     public function convertDayNameToInteger($name): ?int
@@ -216,5 +220,13 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
     protected function getModel(): NormalOpeningHour
     {
         return $this->model;
+    }
+
+    public function getTableServiceHoursForMerchant(Merchant $merchant): Collection
+    {
+        return $this->getModel()
+            ->where('merchant_id', '=', $merchant->id)
+            ->where('is_delivery_hours', '=', 0)
+            ->get();
     }
 }

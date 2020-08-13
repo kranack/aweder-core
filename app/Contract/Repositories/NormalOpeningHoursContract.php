@@ -2,6 +2,7 @@
 
 namespace App\Contract\Repositories;
 
+use App\Merchant;
 use App\NormalOpeningHour;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -39,4 +40,6 @@ interface NormalOpeningHoursContract
      * @return array
      */
     public function formatOpeningHoursForForm(Collection $openingHours): array;
+
+    public function getTableServiceHoursForMerchant(Merchant $merchant): Collection;
 }

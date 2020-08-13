@@ -14,3 +14,8 @@ Route::group(['prefix' => 'order'], function (Router $router) {
     $router->delete('/{order}/item/{itemId}', ['uses' => 'Api\\Order\\DeleteItemController'])
         ->name('api.order.item.delete');
 });
+
+Route::group(['prefix' => 'merchant'], function (Router $router) {
+    $router->get('/{merchant}/openinghours', ['uses' => 'Api\\Merchant\\ShowOpeningHoursController'])
+        ->name('api.merchant.openinghours');
+});
