@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Merchant;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NormalOpeningHourResource;
 use App\Merchant;
 use App\Contract\Service\NormalOpeningHoursContract;
 use Illuminate\Http\JsonResponse;
@@ -27,6 +28,6 @@ class ShowOpeningHoursController extends Controller
         NormalOpeningHoursContract $hoursService
     ): JsonResponse {
         $openingHours = $hoursService->getHoursByTypeAndMerchant($merchant, $request->get('type'));
-        return response()->json($openingHours, Response::HTTP_OK);
+        return response()->json(NormalOpeningHourResource::collection($openingHours), Response::HTTP_OK);
     }
 }
