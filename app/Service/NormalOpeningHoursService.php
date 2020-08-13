@@ -29,15 +29,17 @@ class NormalOpeningHoursService implements NormalOpeningHoursContract
         $this->logger = $logger;
     }
 
-    public function getHoursByTypeAndMerchant(string $type, Merchant $merchant): Collection
-    {
+    public function getHoursByTypeAndMerchant(
+        Merchant $merchant,
+        $type
+    ): Collection {
         switch ($type) {
             case NormalOpeningHour::BUSINESS_HOURS_TYPE:
                 return $this->normalOpeningHoursRepository->getOpeningHoursForMerchant($merchant->id);
             case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
                 return $this->normalOpeningHoursRepository->getTableServiceHoursForMerchant($merchant);
             default:
-                return collect();
+                return $this->normalOpeningHoursRepository->getOpeningHoursForMerchant($merchant->id);
         }
     }
 }

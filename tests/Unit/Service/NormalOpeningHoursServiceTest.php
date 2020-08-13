@@ -55,17 +55,14 @@ class NormalOpeningHoursServiceTest extends TestCase
         );
 
         $openingHours = $this->openingHoursService->getHoursByTypeAndMerchant(
-            NormalOpeningHour::BUSINESS_HOURS_TYPE,
-            $merchant
+            $merchant,
+            NormalOpeningHour::BUSINESS_HOURS_TYPE
         );
 
         // [SIDE EFFECT] create merchant creates a default opening hour record, hence 2 not 3
         $this->assertCount(2, $openingHours);
     }
 
-    /**
-     * @test
-     */
     public function canGetTableServiceHoursForMerchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
@@ -91,8 +88,8 @@ class NormalOpeningHoursServiceTest extends TestCase
         );
 
         $openingHours = $this->openingHoursService->getHoursByTypeAndMerchant(
-            NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE,
-            $merchant
+            $merchant,
+            NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE
         );
 
         $this->assertCount(1, $openingHours);

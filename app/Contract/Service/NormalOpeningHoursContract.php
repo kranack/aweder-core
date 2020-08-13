@@ -3,6 +3,7 @@
 namespace App\Contract\Service;
 
 use App\Merchant;
+use App\NormalOpeningHour;
 use Illuminate\Support\Collection;
 
 /**
@@ -11,10 +12,8 @@ use Illuminate\Support\Collection;
  */
 interface NormalOpeningHoursContract
 {
-    /**
-     * @param string $type
-     * @param Merchant $merchant
-     * @return Collection
-     */
-    public function getHoursByTypeAndMerchant(string $type, Merchant $merchant): Collection;
+    public function getHoursByTypeAndMerchant(
+        Merchant $merchant,
+        $type
+    ): Collection;
 }

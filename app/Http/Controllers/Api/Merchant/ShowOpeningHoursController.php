@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Merchant;
 use App\Contract\Service\NormalOpeningHoursContract;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
@@ -16,13 +17,16 @@ class ShowOpeningHoursController extends Controller
 {
     /**
      * @param Merchant $merchant
+     * @param Request $request
      * @param NormalOpeningHoursContract $hoursService
      * @return JsonResponse
      */
     public function __invoke(
         Merchant $merchant,
+        Request $request,
         NormalOpeningHoursContract $hoursService
     ): JsonResponse {
-        return response()->json($merchant, Response::HTTP_OK);
+        $openingHours = $hoursService->getHoursByTypeAndMerchant($merchant, $request->get('type'));
+        return response()->json($openingHours, Response::HTTP_OK);
     }
 }
