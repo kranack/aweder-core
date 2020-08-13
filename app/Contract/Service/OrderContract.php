@@ -22,6 +22,13 @@ interface OrderContract
     public function createNewOrderForMerchant(Merchant $merchant): Order;
 
     /**
+     * @param Order $order
+     * @param int $tableNumber
+     * @return bool
+     */
+    public function setTableNumberOnOrder(Order $order, int $tableNumber): bool;
+
+    /**
      * @param Merchant $merchant
      * @param string $orderNo
      * @return Order

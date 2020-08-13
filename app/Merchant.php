@@ -78,6 +78,8 @@ use Illuminate\Support\Facades\Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereSalt($value)
  * @property int $allow_table_service
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Merchant whereAllowTableService($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
+ * @property-read int|null $orders_count
  */
 class Merchant extends Model
 {

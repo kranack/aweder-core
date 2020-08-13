@@ -15,7 +15,7 @@ class AddTableNumberToOrder extends Migration
     {
         if (!Schema::hasColumn('orders', 'table_number')) {
             Schema::table('orders', function (Blueprint $table) {
-                $table->integer('table_number')->nullable();
+                $table->integer('table_number')->nullable()->default(null);
             });
         }
     }
