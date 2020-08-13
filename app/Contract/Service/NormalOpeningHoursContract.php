@@ -3,7 +3,6 @@
 namespace App\Contract\Service;
 
 use App\Merchant;
-use App\NormalOpeningHour;
 use Illuminate\Support\Collection;
 
 /**
