@@ -6,14 +6,24 @@
   >
     <form
       class="flex flex-col"
-      :action="action"
+      method="post"
+      :action="formAction"
     >
+      <method-field :method="formMethod" />
+      <csrf-field />
+      <input
+        type="hidden"
+        name="category-id"
+        :value="categoryId"
+      >
       <header class="modal__header flex align-items-end">
         <input
+          id="title"
           class="modal__input"
           type="text"
-          name="add_category_name"
+          name="title"
           placeholder="Inventory name"
+          :value="form.title"
         >
         <div
           class="field field--toggle margin-left-auto"
@@ -122,11 +132,12 @@
       <div class="input-row flex">
         <div class="field field--small-input">
           <input
-            id="eat-in-price"
+            id="amount"
             class="text-input"
             type="text"
-            name="eat-in-price"
+            :name="isCreate ? 'amount' : 'price'"
             placeholder="Eat in price"
+            :value="form.amount"
           >
         </div>
         <div class="field field--small-input">
@@ -146,12 +157,14 @@
           type="text"
           name="description"
           placeholder="Item description"
+          :value="form.description"
         >
       </div>
       <div class="field--buttons">
         <button
+          v-if="isUpdate"
           class="button button-solid--silver"
-          type="reset"
+          @click.prevent="deleteItem"
         >
           <span class="button__content">Delete item</span>
         </button>
@@ -163,6 +176,13 @@
         </button>
       </div>
     </form>
+    <form
+      v-if="isUpdate"
+      ref="deleteForm"
+      :action="`/admin/inventory/delete/${item.id}`"
+    >
+      <method-field method="delete" />
+    </form>
   </modal>
 </template>
 
@@ -171,14 +191,18 @@ import Modal from '@/js/components/shared/modal/Modal';
 import Upload from '@/js/components/svgs/Upload';
 import Delivery from '@/js/components/svgs/Delivery';
 import Table from '@/js/components/svgs/Table';
+import CsrfField from '@/js/components/shared/form/CsrfField';
+import MethodField from '@/js/components/shared/form/MethodField';
 
 export default {
-  name: 'CreateCategory',
+  name: 'FormInventoryItem',
   components: {
     Modal,
     Upload,
     Delivery,
     Table,
+    CsrfField,
+    MethodField,
   },
   props: {
     isActive: {
@@ -189,26 +213,55 @@ export default {
       type: Object,
       default: null,
     },
-    action: {
+    categoryId: {
+      type: Number,
+      required: true,
+    },
+    formType: {
       type: String,
-      default: '',
+      required: true,
     },
   },
   data() {
     return {
       form: {
-        image: '',
-        collectionType: '',
-        subCategory: '',
-        eatInPrice: '',
-        takeOutPrice: '',
+        title: '',
+        amount: '',
         description: '',
       },
     };
   },
+  computed: {
+    formMethod() {
+      return this.isCreate ? 'post' : 'put';
+    },
+    formAction() {
+      return this.isCreate
+        ? '/admin/inventory'
+        : `/admin/inventory/${this.item.id}/update`;
+    },
+    isCreate() {
+      return this.formType === 'create';
+    },
+    isUpdate() {
+      return this.formType === 'update';
+    },
+  },
+  mounted() {
+    if (this.item) {
+      this.form.title = this.item.title;
+      this.form.amount = this.item.price;
+      this.form.description = this.item.description;
+    }
+  },
   methods: {
     close() {
       this.$emit('close');
+    },
+    deleteItem() {
+      if (confirm(`Confirm to delete ${this.item.title}.`)) {
+        this.$refs.deleteForm.submit();
+      }
     },
   },
 };

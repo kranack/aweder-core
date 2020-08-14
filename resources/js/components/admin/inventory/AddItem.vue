@@ -21,6 +21,8 @@
     </div>
     <form-inventory-item
       :is-active="isActive"
+      :category-id="categoryId"
+      form-type="create"
       @close="hideCreateModal()"
     />
   </div>
@@ -33,6 +35,12 @@ export default {
   name: 'AddItem',
   components: {
     FormInventoryItem,
+  },
+  props: {
+    categoryId: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {

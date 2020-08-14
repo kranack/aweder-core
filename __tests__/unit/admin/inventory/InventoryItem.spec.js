@@ -1,28 +1,27 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import InventoryItem from '@/js/components/admin/inventory/InventoryItem';
+import '@/js/filters/Currency';
 
 describe('InventoryItem', () => {
-  it('displays the available contents', () => {
-    const wrapper = mount(InventoryItem, {
-      propsData: {
+  const wrapper = shallowMount(InventoryItem, {
+    propsData: {
+      categoryId: 1,
+      item: {
         title: 'Item title',
         description: 'Item description',
-        price: '5.00',
+        price: '500',
       },
-    });
+    },
+  });
 
+  it('displays the available contents', () => {
     expect(wrapper.find('.inventory__title').text()).toContain('Item title');
-
     expect(wrapper.find('.inventory__description').text()).toContain('Item description');
-
     expect(wrapper.find('.inventory__price').text()).toContain('£5.00');
   });
 
   it('triggers the edit inventory modal to open', () => {
-    const wrapper = mount(InventoryItem);
-
     wrapper.find('.inventory__trigger').trigger('click');
-
     expect(wrapper.vm.isActive).toBe(true);
   });
 });

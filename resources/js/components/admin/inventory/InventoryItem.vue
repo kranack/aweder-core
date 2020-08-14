@@ -1,33 +1,35 @@
 <template>
   <div class="inventory__item inventory__item--edit">
-    <div class="inventory__trigger width-full flex"
-         @click="showEditModal"
+    <div
+      class="inventory__trigger width-full flex"
+      @click="showEditModal"
     >
       <div
-        v-if="image"
+        v-if="item.image"
         class="inventory__image"
       >
         <img
-          :src="image"
-          :alt="title"
+          :src="item.image"
+          :alt="item.title"
         >
       </div>
       <div class="inventory__details">
         <header class="inventory__header">
           <h3 class="inventory__title">
-            {{ title }}
+            {{ item.title }}
           </h3>
         </header>
         <p
-          v-if="description"
+          v-if="item.description"
           class="inventory__description"
         >
-          {{ description }}
+          {{ item.description }}
         </p>
-        <span class="inventory__price">£{{ price }}</span>
+        <span class="inventory__price">{{ item.price | currency }}</span>
         <div class="inventory__button">
-          <a href=""
-             class="button button--small button-outline--silver"
+          <a
+            href=""
+            class="button button--small button-outline--silver"
           >
             <span class="button__content">Edit</span>
           </a>
@@ -37,6 +39,8 @@
     <form-inventory-item
       :is-active="isActive"
       :item="item"
+      :category-id="categoryId"
+      form-type="update"
       @close="hideEditModal()"
     />
   </div>
@@ -46,47 +50,24 @@
 import FormInventoryItem from '@/js/components/shared/modal/slots/FormInventoryItem';
 
 export default {
-  name: 'EditItem',
+  name: 'InventoryItem',
   components: {
     FormInventoryItem,
   },
   props: {
-    itemId: {
-      type: String,
-      default: '',
+    item: {
+      type: Object,
+      required: true,
     },
-    title: {
-      type: String,
-      default: '',
-    },
-    description: {
-      type: String,
-      default: '',
-    },
-    price: {
-      type: String,
-      default: '',
-    },
-    image: {
-      type: String,
-      default: '',
+    categoryId: {
+      type: Number,
+      required: true,
     },
   },
   data() {
     return {
       isActive: false,
     };
-  },
-  computed: {
-    item() {
-      return {
-        itemId: this.itemId,
-        title: this.title,
-        description: this.description,
-        price: this.price,
-        image: this.image,
-      };
-    },
   },
   methods: {
     showEditModal() {

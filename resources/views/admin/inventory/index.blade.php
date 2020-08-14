@@ -13,15 +13,14 @@
             <div class="inventory__categories inventory__categories--editable width-full">
                 <add-category></add-category>
                 <div class="inventory__group inline-flex flex-col width-full">
-                    <add-item></add-item>
+                    {{-- <add-item></add-item> --}}
                 </div>
             </div>
             @if (!$fullInventory->isEmpty())
                 @foreach ($fullInventory as $category)
                     <categories
-                        category-name="{{ $category->title }}"
-                        :sub-category="1"
-                        :inventory-items="{{ json_encode($category->inventories->toArray()) }}">
+                        :category="{{ json_encode($category) }}"
+                        :sub-category="1">
                     </categories>
                 @endforeach
             @endif

@@ -2,7 +2,7 @@
   <div class="inventory__categories inline-flex flex-col width-full">
     <header class="inventory__category-name">
       <h2 class="header-three inventory__category__title">
-        {{ categoryName }}
+        {{ category.title }}
       </h2>
       <a
         class="button button--small button-outline--silver"
@@ -12,17 +12,17 @@
       </a>
     </header>
     <div class="inventory__group inline-flex flex-col width-full">
-      <add-item />
+      <add-item
+        :category-id="category.id"
+      />
       <inventory-item
-        v-for="(item, index) in inventoryItems"
+        v-for="(item, index) in category.inventories"
         :key="index"
-        :item-id="item.id"
-        :title="item.title"
-        :description="item.description"
-        :price="item.price"
+        :category-id="category.id"
+        :item="item"
       />
     </div>
-    <div
+    <!-- <div
       v-for="(category, subCategoryIndex) in subCategory"
       :key="subCategoryIndex"
       class="inventory__sub-categories inline-flex flex-col width-full"
@@ -31,7 +31,7 @@
         name="1"
         :sub-category="0"
       />
-    </div>
+    </div> -->
     <edit-category
       :is-active="isActive"
       @close="hideEditCategoryModal()"
@@ -54,21 +54,13 @@ export default {
     AddItem,
   },
   props: {
+    category: {
+      type: Object,
+      default: null,
+    },
     subCategory: {
       type: Number,
       default: 3,
-    },
-    categoryName: {
-      type: String,
-      default: '',
-    },
-    categoryId: {
-      type: String,
-      default: '',
-    },
-    inventoryItems: {
-      type: Array,
-      default: () => [],
     },
   },
   data() {
