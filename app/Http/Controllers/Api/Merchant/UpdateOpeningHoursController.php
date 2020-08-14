@@ -3,32 +3,32 @@
 namespace App\Http\Controllers\Api\Merchant;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\NormalOpeningHourResource;
+use App\Http\Requests\Api\Merchant\UpdateOpeningHoursRequest;
 use App\Merchant;
 use App\Contract\Service\NormalOpeningHoursContract;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
  * Class ShowOpeningHoursController
  * @package App\Http\Controllers\Api\Merchant
  */
-class ShowOpeningHoursController extends Controller
+class UpdateOpeningHoursController extends Controller
 {
     /**
      * @param Merchant $merchant
-     * @param Request $request
+     * @param UpdateOpeningHoursRequest $request
      * @param NormalOpeningHoursContract $hoursService
      * @return JsonResponse
      */
     public function __invoke(
         Merchant $merchant,
-        Request $request,
+        UpdateOpeningHoursRequest $request,
         NormalOpeningHoursContract $hoursService
     ): JsonResponse {
-        $openingHours = $hoursService->getHoursByTypeAndMerchant($merchant, $request->get('type'));
+        $payload = $request->validated();
+        $hoursService->updateHoursByTypeAndMerchant($payload['opening_hours'], $payload['type'], $merchant);
 
-        return response()->json(NormalOpeningHourResource::collection($openingHours), Response::HTTP_OK);
+        return response()->json(['message' => 'Updated Merchant hours'], Response::HTTP_OK);
     }
 }

@@ -229,4 +229,36 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
             ->where('is_delivery_hours', '=', 0)
             ->get();
     }
+
+    public function updateOpeningHoursByMerchant(Collection $hours, Merchant $merchant): bool
+    {
+        $hours = $hours->map(function ($hour) use ($merchant) {
+            $hour['merchant_id'] = $merchant->id;
+            $hour['is_delivery_hours'] = 1;
+            return $hour;
+        });
+
+        foreach ($hours as $hour) {
+            $openingHour = NormalOpeningHour::firstOrCreate($hour);
+            $openingHour->save();
+        }
+
+        return true;
+    }
+
+    public function updateTableServiceHoursByMerchant(Collection $hours, Merchant $merchant): bool
+    {
+        $hours = $hours->map(function ($hour) use ($merchant) {
+            $hour['merchant_id'] = $merchant->id;
+            $hour['is_delivery_hours'] = 0;
+            return $hour;
+        });
+
+        foreach ($hours as $hour) {
+            $openingHour = NormalOpeningHour::firstOrCreate($hour);
+            $openingHour->save();
+        }
+
+        return true;
+    }
 }

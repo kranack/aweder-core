@@ -42,4 +42,26 @@ class NormalOpeningHoursService implements NormalOpeningHoursContract
                 return $this->normalOpeningHoursRepository->getOpeningHoursForMerchant($merchant->id);
         }
     }
+
+    public function updateHoursByTypeAndMerchant(array $hours, string $type, Merchant $merchant): bool
+    {
+        if (!in_array($type, NormalOpeningHour::$acceptableTypes, true)) {
+            return false;
+        }
+
+        switch ($type) {
+            case NormalOpeningHour::BUSINESS_HOURS_TYPE:
+                return $this->normalOpeningHoursRepository->updateOpeningHoursByMerchant(
+                    collect($hours),
+                    $merchant
+                );
+            case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
+                return $this->normalOpeningHoursRepository->updateTableServiceHoursByMerchant(
+                    collect($hours),
+                    $merchant
+                );
+            default:
+                return false;
+        }
+    }
 }

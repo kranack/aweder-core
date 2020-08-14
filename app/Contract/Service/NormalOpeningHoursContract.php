@@ -21,4 +21,17 @@ interface NormalOpeningHoursContract
         Merchant $merchant,
         $type
     ): Collection;
+
+    /**
+     * Update the Merchant's hours from an array and by type
+     * @param array $hours
+     * @param string $type
+     * @param Merchant $merchant
+     * @return bool
+     */
+    public function updateHoursByTypeAndMerchant(
+        array $hours,
+        string $type,
+        Merchant $merchant
+    ): bool;
 }

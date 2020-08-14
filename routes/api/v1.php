@@ -17,5 +17,7 @@ Route::group(['prefix' => 'order'], function (Router $router) {
 
 Route::group(['prefix' => 'merchant'], function (Router $router) {
     $router->get('/{merchant}/openinghours', ['uses' => 'Api\\Merchant\\ShowOpeningHoursController'])
-        ->name('api.merchant.openinghours');
+        ->name('api.merchant.openinghours.show');
+    $router->post('/{merchant}/openinghours', ['uses' => 'Api\\Merchant\\UpdateOpeningHoursController'])
+        ->name('api.merchant.openinghours.update');
 });

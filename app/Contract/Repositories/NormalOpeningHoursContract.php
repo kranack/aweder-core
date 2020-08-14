@@ -47,4 +47,18 @@ interface NormalOpeningHoursContract
      * @return Collection
      */
     public function getTableServiceHoursForMerchant(Merchant $merchant): Collection;
+
+    /**
+     * @param Collection $hours
+     * @param Merchant $merchant
+     * @return bool
+     */
+    public function updateOpeningHoursByMerchant(Collection $hours, Merchant $merchant): bool;
+
+    /**
+     * @param Collection $hours
+     * @param Merchant $merchant
+     * @return bool
+     */
+    public function updateTableServiceHoursByMerchant(Collection $hours, Merchant $merchant): bool;
 }
