@@ -31,6 +31,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class NormalOpeningHour extends Model
 {
 
+    public const BUSINESS_HOURS_TYPE = 'business_hours';
+    public const TABLE_SERVICE_HOURS_TYPE = 'table_service';
+
     protected $fillable = [
         'merchant_id',
         'day_of_week',
