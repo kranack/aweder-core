@@ -6,6 +6,7 @@ use App\Contract\Repositories\NormalOpeningHoursContract as NormalOpeningHoursRe
 use App\Contract\Service\NormalOpeningHoursContract;
 use App\Merchant;
 use App\NormalOpeningHour;
+use Illuminate\Database\Eloquent\Collection as DatabaseCollection;
 use Illuminate\Support\Collection;
 use Psr\Log\LoggerInterface;
 
@@ -52,12 +53,12 @@ class NormalOpeningHoursService implements NormalOpeningHoursContract
         switch ($type) {
             case NormalOpeningHour::BUSINESS_HOURS_TYPE:
                 return $this->normalOpeningHoursRepository->updateOpeningHoursByMerchant(
-                    collect($hours),
+                    DatabaseCollection::make($hours),
                     $merchant
                 );
             case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
                 return $this->normalOpeningHoursRepository->updateTableServiceHoursByMerchant(
-                    collect($hours),
+                    DatabaseCollection::make($hours),
                     $merchant
                 );
             default:
