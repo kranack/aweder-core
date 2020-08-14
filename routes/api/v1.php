@@ -9,6 +9,8 @@ Route::group(['prefix' => 'order'], function (Router $router) {
         ->name('api.order.add');
     $router->get('/{order}', ['uses' => 'Api\\Order\\ShowController'])
         ->name('api.order.show');
+    $router->post('/{order}/table', ['uses' => 'Api\\Order\\UpdateTableController'])
+        ->name('api.order.table');
     $router->patch('/{order}/item/{itemId}', ['uses' => 'Api\\Order\\UpdateItemController'])
         ->name('api.order.item.update');
     $router->delete('/{order}/item/{itemId}', ['uses' => 'Api\\Order\\DeleteItemController'])
