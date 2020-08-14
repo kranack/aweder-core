@@ -36,33 +36,24 @@ class NormalOpeningHoursService implements NormalOpeningHoursContract
     ): Collection {
         switch ($type) {
             case NormalOpeningHour::BUSINESS_HOURS_TYPE:
-                return $this->normalOpeningHoursRepository->getOpeningHoursForMerchant($merchant->id);
+                return $this->normalOpeningHoursRepository->getBusinessHoursForMerchant($merchant->id);
             case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
                 return $this->normalOpeningHoursRepository->getTableServiceHoursForMerchant($merchant);
             default:
-                return $this->normalOpeningHoursRepository->getOpeningHoursForMerchant($merchant->id);
+                return $this->normalOpeningHoursRepository->getBusinessHoursForMerchant($merchant->id);
         }
     }
 
-    public function updateHoursByTypeAndMerchant(array $hours, string $type, Merchant $merchant): bool
+    public function updateHoursByTypeAndMerchant(Merchant $merchant, array $hours, string $type): bool
     {
         if (!in_array($type, NormalOpeningHour::$acceptableTypes, true)) {
             return false;
         }
 
-        switch ($type) {
-            case NormalOpeningHour::BUSINESS_HOURS_TYPE:
-                return $this->normalOpeningHoursRepository->updateOpeningHoursByMerchant(
-                    DatabaseCollection::make($hours),
-                    $merchant
-                );
-            case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
-                return $this->normalOpeningHoursRepository->updateTableServiceHoursByMerchant(
-                    DatabaseCollection::make($hours),
-                    $merchant
-                );
-            default:
-                return false;
-        }
+        return $this->normalOpeningHoursRepository->updateOpeningHoursByMerchantAndType(
+            $merchant,
+            DatabaseCollection::make($hours),
+            $type
+        );
     }
 }

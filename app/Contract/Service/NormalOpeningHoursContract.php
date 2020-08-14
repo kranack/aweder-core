@@ -24,14 +24,14 @@ interface NormalOpeningHoursContract
 
     /**
      * Update the Merchant's hours from an array and by type
+     * @param Merchant $merchant
      * @param array $hours
      * @param string $type
-     * @param Merchant $merchant
      * @return bool
      */
     public function updateHoursByTypeAndMerchant(
+        Merchant $merchant,
         array $hours,
-        string $type,
-        Merchant $merchant
+        string $type
     ): bool;
 }

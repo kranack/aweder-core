@@ -103,7 +103,7 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
         ];
 
         if ($this->createNormalOpeningHours($defaultHours, $merchantId)) {
-            return $this->getOpeningHoursForMerchant($merchantId);
+            return $this->getBusinessHoursForMerchant($merchantId);
         }
         return new Collection();
     }
@@ -138,7 +138,7 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
         return $merchant_hours;
     }
 
-    public function getOpeningHoursForMerchant(int $merchantId): Collection
+    public function getBusinessHoursForMerchant(int $merchantId): Collection
     {
         return $this->getModel()
             ->where('merchant_id', $merchantId)
@@ -230,27 +230,22 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
             ->get();
     }
 
-    public function updateOpeningHoursByMerchant(Collection $hours, Merchant $merchant): bool
+    public function updateOpeningHoursByMerchantAndType(Merchant $merchant, Collection $hours, string $type): bool
     {
-        $hours = $hours->map(function ($hour) use ($merchant) {
-            $hour['merchant_id'] = $merchant->id;
-            $hour['is_delivery_hours'] = 1;
-            return $hour;
-        });
-
-        foreach ($hours as $hour) {
-            $openingHour = NormalOpeningHour::firstOrCreate($hour);
-            $openingHour->save();
+        switch ($type) {
+            case NormalOpeningHour::BUSINESS_HOURS_TYPE:
+                $isDeliveryHoursField = 1;
+                break;
+            case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
+                $isDeliveryHoursField = 0;
+                break;
+            default:
+                return false;
         }
 
-        return true;
-    }
-
-    public function updateTableServiceHoursByMerchant(Collection $hours, Merchant $merchant): bool
-    {
-        $hours = $hours->map(function ($hour) use ($merchant) {
+        $hours = $hours->map(function ($hour) use ($merchant, $isDeliveryHoursField) {
             $hour['merchant_id'] = $merchant->id;
-            $hour['is_delivery_hours'] = 0;
+            $hour['is_delivery_hours'] = $isDeliveryHoursField;
             return $hour;
         });
 

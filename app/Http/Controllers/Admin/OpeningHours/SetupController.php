@@ -25,7 +25,7 @@ class SetupController extends Controller
     ): Response {
         $merchant = $auth->user()->merchants()->first();
 
-        $openingHours = $openingHoursRepo->getOpeningHoursForMerchant($merchant->id);
+        $openingHours = $openingHoursRepo->getBusinessHoursForMerchant($merchant->id);
 
         if ($openingHours->isEmpty()) {
             $openingHours = $openingHoursRepo->createDefaultOpeningHoursForMerchant($merchant->id);

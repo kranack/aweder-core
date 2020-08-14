@@ -51,8 +51,8 @@ class InventoryOptionGroupItemsRepositoryTest extends TestCase
 
         $this->assertCount(0, $inventoryOptionGroup->items()->get());
 
-        $this->repository->addItemToOptionGroup($inventoryOptionGroupItem1, $inventoryOptionGroup);
-        $this->repository->addItemToOptionGroup($inventoryOptionGroupItem2, $inventoryOptionGroup);
+        $this->repository->addItemToOptionGroup($inventoryOptionGroup, $inventoryOptionGroupItem1);
+        $this->repository->addItemToOptionGroup($inventoryOptionGroup, $inventoryOptionGroupItem2);
 
         $this->assertCount(2, $inventoryOptionGroup->items()->get());
     }
@@ -144,8 +144,7 @@ class InventoryOptionGroupItemsRepositoryTest extends TestCase
         ]);
 
         $this->assertEquals(2, $this->repository->getItemCountByIdForMerchant(
-            collect([$inventoryOptionGroupItem1->id, $inventoryOptionGroupItem2->id]),
-            $merchant
+            $merchant, collect([$inventoryOptionGroupItem1->id, $inventoryOptionGroupItem2->id])
         ));
     }
 }

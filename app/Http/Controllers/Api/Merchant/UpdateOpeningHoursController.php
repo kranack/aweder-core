@@ -27,7 +27,7 @@ class UpdateOpeningHoursController extends Controller
         NormalOpeningHoursContract $hoursService
     ): JsonResponse {
         $payload = $request->validated();
-        $return = $hoursService->updateHoursByTypeAndMerchant($payload['opening_hours'], $payload['type'], $merchant);
+        $return = $hoursService->updateHoursByTypeAndMerchant($merchant, $payload['opening_hours'], $payload['type']);
 
         if (!$return) {
             return response()->json(['message' => 'Error updating hours'], Response::HTTP_BAD_REQUEST);

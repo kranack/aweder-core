@@ -30,8 +30,7 @@ class OrderItemService implements OrderItemServiceContract
     public function updateOrderItemOptions(OrderItem $orderItem, Collection $inventoryOptions): bool
     {
         $isUpdateValid = $this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
-            $inventoryOptions,
-            $orderItem->getMerchant()
+            $orderItem->getMerchant(), $inventoryOptions
         );
 
         if (!$isUpdateValid) {

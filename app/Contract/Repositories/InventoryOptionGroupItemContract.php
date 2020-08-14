@@ -10,23 +10,23 @@ use Illuminate\Support\Collection;
 interface InventoryOptionGroupItemContract
 {
     /**
-     * @param InventoryOptionGroupItem $inventoryOptionGroupItemItem
      * @param InventoryOptionGroup $inventoryOptionGroupOptionGroup
+     * @param InventoryOptionGroupItem $inventoryOptionGroupItemItem
      * @return InventoryOptionGroupItem
      */
     public function addItemToOptionGroup(
-        InventoryOptionGroupItem $inventoryOptionGroupItemItem,
-        InventoryOptionGroup $inventoryOptionGroupOptionGroup
+        InventoryOptionGroup $inventoryOptionGroupOptionGroup,
+        InventoryOptionGroupItem $inventoryOptionGroupItemItem
     ): InventoryOptionGroupItem;
 
     /**
-     * @param Collection $itemIds
      * @param Merchant $merchant
+     * @param Collection $itemIds
      * @return int
      */
     public function getItemCountByIdForMerchant(
-        Collection $itemIds,
-        Merchant $merchant
+        Merchant $merchant,
+        Collection $itemIds
     ): int;
 
     /**
