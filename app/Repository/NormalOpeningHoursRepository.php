@@ -230,22 +230,30 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
             ->get();
     }
 
-    public function updateOpeningHoursByMerchantAndType(Merchant $merchant, Collection $hours, string $type): bool
+    public function updateBusinessOpeningHoursByMerchant(Merchant $merchant, Collection $hours): bool
     {
-        switch ($type) {
-            case NormalOpeningHour::BUSINESS_HOURS_TYPE:
-                $isDeliveryHoursField = 1;
-                break;
-            case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
-                $isDeliveryHoursField = 0;
-                break;
-            default:
-                return false;
-        }
+        return $this->updateOpeningHoursByMerchantAndDeliveryHours($merchant, $hours, 1);
+    }
 
-        $hours = $hours->map(function ($hour) use ($merchant, $isDeliveryHoursField) {
+    public function updateTableServiceHoursByMerchant(Merchant $merchant, Collection $hours): bool
+    {
+        return $this->updateOpeningHoursByMerchantAndDeliveryHours($merchant, $hours, 0);
+    }
+
+    /**
+     * @param Merchant $merchant
+     * @param Collection $hours
+     * @param bool $deliveryHoursField
+     * @return bool
+     */
+    protected function updateOpeningHoursByMerchantAndDeliveryHours(
+        Merchant $merchant,
+        Collection $hours,
+        bool $deliveryHoursField
+    ): bool {
+        $hours = $hours->map(function ($hour) use ($merchant, $deliveryHoursField) {
             $hour['merchant_id'] = $merchant->id;
-            $hour['is_delivery_hours'] = $isDeliveryHoursField;
+            $hour['is_delivery_hours'] = $deliveryHoursField;
             return $hour;
         });
 

@@ -50,10 +50,19 @@ class NormalOpeningHoursService implements NormalOpeningHoursContract
             return false;
         }
 
-        return $this->normalOpeningHoursRepository->updateOpeningHoursByMerchantAndType(
-            $merchant,
-            DatabaseCollection::make($hours),
-            $type
-        );
+        switch ($type) {
+            case NormalOpeningHour::BUSINESS_HOURS_TYPE:
+                return $this->normalOpeningHoursRepository->updateBusinessOpeningHoursByMerchant(
+                    $merchant,
+                    DatabaseCollection::make($hours)
+                );
+                break;
+            case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
+                return $this->normalOpeningHoursRepository->updateTableServiceHoursByMerchant(
+                    $merchant,
+                    DatabaseCollection::make($hours)
+                );
+                break;
+        }
     }
 }
