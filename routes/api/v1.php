@@ -15,6 +15,8 @@ Route::group(['prefix' => 'order'], function (Router $router) {
         ->name('api.order.item.update');
     $router->delete('/{order}/item/{itemId}', ['uses' => 'Api\\Order\\DeleteItemController'])
         ->name('api.order.item.delete');
+    $router->post('/{order}/status', ['uses' => 'Api\\Order\\UpdateStatusController'])
+        ->name('api.order.status.update');
 });
 
 Route::group(['prefix' => 'merchant'], function (Router $router) {
