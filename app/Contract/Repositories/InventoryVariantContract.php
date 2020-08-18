@@ -8,12 +8,12 @@ use App\InventoryVariant;
 interface InventoryVariantContract
 {
     /**
-     * @param InventoryVariant $inventoryVariant
      * @param Inventory $inventory
+     * @param InventoryVariant $inventoryVariant
      * @return InventoryVariant
      */
     public function addVariantToInventoryItem(
-        InventoryVariant $inventoryVariant,
-        Inventory $inventory
+        Inventory $inventory,
+        InventoryVariant $inventoryVariant
     ): InventoryVariant;
 }

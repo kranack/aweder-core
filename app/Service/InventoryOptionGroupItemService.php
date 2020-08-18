@@ -28,11 +28,11 @@ class InventoryOptionGroupItemService implements InventoryOptionGroupItemContrac
         $this->logger = $logger;
     }
 
-    public function validateOrderItemsBelongToMerchant(Collection $inventoryOptions, Merchant $merchant): bool
+    public function validateOrderItemsBelongToMerchant(Merchant $merchant, Collection $inventoryOptions): bool
     {
         return $inventoryOptions->count() === $this->
             inventoryOptionGroupItemRepository
-                ->getItemCountByIdForMerchant($inventoryOptions, $merchant);
+                ->getItemCountByIdForMerchant($merchant, $inventoryOptions);
     }
 
     public function getItemsFromIdArray(array $ids): ?Collection

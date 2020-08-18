@@ -47,7 +47,7 @@ class InventoryOptionGroupRepositoryTest extends TestCase
             ['name' => $inventoryOptionGroupName]
         );
 
-        $this->repository->addOptionGroupToInventoryItem($inventoryOptionGroup, $inventoryItem);
+        $this->repository->addOptionGroupToInventoryItem($inventoryItem, $inventoryOptionGroup);
 
         $this->assertCount(1, $inventoryItem->optionGroups()->get());
         $this->assertEquals($inventoryOptionGroupName, $inventoryItem->optionGroups()->first()->name);
@@ -70,7 +70,7 @@ class InventoryOptionGroupRepositoryTest extends TestCase
             ['name' => $inventoryOptionGroupName]
         );
 
-        $this->repository->addOptionGroupToInventoryItem($inventoryOptionGroup, $inventoryItem);
+        $this->repository->addOptionGroupToInventoryItem($inventoryItem, $inventoryOptionGroup);
         $inventoryOptionGroup->delete();
 
         $this->assertCount(0, $inventoryItem->optionGroups()->get());

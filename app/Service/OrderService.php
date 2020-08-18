@@ -179,8 +179,8 @@ class OrderService implements OrderContract
 
         if (isset($apiPayload['inventory_options'])) {
             $belongsToMerchant = $this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
-                collect($apiPayload['inventory_options']),
-                $order->merchant()->first()
+                $order->merchant()->first(),
+                collect($apiPayload['inventory_options'])
             );
 
             if (!$belongsToMerchant) {

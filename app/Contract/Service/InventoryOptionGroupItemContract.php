@@ -9,11 +9,11 @@ interface InventoryOptionGroupItemContract
 {
     /**
      * Uses a count query to check that the given IDs belong to the merchant
-     * @param array $inventoryOptions
      * @param Merchant $merchant
+     * @param Collection $inventoryOptions
      * @return bool
      */
-    public function validateOrderItemsBelongToMerchant(Collection $inventoryOptions, Merchant $merchant): bool;
+    public function validateOrderItemsBelongToMerchant(Merchant $merchant, Collection $inventoryOptions): bool;
 
     /**
      * @param array $ids

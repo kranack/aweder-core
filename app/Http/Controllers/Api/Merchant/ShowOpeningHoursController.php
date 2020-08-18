@@ -28,6 +28,7 @@ class ShowOpeningHoursController extends Controller
         NormalOpeningHoursContract $hoursService
     ): JsonResponse {
         $openingHours = $hoursService->getHoursByTypeAndMerchant($merchant, $request->get('type'));
+
         return response()->json(NormalOpeningHourResource::collection($openingHours), Response::HTTP_OK);
     }
 }

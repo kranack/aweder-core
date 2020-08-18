@@ -37,12 +37,12 @@ class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemCont
     }
 
     public function addItemToOptionGroup(
-        InventoryOptionGroupItem $inventoryOptionGroupItem,
-        InventoryOptionGroup $inventoryOptionGroup
+        InventoryOptionGroup $inventoryOptionGroupOptionGroup,
+        InventoryOptionGroupItem $inventoryOptionGroupItemItem
     ): InventoryOptionGroupItem {
-        $inventoryOptionGroup->items()->save($inventoryOptionGroupItem);
+        $inventoryOptionGroupOptionGroup->items()->save($inventoryOptionGroupItemItem);
 
-        return $inventoryOptionGroupItem;
+        return $inventoryOptionGroupItemItem;
     }
 
     /**
@@ -56,7 +56,7 @@ class InventoryOptionGroupItemRepository implements InventoryOptionGroupItemCont
             ->get();
     }
 
-    public function getItemCountByIdForMerchant(Collection $itemIds, Merchant $merchant): int
+    public function getItemCountByIdForMerchant(Merchant $merchant, Collection $itemIds): int
     {
         return $this->getModel()
             ->join(

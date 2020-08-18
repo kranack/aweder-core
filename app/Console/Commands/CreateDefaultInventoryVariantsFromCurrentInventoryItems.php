@@ -80,7 +80,7 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryItems extends Command
                 ]
             );
 
-            if (!$inventoryVariantRepository->addVariantToInventoryItem($variant, $inventory)) {
+            if (!$inventoryVariantRepository->addVariantToInventoryItem($inventory, $variant)) {
                 $this->error('There was an error creating a variant for item ' . $inventory->id);
             } else {
                 $inventory->update(['price' => null]);

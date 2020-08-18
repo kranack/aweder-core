@@ -35,8 +35,8 @@ class InventoryOptionGroupRepository implements InventoryOptionGroupContract
     }
 
     public function addOptionGroupToInventoryItem(
-        InventoryOptionGroup $inventoryOptionGroup,
-        Inventory $inventory
+        Inventory $inventory,
+        InventoryOptionGroup $inventoryOptionGroup
     ): InventoryOptionGroup {
         $inventory->optionGroups()->save($inventoryOptionGroup);
 

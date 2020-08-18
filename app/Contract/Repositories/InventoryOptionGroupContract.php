@@ -8,12 +8,12 @@ use App\InventoryOptionGroup;
 interface InventoryOptionGroupContract
 {
     /**
-     * @param InventoryOptionGroup $inventoryOptionGroup
      * @param Inventory $inventory
+     * @param InventoryOptionGroup $inventoryOptionGroup
      * @return InventoryOptionGroup
      */
     public function addOptionGroupToInventoryItem(
-        InventoryOptionGroup $inventoryOptionGroup,
-        Inventory $inventory
+        Inventory $inventory,
+        InventoryOptionGroup $inventoryOptionGroup
     ): InventoryOptionGroup;
 }

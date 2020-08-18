@@ -32,7 +32,7 @@ interface NormalOpeningHoursContract
      * @param int $merchantId
      * @return Collection
      */
-    public function getOpeningHoursForMerchant(int $merchantId): Collection;
+    public function getBusinessHoursForMerchant(int $merchantId): Collection;
 
     /**
      * returns an array in a format that is useable on the frontend
@@ -43,8 +43,22 @@ interface NormalOpeningHoursContract
 
     /**
      * Table service hours are worked out by is_delivery_hours being set to 0
-     * @param Merchant $merchant
+     * @param int $merchantId
      * @return Collection
      */
-    public function getTableServiceHoursForMerchant(Merchant $merchant): Collection;
+    public function getTableServiceHoursForMerchant(int $merchantId): Collection;
+
+    /**
+     * @param Merchant $merchant
+     * @param Collection $hours
+     * @return bool
+     */
+    public function updateBusinessOpeningHoursByMerchant(Merchant $merchant, Collection $hours): bool;
+
+    /**
+     * @param Merchant $merchant
+     * @param Collection $hours
+     * @return bool
+     */
+    public function updateTableServiceHoursByMerchant(Merchant $merchant, Collection $hours): bool;
 }

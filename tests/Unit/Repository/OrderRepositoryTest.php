@@ -638,18 +638,17 @@ class OrderRepositoryTest extends TestCase
         );
 
         $this->inventoryOptionGroupItemRepository->addItemToOptionGroup(
-            $inventoryOptionGroupItem,
-            $inventoryOptionGroup
+            $inventoryOptionGroup, $inventoryOptionGroupItem
         );
 
-        $this->inventoryOptionGroupRepository->addOptionGroupToInventoryItem($inventoryOptionGroup, $inventory);
+        $this->inventoryOptionGroupRepository->addOptionGroupToInventoryItem($inventory, $inventoryOptionGroup);
         $inventoryVariantName = 'Electric Blue Keyboard';
 
         $inventoryVariant = $this->createAndReturnInventoryVariant(
             ['name' => $inventoryVariantName]
         );
 
-        $this->inventoryVariantRepository->addVariantToInventoryItem($inventoryVariant, $inventory);
+        $this->inventoryVariantRepository->addVariantToInventoryItem($inventory, $inventoryVariant);
 
         $randomPrice = $this->faker->numberBetween(1, 5000);
 

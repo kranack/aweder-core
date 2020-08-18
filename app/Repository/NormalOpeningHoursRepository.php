@@ -103,7 +103,7 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
         ];
 
         if ($this->createNormalOpeningHours($defaultHours, $merchantId)) {
-            return $this->getOpeningHoursForMerchant($merchantId);
+            return $this->getBusinessHoursForMerchant($merchantId);
         }
         return new Collection();
     }
@@ -136,14 +136,6 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
         }
 
         return $merchant_hours;
-    }
-
-    public function getOpeningHoursForMerchant(int $merchantId): Collection
-    {
-        return $this->getModel()
-            ->where('merchant_id', $merchantId)
-            ->where('is_delivery_hours', 1)
-            ->get();
     }
 
     public function convertDayNameToInteger($name): ?int
@@ -222,11 +214,53 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
         return $this->model;
     }
 
-    public function getTableServiceHoursForMerchant(Merchant $merchant): Collection
+    public function getTableServiceHoursForMerchant(int $merchantId): Collection
     {
         return $this->getModel()
-            ->where('merchant_id', '=', $merchant->id)
-            ->where('is_delivery_hours', '=', 0)
+            ->where('merchant_id', '=', $merchantId)
+            ->IsTableServiceHours()
             ->get();
+    }
+
+    public function getBusinessHoursForMerchant(int $merchantId): Collection
+    {
+        return $this->getModel()
+            ->where('merchant_id', $merchantId)
+            ->IsBusinessHours()
+            ->get();
+    }
+
+    public function updateBusinessOpeningHoursByMerchant(Merchant $merchant, Collection $hours): bool
+    {
+        return $this->updateOpeningHoursByMerchantAndDeliveryHours($merchant, $hours, 1);
+    }
+
+    public function updateTableServiceHoursByMerchant(Merchant $merchant, Collection $hours): bool
+    {
+        return $this->updateOpeningHoursByMerchantAndDeliveryHours($merchant, $hours, 0);
+    }
+
+    /**
+     * @param Merchant $merchant
+     * @param Collection $hours
+     * @param bool $deliveryHoursField
+     * @return bool
+     */
+    protected function updateOpeningHoursByMerchantAndDeliveryHours(
+        Merchant $merchant,
+        Collection $hours,
+        bool $deliveryHoursField
+    ): bool {
+        $hours = $hours->map(function ($hour) use ($merchant, $deliveryHoursField) {
+            $hour['merchant_id'] = $merchant->id;
+            $hour['is_delivery_hours'] = $deliveryHoursField;
+            return $hour;
+        });
+
+        foreach ($hours as $hour) {
+            $openingHour = NormalOpeningHour::firstOrCreate($hour);
+        }
+
+        return true;
     }
 }

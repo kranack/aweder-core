@@ -35,8 +35,8 @@ class InventoryVariantRepository implements InventoryVariantContract
     }
 
     public function addVariantToInventoryItem(
-        InventoryVariant $inventoryVariant,
-        Inventory $inventory
+        Inventory $inventory,
+        InventoryVariant $inventoryVariant
     ): InventoryVariant {
         $inventory->variants()->save($inventoryVariant);
 

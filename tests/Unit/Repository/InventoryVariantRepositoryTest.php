@@ -49,7 +49,7 @@ class InventoryVariantRepositoryTest extends TestCase
             ['name' => $inventoryVariantName]
         );
 
-        $this->repository->addVariantToInventoryItem($inventoryVariant, $inventoryItem);
+        $this->repository->addVariantToInventoryItem($inventoryItem, $inventoryVariant);
 
         $this->assertCount(1, $inventoryItem->variants()->get());
         $this->assertEquals($inventoryVariantName, $inventoryItem->variants()->first()->name);
@@ -72,7 +72,7 @@ class InventoryVariantRepositoryTest extends TestCase
             ['name' => $inventoryVariantName]
         );
 
-        $this->repository->addVariantToInventoryItem($inventoryVariant, $inventoryItem);
+        $this->repository->addVariantToInventoryItem($inventoryItem, $inventoryVariant);
 
         $this->assertCount(1, $inventoryItem->variants()->get());
 
