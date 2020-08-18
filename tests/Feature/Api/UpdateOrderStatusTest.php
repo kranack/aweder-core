@@ -116,4 +116,39 @@ class UpdateOrderStatusTest extends TestCase
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
         $response->assertJsonFragment(['The selected status is invalid.']);
     }
+
+    /**
+     * @test
+     */
+    public function cannotUpdateOrderThatBelongsToDifferentMerchant(): void
+    {
+        $merchant1 = $this->createAndReturnMerchant();
+        $merchant2 = $this->createAndReturnMerchant();
+        $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant1->id]);
+
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'merchant_id' => $merchant1->id,
+            'status' => 'fulfilled'
+        ]);
+
+        $order2 = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant2->id]);
+
+        $this->assertDatabaseHas('orders', [
+            'id' => $order2->id,
+            'merchant_id' => $merchant2->id,
+            'status' => 'fulfilled'
+        ]);
+
+        $response = $this->json(
+            'POST',
+            'api/v1/order/' . $order->url_slug . '/status',
+            [
+                'merchant' => $merchant2->url_slug,
+                'status' => 'processing'
+            ]
+        );
+
+        $response->assertStatus(Response::HTTP_NOT_ACCEPTABLE);
+    }
 }
