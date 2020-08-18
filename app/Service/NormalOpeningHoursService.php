@@ -38,7 +38,7 @@ class NormalOpeningHoursService implements NormalOpeningHoursContract
             case NormalOpeningHour::BUSINESS_HOURS_TYPE:
                 return $this->normalOpeningHoursRepository->getBusinessHoursForMerchant($merchant->id);
             case NormalOpeningHour::TABLE_SERVICE_HOURS_TYPE:
-                return $this->normalOpeningHoursRepository->getTableServiceHoursForMerchant($merchant);
+                return $this->normalOpeningHoursRepository->getTableServiceHoursForMerchant($merchant->id);
             default:
                 return $this->normalOpeningHoursRepository->getBusinessHoursForMerchant($merchant->id);
         }

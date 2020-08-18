@@ -56,4 +56,14 @@ class NormalOpeningHour extends Model
     {
         return $this->belongsTo(User::class, 'merchant_id');
     }
+
+    public function scopeIsTableServiceHours($query)
+    {
+        return $query->where('is_delivery_hours', 0);
+    }
+
+    public function scopeIsBusinessHours($query)
+    {
+        return $query->where('is_delivery_hours', 1);
+    }
 }

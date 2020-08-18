@@ -138,14 +138,6 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
         return $merchant_hours;
     }
 
-    public function getBusinessHoursForMerchant(int $merchantId): Collection
-    {
-        return $this->getModel()
-            ->where('merchant_id', $merchantId)
-            ->where('is_delivery_hours', 1)
-            ->get();
-    }
-
     public function convertDayNameToInteger($name): ?int
     {
         switch ($name) {
@@ -222,11 +214,19 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
         return $this->model;
     }
 
-    public function getTableServiceHoursForMerchant(Merchant $merchant): Collection
+    public function getTableServiceHoursForMerchant(int $merchantId): Collection
     {
         return $this->getModel()
-            ->where('merchant_id', '=', $merchant->id)
-            ->where('is_delivery_hours', '=', 0)
+            ->where('merchant_id', '=', $merchantId)
+            ->IsTableServiceHours()
+            ->get();
+    }
+
+    public function getBusinessHoursForMerchant(int $merchantId): Collection
+    {
+        return $this->getModel()
+            ->where('merchant_id', $merchantId)
+            ->IsBusinessHours()
             ->get();
     }
 
@@ -259,7 +259,6 @@ class NormalOpeningHoursRepository implements NormalOpeningHoursContract
 
         foreach ($hours as $hour) {
             $openingHour = NormalOpeningHour::firstOrCreate($hour);
-            $openingHour->save();
         }
 
         return true;

@@ -43,10 +43,10 @@ interface NormalOpeningHoursContract
 
     /**
      * Table service hours are worked out by is_delivery_hours being set to 0
-     * @param Merchant $merchant
+     * @param int $merchantId
      * @return Collection
      */
-    public function getTableServiceHoursForMerchant(Merchant $merchant): Collection;
+    public function getTableServiceHoursForMerchant(int $merchantId): Collection;
 
     /**
      * @param Merchant $merchant
