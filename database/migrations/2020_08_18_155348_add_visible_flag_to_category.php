@@ -15,7 +15,7 @@ class AddVisibleFlagToCategory extends Migration
     {
         if (!Schema::hasColumn('categories', 'visible')) {
             Schema::table('categories', function (Blueprint $table) {
-                $table->boolean('visible')->default(1);
+                $table->boolean('visible')->default(1)->index('visible_categories_index');
             });
         }
     }
