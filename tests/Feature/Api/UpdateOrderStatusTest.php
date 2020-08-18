@@ -179,4 +179,30 @@ class UpdateOrderStatusTest extends TestCase
 
         $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
+
+    /**
+     * @test
+     */
+    public function cannotUpdateOrderThatDoesNotExist(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
+
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'merchant_id' => $merchant->id,
+            'status' => 'fulfilled'
+        ]);
+
+        $response = $this->json(
+            'POST',
+            'api/v1/order/' . $this->faker->word . '/status',
+            [
+                'merchant' => $merchant->url_slug,
+                'status' => 'processing'
+            ]
+        );
+
+        $response->assertStatus(Response::HTTP_NOT_FOUND);
+    }
 }
