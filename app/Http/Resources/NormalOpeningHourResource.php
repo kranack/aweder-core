@@ -18,7 +18,8 @@ class NormalOpeningHourResource extends JsonResource
         return [
             'day_of_week' => $this->day_of_week,
             'open_time' => Carbon::make($this->open_time)->format('H:i'),
-            'close_time' => Carbon::make($this->close_time)->format('H:i')
+            'close_time' => Carbon::make($this->close_time)->format('H:i'),
+            'is_delivery_hours' => $this->is_delivery_hours
         ];
     }
 }

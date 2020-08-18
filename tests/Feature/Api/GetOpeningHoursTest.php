@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Contract\Repositories\NormalOpeningHoursContract;
 use App\NormalOpeningHour;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -42,7 +43,7 @@ class GetOpeningHoursTest extends TestCase
             [
                 'merchant_id' => $merchant->id,
                 'day_of_week' => 3,
-                'open_time' => '10:00',
+                'open_time' => '11:00',
                 'close_time' => '21:00',
                 'is_delivery_hours' => 1
             ]
@@ -52,7 +53,7 @@ class GetOpeningHoursTest extends TestCase
             [
                 'merchant_id' => $merchant->id,
                 'day_of_week' => 4,
-                'open_time' => '10:00',
+                'open_time' => '12:00',
                 'close_time' => '21:00',
                 'is_delivery_hours' => 0
             ]
@@ -64,9 +65,24 @@ class GetOpeningHoursTest extends TestCase
         );
 
         $response->assertStatus(Response::HTTP_OK);
-        $response->assertJsonFragment(['day_of_week' => 2]);
-        $response->assertJsonFragment(['day_of_week' => 3]);
-        $response->assertJsonMissing(['day_of_week' => 5]);
+
+        $response->assertJsonFragment([
+            'day_of_week' => 2,
+            'open_time' => '10:00',
+            'is_delivery_hours' => 1
+        ]);
+
+        $response->assertJsonFragment([
+            'day_of_week' => 3,
+            'open_time' => '11:00',
+            'is_delivery_hours' => 1
+        ]);
+
+        $response->assertJsonMissing([
+            'day_of_week' => 4,
+            'open_time' => '12:00',
+            'is_delivery_hours' => 0
+        ]);
     }
 
     /**
@@ -76,35 +92,8 @@ class GetOpeningHoursTest extends TestCase
     {
         $merchant = $this->createAndReturnMerchant();
 
-        factory(NormalOpeningHour::class)->create(
-            [
-                'merchant_id' => $merchant->id,
-                'day_of_week' => 2,
-                'open_time' => '10:00',
-                'close_time' => '21:00',
-                'is_delivery_hours' => 1
-            ]
-        );
-
-        factory(NormalOpeningHour::class)->create(
-            [
-                'merchant_id' => $merchant->id,
-                'day_of_week' => 3,
-                'open_time' => '10:00',
-                'close_time' => '21:00',
-                'is_delivery_hours' => 1
-            ]
-        );
-
-        factory(NormalOpeningHour::class)->create(
-            [
-                'merchant_id' => $merchant->id,
-                'day_of_week' => 4,
-                'open_time' => '10:00',
-                'close_time' => '21:00',
-                'is_delivery_hours' => 0
-            ]
-        );
+        $normalOpeningHoursRepository = $this->app->make(NormalOpeningHoursContract::class);
+        $normalOpeningHoursRepository->createDefaultOpeningHoursForMerchant($merchant->id);
 
         $response = $this->json(
             'GET',
@@ -112,9 +101,15 @@ class GetOpeningHoursTest extends TestCase
         );
 
         $response->assertStatus(Response::HTTP_OK);
-        $response->assertJsonFragment(['day_of_week' => 2]);
-        $response->assertJsonFragment(['day_of_week' => 3]);
-        $response->assertJsonMissing(['day_of_week' => 5]);
+
+        for ($i = 1; $i > 7; $i++) {
+            $response->assertJsonFragment([
+                'day_of_week' => $i,
+                'open_time' => '9:00',
+                'close_time' => '17:00',
+                'is_delivery_hours' => 1
+            ]);
+        }
     }
 
     /**
