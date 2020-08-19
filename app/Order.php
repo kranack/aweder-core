@@ -66,6 +66,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDeliveryCost($value)
  * @property string|null $payment_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePaymentId($value)
+ * @property int $is_table_service
+ * @property int $is_collection
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsCollection($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsTableService($value)
+ * @property int $table_number
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereTableNumber($value)
  */
 class Order extends Model
 {
@@ -162,6 +168,7 @@ class Order extends Model
         'order_submitted',
         'payment_id',
         'customer_note',
+        'table_number'
     ];
 
     protected $dates = [
@@ -506,6 +513,14 @@ class Order extends Model
     public function hasPaymentDetails(): bool
     {
         return $this->payment_id !== null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTableService(): bool
+    {
+        return (bool) $this->is_table_service;
     }
 
     /**

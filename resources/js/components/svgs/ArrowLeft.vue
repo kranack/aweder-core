@@ -1,0 +1,12 @@
+<template>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5.34 7.87">
+  <title>arrow-left</title>
+  <path d="M4,7.89.29,4.77A.83.83,0,0,1,0,4.08.87.87,0,0,1,.29,3.4L4,.29a.82.82,0,0,1,1.14.1.81.81,0,0,1-.1,1.14L2,4.08,5,6.64A.81.81,0,0,1,4,7.88Z" transform="translate(0 -0.1)"></path>
+</svg>
+</template>
+
+<script>
+  export default {
+    name: 'ArrowLeft',
+  };
+</script>

@@ -4,11 +4,15 @@ namespace App\Service;
 
 use App\Contract\Repositories\InventoryContract;
 use App\Contract\Repositories\MerchantContract;
+use App\Contract\Service\InventoryOptionGroupItemContract;
 use App\Contract\Service\OrderContract;
 use App\Contract\Repositories\OrderContract as OrderRepositoryContract;
+use App\Contract\Repositories\InventoryOptionGroupItemContract as InventoryOptionsRepository;
 use App\Merchant;
 use App\Order;
+use App\OrderItem;
 use Psr\Log\LoggerInterface;
+use DB;
 
 class OrderService implements OrderContract
 {
@@ -26,25 +30,34 @@ class OrderService implements OrderContract
      * @var InventoryContract
      *
      */
-    protected $inventoryRepository;
+    protected InventoryContract $inventoryRepository;
+
+    /**
+     * @var InventoryOptionGroupItemContract
+     */
+    protected InventoryOptionGroupItemContract $inventoryOptionGroupItemService;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
+
+    /**
+     * @var InventoryOptionsRepository
+     */
+    private InventoryOptionsRepository $inventoryOptionGroupItemRepository;
 
     public function __construct(
         OrderRepositoryContract $orderRepository,
-        MerchantContract $merchantRepo,
-        InventoryContract $inventoryRepo,
+        MerchantContract $merchantRepository,
+        InventoryContract $inventoryRepository,
+        InventoryOptionGroupItemContract $inventoryOptionGroupItemService,
         LoggerInterface $logger
     ) {
         $this->orderRepository = $orderRepository;
-
-        $this->merchantRepository = $merchantRepo;
-
-        $this->inventoryRepository = $inventoryRepo;
-
+        $this->merchantRepository = $merchantRepository;
+        $this->inventoryRepository = $inventoryRepository;
+        $this->inventoryOptionGroupItemService = $inventoryOptionGroupItemService;
         $this->logger = $logger;
     }
 
@@ -69,7 +82,7 @@ class OrderService implements OrderContract
             $inventoryItem = $this->inventoryRepository->getItemById($itemId);
 
             if ($inventoryItem->merchant_id === $merchant->id) {
-                return $this->orderRepository->addItemToOder($order, $inventoryItem, 1);
+                return $this->orderRepository->addInventoryItemToOrder($order, $inventoryItem, 1);
             }
 
             return false;
@@ -156,5 +169,53 @@ class OrderService implements OrderContract
     public function doesOrderBelongToMerchant(Order $order, Merchant $merchant): bool
     {
         return $order->merchant_id === $merchant->id;
+    }
+
+    public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool
+    {
+        $orderItem = new OrderItem();
+        $orderItem->order_id = $order->id;
+        $orderItem->fill($apiPayload);
+
+        if (isset($apiPayload['inventory_options'])) {
+            $belongsToMerchant = $this->inventoryOptionGroupItemService->validateOrderItemsBelongToMerchant(
+                $order->merchant()->first(),
+                collect($apiPayload['inventory_options'])
+            );
+
+            if (!$belongsToMerchant) {
+                return false;
+            }
+        }
+
+        DB::beginTransaction();
+
+        if (!$this->orderRepository->addOrderItemToOrder($order, $orderItem)) {
+            // Nothing to rollback yet, so not required here.
+            return false;
+        }
+
+        if (isset($apiPayload['inventory_options'])) {
+            if (!$orderItem->inventoryOptions()->sync($apiPayload['inventory_options'])) {
+                DB::rollBack();
+                return false;
+            }
+        }
+
+        DB::commit();
+
+        return true;
+    }
+
+    public function setTableNumberOnOrder(Order $order, int $tableNumber): bool
+    {
+        if (!$order->isTableService()) {
+            return false;
+        }
+
+        $order->table_number = $tableNumber;
+        $order->save();
+
+        return true;
     }
 }

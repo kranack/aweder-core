@@ -1,0 +1,12 @@
+<template>
+  <svg viewBox="0 0 6 6">
+    <title>add</title>
+    <path d="M2.9,0a.5.5,0,0,1,.5.5V2.4H5.5a.5.5,0,0,1,0,1H3.4V5.5a.5.5,0,0,1-1,0V3.4H.5a.5.5,0,0,1,0-1H2.4V.5A.5.5,0,0,1,2.9,0Z"></path>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: 'Add',
+};
+</script>

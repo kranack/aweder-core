@@ -1,0 +1,23 @@
+.status {
+  @extend .radius-100,
+  .flex,
+  .margin-right-10;
+  width: 10px;
+  height: 10px;
+}
+
+.status--new {
+  @extend .background-carnation;
+}
+
+.status--processing {
+  @extend .background-casablanca;
+}
+
+.status--completed {
+  @extend .background-success;
+}
+
+.status--rejected {
+  @extend .background-silver;
+}

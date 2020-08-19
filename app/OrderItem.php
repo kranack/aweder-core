@@ -6,6 +6,8 @@ use App\Traits\HelperTrait;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\OrderItem
@@ -33,6 +35,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read \App\Inventory $orderInventory
  * @property-read string $formatted_u_k_price
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem multipleQuantity()
+ * @property int|null $variant_id
+ * @property string|null $title
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\InventoryOptionGroupItem[] $inventoryOptions
+ * @property-read int|null $inventory_options_count
+ * @property-read \App\InventoryVariant $inventoryVariant
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderItem whereVariantId($value)
  */
 class OrderItem extends Model
 {
@@ -40,6 +49,7 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id',
+        'variant_id',
         'quantity',
         'price',
         'inventory_id',
@@ -58,7 +68,12 @@ class OrderItem extends Model
      */
     public function inventory(): BelongsTo
     {
-        return $this->belongsTo(Inventory::class);
+        return $this->belongsTo(Inventory::class, 'inventory_id');
+    }
+
+    public function inventoryVariant(): HasOne
+    {
+        return $this->hasOne(InventoryVariant::class, 'id', 'variant_id');
     }
 
     /**
@@ -67,6 +82,14 @@ class OrderItem extends Model
     public function orderInventory(): BelongsTo
     {
         return $this->belongsTo(Inventory::class, 'inventory_id')->withTrashed();
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function inventoryOptions(): BelongsToMany
+    {
+        return $this->belongsToMany(InventoryOptionGroupItem::class);
     }
 
     /**
@@ -87,5 +110,21 @@ class OrderItem extends Model
     public function scopeMultipleQuantity($query): Builder
     {
         return $query->where('quantity', '>', 1);
+    }
+
+    /**
+     * @return Order
+     */
+    public function getOrder(): Order
+    {
+        return $this->order()->first();
+    }
+
+    /**
+     * @return Merchant
+     */
+    public function getMerchant(): ?Merchant
+    {
+        return $this->getOrder()->merchant()->first();
     }
 }

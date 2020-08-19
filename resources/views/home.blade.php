@@ -11,7 +11,7 @@
                 </div>
                 <div class="hero__image col-span-3 col-start-9 l-col-span-4 l-col-start-8 m-col-span-4 m-col-start-9 sm-col-start-2 row-span-2 row-start-1 sm-row-start-2 sm-row-span-1 sm-margin-top-60">
                     <span class="icon icon--logo-mark">
-                        @svg('logo-mark')
+                        @svg('aweder-logo-small')
                     </span>
                 </div>
             </div>

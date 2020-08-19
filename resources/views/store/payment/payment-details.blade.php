@@ -34,7 +34,7 @@
                                 :stripeConnectAccountId="$stripeConnectAccountId"
                             />
                         @endif
-                        <div class="field field--button">
+                        <div class="field field--buttons">
                             <input type="hidden" name="order_no" value="{{ $order->url_slug }}"/>
                             <button id="submit_button" type="submit" data-secret="{{ $intentSecret }}" class="button button--icon-right button--filled button--filled-carnation">
                                 <span class="button__content">Confirm order details</span>

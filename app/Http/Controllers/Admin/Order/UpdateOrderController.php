@@ -24,6 +24,6 @@ class UpdateOrderController extends Controller
         $merchant = $authManager->user()->merchants()->first();
 
         return response()
-            ->view('admin.order.view', ['merchant' => $merchant, 'order' => $order, 'bodyClass' => 'body--auth',]);
+            ->view('admin.order.view', ['merchant' => $merchant, 'order' => $order]);
     }
 }

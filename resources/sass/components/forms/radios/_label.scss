@@ -1,0 +1,7 @@
+.radio__label--small {
+  @extend .body-small;
+}
+
+.radio__label--large {
+  @extend .body-medium;
+}

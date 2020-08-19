@@ -1,0 +1,33 @@
+.dashboard-header {
+  @extend .margin-bottom-140;
+
+  @include mq(m) {
+    @include _(m-margin-bottom-100);
+  }
+}
+
+.dashboard-header--copy {
+  margin-bottom: 74px;
+
+  @include mq(m) {
+    margin-bottom: 54px;
+  }
+}
+
+.dashboard-title {
+  @extend .color-carnation;
+}
+
+.dashboard-title + p {
+  @extend .margin-top-40,
+  .body-large;
+
+  @include mq(m) {
+    @include _(m-margin-top-20);
+  }
+}
+
+.dashboard-header p a {
+  @extend .text-underline;
+  color: inherit;
+}

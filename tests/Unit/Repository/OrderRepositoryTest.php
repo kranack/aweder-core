@@ -2,7 +2,11 @@
 
 namespace Tests\Unit\Repository;
 
+use App\Contract\Repositories\InventoryOptionGroupContract;
+use App\Contract\Repositories\InventoryOptionGroupItemContract;
+use App\Contract\Repositories\InventoryVariantContract;
 use App\Contract\Repositories\OrderContract;
+use App\Contract\Repositories\OrderItemContract;
 use App\Inventory;
 use App\Merchant;
 use App\Order;
@@ -29,11 +33,35 @@ class OrderRepositoryTest extends TestCase
      */
     protected $repository;
 
+    /**
+     * @var OrderItemContract
+     */
+    protected $orderItemRepository;
+
+    /**
+     * @var InventoryOptionGroupContract
+     */
+    protected $inventoryOptionGroupRepository;
+
+    /**
+     * @var InventoryOptionGroupItemContract
+     */
+    protected $inventoryOptionGroupItemRepository;
+
+    /**
+     * @var InventoryVariantContract
+     */
+    protected $inventoryVariantRepository;
+
     public function setUp(): void
     {
         parent::setUp();
 
         $this->repository = $this->app->make(OrderContract::class);
+        $this->inventoryOptionGroupRepository = $this->app->make(InventoryOptionGroupContract::class);
+        $this->inventoryOptionGroupItemRepository = $this->app->make(InventoryOptionGroupItemContract::class);
+        $this->inventoryVariantRepository = $this->app->make(InventoryVariantContract::class);
+        $this->orderItemRepository = $this->app->make(OrderItemContract::class);
     }
 
     /**
@@ -119,7 +147,7 @@ class OrderRepositoryTest extends TestCase
      * checks that various order submission states are ok
      * @test
      * @dataProvider submittedOrders
-     * @param Order $order
+     * @param string $scope
      * @param bool $expectedStatus
      * @group OrderStatus
      */
@@ -556,6 +584,88 @@ class OrderRepositoryTest extends TestCase
         $this->assertCount(2, $result);
     }
 
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnsOrdersWithOrderItemsThatRequireVariantIdAddingToThem()
+    {
+        factory(Order::class, 4)->state('With Variant Id Missing')->create();
+
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
+
+        $this->assertCount(4, $result);
+    }
+
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnNoOrdersWhenNoneExist()
+    {
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
+
+        $this->assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     * @group VariantId
+     */
+    public function returnsOrdersWithOrderItemsThaHaveVariantId()
+    {
+        factory(Order::class, 1)->state('With Variant Id')->create();
+
+        $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
+
+        $this->assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function addOrderItemWithVariantAndOptionsToOrder(): void
+    {
+        $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
+        $order = $this->createAndReturnOrderForStatus('Purchased Order', ['merchant_id' => $merchant->id]);
+        $inventory = factory(Inventory::class)->create(['merchant_id' => $merchant->id]);
+        $inventoryOptionGroup = $this->createAndReturnInventoryOptionGroup(
+            ['name' => 'Extras']
+        );
+
+        $inventoryOptionGroupItem = $this->createAndReturnInventoryOptionGroupItem(
+            ['name' => 'Go Faster Stripes']
+        );
+
+        $this->inventoryOptionGroupItemRepository->addItemToOptionGroup(
+            $inventoryOptionGroup, $inventoryOptionGroupItem
+        );
+
+        $this->inventoryOptionGroupRepository->addOptionGroupToInventoryItem($inventory, $inventoryOptionGroup);
+        $inventoryVariantName = 'Electric Blue Keyboard';
+
+        $inventoryVariant = $this->createAndReturnInventoryVariant(
+            ['name' => $inventoryVariantName]
+        );
+
+        $this->inventoryVariantRepository->addVariantToInventoryItem($inventory, $inventoryVariant);
+
+        $randomPrice = $this->faker->numberBetween(1, 5000);
+
+        $orderItem = $this->createAndReturnOrderItem([
+            'variant_id' => $inventoryVariant->id,
+            'inventory_id' => $inventory->id,
+            'price' => $randomPrice
+        ]);
+
+        $this->orderItemRepository->addOptionToOrderItem($orderItem, $inventoryOptionGroupItem);
+        $this->assertEquals('Go Faster Stripes', $orderItem->inventoryOptions()->first()->name);
+        $this->assertEquals('Electric Blue Keyboard', $orderItem->inventoryVariant()->first()->name);
+
+        $this->repository->addOrderItemToOrder($order, $orderItem);
+        $this->assertEquals($randomPrice, $order->items()->first()->price);
+    }
+
     public function statusDataProvider(): array
     {
         return [
@@ -569,7 +679,6 @@ class OrderRepositoryTest extends TestCase
             ['unacknowledged'],
         ];
     }
-
 
     public function submittedOrders(): array
     {

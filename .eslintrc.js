@@ -32,6 +32,7 @@ module.exports = {
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'import/no-self-import': 'off',
         'no-param-reassign': [2, { 'props': false }],
         'import/no-unresolved': ['error', {
             'ignore': [ '@/' ]

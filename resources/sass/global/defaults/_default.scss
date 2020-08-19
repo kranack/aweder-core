@@ -34,11 +34,6 @@ body {
   background: transparent;
 }
 
-.admin-wrapper,
-.admin-wrapper .content {
-  height: 100%;
-}
-
 section {
   @extend .flex,
   .width-full;

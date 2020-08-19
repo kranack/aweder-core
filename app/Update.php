@@ -14,6 +14,11 @@ class Update
             ->artisan('route:cache')
             ->artisan('config:cache')
             ->artisan('event:cache')
+            ->artisan(
+                'inventory:create_default_inventory_variants_from_current_inventory',
+                ['--no-interaction' => true]
+            )
+            ->artisan('orders:add-variants-to-order-items', ['--no-interaction' => true])
             ->artisan('queue:restart'); // ->artisan('horizon:terminate');
     }
 
@@ -21,13 +26,23 @@ class Update
     {
         $run->external('composer', 'install')
             ->artisan('migrate')
-            ->artisan('cache:clear');
+            ->artisan('cache:clear')
+            ->artisan(
+                'inventory:create_default_inventory_variants_from_current_inventory',
+                ['--no-interaction' => true]
+            )
+            ->artisan('orders:add-variants-to-order-items', ['--no-interaction' => true]);
     }
 
     public function local(Runner $run)
     {
         $run->external('composer', 'install')
             ->artisan('migrate')
-            ->artisan('cache:clear');
+            ->artisan('cache:clear')
+            ->artisan(
+                'inventory:create_default_inventory_variants_from_current_inventory',
+                ['--no-interaction' => true]
+            )
+            ->artisan('orders:add-variants-to-order-items', ['--no-interaction' => true]);
     }
 }

@@ -1,0 +1,24 @@
+.cart-service {
+  @extend .padding-bottom-20,
+  .margin-bottom-20,
+  .border-width-1,
+  .border-bottom-solid,
+  .border-silver;
+}
+
+.cart-service svg {
+  @extend .margin-right-20;
+}
+
+.cart-service__content {
+  @extend .font-600,
+  .body-small,
+  .font-gibson-med;
+}
+
+.cart-service__button {
+  @extend .margin-left-auto,
+  .color-carnation,
+  .font-600,
+  .cursor-pointer;
+}

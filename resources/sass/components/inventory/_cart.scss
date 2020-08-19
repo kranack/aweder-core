@@ -1,0 +1,34 @@
+.menu__cart {
+  @extend .inline-flex,
+  .align-items-center;
+
+  @include mq(sm) {
+    @include _(sm-hidden);
+  }
+}
+
+.menu__cart p {
+  @extend .font-gibson-med,
+  .body-medium;
+}
+
+.menu__cart .icon svg {
+  max-width: 24px;
+  width: 100%;
+}
+
+.menu__cart .icon .logo-top {
+  @extend .fill-silver-4;
+}
+
+.menu__cart .icon .logo-bottom {
+  @extend .fill-silver-6;
+}
+
+.menu__cart.menu__cart--added .icon .logo-top {
+  @extend .fill-carnation;
+}
+
+.menu__cart.menu__cart--added .icon .logo-bottom {
+  @extend .fill-cloud-burst;
+}

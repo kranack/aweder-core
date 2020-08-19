@@ -22,12 +22,12 @@ class OrderRepository implements OrderContract
     /**
      * @var Order
      */
-    protected $model;
+    protected Order $model;
 
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(Order $model, LoggerInterface $logger)
     {
@@ -45,6 +45,7 @@ class OrderRepository implements OrderContract
             ->orderBy('order_submitted')
             ->get();
     }
+
 
     public function getUnprocessedOrdersBetweenPeriodWhereNoRemindersHaveBeenSentForTime(
         Carbon $start,
@@ -124,12 +125,16 @@ class OrderRepository implements OrderContract
         return true;
     }
 
-    public function addItemToOder(Order $order, Inventory $inventoryItem, int $quantity): bool
+    /**
+     * @TODO refactor this method out of the codebase since the API now adds OrderItems
+     * @deprecated
+     */
+    public function addInventoryItemToOrder(Order $order, Inventory $inventoryItem, int $quantity = 1): bool
     {
         $orderItem = new OrderItem(
             [
                 'inventory_id' => $inventoryItem->id,
-                'quantity' => 1,
+                'quantity' => $quantity,
                 'price' => $inventoryItem->price,
             ]
         );
@@ -312,5 +317,19 @@ class OrderRepository implements OrderContract
             $formattedMetrics[$frontEndKey] = $keysToSum->sum();
         }
         return $formattedMetrics;
+    }
+
+    public function getOrdersWithOrderItemsThatNeedDefaultVariantId(): Collection
+    {
+        return $this->getModel()->whereHas('items', function (Builder $query) {
+            $query->whereNull('variant_id');
+        })->get();
+    }
+
+    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): bool
+    {
+        $return = $order->items()->save($orderItem);
+
+        return $return instanceof OrderItem;
     }
 }

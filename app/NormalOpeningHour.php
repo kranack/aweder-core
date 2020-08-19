@@ -31,11 +31,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class NormalOpeningHour extends Model
 {
 
+    public const BUSINESS_HOURS_TYPE = 'business_hours';
+    public const TABLE_SERVICE_HOURS_TYPE = 'table_service';
+
+    public static array $acceptableTypes = [
+        self::BUSINESS_HOURS_TYPE,
+        self::TABLE_SERVICE_HOURS_TYPE
+    ];
+
     protected $fillable = [
         'merchant_id',
         'day_of_week',
         'open_time',
         'close_time',
+        'is_delivery_hours'
     ];
 
     protected $dates = [
@@ -46,5 +55,15 @@ class NormalOpeningHour extends Model
     public function merchant(): BelongsTo
     {
         return $this->belongsTo(User::class, 'merchant_id');
+    }
+
+    public function scopeIsTableServiceHours($query)
+    {
+        return $query->where('is_delivery_hours', 0);
+    }
+
+    public function scopeIsBusinessHours($query)
+    {
+        return $query->where('is_delivery_hours', 1);
     }
 }

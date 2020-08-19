@@ -1,0 +1,26 @@
+.checkout__merchant {
+  @extend .inline-flex,
+  .margin-bottom-40;
+}
+
+.checkout__merchant-image {
+  @extend .relative,
+  .flex,
+  .align-items-center,
+  .justify-content-center,
+  .radius-5,
+  .border-solid,
+  .border-silver,
+  .border-width-1,
+  .shrink-0;
+  width: 130px;
+  height: 130px;
+}
+
+.checkout__merchant-image + .checkout__merchant-details {
+  @extend .margin-left-40;
+}
+
+.checkout__merchant-image img {
+  @extend .width-full;
+}

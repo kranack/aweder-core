@@ -3,6 +3,7 @@
 namespace App\Contract\Repositories;
 
 use App\Inventory;
+use App\OrderItem;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -96,8 +97,16 @@ interface OrderContract
      * @param Inventory $inventoryItem
      * @param int $quantity
      * @return bool
+     * @deprecated
      */
-    public function addItemToOder(Order $order, Inventory $inventoryItem, int $quantity): bool;
+    public function addInventoryItemToOrder(Order $order, Inventory $inventoryItem, int $quantity): bool;
+
+    /**
+     * @param Order $order
+     * @param OrderItem $orderItem
+     * @return bool
+     */
+    public function addOrderItemToOrder(Order $order, OrderItem $orderItem): bool;
 
     /**
      * removes the order item from the DB
@@ -239,4 +248,11 @@ interface OrderContract
      * @return array
      */
     public function getFrontendStatusesOnly(): array;
+
+    /**
+     * Returns a collection of orders where the order item doesnt contain a variant_id allowing us to update the
+     * records
+     * @return Collection
+     */
+    public function getOrdersWithOrderItemsThatNeedDefaultVariantId(): Collection;
 }

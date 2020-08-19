@@ -12,3 +12,8 @@
     @include _(l-padding-20);
   }
 }
+
+.panel--radius-bottom {
+  @extend .border-top-none;
+  border-radius: 0 0 5px 5px;
+}

@@ -1,0 +1,33 @@
+
+.admin-wrapper,
+.admin-wrapper .content {
+  height: 100%;
+}
+
+.admin-wrapper > .content {
+  grid-template-rows: auto 1fr;
+}
+
+.admin-main {
+  @extend .padding-top-80,
+  .padding-bottom-80,
+  .align-items-start;
+  grid-template-rows: max-content;
+}
+
+.dashboard-content {
+  @extend .col-gap;
+
+  @include mq(l) {
+    @include _(l-col-gap);
+  }
+  @include mq(m) {
+    @include _(m-col-gap);
+  }
+  @include mq(sm) {
+    @include _(sm-col-gap);
+  }
+  @include mq(s) {
+    @include _(s-col-gap);
+  }
+}

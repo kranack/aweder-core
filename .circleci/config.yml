@@ -16,7 +16,7 @@ jobs:
       # for database intensive operations.
       - image: circleci/mysql:5.7-ram
         environment:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: rootpw
           MYSQL_DATABASE: uk_restaurant_testing
           MYSQL_USER: laravel
           MYSQL_PASSWORD: password
@@ -81,7 +81,7 @@ jobs:
 
       - run:
           name: Run PHPUnit
-          command: php -c ./docker/php/config/disable-xdebug.ini vendor/bin/phpunit --testdox
+          command: php -c ./docker/php/config/disable-xdebug.ini vendor/bin/phpunit -d memory_limit=4G --testdox
       - run:
           name: Run Jest
           command: npm run test:unit

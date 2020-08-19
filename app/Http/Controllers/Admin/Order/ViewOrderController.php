@@ -37,7 +37,6 @@ class ViewOrderController extends Controller
             ->view(
                 'admin.order.view',
                 [
-                    'bodyClass' => 'body--auth',
                     'merchant' => $merchant,
                     'order' => $order,
                     'predictedOrderTimeHour' => $thirtyMinutesFromOrderCreationDate->format('H'),

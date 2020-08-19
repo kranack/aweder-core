@@ -1,0 +1,30 @@
+.metric {
+  @extend .inline-flex,
+  .margin-bottom-80;
+}
+
+.metric__item {
+  @extend .flex,
+  .align-items-center,
+  .margin-right-80;
+}
+
+.metric__item:last-child {
+  @extend .margin-right-0;
+}
+
+.metric__item p {
+  @extend .body-large;
+}
+
+.metric__count {
+  @extend .flex,
+  .align-items-center,
+  .justify-content-center,
+  .radius-100,
+  .background-silver-4,
+  .margin-left-20,
+  .font-gibson-med;
+  width: 50px;
+  height: 50px;
+}

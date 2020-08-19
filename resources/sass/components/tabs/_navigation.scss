@@ -44,6 +44,14 @@
   }
 }
 
+.tab-nav--dashboard .tab-menu__item {
+  @extend .margin-right-80;
+}
+
+.tab-nav--dashboard .tab-menu__item:last-child {
+  @extend .margin-right-0;
+}
+
 .tab-menu__item:before {
   @extend .background-carnation,
   .absolute;
@@ -61,4 +69,9 @@
 
 .tab-menu__item.tab-menu__item--active:before {
   width: 100%;
+}
+
+.tab-menu__link {
+  @extend .cursor-pointer;
+  color: inherit;
 }

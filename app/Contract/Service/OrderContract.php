@@ -22,6 +22,13 @@ interface OrderContract
     public function createNewOrderForMerchant(Merchant $merchant): Order;
 
     /**
+     * @param Order $order
+     * @param int $tableNumber
+     * @return bool
+     */
+    public function setTableNumberOnOrder(Order $order, int $tableNumber): bool;
+
+    /**
      * @param Merchant $merchant
      * @param string $orderNo
      * @return Order
@@ -105,4 +112,12 @@ interface OrderContract
      * @return bool
      */
     public function doesOrderBelongToMerchant(Order $order, Merchant $merchant): bool;
+
+    /**
+     * Tries to add an order item with an atomic commit, from an API payload
+     * @param Order $order
+     * @param array $apiPayload
+     * @return bool
+     */
+    public function addOrderItemToOrderFromApiPayload(Order $order, array $apiPayload): bool;
 }

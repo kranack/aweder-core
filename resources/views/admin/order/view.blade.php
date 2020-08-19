@@ -91,7 +91,7 @@
                     <span class="form__validation-error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="field field--button">
+                <div class="field field--buttons">
                     <button class="button button--icon-right button--filled button--filled-carnation button--end">
                         <span class="button__content">Accept order</span>
                         <span class="icon icon-right">@svg('arrow-right')</span>
@@ -108,7 +108,7 @@
                         <span class="form__validation-error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="field field--button">
+                <div class="field field--buttons">
                     <button class="button button--icon-right button--outline button--outline-red button--end">
                         <span class="button__content">Reject order</span>
                         <span class="icon icon-right">@svg('arrow-right')</span>

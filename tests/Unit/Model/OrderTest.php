@@ -48,6 +48,51 @@ class OrderTest extends TestCase
     /**
      * @test
      */
+    public function tableServiceSetToFalseReturnsFalse(): void
+    {
+        $this->model->setAttribute('is_table_service', false);
+        $this->assertFalse($this->model->isTableService());
+    }
+
+    /**
+     * @test
+     */
+    public function tableServiceSetToTrueReturnsTrue(): void
+    {
+        $this->model->setAttribute('is_table_service', true);
+        $this->assertTrue($this->model->isTableService());
+    }
+
+    /**
+     * @test
+     */
+    public function tableServiceSetToNullReturnsFalse(): void
+    {
+        $this->model->setAttribute('is_table_service', null);
+        $this->assertFalse($this->model->isTableService());
+    }
+
+    /**
+     * @test
+     */
+    public function tableServiceSetTo1ReturnsTrue(): void
+    {
+        $this->model->setAttribute('is_table_service', 1);
+        $this->assertTrue($this->model->isTableService());
+    }
+
+    /**
+     * @test
+     */
+    public function tableServiceSetTo0ReturnsTrue(): void
+    {
+        $this->model->setAttribute('is_table_service', 0);
+        $this->assertFalse($this->model->isTableService());
+    }
+
+    /**
+     * @test
+     */
     public function canIdentifyDeliveryType(): void
     {
         $this->model->setAttribute('is_delivery', 1);
