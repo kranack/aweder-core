@@ -33,7 +33,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function create_categories_with_valid_data(): void
+    public function createCategoriesWithValidData(): void
     {
         $merchant_id = 123;
 
@@ -63,7 +63,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function create_categories_with_some_null_fields(): void
+    public function createCategoriesWithSomeNullFields(): void
     {
         $merchant_id = 123;
 
@@ -92,7 +92,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function create_empty_categories(): void
+    public function createEmptyCategories(): void
     {
         $merchant_id = 123;
 
@@ -115,7 +115,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function get_categories_and_inventory_with_multiple_categories_on_merchant(): void
+    public function getCategoriesAndInventoryWithMultipleCategoriesOnMerchant(): void
     {
         $merchant_id = 123;
 
@@ -151,7 +151,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function get_categories_and_inventory_with_multiple_categories_on_merchant_with_no_inventory(): void
+    public function getCategoriesAndInventoryWithMultipleCategoriesOnMerchantWithNoInventory(): void
     {
         $merchant_id = 123;
 
@@ -179,7 +179,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function update_categories_with_valid_data(): void
+    public function updateCategoriesWithValidData(): void
     {
         $merchant_id = 123;
 
@@ -214,10 +214,11 @@ class CategoriesRepositoryTest extends TestCase
             ]);
         }
     }
+
     /**
      * @test
      */
-    public function update_categories_with_invalid_keys(): void
+    public function updateCategoriesWithInvalidKeys(): void
     {
         $merchant_id = 123;
 
@@ -251,5 +252,85 @@ class CategoriesRepositoryTest extends TestCase
                 'title' => $category
             ]);
         }
+    }
+
+    /**
+     * @test
+     */
+    public function canAddCategoryToMerchant()
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+
+        $category = $this->createAndReturnCategory();
+        $this->repository->addCategoryToMerchant($merchant, $category);
+        $this->assertCount(2, $merchant->categories()->get());
+    }
+
+    /**
+     * @test
+     */
+    public function canAddSubCategoryToMerchant()
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+
+        $category = $this->createAndReturnCategory(['merchant_id' => $merchant->id]);
+        $subCategory = $this->createAndReturnCategory(['title' => 'Blurnsball']);
+
+        $this->repository->addSubCategoryToCategory($category, $subCategory);
+        $relatedCategory = $merchant->categories()->where('id', $category->id)->get()->first();
+        $this->assertEquals(
+            'Blurnsball',
+            $relatedCategory->subcategories()->first()->title
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function canRemoveSubCategoryForMerchantButStillViewItems()
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+
+        $category = $this->createAndReturnCategory(['merchant_id' => $merchant->id]);
+        $subCategory = $this->createAndReturnCategory(['title' => 'Blurnsball']);
+
+        $this->repository->addSubCategoryToCategory($category, $subCategory);
+        $relatedCategory = $merchant->categories()->where('id', $category->id)->get()->first();
+        $this->assertEquals(
+            'Blurnsball',
+            $relatedCategory->subcategories()->first()->title
+        );
+
+        $inventoryItem = $this->createAndReturnInventoryItem(
+            [
+                'merchant_id' => $merchant->id,
+                'category_id' => $subCategory->id,
+                'title' => 'Blurnsball'
+            ]
+        );
+
+        $this->assertEquals('Blurnsball', $subCategory->inventories()->first()->title);
+        $this->repository->deleteCategory($subCategory);
+
+        $this->assertDatabaseMissing(
+            'categories',
+            [
+                'id' => $subCategory->id,
+                'deleted_at' => null
+            ]
+        );
+
+        $this->assertEquals(
+            'Blurnsball',
+            $merchant->inventories()->where('title', '=', 'Blurnsball')->get()->first()->title
+        );
+    }
+
+    public function cascadeDeleteSubCategoriesWhenDeletingCategory()
+    {
+
     }
 }

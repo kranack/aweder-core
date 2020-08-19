@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Category
@@ -32,6 +33,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Category extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'merchant_id',
         'parent_category_id',

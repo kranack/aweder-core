@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Merchant;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as SupportCollection;
 use Psr\Log\LoggerInterface;
@@ -94,5 +95,20 @@ class CategoryRepository implements CategoryContract
     protected function getModel(): Category
     {
         return $this->model;
+    }
+
+    public function addCategoryToMerchant(Merchant $merchant, Category $category): bool
+    {
+        return (bool) $merchant->categories()->save($category);
+    }
+
+    public function addSubCategoryToCategory(Category $category, Category $subCategory): bool
+    {
+        return (bool) $category->subcategories()->save($subCategory);
+    }
+
+    public function deleteCategory(Category $category): bool
+    {
+        return $category->delete();
     }
 }
