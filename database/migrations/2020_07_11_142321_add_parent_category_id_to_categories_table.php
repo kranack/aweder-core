@@ -13,9 +13,11 @@ class AddParentCategoryIdToCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->bigInteger('parent_category_id')->nullable(true)->default(null)->after('merchant_id');
-        });
+        if (!Schema::hasColumn('categories', 'parent_category_id')) {
+            Schema::table('categories', function (Blueprint $table) {
+                $table->bigInteger('parent_category_id')->nullable(true)->default(null)->after('merchant_id');
+            });
+        }
     }
 
     /**
@@ -25,8 +27,10 @@ class AddParentCategoryIdToCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('parent_category_id');
-        });
+        if (Schema::hasColumn('categories', 'parent_category_id')) {
+            Schema::table('categories', function (Blueprint $table) {
+                $table->dropColumn('parent_category_id');
+            });
+        }
     }
 }

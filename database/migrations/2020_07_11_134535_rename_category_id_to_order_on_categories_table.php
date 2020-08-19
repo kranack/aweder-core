@@ -13,9 +13,11 @@ class RenameCategoryIdToOrderOnCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->renameColumn('category_id', 'order');
-        });
+        if (Schema::hasColumn('categories', 'category_id')) {
+            Schema::table('categories', function (Blueprint $table) {
+                $table->renameColumn('category_id', 'order');
+            });
+        }
     }
 
     /**
@@ -25,8 +27,10 @@ class RenameCategoryIdToOrderOnCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->renameColumn('order', 'category_id');
-        });
+        if (Schema::hasColumn('categories', 'order')) {
+            Schema::table('categories', function (Blueprint $table) {
+                $table->renameColumn('order', 'category_id');
+            });
+        }
     }
 }
