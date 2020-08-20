@@ -54,7 +54,7 @@ class OrderDetailsPostControllerTest extends TestCase
 
         $postDetails = [
             'customer_name' => $this->faker->name,
-            'customer_email' => $this->faker->safeEmail,
+            'customer_email' => 'test@aweder.net',
             'customer_address' => $this->faker->address,
             'customer_phone' => $this->faker->phoneNumber,
             'collection_type' => 'delivery',

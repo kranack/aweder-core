@@ -64,7 +64,7 @@ class UserDetailsPostControllerTest extends TestCase
     public function userCantRegisterWithWeakPassword()
     {
         $userPostDetails = [
-            'email' => $this->faker->safeEmail,
+            'email' => 'test@aweder.net',
             'password' => '123',
             'password-confirmed' => '123',
         ];
