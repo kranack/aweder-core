@@ -331,6 +331,29 @@ class CategoriesRepositoryTest extends TestCase
 
     public function cascadeDeleteSubCategoriesWhenDeletingCategory()
     {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
 
+        $category = $this->createAndReturnCategory(['merchant_id' => $merchant->id]);
+        $subCategory = $this->createAndReturnCategory();
+        $this->repository->addSubCategoryToCategory($category, $subCategory);
+
+        $this->repository->deleteCategory($category);
+
+        $this->assertDatabaseHas(
+            'categories',
+            [
+                'id' => $category->id,
+                'deleted_at' => !null
+            ]
+        );
+
+        $this->assertDatabaseHas(
+            'categories',
+            [
+                'id' => $subCategory->id,
+                'deleted_at' => !null
+            ]
+        );
     }
 }
