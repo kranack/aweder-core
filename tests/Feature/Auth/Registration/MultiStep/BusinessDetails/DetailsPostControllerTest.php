@@ -22,7 +22,7 @@ class DetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCantAccessPageWithoutBeingAuthorised()
+    public function user_cant_access_page_without_being_authorised(): void
     {
         $businessDetails = [
             'email' => $this->faker->safeEmail
@@ -38,7 +38,7 @@ class DetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCanAccessAsAuthedUserButRedirectedBackWhenMissingDetails()
+    public function user_can_access_as_authed_user_but_redirected_back_when_missing_details(): void
     {
         $user = factory(User::class)->create();
 
@@ -60,7 +60,7 @@ class DetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCanSubmitMerchantWithFullDetails()
+    public function user_can_submit_merchant_with_full_details(): void
     {
         $user = factory(User::class)->create();
 
@@ -82,7 +82,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantSubmitDeliveryChoiceWithoutDeliveryRadius()
+    public function user_cant_submit_delivery_choice_without_delivery_radius(): void
     {
         $user = factory(User::class)->create();
 
@@ -105,7 +105,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantSubmitDeliveryChoiceWithoutDeliveryCost()
+    public function user_cant_submit_delivery_choice_without_delivery_cost(): void
     {
         $user = factory(User::class)->create();
 
@@ -129,7 +129,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCanSubmitDeliveryChoiceWithAllDeliveryOptionsAsFloatCost()
+    public function user_can_submit_delivery_choice_with_all_delivery_options_as_float_cost(): void
     {
         $user = factory(User::class)->create();
 
@@ -174,7 +174,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCanSubmitBothChoiceWithAllDeliveryOptionsAsFloatCost()
+    public function user_can_submit_both_choice_with_all_delivery_options_as_float_cost(): void
     {
         $user = factory(User::class)->create();
 
@@ -218,7 +218,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantSubmiWithAnOptionThatDoesntExistAsFloatCost()
+    public function user_cant_submi_with_an_option_that_doesnt_exist_as_float_cost(): void
     {
         $user = factory(User::class)->create();
 
@@ -250,7 +250,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantSubmiWithAnOptionThatDoesntExistAndOneThatDoesAsFloatCost()
+    public function user_cant_submi_with_an_option_that_doesnt_exist_and_one_that_does_as_float_cost(): void
     {
         $user = factory(User::class)->create();
 
@@ -282,7 +282,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCanSubmitBothChoiceWithAllDeliveryOptionsAndTableAsFloatCost()
+    public function user_can_submit_both_choice_with_all_delivery_options_and_table_as_float_cost(): void
     {
         $user = factory(User::class)->create();
 
@@ -327,7 +327,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantSubmitBothChoiceWithRadiusMissing()
+    public function user_cant_submit_both_choice_with_radius_missing(): void
     {
         $user = factory(User::class)->create();
 
@@ -355,7 +355,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantSubmitBothChoiceWithCostMissing()
+    public function user_cant_submit_both_choice_with_cost_missing(): void
     {
         $user = factory(User::class)->create();
 
@@ -383,7 +383,7 @@ class DetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantSubmitWithMoreThanOneHundredAndFourtyWordDescription()
+    public function user_cant_submit_with_more_than_one_hundred_and_forty_word_description(): void
     {
         $user = factory(User::class)->create();
 

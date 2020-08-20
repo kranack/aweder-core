@@ -21,7 +21,7 @@ class StripePaymentIntegrationTest extends TestCase
     /**
      * @test
      */
-    public function authoriseWithStripButtonShows()
+    public function authorise_with_strip_button_shows(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
@@ -35,7 +35,7 @@ class StripePaymentIntegrationTest extends TestCase
     /**
      * @test
      */
-    public function deauthoriseStripeButtonShows()
+    public function deauthorise_stripe_button_shows(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 

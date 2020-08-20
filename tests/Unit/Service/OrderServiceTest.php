@@ -31,7 +31,7 @@ class OrderServiceTest extends TestCase
     /**
      * @test
      */
-    public function canUpdateTableNumber(): void
+    public function can_update_table_number(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order', ['is_table_service' => true]);
 
@@ -59,7 +59,7 @@ class OrderServiceTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateTableNumberWithString(): void
+    public function cannot_update_table_number_with_string(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order', ['is_table_service' => true]);
 
@@ -87,7 +87,7 @@ class OrderServiceTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateTableNumberWithoutTableService(): void
+    public function cannot_update_table_number_without_table_service(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order', ['is_table_service' => false]);
 

@@ -22,7 +22,7 @@ class ViewAllOrdersControllerTest extends TestCase
     /**
      * @test
      */
-    public function cantAccessPageWhenNotLoggedIn()
+    public function cant_access_page_when_not_logged_in(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
 
@@ -36,7 +36,7 @@ class ViewAllOrdersControllerTest extends TestCase
     /**
      * @test
      */
-    public function canViewOrdersPageWhenLoggedInAndNoOrders()
+    public function can_view_orders_page_when_logged_in_and_no_orders(): void
     {
         $user = factory(User::class)->create();
 
@@ -58,7 +58,7 @@ class ViewAllOrdersControllerTest extends TestCase
     /**
      * @test
      */
-    public function canViewOrderPageAndCantSeeOrdersForOtherMerchants()
+    public function can_view_order_page_and_cant_see_orders_for_other_merchants(): void
     {
         $user = factory(User::class)->create();
 
@@ -84,7 +84,7 @@ class ViewAllOrdersControllerTest extends TestCase
     /**
      *
      */
-    public function canSeeOrdersAwaitingFulfillmentForCurrentMerchant()
+    public function can_see_orders_awaiting_fulfillment_for_current_merchant(): void
     {
         $user = factory(User::class)->create();
 

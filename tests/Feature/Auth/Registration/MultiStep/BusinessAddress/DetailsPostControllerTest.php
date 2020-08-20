@@ -26,7 +26,7 @@ class DetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCantAccessPageWithoutBeingAuthorised()
+    public function user_cant_access_page_without_being_authorised(): void
     {
         $businessDetails = [
             'email' => $this->faker->safeEmail
@@ -42,7 +42,7 @@ class DetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCanAccessAsAuthedUserButRedirectedBackWhenMissingDetails()
+    public function user_can_access_as_authed_user_but_redirected_back_when_missing_details(): void
     {
         $user = factory(User::class)->create();
 
@@ -64,7 +64,7 @@ class DetailsPostControllerTest extends TestCase
      * @test
      * @group Test
      */
-    public function userCanSubmitMerchantWithFullDetails()
+    public function user_can_submit_merchant_with_full_details(): void
     {
         Mail::fake();
 

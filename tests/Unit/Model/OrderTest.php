@@ -36,7 +36,7 @@ class OrderTest extends TestCase
      * @param bool $bool
      * @param string $type
      */
-    public function getIsDeliveryOrCollectionWithValidTypes(bool $bool, string $type): void
+    public function get_is_delivery_or_collection_with_valid_types(bool $bool, string $type): void
     {
         $this->model->setAttribute('is_delivery', $bool);
 
@@ -48,7 +48,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function tableServiceSetToFalseReturnsFalse(): void
+    public function table_service_set_to_false_returns_false(): void
     {
         $this->model->setAttribute('is_table_service', false);
         $this->assertFalse($this->model->isTableService());
@@ -57,7 +57,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function tableServiceSetToTrueReturnsTrue(): void
+    public function table_service_set_to_true_returns_true(): void
     {
         $this->model->setAttribute('is_table_service', true);
         $this->assertTrue($this->model->isTableService());
@@ -66,7 +66,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function tableServiceSetToNullReturnsFalse(): void
+    public function table_service_set_to_null_returns_false(): void
     {
         $this->model->setAttribute('is_table_service', null);
         $this->assertFalse($this->model->isTableService());
@@ -75,7 +75,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function tableServiceSetTo1ReturnsTrue(): void
+    public function table_service_set_to_1_returns_true(): void
     {
         $this->model->setAttribute('is_table_service', 1);
         $this->assertTrue($this->model->isTableService());
@@ -84,7 +84,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function tableServiceSetTo0ReturnsTrue(): void
+    public function table_service_set_to_0_returns_true(): void
     {
         $this->model->setAttribute('is_table_service', 0);
         $this->assertFalse($this->model->isTableService());
@@ -93,7 +93,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function canIdentifyDeliveryType(): void
+    public function can_identify_delivery_type(): void
     {
         $this->model->setAttribute('is_delivery', 1);
         $this->assertEquals('delivery', $this->model->orderType());
@@ -102,7 +102,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function canIdentifyCollectionType(): void
+    public function can_identify_collection_type(): void
     {
         $this->model->setAttribute('is_collection', 1);
         $this->assertEquals('collection', $this->model->orderType());
@@ -111,7 +111,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function canIdentifyTableServiceType(): void
+    public function can_identify_table_service_type(): void
     {
         $this->model->setAttribute('is_table_service', 1);
         $this->assertEquals('table_service', $this->model->orderType());
@@ -120,7 +120,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function canIdentifyAsUnassignedOrderType()
+    public function can_identify_as_unassigned_order_type(): void
     {
         $this->assertEquals('unassigned', $this->model->orderType());
     }
@@ -128,7 +128,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function timeSinceCreatedWithCreatedAtOlderThan20Minutes(): void
+    public function time_since_created_with_created_at_older_than20_minutes(): void
     {
         $now = Carbon::create(2020, 03, 26, 10, 37, 35);
         Carbon::setTestNow($now);
@@ -143,7 +143,7 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function timeSinceCreatedWithCreatedAtLessThan20Minutes(): void
+    public function time_since_created_with_created_at_less_than20_minutes(): void
     {
         $now = Carbon::create(2020, 03, 26, 10, 37, 35);
         Carbon::setTestNow($now);
@@ -169,7 +169,7 @@ class OrderTest extends TestCase
      * @test
      * @dataProvider frontendStatuses
      */
-    public function frontendStatusResults(string $statusToSet, string $expectedFrontEndStatus): void
+    public function frontend_status_results(string $statusToSet, string $expectedFrontEndStatus): void
     {
         $order = $this->createAndReturnOrderForStatus('Unprocessed Order', ['status' => $statusToSet]);
 

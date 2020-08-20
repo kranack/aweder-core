@@ -19,7 +19,7 @@ class HowItWorksControllerTest extends TestCase
      *
      * @return void
      */
-    public function pageLoads()
+    public function page_loads(): void
     {
         $response = $this->get('/how-it-works');
 

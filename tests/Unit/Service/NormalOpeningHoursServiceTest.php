@@ -30,7 +30,7 @@ class NormalOpeningHoursServiceTest extends TestCase
     /**
      * @test
      */
-    public function canGetOpeningHoursForMerchant(): void
+    public function can_get_opening_hours_for_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -63,7 +63,10 @@ class NormalOpeningHoursServiceTest extends TestCase
         $this->assertCount(2, $openingHours);
     }
 
-    public function canGetTableServiceHoursForMerchant(): void
+    /**
+     * @test
+     */
+    public function can_get_table_service_hours_for_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
 

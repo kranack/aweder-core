@@ -40,7 +40,7 @@ class MerchantTest extends TestCase
         $this->assertEmpty(array_diff($expectedArray, $merchant->getMerchantAcceptableOrderTypes()));
     }
 
-    public function acceptableOrderTypeDataProvider(): array
+    public function acceptable_order_type_data_provider(): array
     {
         return [
             'collection only' => [

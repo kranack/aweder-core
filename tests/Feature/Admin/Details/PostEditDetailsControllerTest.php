@@ -24,7 +24,7 @@ class PostEditDetailsControllerTest extends TestCase
     /**
      * @test
      */
-    public function merchantTriesToUpdateWithOutBeingAuthorised()
+    public function merchant_tries_to_update_with_out_being_authorised(): void
     {
         $user = factory(User::class)->create();
 
@@ -52,7 +52,7 @@ class PostEditDetailsControllerTest extends TestCase
     /**
      * @test
      */
-    public function authorisedMerchantCanUpdateDetails()
+    public function authorised_merchant_can_update_details(): void
     {
         $user = factory(User::class)->create();
 
@@ -92,7 +92,7 @@ class PostEditDetailsControllerTest extends TestCase
     /**
      * @test
      */
-    public function authorisedMerchantCanUpdateOrderTypeOptionsDetails()
+    public function authorised_merchant_can_update_order_type_options_details(): void
     {
         $user = factory(User::class)->create();
 
@@ -134,7 +134,7 @@ class PostEditDetailsControllerTest extends TestCase
     /**
      * @test
      */
-    public function merchantUploadsLogoWhenNoLogExists()
+    public function merchant_uploads_logo_when_no_log_exists(): void
     {
         Storage::fake('s3');
 

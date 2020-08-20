@@ -23,7 +23,7 @@ class MerchantOpeningHoursTest extends TestCase
     /**
      * @test
      */
-    public function checkStoreOpenStatusShowsClosedWhenStoreIsClosedWhenNoDayOfWeekExists()
+    public function check_store_open_status_shows_closed_when_store_is_closed_when_no_day_of_week_exists(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -51,7 +51,7 @@ class MerchantOpeningHoursTest extends TestCase
      * @test
      * @group Second
      */
-    public function checkStoreOpenStatusShowsClosedWhenStoreIsClosedWhenTimeIsOutOfHours()
+    public function check_store_open_status_shows_closed_when_store_is_closed_when_time_is_out_of_hours(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -88,7 +88,7 @@ class MerchantOpeningHoursTest extends TestCase
      * @test
      * @group Second
      */
-    public function checkStoreOpenStatusShowsClosedWhenStoreIsClosedWhenTimeIsInHours()
+    public function check_store_open_status_shows_closed_when_store_is_closed_when_time_is_in_hours(): void
     {
         $merchant = $this->createAndReturnMerchant();
 

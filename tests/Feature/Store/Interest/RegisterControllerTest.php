@@ -27,7 +27,7 @@ class RegisterControllerTest extends TestCase
      * method to make sure if someone sends the form through that all items are present
      * @test
      */
-    public function submissionWithoutMissingParameters()
+    public function submission_without_missing_parameters(): void
     {
         Mail::fake();
 
@@ -51,7 +51,7 @@ class RegisterControllerTest extends TestCase
      * method to make sure if someone sends the form through that all items are present
      * @test
      */
-    public function submissionWithMissingParameters()
+    public function submission_with_missing_parameters(): void
     {
         $postData = [
             'business' => 'tester',
@@ -69,7 +69,7 @@ class RegisterControllerTest extends TestCase
     /**
      * @test
      */
-    public function submissionWithInvalidEmail()
+    public function submission_with_invalid_email(): void
     {
         $postData = [
             'business' => 'tester',
@@ -88,7 +88,7 @@ class RegisterControllerTest extends TestCase
     /**
      * @test
      */
-    public function submissionWithWrongBusinessType()
+    public function submission_with_wrong_business_type(): void
     {
         $postData = [
             'business' => 'tester',

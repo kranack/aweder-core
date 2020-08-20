@@ -29,7 +29,7 @@ class UpdateControllerTest extends TestCase
     /**
      * @test
      */
-    public function willUpdateIfLoggedInWithPayload(): void
+    public function will_update_if_logged_in_with_payload(): void
     {
         $user = factory(User::class)->create();
 
@@ -71,7 +71,7 @@ class UpdateControllerTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateInventoryIfNotLoggedIn(): void
+    public function cannot_update_inventory_if_not_logged_in(): void
     {
         $inventoryItem = $this->createAndReturnInventoryItem(
             [
@@ -100,7 +100,7 @@ class UpdateControllerTest extends TestCase
     /**
      * @test
      */
-    public function willUploadImageToStorage(): void
+    public function will_upload_image_to_storage(): void
     {
         Storage::fake('s3');
 

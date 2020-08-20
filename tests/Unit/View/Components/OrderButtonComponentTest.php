@@ -21,7 +21,7 @@ class OrderButtonComponentTest extends TestCase
     /**
      * @test
      */
-    public function buttonShowsNothingWhenStatusIsNotFulfilled()
+    public function button_shows_nothing_when_status_is_not_fulfilled(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
@@ -35,7 +35,7 @@ class OrderButtonComponentTest extends TestCase
     /**
      * @test
      */
-    public function buttonShowsNothingWhenStatusIsAcknowledged()
+    public function button_shows_nothing_when_status_is_acknowledged(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 

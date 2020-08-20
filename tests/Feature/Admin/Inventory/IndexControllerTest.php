@@ -20,7 +20,7 @@ class IndexControllerTest extends TestCase
     /**
      * @test
      */
-    public function willRedirectIfNotAuthorised(): void
+    public function will_redirect_if_not_authorised(): void
     {
         $response = $this->get('/admin/inventory');
         $response->assertRedirect('/login');
@@ -29,7 +29,7 @@ class IndexControllerTest extends TestCase
     /**
      * @test
      */
-    public function willReturnViewIfAuthorised(): void
+    public function will_return_view_if_authorised(): void
     {
         $user = factory(User::class)->create();
 

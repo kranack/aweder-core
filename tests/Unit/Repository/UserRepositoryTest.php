@@ -34,7 +34,7 @@ class UserRepositoryTest extends TestCase
      * @test
      * makes sure the user is created test
      */
-    public function createsAUserInTheDB()
+    public function creates_a_user_in_the_d_b(): void
     {
         $email =  $this->faker->safeEmail;
 

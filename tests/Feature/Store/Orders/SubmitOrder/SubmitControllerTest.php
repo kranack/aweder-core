@@ -20,7 +20,7 @@ class SubmitControllerTest extends TestCase
     /**
      * @test
      */
-    public function cannotSubmitDeliveryToCollectionOnlyMerchant()
+    public function cannot_submit_delivery_to_collection_only_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant(['allow_delivery' => 0]);
         $order = $this->createAndReturnOrderForStatus('Incomplete Order', ['merchant_id' => $merchant->id]);

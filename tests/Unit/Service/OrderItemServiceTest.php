@@ -31,7 +31,7 @@ class OrderItemServiceTest extends TestCase
     /**
      * @test
      */
-    public function canUpdateOrderItemOptions(): void
+    public function can_update_order_item_options(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', [
@@ -74,7 +74,7 @@ class OrderItemServiceTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateOrderItemOptionsWithInvalidOption(): void
+    public function cannot_update_order_item_options_with_invalid_option(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', [

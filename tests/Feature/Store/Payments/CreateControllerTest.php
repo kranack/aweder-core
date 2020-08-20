@@ -35,7 +35,7 @@ class CreateControllerTest extends TestCase
     /**
      * @test
      */
-    public function createPaymentIntentFlowWorksAsExpected(): void
+    public function create_payment_intent_flow_works_as_expected(): void
     {
         $this->markTestSkipped('These need to be re-written to handle the new flow');
         $service = Mockery::mock($this->service)->makePartial();
@@ -80,7 +80,7 @@ class CreateControllerTest extends TestCase
     /**
      * @test
      */
-    public function createPaymentIntentFlowWithFailedIntent(): void
+    public function create_payment_intent_flow_with_failed_intent(): void
     {
         $this->markTestSkipped('The test needs re-writing as this is the new card handling route');
 

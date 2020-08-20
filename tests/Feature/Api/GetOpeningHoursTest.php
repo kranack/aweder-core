@@ -25,7 +25,7 @@ class GetOpeningHoursTest extends TestCase
     /**
      * @test
      */
-    public function canViewOpeningHours(): void
+    public function can_view_opening_hours(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -88,7 +88,7 @@ class GetOpeningHoursTest extends TestCase
     /**
      * @test
      */
-    public function canGetDefaultOpeningHours(): void
+    public function can_get_default_opening_hours(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -115,7 +115,7 @@ class GetOpeningHoursTest extends TestCase
     /**
      * @test
      */
-    public function canViewTableServiceHours(): void
+    public function can_view_table_service_hours(): void
     {
         $merchant = $this->createAndReturnMerchant();
 

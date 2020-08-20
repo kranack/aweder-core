@@ -47,7 +47,7 @@ class LoginTest extends TestCase
         return sprintf('/^%s$/', str_replace('\\:seconds', '\\d+', preg_quote(__('auth.throttle'), '/')));
     }
 
-    public function testUserCanViewALoginForm()
+    public function test_user_can_view_a_login_form(): void
     {
         $response = $this->get($this->loginGetRoute());
 
@@ -55,7 +55,7 @@ class LoginTest extends TestCase
         $response->assertViewIs('auth.login');
     }
 
-    public function testUserCannotViewALoginFormWhenAuthenticated()
+    public function test_user_cannot_view_a_login_form_when_authenticated(): void
     {
         $user = factory(User::class)->make();
 
@@ -64,7 +64,7 @@ class LoginTest extends TestCase
         $response->assertRedirect($this->guestMiddlewareRoute());
     }
 
-    public function testUserCanLoginWithCorrectCredentials()
+    public function test_user_can_login_with_correct_credentials(): void
     {
         $user = factory(User::class)->create([
             'password' => Hash::make($password = 'i-love-laravel'),
@@ -79,7 +79,7 @@ class LoginTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
-    public function testRememberMeFunctionality()
+    public function test_remember_me_functionality(): void
     {
         $user = factory(User::class)->create([
             'id' => random_int(1, 100),
@@ -103,7 +103,7 @@ class LoginTest extends TestCase
         $this->assertAuthenticatedAs($user);
     }
 
-    public function testUserCannotLoginWithIncorrectPassword()
+    public function test_user_cannot_login_with_incorrect_password(): void
     {
         $user = factory(User::class)->create([
             'password' => Hash::make('i-love-laravel'),
@@ -121,7 +121,7 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotLoginWithEmailThatDoesNotExist()
+    public function test_user_cannot_login_with_email_that_does_not_exist(): void
     {
         $response = $this->from($this->loginGetRoute())->post($this->loginPostRoute(), [
             'email' => 'nobody@example.com',
@@ -135,7 +135,7 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCanLogout()
+    public function test_user_can_logout(): void
     {
         $this->be(factory(User::class)->create());
 
@@ -145,7 +145,7 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotLogoutWhenNotAuthenticated()
+    public function test_user_cannot_logout_when_not_authenticated(): void
     {
         $response = $this->post($this->logoutRoute());
 
@@ -153,7 +153,7 @@ class LoginTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotMakeMoreThanFiveAttemptsInOneMinute()
+    public function test_user_cannot_make_more_than_five_attempts_in_one_minute(): void
     {
         $user = factory(User::class)->create([
             'password' => Hash::make($password = 'i-love-laravel'),

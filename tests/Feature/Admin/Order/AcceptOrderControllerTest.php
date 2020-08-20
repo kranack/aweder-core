@@ -29,7 +29,7 @@ class AcceptOrderControllerTest extends TestCase
      * checks that a unauthenticated user cant view the route
      * @test
      */
-    public function unauthenticatedUserCantRejectAnOrder()
+    public function unauthenticated_user_cant_reject_an_order(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
 
@@ -43,7 +43,7 @@ class AcceptOrderControllerTest extends TestCase
     /**
      * @test
      */
-    public function merchantWhoHasntFinishedRegistrationCantAcceptOrder()
+    public function merchant_who_hasnt_finished_registration_cant_accept_order(): void
     {
         $user = factory(User::class)->create();
 
@@ -71,7 +71,7 @@ class AcceptOrderControllerTest extends TestCase
     /**
      * @test
      */
-    public function merchantCantAcceptOtherMerchantsOrdersForThem()
+    public function merchant_cant_accept_other_merchants_orders_for_them(): void
     {
         $user = factory(User::class)->create();
 
@@ -119,7 +119,7 @@ class AcceptOrderControllerTest extends TestCase
      * @group OwnOrder
      * This test covers the rejection of an order.
      */
-    public function merchantCanAcceptHisOwnOrder()
+    public function merchant_can_accept_their_own_order(): void
     {
         Mail::fake();
 
@@ -182,7 +182,7 @@ class AcceptOrderControllerTest extends TestCase
      * @test
      * this makes sure the status cant be changed
      */
-    public function merchantCantAcceptAnOrderThatsBeenRejected()
+    public function merchant_cant_accept_an_order_thats_been_rejected(): void
     {
         Mail::fake();
 

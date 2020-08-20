@@ -25,7 +25,7 @@ class ViewOrderControllerTest extends TestCase
      * checks that a unauthenticated user cant view the route
      * @test
      */
-    public function unauthenticatedUserCantSeeAdminOrder()
+    public function unauthenticated_user_cant_see_admin_order(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
 
@@ -39,7 +39,7 @@ class ViewOrderControllerTest extends TestCase
     /**
      * @test
      */
-    public function authenticatedUserCantViewOtherMerchantsOrders()
+    public function authenticated_user_cant_view_other_merchants_orders(): void
     {
         $user = factory(User::class)->create();
 
@@ -63,7 +63,7 @@ class ViewOrderControllerTest extends TestCase
     /**
      * @test
      */
-    public function authenticatedUserCanViewOwnMerchantOrder()
+    public function authenticated_user_can_view_own_merchant_order(): void
     {
         $user = factory(User::class)->create();
 

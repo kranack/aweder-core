@@ -21,11 +21,11 @@ class OrderDetailsControllerTest extends TestCase
     use WithFaker;
 
     /**
-     * once a customer has moved the order past the purchased stage there should be now way to change order details on
-     * that page.
+     * once a customer has moved the order past the purchased stage there should be no
+     * way to change order details on that page.
      * @test
      */
-    public function cannotViewOrderDetailsPageOnceOrderHasGonePastACustomerSubmissionStage()
+    public function cannot_view_order_details_page_once_order_has_gone_past_a_customer_submission_stage(): void
     {
         Mail::fake();
 
@@ -67,7 +67,7 @@ class OrderDetailsControllerTest extends TestCase
      * this stops a user from viewig a order details page for a different merchant to stop guess attacks
      * @test
      */
-    public function cannotViewOrderDetailsPageOfOrderThatIsWithADifferentMerchant()
+    public function cannot_view_order_details_page_of_order_that_is_with_a_different_merchant(): void
     {
         Mail::fake();
         $merchant = $this->createAndReturnMerchant();
@@ -111,7 +111,7 @@ class OrderDetailsControllerTest extends TestCase
     /**
      * @test
      */
-    public function canViewOrderDetailsForOrderThatBelongsToMerchantInTheDomain()
+    public function can_view_order_details_for_order_that_belongs_to_merchant_in_the_domain(): void
     {
         Mail::fake();
         $merchant = $this->createAndReturnMerchant();
@@ -147,7 +147,7 @@ class OrderDetailsControllerTest extends TestCase
      * @test
      * @group ValidationOrder
      */
-    public function validationCorrectWhenOrderDetailsAreNotFilledIn()
+    public function validation_correct_when_order_details_are_not_filled_in(): void
     {
         Mail::fake();
 
@@ -188,7 +188,7 @@ class OrderDetailsControllerTest extends TestCase
      * @test
      * @group OrderDelivery
      */
-    public function settingIncorrectDeliveryTypeForMerchantToMakeSureAResponseIsReturned()
+    public function setting_incorrect_delivery_type_for_merchant_to_make_sure_a_response_is_returned(): void
     {
         $this->markTestSkipped('This test will need to change now when the new flow is in place.');
         Mail::fake();

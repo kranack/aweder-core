@@ -33,7 +33,7 @@ class InventoryOptionGroupItemsRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canAddItemsToOptionGroup(): void
+    public function can_add_items_to_option_group(): void
     {
         $inventoryOptionGroupName = 'Musical Equipment';
 
@@ -60,7 +60,7 @@ class InventoryOptionGroupItemsRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getCorrectAmountOfInventoryItemsFromArray()
+    public function get_correct_amount_of_inventory_items_from_array(): void
     {
         $inventoryOptionGroupItem1 = $this->createAndReturnInventoryOptionGroupItem(
             ['name' => 'Pioneer Turntable']
@@ -87,7 +87,7 @@ class InventoryOptionGroupItemsRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getCorrectCountByIdsForMerchant()
+    public function get_correct_count_by_ids_for_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $merchant2 = $this->createAndReturnMerchant();

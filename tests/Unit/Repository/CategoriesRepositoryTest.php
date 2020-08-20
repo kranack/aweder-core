@@ -33,7 +33,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function createCategoriesWithValidData(): void
+    public function create_categories_with_valid_data(): void
     {
         $merchant_id = 123;
 
@@ -63,7 +63,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function createCategoriesWithSomeNullFields(): void
+    public function create_categories_with_some_null_fields(): void
     {
         $merchant_id = 123;
 
@@ -92,7 +92,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function createEmptyCategories(): void
+    public function create_empty_categories(): void
     {
         $merchant_id = 123;
 
@@ -115,7 +115,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getCategoriesAndInventoryWithMultipleCategoriesOnMerchant(): void
+    public function get_categories_and_inventory_with_multiple_categories_on_merchant(): void
     {
         $merchant_id = 123;
 
@@ -151,7 +151,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getCategoriesAndInventoryWithMultipleCategoriesOnMerchantWithNoInventory(): void
+    public function get_categories_and_inventory_with_multiple_categories_on_merchant_with_no_inventory(): void
     {
         $merchant_id = 123;
 
@@ -179,7 +179,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function updateCategoriesWithValidData(): void
+    public function update_categories_with_valid_data(): void
     {
         $merchant_id = 123;
 
@@ -218,7 +218,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function updateCategoriesWithInvalidKeys(): void
+    public function update_categories_with_invalid_keys(): void
     {
         $merchant_id = 123;
 
@@ -257,7 +257,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canAddCategoryToMerchant()
+    public function can_add_category_to_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $this->assertCount(1, $merchant->categories()->get());
@@ -270,7 +270,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canAddSubCategoryToMerchant()
+    public function can_add_sub_category_to_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $this->assertCount(1, $merchant->categories()->get());
@@ -279,7 +279,7 @@ class CategoriesRepositoryTest extends TestCase
         $subCategory = $this->createAndReturnCategory(['title' => 'Blurnsball']);
 
         $this->repository->addSubCategoryToCategory($category, $subCategory);
-        $relatedCategory = $merchant->categories()->where('id', $category->id)->get()->first();
+        $relatedCategory = $merchant->categories()->where('id', $category->id)->first();
         $this->assertEquals(
             'Blurnsball',
             $relatedCategory->subcategories()->first()->title
@@ -289,7 +289,7 @@ class CategoriesRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canRemoveSubCategoryForMerchantButStillViewItems()
+    public function can_remove_sub_category_for_merchant_but_still_view_items(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $this->assertCount(1, $merchant->categories()->get());
@@ -298,7 +298,7 @@ class CategoriesRepositoryTest extends TestCase
         $subCategory = $this->createAndReturnCategory(['title' => 'Blurnsball']);
 
         $this->repository->addSubCategoryToCategory($category, $subCategory);
-        $relatedCategory = $merchant->categories()->where('id', $category->id)->get()->first();
+        $relatedCategory = $merchant->categories()->where('id', $category->id)->first();
         $this->assertEquals(
             'Blurnsball',
             $relatedCategory->subcategories()->first()->title
@@ -325,11 +325,11 @@ class CategoriesRepositoryTest extends TestCase
 
         $this->assertEquals(
             'Blurnsball',
-            $merchant->inventories()->where('title', '=', 'Blurnsball')->get()->first()->title
+            $merchant->inventories()->where('title', '=', 'Blurnsball')->first()->title
         );
     }
 
-    public function cascadeDeleteSubCategoriesWhenDeletingCategory()
+    public function cascade_delete_sub_categories_when_deleting_category(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $this->assertCount(1, $merchant->categories()->get());

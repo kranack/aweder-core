@@ -33,7 +33,7 @@ class InventoryOptionGroupRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canAddOptionGroupToInventory(): void
+    public function can_add_option_group_to_inventory(): void
     {
         $inventoryItem = $this->createAndReturnInventoryItem(['title' => 'Turntable']);
 
@@ -56,7 +56,7 @@ class InventoryOptionGroupRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canRemoveOptionGroupFromInventory()
+    public function can_remove_option_group_from_inventory(): void
     {
         $inventoryItem = $this->createAndReturnInventoryItem(['title' => 'Turntable']);
 

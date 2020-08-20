@@ -24,7 +24,7 @@ class MaxWordsRuleTest extends TestCase
     /**
      * @test
      */
-    public function belowMinWordsPassesValidation(): void
+    public function below_min_words_passes_validation(): void
     {
         $words = $this->faker->words(199, true);
 
@@ -34,7 +34,7 @@ class MaxWordsRuleTest extends TestCase
     /**
      * @test
      */
-    public function aboveMaxWordsReturnsFalse(): void
+    public function above_max_words_returns_false(): void
     {
         $words = $this->faker->words(300, true);
         $rule = new MaxWordsRule(200);

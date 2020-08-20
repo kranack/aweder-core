@@ -16,7 +16,7 @@ class DisplayItemTest extends TestCase
     /**
      * @test
      */
-    public function itemDescriptionIsVisible()
+    public function item_description_is_visible(): void
     {
         $merchant = $this->createAndReturnMerchant();
 

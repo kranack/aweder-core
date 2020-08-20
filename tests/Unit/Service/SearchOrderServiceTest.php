@@ -47,7 +47,7 @@ class SearchOrderServiceTest extends TestCase
      * @test
      * @return void
      */
-    public function searchByEmail()
+    public function search_by_email()
     {
         $user = factory(User::class)->create();
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 3]);

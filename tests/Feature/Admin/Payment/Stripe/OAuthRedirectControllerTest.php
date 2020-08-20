@@ -24,7 +24,7 @@ class OAuthRedirectControllerTest extends TestCase
     /**
      * @test
      */
-    public function useCantReachRouteWithoutBeingLoggedIn()
+    public function use_cant_reach_route_without_being_logged_in(): void
     {
         $response = $this->get(route('admin.stripe-oauth.redirect'));
 
@@ -36,7 +36,7 @@ class OAuthRedirectControllerTest extends TestCase
     /**
      * @test
      */
-    public function missMatchingStateReturnsInvalidRequest()
+    public function miss_matching_state_returns_invalid_request(): void
     {
         $user = factory(User::class)->create();
 
@@ -60,7 +60,7 @@ class OAuthRedirectControllerTest extends TestCase
      * @group CorrectState
      *
      */
-    public function correctStateButNoCodePresent()
+    public function correct_state_but_no_code_present(): void
     {
         $user = factory(User::class)->create();
 
@@ -93,7 +93,7 @@ class OAuthRedirectControllerTest extends TestCase
     /**
      * @test
      */
-    public function testRedirectHasErrorPresentAndHandlesAsExpected()
+    public function test_redirect_has_error_present_and_handles_as_expected(): void
     {
         $user = factory(User::class)->create();
 
@@ -121,7 +121,7 @@ class OAuthRedirectControllerTest extends TestCase
      *
      * @test
      */
-    public function correctStateAndCodePresentCheckingReturnedCorrectly()
+    public function correct_state_and_code_present_checking_returned_correctly(): void
     {
         $user = factory(User::class)->create();
 

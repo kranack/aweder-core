@@ -29,7 +29,7 @@ class StripeServiceTest extends TestCase
     /**
      * @test
      */
-    public function noStripeIntentFoundReturnsNull()
+    public function no_stripe_intent_found_returns_null(): void
     {
         $fakeStripeId = $this->faker->uuid;
 

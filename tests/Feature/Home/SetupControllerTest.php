@@ -20,7 +20,7 @@ class SetupControllerTest extends TestCase
      *
      * @return void
      */
-    public function homepageLoads(): void
+    public function homepage_loads(): void
     {
         $response = $this->get('/');
 

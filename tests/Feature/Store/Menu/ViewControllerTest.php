@@ -24,7 +24,7 @@ class ViewControllerTest extends TestCase
      * @test
      * @return void
      */
-    public function validStore()
+    public function valid_store(): void
     {
         $merchant = factory(Merchant::class)->create(['logo' => null]);
 
@@ -40,7 +40,7 @@ class ViewControllerTest extends TestCase
      * @test
      * @return void
      */
-    public function invalidStore()
+    public function invalid_store(): void
     {
         $response = $this->call('GET', '/invalid-store-of-my-making');
 
@@ -51,7 +51,7 @@ class ViewControllerTest extends TestCase
      * tests that the cart can accept orders
      * @test
      */
-    public function canAddItemToCartForANewOrder()
+    public function can_add_item_to_cart_for_a_new_order(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -77,7 +77,7 @@ class ViewControllerTest extends TestCase
      * @group Test
      * makes sure that the order detail page is visible and that the correct database items are setp
      */
-    public function canPlaceOrderAndBeDirectedToOrderDetailsPage()
+    public function can_place_order_and_be_directed_to_order_details_page(): void
     {
         $merchant = $this->createAndReturnMerchant(
             [
@@ -138,7 +138,7 @@ class ViewControllerTest extends TestCase
      * that page.
      * @test
      */
-    public function cannotViewOrderDetailsPageOnceOrderHasGonePastACustomerSubmissionStage()
+    public function cannot_view_order_details_page_once_order_has_gone_past_a_customer_submission_stage(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -177,7 +177,7 @@ class ViewControllerTest extends TestCase
     /**
      * @test
      */
-    public function checkThatDisabledInventoryItemsAreNotVisible()
+    public function check_that_disabled_inventory_items_are_not_visible(): void
     {
         $merchant = $this->createAndReturnMerchant(['logo' => null]);
 
@@ -202,7 +202,7 @@ class ViewControllerTest extends TestCase
     /**
      * @test
      */
-    public function checkThatInventoryItemsAreVisible()
+    public function check_that_inventory_items_are_visible(): void
     {
         $merchant = $this->createAndReturnMerchant(['logo' => null]);
 

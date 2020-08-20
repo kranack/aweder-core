@@ -67,7 +67,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function onlyReturnsUnprocessedOrdersInCreatedOrderForSpecifiedTimePeriod(): void
+    public function only_returns_unprocessed_orders_in_created_order_for_specified_time_period(): void
     {
         $unprocessedOrder = factory(Order::class)->state('Unprocessed Order')->create([
             'created_at' => Carbon::parse()->subMinutes(30),
@@ -102,7 +102,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * checks that a blank order is saved on creation
      */
-    public function savesIncompleteStatusForNewOrder(): void
+    public function saves_incomplete_status_for_new_order(): void
     {
         $status = 'incomplete';
 
@@ -116,7 +116,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function makeSureItemQuantityIsUpdated(): void
+    public function make_sure_item_quantity_is_updated(): void
     {
         $order = factory(Order::class)->create();
 
@@ -151,7 +151,7 @@ class OrderRepositoryTest extends TestCase
      * @param bool $expectedStatus
      * @group OrderStatus
      */
-    public function orderPreviouslySubmittedCheck(string $scope, bool $expectedStatus): void
+    public function order_previously_submitted_check(string $scope, bool $expectedStatus): void
     {
         $order = factory(Order::class)->state($scope)->create();
 
@@ -163,7 +163,7 @@ class OrderRepositoryTest extends TestCase
      * @dataProvider statusDataProvider
      * @param $status
      */
-    public function getOrdersByMerchantAndStatusReturnsOrdersByMerchantUsingStatus($status): void
+    public function get_orders_by_merchant_and_status_returns_orders_by_merchant_using_status($status): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -183,7 +183,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group UnprocessedOrders
      */
-    public function getUnprocessedOrdersBetweenPeriodWhereNoRemindersHaveBeenSentForTimeWithNoOrderRemindersSet(): void
+    public function get_unprocessed_orders_between_period_where_no_reminders_have_been_sent_for_time_with_no_order_reminders_set(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -211,7 +211,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group UnprocessedOrders
      */
-    public function getUnprocessedOrdersBetweenPeriodWhereNoRemindersHaveBeenSentForTimeWithOrderRemindersSet(): void
+    public function get_unprocessed_orders_between_period_where_no_reminders_have_been_sent_for_time_with_order_reminders_set(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -247,7 +247,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group UnprocessedOrders
      */
-    public function getUnprocessedOrdersBetweenPeriodWhereNoRemindersHaveBeenSentForTimeWithMixedOrderRemindersSet(): void
+    public function get_unprocessed_orders_between_period_where_no_reminders_have_been_sent_for_time_with_mixed_order_reminders_set(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -289,7 +289,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group UnprocessedOrders
      */
-    public function getUnprocessedOrdersBetweenPeriodWhereNoRemindersHaveBeenSentForTimeWithVariousOrdersTimeSlots(): void
+    public function get_unprocessed_orders_between_period_where_no_reminders_have_been_sent_for_time_with_various_orders_time_slots(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -337,7 +337,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group UnprocessedOrders
      */
-    public function getUnprocessedOrdersBetweenPeriodWhereNoRemindersHaveBeenSentForTimeWithVariousOrdersTimeSlotsOne(): void
+    public function get_unprocessed_orders_between_period_where_no_reminders_have_been_sent_for_time_with_various_orders_time_slots_one(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -390,7 +390,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function onlyReturnsValidOrdersInStatusChecks(): void
+    public function only_returns_valid_orders_in_status_checks(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -410,7 +410,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function noOrdersReturnedForDifferentMerchant(): void
+    public function no_orders_returned_for_different_merchant(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -432,7 +432,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getDashboardMetricsForMerchantWithOrders(): void
+    public function get_dashboard_metrics_for_merchant_with_orders(): void
     {
         $merchant = factory(Merchant::class)->create();
         $fulfilledOrders = random_int(1, 15);
@@ -460,7 +460,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getTransformedDashboardMetricsForMerchant(): void
+    public function get_transformed_dashboard_metrics_for_merchant(): void
     {
         $merchant = factory(Merchant::class)->create();
         $acknowledgedOrders = random_int(1, 15);
@@ -488,7 +488,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getTransformedDashboardMetricsFilteredByWeek(): void
+    public function get_transformed_dashboard_metrics_filtered_by_week(): void
     {
         $merchant = factory(Merchant::class)->create();
         $acknowledgedOrders = random_int(1, 15);
@@ -519,7 +519,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function getDashboardMetricsForMerchantWithoutOrders(): void
+    public function get_dashboard_metrics_for_merchant_without_orders(): void
     {
         $merchant = factory(Merchant::class)->create();
         $orderRepository = $this->app->make(OrderContract::class);
@@ -534,7 +534,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function checkUnknownStatusReturned(): void
+    public function check_unknown_status_returned(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
@@ -548,7 +548,7 @@ class OrderRepositoryTest extends TestCase
     /*
      * @test
      */
-    public function retrieveOnlyStatusOrdersRequested(): void
+    public function retrieve_only_status_orders_requested(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -588,7 +588,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group VariantId
      */
-    public function returnsOrdersWithOrderItemsThatRequireVariantIdAddingToThem()
+    public function returns_orders_with_order_items_that_require_variant_id_adding_to_them(): void
     {
         factory(Order::class, 4)->state('With Variant Id Missing')->create();
 
@@ -601,7 +601,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group VariantId
      */
-    public function returnNoOrdersWhenNoneExist()
+    public function return_no_orders_when_none_exist(): void
     {
         $result = $this->repository->getOrdersWithOrderItemsThatNeedDefaultVariantId();
 
@@ -612,7 +612,7 @@ class OrderRepositoryTest extends TestCase
      * @test
      * @group VariantId
      */
-    public function returnsOrdersWithOrderItemsThaHaveVariantId()
+    public function returns_orders_with_order_items_tha_have_variant_id(): void
     {
         factory(Order::class, 1)->state('With Variant Id')->create();
 
@@ -624,7 +624,7 @@ class OrderRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function addOrderItemWithVariantAndOptionsToOrder(): void
+    public function add_order_item_with_variant_and_options_to_order(): void
     {
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
         $order = $this->createAndReturnOrderForStatus('Purchased Order', ['merchant_id' => $merchant->id]);

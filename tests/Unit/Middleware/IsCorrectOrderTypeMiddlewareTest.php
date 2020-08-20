@@ -22,7 +22,7 @@ class IsCorrectOrderTypeMiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function canAddTableServiceItemToTableServiceOrder(): void
+    public function can_add_table_service_item_to_table_service_order(): void
     {
         $user = factory(User::class)->create();
         $merchant = factory(Merchant::class)->create();
@@ -57,7 +57,7 @@ class IsCorrectOrderTypeMiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function cannotAddDeliveryToTableServiceOrder(): void
+    public function cannot_add_delivery_to_table_service_order(): void
     {
         $user = factory(User::class)->create();
         $merchant = factory(Merchant::class)->create();

@@ -26,7 +26,7 @@ class InventoryTest extends TestCase
     /**
      * @test
      */
-    public function inventoryCreatedWithVariantsIsSaved(): void
+    public function inventory_created_with_variants_is_saved(): void
     {
         $inventory = factory(Inventory::class)->state('variants')->create();
 
@@ -36,7 +36,7 @@ class InventoryTest extends TestCase
     /**
      * @test
      */
-    public function inventoryCreatedWithNoVariants(): void
+    public function inventory_created_with_no_variants(): void
     {
         $inventory = factory(Inventory::class)->create();
 

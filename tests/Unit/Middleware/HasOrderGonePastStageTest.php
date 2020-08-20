@@ -29,7 +29,7 @@ class HasOrderGonePastStageTest extends TestCase
      * @dataProvider hasNotGonePastStageProvider
      * @test
      */
-    public function willPassThroughMiddlewareWhenUserHasNotGonePastOrderStage(array $providedData)
+    public function will_pass_through_middleware_when_user_has_not_gone_past_order_stage(array $providedData): void
     {
         $user = factory(User::class)->create();
 
@@ -60,7 +60,7 @@ class HasOrderGonePastStageTest extends TestCase
         $this->assertNull($response);
     }
 
-    public function hasNotGonePastStageProvider(): array
+    public function has_not_gone_past_stage_provider(): array
     {
         return [
             'User can accept order that is not already accepted' => [
@@ -84,7 +84,7 @@ class HasOrderGonePastStageTest extends TestCase
      * @dataProvider hasAlreadyGonePastStageProvider
      * @test
      */
-    public function willRedirectUserIfOrderHasAlreadyGonePastStage(array $providedData)
+    public function will_redirect_user_if_order_has_already_gone_past_stage(array $providedData): void
     {
         $user = factory(User::class)->create();
 

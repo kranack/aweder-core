@@ -23,10 +23,10 @@ class UpdateOpeningHoursTest extends TestCase
     /**
      * @test
      */
-    public function canApiUpdateOpeningHours(): void
+    public function can_api_update_opening_hours(): void
     {
         $merchant = $this->createAndReturnMerchant();
-        $existingOpeningHour = $merchant->openingHours()->get()->first();
+        $existingOpeningHour = $merchant->openingHours()->first();
         $existingOpeningHour->day_of_week = 5;
         $existingOpeningHour->save();
 
@@ -101,7 +101,7 @@ class UpdateOpeningHoursTest extends TestCase
     /**
      * @test
      */
-    public function canApiUpdateTableServiceHours(): void
+    public function can_api_update_table_service_hours(): void
     {
         $merchant = $this->createAndReturnMerchant();
 
@@ -165,7 +165,7 @@ class UpdateOpeningHoursTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateOpeningHoursWithUndefinedType(): void
+    public function cannot_update_opening_hours_with_undefined_type(): void
     {
         $merchant = $this->createAndReturnMerchant();
 

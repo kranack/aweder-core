@@ -28,7 +28,7 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryTest extends TestCase
     /**
      * @test
      */
-    public function commandOutputsNothingFoundWhenNoInventoryItemsPresent()
+    public function command_outputs_nothing_found_when_no_inventory_items_present(): void
     {
         $this->artisan('inventory:create_default_inventory_variants_from_current_inventory')
             ->expectsOutput('No items to update')
@@ -38,7 +38,7 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryTest extends TestCase
     /**
      * @test
      */
-    public function commandOutputsTotalCountOfFoundInventoryItemsNeededConverting()
+    public function command_outputs_total_count_of_found_inventory_items_needed_converting(): void
     {
         factory(Inventory::class, 10)->create();
 
@@ -50,7 +50,7 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryTest extends TestCase
     /**
      * @test
      */
-    public function commandCreatesIndividualInventoryVariantForInventoryItem()
+    public function command_creates_individual_inventory_variant_for_inventory_item(): void
     {
         $inventory = factory(Inventory::class)->create();
 
@@ -79,7 +79,7 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryTest extends TestCase
     /**
      * @test
      */
-    public function commandDoesNotRunInProduction()
+    public function command_does_not_run_in_production(): void
     {
         app()->detectEnvironment(function () {
             return 'production';
@@ -103,7 +103,7 @@ class CreateDefaultInventoryVariantsFromCurrentInventoryTest extends TestCase
     /**
      * @test
      */
-    public function commandDoesRunInProduction()
+    public function command_does_run_in_production(): void
     {
         app()->detectEnvironment(function () {
             return 'production';

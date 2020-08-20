@@ -25,7 +25,7 @@ class DeleteOrderItemTest extends TestCase
     /**
      * @test
      */
-    public function canDeleteItemFromOrder(): void
+    public function can_delete_item_from_order(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -49,7 +49,7 @@ class DeleteOrderItemTest extends TestCase
     /**
      * @test
      */
-    public function cannotDeleteItemIdOnDifferentOrder(): void
+    public function cannot_delete_item_id_on_different_order(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -80,7 +80,7 @@ class DeleteOrderItemTest extends TestCase
     /**
      * @test
      */
-    public function cannotDeleteItemWithoutMerchant(): void
+    public function cannot_delete_item_without_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);

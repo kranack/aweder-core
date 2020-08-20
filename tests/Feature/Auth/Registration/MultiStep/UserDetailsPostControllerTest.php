@@ -23,7 +23,7 @@ class UserDetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCantRegisterWithOutPassword()
+    public function user_cant_register_with_out_password(): void
     {
         $userPostDetails = [
             'email' => $this->faker->safeEmail
@@ -41,7 +41,7 @@ class UserDetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCantRegisterWithMatchingPassword()
+    public function userCantRegisterWithMatchingPassword(): void
     {
         $userPostDetails = [
             'email' => $this->faker->safeEmail,
@@ -61,7 +61,7 @@ class UserDetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCantRegisterWithWeakPassword()
+    public function userCantRegisterWithWeakPassword(): void
     {
         $userPostDetails = [
             'email' => 'test@aweder.net',
@@ -81,7 +81,7 @@ class UserDetailsPostControllerTest extends TestCase
      * @test
      *
      */
-    public function userCanRegisterWithStrongPassword()
+    public function userCanRegisterWithStrongPassword(): void
     {
         Mail::fake();
 
