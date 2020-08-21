@@ -190,7 +190,8 @@ class CategoriesRepositoryTest extends TestCase
         for ($i = 1; $i < 4; $i++) {
             factory(Category::class)->create([
                 'merchant_id' => $merchant_id,
-                'id' => $i
+                'id' => $i,
+                'order' => $i
             ]);
         }
 
