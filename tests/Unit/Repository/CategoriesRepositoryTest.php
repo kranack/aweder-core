@@ -356,4 +356,50 @@ class CategoriesRepositoryTest extends TestCase
             ]
         );
     }
+
+    /**
+     * @test
+     */
+    public function can_retain_category_order_correctly(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+
+        for ($i = 1; $i < 4; $i++) {
+            factory(Category::class)->create([
+                'merchant_id' => $merchant->id,
+                'id' => $i,
+                'order' => $i
+            ]);
+        }
+
+        $categories = [
+            1 => 'category one',
+            2 => 'category two',
+            3 => 'category three'
+        ];
+
+        foreach ($categories as $category) {
+            $this->assertDatabaseMissing('categories', [
+                'title' => $category
+            ]);
+        }
+
+        $this->assertTrue($this->repository->updateCategories($categories, $merchant->id));
+
+        foreach ($categories as $category) {
+            $this->assertDatabaseHas('categories', [
+                'title' => $category
+            ]);
+        }
+
+        $currentMaxOrder = $merchant->categories()->max('order');
+
+        $newCategory = $this->repository->addCategoryByStringToMerchant($merchant, 'category four');
+
+        $this->assertDatabaseHas('categories', [
+            'title' => 'category four',
+            'merchant_id' => $merchant->id,
+            'order' => $currentMaxOrder + 1
+        ]);
+    }
 }
