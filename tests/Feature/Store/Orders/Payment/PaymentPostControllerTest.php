@@ -25,7 +25,7 @@ class PaymentPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function testPaymentCompletesWithFullDetails()
+    public function test_payment_completes_with_full_details(): void
     {
         $this->markTestSkipped('The test needs re-writing as this is the new card handling route');
         Mail::fake();

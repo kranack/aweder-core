@@ -2,8 +2,8 @@
 version: '3'
 
 services:
+    # https://hub.docker.com/_/nginx
     nginx:
-        # https://hub.docker.com/_/nginx
         container_name: ukr_nginx
         build: ./docker/nginx
         volumes:
@@ -16,29 +16,25 @@ services:
                 aliases:
                     - uk-restaurants.test
 
+    # https://hub.docker.com/_/php
     php:
-        # https://hub.docker.com/_/php
         container_name: ukr_php
         build: ./docker/php
         environment:
             PHP_MEMORY_LIMIT: '128M'
+            COMPOSER_MEMORY_LIMIT: '-1'
             DB_HOST: 'mysql'
-            DB_USER: 'root'
-            DB_PASSWORD: 'root'
-            DB_NAME: 'uk_restaurant_local'
             PHP_IDE_CONFIG: 'serverName=uk-restaurants.test'
         volumes:
             - ./:/var/www/vhost/:cached
-            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
-            - ./docker/php/x-debug-off.ini:/var/www/vhost/x-debug-off.ini
-
+            - ./docker/php/config/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
         ports:
             - '9000:9000'
         networks:
             - docker_network
 
+    # https://hub.docker.com/_/php
     scheduler:
-        # https://hub.docker.com/_/php
         container_name: ukr_php_schedule
         build: ./docker/scheduler
         depends_on:
@@ -46,20 +42,19 @@ services:
         environment:
             PHP_MEMORY_LIMIT: '128M'
             DB_HOST: 'mysql'
-            DB_USER: 'root'
-            DB_PASSWORD: 'root'
-            DB_NAME: 'uk_restaurant_local'
         volumes:
             - ./:/var/www/vhost/:cached
         networks:
             - docker_network
 
+    # https://hub.docker.com/_/mysql
     mysql:
-        # https://hub.docker.com/_/mysql
         container_name: ukr_mysql
         image: mysql:5.7
         environment:
             MYSQL_ROOT_PASSWORD: 'root'
+            MYSQL_USER: 'laravel'
+            MYSQL_PASSWORD: 'password'
             MYSQL_DATABASE: 'uk_restaurant_local'
         volumes:
             - ./docker/mysql/data:/var/lib/mysql:cached
@@ -70,8 +65,8 @@ services:
         networks:
             - docker_network
 
+    # https://hub.docker.com/_/redis/
     redis:
-        # https://hub.docker.com/_/redis/
         container_name: ukr_redis
         build: ./docker/redis
         volumes:
@@ -80,8 +75,9 @@ services:
             - '6390:6379'
         networks:
             - docker_network
+
+    # https://hub.docker.com/_/php
     queue:
-        # https://hub.docker.com/_/php
         container_name: ukr_php_queue
         build: ./docker/queue
         depends_on:
@@ -89,9 +85,6 @@ services:
         environment:
             PHP_MEMORY_LIMIT: '128M'
             DB_HOST: 'mysql'
-            DB_USER: 'root'
-            DB_PASSWORD: 'root'
-            DB_NAME: 'uk_restaurant_local'
         volumes:
             - ./:/var/www/vhost/:cached
         networks:

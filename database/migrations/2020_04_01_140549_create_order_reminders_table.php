@@ -17,7 +17,7 @@ class CreateOrderRemindersTable extends Migration
             Schema::create('order_reminders', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('order_id')
-                    ->constrained()
+                    ->constrained('orders')
                     ->onUpdate('CASCADE')
                     ->onDelete('CASCADE');
                 $table->integer('reminder_time')

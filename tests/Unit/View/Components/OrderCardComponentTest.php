@@ -21,7 +21,7 @@ class OrderCardComponentTest extends TestCase
     /**
      * @test
      */
-    public function acknowledgedCollectionCardDisplaysAsExpected()
+    public function acknowledged_collection_card_displays_as_expected(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
@@ -48,7 +48,7 @@ class OrderCardComponentTest extends TestCase
     /**
      * @test
      */
-    public function purchasedCardDisplaysAsExcepted()
+    public function purchased_card_displays_as_excepted(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
@@ -75,7 +75,7 @@ class OrderCardComponentTest extends TestCase
     /**
      * @test
      */
-    public function purchasedCardWithDeliveryDisplaysAsExpected()
+    public function purchased_card_with_delivery_displays_as_expected(): void
     {
         $merchantOne = $this->createAndReturnMerchant(['registration_stage' => 0]);
 

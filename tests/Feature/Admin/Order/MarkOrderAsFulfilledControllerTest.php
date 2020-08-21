@@ -24,7 +24,7 @@ class MarkOrderAsFulfilledControllerTest extends TestCase
      * checks that a unauthenticated user cant view the route
      * @test
      */
-    public function unauthenticatedUserCantRejectAnOrder()
+    public function unauthenticated_user_cant_reject_an_order(): void
     {
 
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
@@ -39,7 +39,7 @@ class MarkOrderAsFulfilledControllerTest extends TestCase
     /**
      * @test
      */
-    public function merchantWhoHasntFinishedRegistrationCantAcceptOrder()
+    public function merchant_who_hasnt_finished_registration_cant_accept_order(): void
     {
         $user = factory(User::class)->create();
 
@@ -61,7 +61,7 @@ class MarkOrderAsFulfilledControllerTest extends TestCase
     /**
      * @test
      */
-    public function merchantCantMarkOrderAsFulfilledIfTheyDontOwnIt()
+    public function merchant_cant_mark_order_as_fulfilled_if_they_dont_own_it(): void
     {
         $user = factory(User::class)->create();
 
@@ -104,7 +104,7 @@ class MarkOrderAsFulfilledControllerTest extends TestCase
      * @group OwnOrder
      * This test covers the rejection of an order.
      */
-    public function merchantCanMarkHisOwnOrderAsFulffiled()
+    public function merchant_can_mark_their_own_order_as_fulffiled(): void
     {
         $user = factory(User::class)->create();
 
@@ -151,7 +151,7 @@ class MarkOrderAsFulfilledControllerTest extends TestCase
      * @test
      * this makes sure the status cant be changed
      */
-    public function merchantCantFulfillAnOrderThatsBeenRejected()
+    public function merchant_cant_fulfill_an_order_thats_been_rejected(): void
     {
         $user = factory(User::class)->create();
 
@@ -195,7 +195,7 @@ class MarkOrderAsFulfilledControllerTest extends TestCase
     /**
      * @test
      */
-    public function merchantCantMarkAItemAsFulfilledWithoutItBeingAcceptedFirst()
+    public function merchant_cant_mark_a_item_as_fulfilled_without_it_being_accepted_first(): void
     {
         $user = factory(User::class)->create();
 
@@ -241,7 +241,7 @@ class MarkOrderAsFulfilledControllerTest extends TestCase
     /**
      * @test
      */
-    public function cantMarkAOrderASFulfilledWithoutBeingPurchased()
+    public function cant_mark_an_order_as_fulfilled_without_being_purchased(): void
     {
         $user = factory(User::class)->create();
 

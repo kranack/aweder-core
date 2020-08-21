@@ -29,7 +29,7 @@ class ForgotPasswordTest extends TestCase
         return route('password.email');
     }
 
-    public function testUserCanViewAnEmailPasswordForm()
+    public function test_user_can_view_an_email_password_form(): void
     {
         $response = $this->get($this->passwordRequestRoute());
 
@@ -37,7 +37,7 @@ class ForgotPasswordTest extends TestCase
         $response->assertViewIs('auth.passwords.email');
     }
 
-    public function testUserCanViewAnEmailPasswordFormWhenAuthenticated()
+    public function test_user_can_view_an_email_password_form_when_authenticated(): void
     {
         $user = factory(User::class)->make();
 
@@ -47,7 +47,7 @@ class ForgotPasswordTest extends TestCase
         $response->assertViewIs('auth.passwords.email');
     }
 
-    public function testUserReceivesAnEmailWithAPasswordResetLink()
+    public function test_user_receives_an_email_with_a_password_reset_link(): void
     {
         Notification::fake();
         $user = factory(User::class)->create([
@@ -64,7 +64,7 @@ class ForgotPasswordTest extends TestCase
         });
     }
 
-    public function testUserDoesNotReceiveEmailWhenNotRegistered()
+    public function test_user_does_not_receive_email_when_not_registered(): void
     {
         Notification::fake();
 
@@ -77,7 +77,7 @@ class ForgotPasswordTest extends TestCase
         Notification::assertNotSentTo(factory(User::class)->make(['email' => 'nobody@example.com']), ResetPassword::class);
     }
 
-    public function testEmailIsRequired()
+    public function test_email_is_required(): void
     {
         $response = $this->from($this->passwordEmailGetRoute())->post($this->passwordEmailPostRoute(), []);
 
@@ -85,7 +85,7 @@ class ForgotPasswordTest extends TestCase
         $response->assertSessionHasErrors('email');
     }
 
-    public function testEmailIsAValidEmail()
+    public function test_email_is_a_valid_email(): void
     {
         $response = $this->from($this->passwordEmailGetRoute())->post($this->passwordEmailPostRoute(), [
             'email' => 'invalid-email',

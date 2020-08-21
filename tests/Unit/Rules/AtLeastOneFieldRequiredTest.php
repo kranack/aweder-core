@@ -20,7 +20,7 @@ class AtLeastOneFieldRequiredTest extends TestCase
     /**
      * @test
      */
-    public function at_least_one_field_required_rule_with_fields_filled()
+    public function at_least_one_field_required_rule_with_fields_filled(): void
     {
         $rule = new AtLeastOneFieldRequired();
         $this->assertTrue($rule->passes('test', [
@@ -31,7 +31,7 @@ class AtLeastOneFieldRequiredTest extends TestCase
     /**
      * @test
      */
-    public function at_least_one_field_required_rule_with_empty_fields()
+    public function at_least_one_field_required_rule_with_empty_fields(): void
     {
         $rule = new AtLeastOneFieldRequired();
         $this->assertFalse($rule->passes('test', [

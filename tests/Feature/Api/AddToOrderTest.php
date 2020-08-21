@@ -60,7 +60,7 @@ class AddToOrderTest extends TestCase
     /**
      * @test
      */
-    public function canAddItemToOrder(): void
+    public function can_add_item_to_order(): void
     {
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
         $order = $this->createAndReturnOrderForStatus('Purchased Order', ['merchant_id' => $merchant->id]);

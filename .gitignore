@@ -20,25 +20,19 @@ Homestead.json
 Homestead.yaml
 
 # Environment
-.env
-.env.backup
+.env*
+!.env.example
+!.env.testing
 
 # Composer
 /vendor
 
-# Node
+# Node (use npm instead of yarn)
 /node_modules
-npm-debug.log
-yarn-error.log
-yarn.lock
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-/dist
+yarn.lock
+
 
 # Laravel Framework
-
-
-# Application Specific Files
-x-debug-off.ini

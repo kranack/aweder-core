@@ -25,7 +25,7 @@ class UpdateTableNumberTest extends TestCase
     /**
      * @test
      */
-    public function canUpdateTableNumber(): void
+    public function can_update_table_number(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $originalTableNumber = $this->faker->numberBetween(0, 35);
@@ -64,7 +64,7 @@ class UpdateTableNumberTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateTableNumberWithoutMerchant(): void
+    public function cannot_update_table_number_without_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $originalTableNumber = $this->faker->numberBetween(0, 35);
@@ -103,7 +103,7 @@ class UpdateTableNumberTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateTableNumberWithString(): void
+    public function cannot_update_table_number_with_string(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $originalTableNumber = $this->faker->numberBetween(0, 35);
@@ -143,7 +143,7 @@ class UpdateTableNumberTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateOrderWithoutTableService(): void
+    public function cannot_update_order_without_table_service(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $originalTableNumber = $this->faker->numberBetween(0, 35);

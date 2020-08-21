@@ -33,7 +33,7 @@ jobs:
           name: Update synaptic
           command: sudo apt update
       - run:
-          name: install OS dependancies
+          name: install OS dependencies
           command: sudo apt-get install -qy git libonig-dev libxml2-dev libzip-dev unzip zip libpng-dev libmagickwand-dev libjpeg-dev
       - run:
           name: Install PHP extensions
@@ -59,7 +59,7 @@ jobs:
           name: Run code sniffer
           command: sudo composer run phpcs
       - run:
-          name: Spin up built in webserver for testing
+          name: Spin up built in web server for testing
           command: php artisan serve &
       - run:
           name: Sleep to stop race condition
@@ -73,7 +73,7 @@ jobs:
           keys:
             - node-v1-{{ checksum "package.json" }}
             - node-v1-
-      - run: yarn install
+      - run: npm install
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}
           paths:
@@ -81,7 +81,7 @@ jobs:
 
       - run:
           name: Run PHPUnit
-          command: php -c ./docker/php/x-debug-off.ini vendor/bin/phpunit -d memory_limit=4G --testdox
+          command: php -c ./docker/php/config/disable-xdebug.ini vendor/bin/phpunit -d memory_limit=4G --testdox
       - run:
           name: Run Jest
-          command: yarn run test:unit
+          command: npm run test:unit

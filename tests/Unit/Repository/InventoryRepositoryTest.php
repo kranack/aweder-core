@@ -37,7 +37,7 @@ class InventoryRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function merchantOwnsItem(): void
+    public function merchant_owns_item(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -51,7 +51,7 @@ class InventoryRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function merchantDoesntOwnItem(): void
+    public function merchant_doesnt_own_item(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -67,7 +67,7 @@ class InventoryRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function savesCorrectInventoryData(): void
+    public function saves_correct_inventory_data(): void
     {
         $merchant = factory(Merchant::class)->create();
 
@@ -98,7 +98,7 @@ class InventoryRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function doesntSaveWithInvalidData(): void
+    public function doesnt_save_with_invalid_data(): void
     {
         $this->expectException(ErrorException::class);
         $this->expectExceptionMessage('A non-numeric value encountered');
@@ -133,7 +133,7 @@ class InventoryRepositoryTest extends TestCase
      * @test
      * @group Inv
      */
-    public function inventoryItemsReturnedWhenTheyHaveNoVariants()
+    public function inventory_items_returned_when_they_have_no_variants(): void
     {
         factory(Inventory::class)->create();
 
@@ -146,7 +146,7 @@ class InventoryRepositoryTest extends TestCase
      * @test
      * @group Inv
      */
-    public function inventoryItemsNotReturnedWhenTheyHaveVariants()
+    public function inventory_items_not_returned_when_they_have_variants(): void
     {
         factory(Inventory::class)->state('variants')->create();
 
@@ -158,7 +158,7 @@ class InventoryRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function correctInventoryItemCountIsReturnedWhenACombinationsIsCreated()
+    public function correct_inventory_item_count_is_returned_when_a_combinations_is_created(): void
     {
         factory(Inventory::class)->create();
 

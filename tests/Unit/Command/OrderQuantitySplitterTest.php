@@ -19,7 +19,7 @@ class OrderQuantitySplitterTest extends TestCase
     /**
      * @test
      */
-    public function checkCommandSplitsRecords(): void
+    public function check_command_splits_records(): void
     {
         $inventory = factory(Inventory::class)->create();
         $randomQuantity = random_int(0, 20);

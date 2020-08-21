@@ -32,7 +32,7 @@ class OrderItemRepositoryTest extends TestCase
         $this->repository = $this->app->make(OrderItemContract::class);
     }
 
-    public function canFindOrderItemsWithMissingVariantIds(): void
+    public function can_find_order_items_with_missing_variant_ids(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
         $orderItem1 = $this->createAndReturnOrderItem([
@@ -53,7 +53,7 @@ class OrderItemRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function cannotFindMissingVariantIdInOrderItems(): void
+    public function cannot_find_missing_variant_id_in_order_items(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
         $inventoryVariant = $this->createAndReturnInventoryVariant();
@@ -74,7 +74,7 @@ class OrderItemRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canGetOrderItemByOrderAndId(): void
+    public function can_get_order_item_by_order_and_id(): void
     {
         $order1 = $this->createAndReturnOrderForStatus('Fulfilled');
         $order2 = $this->createAndReturnOrderForStatus('Fulfilled');

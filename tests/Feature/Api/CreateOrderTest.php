@@ -25,7 +25,7 @@ class CreateOrderTest extends TestCase
     /**
      * @test
      */
-    public function cannotCreateOrderForMerchantWithoutMerchantId()
+    public function cannot_create_order_for_merchant_without_merchant_id(): void
     {
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
@@ -47,7 +47,7 @@ class CreateOrderTest extends TestCase
     /**
      * @test
      */
-    public function cannotCreateOrderForMerchantWithInvalidMerchantId()
+    public function cannot_create_order_for_merchant_with_invalid_merchant_id(): void
     {
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
 
@@ -71,7 +71,7 @@ class CreateOrderTest extends TestCase
     /**
      * @test
      */
-    public function canCreateOrderForMerchant()
+    public function can_create_order_for_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant(['registration_stage' => 0]);
         $this->assertCount(0, $merchant->orders()->get());

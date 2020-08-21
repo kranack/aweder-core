@@ -32,7 +32,7 @@ class UpdateItemOnOrderTest extends TestCase
     /**
      * @test
      */
-    public function willUpdateItemOnOrder(): void
+    public function will_update_item_on_order(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -79,7 +79,7 @@ class UpdateItemOnOrderTest extends TestCase
     /**
      * @test
      */
-    public function willNotUpdateNonExistingItemOnOrder(): void
+    public function will_not_update_non_existing_item_on_order(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -117,7 +117,7 @@ class UpdateItemOnOrderTest extends TestCase
     /**
      * @test
      */
-    public function willNotUpdateNonExistingOrder(): void
+    public function will_not_update_non_existing_order(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -155,7 +155,7 @@ class UpdateItemOnOrderTest extends TestCase
     /**
      * @test
      */
-    public function willNotUpdateOrderItemWithoutMerchant(): void
+    public function will_not_update_order_item_without_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -192,7 +192,7 @@ class UpdateItemOnOrderTest extends TestCase
     /**
      * @test
      */
-    public function canUpdateOptionsOnOrderItem(): void
+    public function can_update_options_on_order_item(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $inventory = $this->createAndReturnInventoryItem(['merchant_id' => $merchant->id]);

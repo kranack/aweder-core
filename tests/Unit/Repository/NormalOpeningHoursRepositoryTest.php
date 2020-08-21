@@ -132,7 +132,7 @@ class NormalOpeningHoursRepositoryTest extends TestCase
      * @test
      * @dataProvider dayNameDataProvider
      */
-    public function convert_day_name_to_integer_with_valid_data($name, $expected)
+    public function convert_day_name_to_integer_with_valid_data($name, $expected): void
     {
         $response = $this->repository->convertDayNameToInteger($name);
 
@@ -142,7 +142,7 @@ class NormalOpeningHoursRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function convert_day_name_to_integer_with_invalid_day()
+    public function convert_day_name_to_integer_with_invalid_day(): void
     {
         $response = $this->repository->convertDayNameToInteger('test');
 

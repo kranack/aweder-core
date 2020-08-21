@@ -25,7 +25,7 @@ class DeauthorizeControllerTest extends TestCase
     /**
      * @test
      */
-    public function useCantReachRouteWithoutBeingLoggedIn()
+    public function use_cant_reach_route_without_being_logged_in(): void
     {
         $response = $this->get(route('admin.stripe-oauth.deauthorize'));
 
@@ -37,7 +37,7 @@ class DeauthorizeControllerTest extends TestCase
     /**
      * @test
      */
-    public function noPaymentIntegrationOnReturnsError()
+    public function no_payment_integration_on_returns_error(): void
     {
         $user = factory(User::class)->create();
 
@@ -60,7 +60,7 @@ class DeauthorizeControllerTest extends TestCase
      * @test
      * @group Deauth
      */
-    public function handlesDeauthorizationFailure()
+    public function handles_deauthorization_failure(): void
     {
         $user = factory(User::class)->create();
 

@@ -16,7 +16,7 @@ class CreateNormalOpeningHoursTable extends Migration
         if (!Schema::hasTable('normal_opening_hours')) {
             Schema::create('normal_opening_hours', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('merchant_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
+                $table->foreignId('merchant_id')->constrained('merchants')->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->integer('day_of_week');
                 $table->time('open_time');
                 $table->time('close_time');

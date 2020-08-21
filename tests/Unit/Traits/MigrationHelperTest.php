@@ -26,7 +26,7 @@ class MigrationHelperTest extends TestCase
     /**
      * @test
      */
-    public function indexFoundForTable(): void
+    public function index_found_for_table(): void
     {
         $model = new class extends Model {
             use MigrationHelper;
@@ -40,7 +40,7 @@ class MigrationHelperTest extends TestCase
     /**
      * @test
      */
-    public function indexNotFoundForTableThatDoesntExist(): void
+    public function index_not_found_for_table_that_doesnt_exist(): void
     {
         $model = new class extends Model {
             use MigrationHelper;
@@ -54,7 +54,7 @@ class MigrationHelperTest extends TestCase
     /**
      * @test
      */
-    public function indexNotFoundForTable(): void
+    public function index_not_found_for_table(): void
     {
         $model = new class extends Model {
             use MigrationHelper;

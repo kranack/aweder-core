@@ -64,5 +64,7 @@ class NormalOpeningHoursService implements NormalOpeningHoursContract
                 );
                 break;
         }
+
+        return false;
     }
 }

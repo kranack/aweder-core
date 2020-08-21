@@ -17,7 +17,7 @@ class UpdateOrderTable extends Migration
             Schema::table('order_items', function (Blueprint $table) {
                 if (!Schema::hasColumn('order_items', 'inventory_id')) {
                     $table->foreignId('inventory_id')
-                        ->constrained()
+                        ->constrained('inventories')
                         ->onUpdate('CASCADE')
                         ->onDelete('CASCADE');
                 }

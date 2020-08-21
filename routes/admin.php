@@ -38,7 +38,6 @@ Route::middleware(['auth', 'has-user-completed-registration-stage:0'])
             ->name('admin.categories');
         $router->post('/categories', ['uses' => 'Categories\\CreateController'])
             ->name('admin.categories.post');
-
         $router->get('/orders', ['uses' => 'Order\\ViewAllOrdersController'])
             ->name('admin.orders.view-all');
 

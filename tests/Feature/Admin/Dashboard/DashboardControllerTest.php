@@ -22,7 +22,7 @@ class DashboardControllerTest extends TestCase
     /**
      * @test
      */
-    public function userCantAccessDashboardWithoutBeingLoggedIn()
+    public function user_cant_access_dashboard_without_being_logged_in(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
 
@@ -36,7 +36,7 @@ class DashboardControllerTest extends TestCase
     /**
      * @test
      */
-    public function authorisedUserCanViewEmptyDashboard()
+    public function authorised_user_can_view_empty_dashboard(): void
     {
         $user = factory(User::class)->create();
 
@@ -58,7 +58,7 @@ class DashboardControllerTest extends TestCase
     /**
      * @test
      */
-    public function authorisedUserCantViewOtherMerchantsOrders()
+    public function authorised_user_cant_view_other_merchants_orders(): void
     {
         $user = factory(User::class)->create();
 
@@ -84,7 +84,7 @@ class DashboardControllerTest extends TestCase
     /**
      * @test
      */
-    public function authorisedUserCanViewOrdersThatBelongsToThem()
+    public function authorised_user_can_view_orders_that_belongs_to_them(): void
     {
         $user = factory(User::class)->create();
 
@@ -108,7 +108,7 @@ class DashboardControllerTest extends TestCase
     /**
      * @test
      */
-    public function filteredOrdersOnlyShowFilteredItems(): void
+    public function filtered_orders_only_show_filtered_items(): void
     {
         $user = factory(User::class)->create();
 
@@ -136,7 +136,7 @@ class DashboardControllerTest extends TestCase
     /**
      * @test
      */
-    public function allItemsComeBackOnIncorrectFilter(): void
+    public function all_items_come_back_on_incorrect_filter(): void
     {
         $user = factory(User::class)->create();
 

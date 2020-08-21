@@ -25,7 +25,7 @@ class UpdateOrderStatusTest extends TestCase
     /**
      * @test
      */
-    public function canUpdateOrderStatus(): void
+    public function can_update_order_status(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -58,7 +58,7 @@ class UpdateOrderStatusTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateOrderStatusWithoutMerchant(): void
+    public function cannot_update_order_status_without_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -78,7 +78,7 @@ class UpdateOrderStatusTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateStatusWithInvalidMerchant(): void
+    public function cannot_update_status_with_invalid_merchant(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -99,7 +99,7 @@ class UpdateOrderStatusTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateOrderStatusWithInvalidStatus(): void
+    public function cannot_update_order_status_with_invalid_status(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -120,7 +120,7 @@ class UpdateOrderStatusTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateOrderThatBelongsToDifferentMerchant(): void
+    public function cannot_update_order_that_belongs_to_different_merchant(): void
     {
         $merchant1 = $this->createAndReturnMerchant();
         $merchant2 = $this->createAndReturnMerchant();
@@ -155,7 +155,7 @@ class UpdateOrderStatusTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateDeletedOrder(): void
+    public function cannot_update_deleted_order(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);
@@ -183,7 +183,7 @@ class UpdateOrderStatusTest extends TestCase
     /**
      * @test
      */
-    public function cannotUpdateOrderThatDoesNotExist(): void
+    public function cannot_update_order_that_does_not_exist(): void
     {
         $merchant = $this->createAndReturnMerchant();
         $order = $this->createAndReturnOrderForStatus('Fulfilled', ['merchant_id' => $merchant->id]);

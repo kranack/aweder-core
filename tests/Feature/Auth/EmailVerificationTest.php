@@ -56,14 +56,14 @@ class EmailVerificationTest extends TestCase
         return route('login');
     }
 
-    public function testGuestCannotSeeTheVerificationNotice()
+    public function test_guest_cannot_see_the_verification_notice(): void
     {
         $response = $this->get($this->verificationNoticeRoute());
 
         $response->assertRedirect($this->loginRoute());
     }
 
-    public function testUserSeesTheVerificationNoticeWhenNotVerified()
+    public function test_user_sees_the_verification_notice_when_not_verified(): void
     {
         $user = factory(User::class)->create([
             'email_verified_at' => null,
@@ -75,7 +75,7 @@ class EmailVerificationTest extends TestCase
         $response->assertViewIs('auth.verify');
     }
 
-    public function testVerifiedUserIsRedirectedHomeWhenVisitingVerificationNoticeRoute()
+    public function test_verified_user_is_redirected_home_when_visiting_verification_notice_route(): void
     {
         $user = factory(User::class)->create([
             'email_verified_at' => now(),
@@ -86,7 +86,7 @@ class EmailVerificationTest extends TestCase
         $response->assertRedirect($this->successfulVerificationRoute());
     }
 
-    public function testGuestCannotSeeTheVerificationVerifyRoute()
+    public function test_guest_cannot_see_the_verification_verify_route(): void
     {
         $user = factory(User::class)->create([
             'id' => 1,
@@ -98,7 +98,7 @@ class EmailVerificationTest extends TestCase
         $response->assertRedirect($this->loginRoute());
     }
 
-    public function testUserCannotVerifyOthers()
+    public function test_user_cannot_verify_others(): void
     {
         $user = factory(User::class)->create([
             'id' => 1,
@@ -113,7 +113,7 @@ class EmailVerificationTest extends TestCase
         $this->assertFalse($user2->fresh()->hasVerifiedEmail());
     }
 
-    public function testUserIsRedirectedToCorrectRouteWhenAlreadyVerified()
+    public function test_user_is_redirected_to_correct_route_when_already_verified(): void
     {
         $user = factory(User::class)->create([
             'email_verified_at' => now(),
@@ -124,7 +124,7 @@ class EmailVerificationTest extends TestCase
         $response->assertRedirect($this->successfulVerificationRoute());
     }
 
-    public function testForbiddenIsReturnedWhenSignatureIsInvalidInVerificationVerifyRoute()
+    public function test_forbidden_is_returned_when_signature_is_invalid_in_verification_verify_route(): void
     {
         $user = factory(User::class)->create([
             'email_verified_at' => now(),
@@ -135,7 +135,7 @@ class EmailVerificationTest extends TestCase
         $response->assertStatus(403);
     }
 
-    public function testUserCanVerifyThemselves()
+    public function test_user_can_verify_themselves(): void
     {
         $user = factory(User::class)->create([
             'email_verified_at' => null,
@@ -147,14 +147,14 @@ class EmailVerificationTest extends TestCase
         $this->assertNotNull($user->fresh()->email_verified_at);
     }
 
-    public function testGuestCannotResendAVerificationEmail()
+    public function test_guest_cannot_resend_a_verification_email(): void
     {
         $response = $this->post($this->verificationResendRoute());
 
         $response->assertRedirect($this->loginRoute());
     }
 
-    public function testUserIsRedirectedToCorrectRouteIfAlreadyVerified()
+    public function test_user_is_redirected_to_correct_route_if_already_verified(): void
     {
         $user = factory(User::class)->create([
             'email_verified_at' => now(),
@@ -165,7 +165,7 @@ class EmailVerificationTest extends TestCase
         $response->assertRedirect($this->successfulVerificationRoute());
     }
 
-    public function testUserCanResendAVerificationEmail()
+    public function test_user_can_resend_a_verification_email(): void
     {
         Notification::fake();
         $user = factory(User::class)->create([

@@ -39,7 +39,7 @@ class ResetPasswordTest extends TestCase
         return route('home');
     }
 
-    public function testUserCanViewAPasswordResetForm()
+    public function test_user_can_view_a_password_reset_form(): void
     {
         $user = factory(User::class)->create();
 
@@ -50,7 +50,7 @@ class ResetPasswordTest extends TestCase
         $response->assertViewHas('token', $token);
     }
 
-    public function testUserCanViewAPasswordResetFormWhenAuthenticated()
+    public function test_user_can_view_a_password_reset_form_when_authenticated(): void
     {
         $user = factory(User::class)->create();
 
@@ -61,7 +61,7 @@ class ResetPasswordTest extends TestCase
         $response->assertViewHas('token', $token);
     }
 
-    public function testUserCanResetPasswordWithValidToken()
+    public function test_user_can_reset_password_with_valid_token(): void
     {
         Event::fake();
         $user = factory(User::class)->create();
@@ -82,7 +82,7 @@ class ResetPasswordTest extends TestCase
         });
     }
 
-    public function testUserCannotResetPasswordWithInvalidToken()
+    public function test_user_cannot_reset_password_with_invalid_token(): void
     {
         $user = factory(User::class)->create([
             'password' => Hash::make('old-password'),
@@ -101,7 +101,7 @@ class ResetPasswordTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotResetPasswordWithoutProvidingANewPassword()
+    public function test_user_cannot_reset_password_without_providing_a_new_password(): void
     {
         $user = factory(User::class)->create([
             'password' => Hash::make('old-password'),
@@ -123,7 +123,7 @@ class ResetPasswordTest extends TestCase
         $this->assertGuest();
     }
 
-    public function testUserCannotResetPasswordWithoutProvidingAnEmail()
+    public function test_user_cannot_reset_password_without_providing_an_email(): void
     {
         $user = factory(User::class)->create([
             'password' => Hash::make('old-password'),

@@ -26,7 +26,7 @@ class FetchCancellableOrdersTest extends TestCase
     use InteractsWithEmails;
 
     /**  */
-    public function willSetOrderToCancelledWhenOrderIsCancellable(): void
+    public function will_set_order_to_cancelled_when_order_is_cancellable(): void
     {
         Mail::fake();
 
@@ -42,7 +42,7 @@ class FetchCancellableOrdersTest extends TestCase
     }
 
     /** @test */
-    public function willOnlySendEmailToUsersWithUnprocessedOrder(): void
+    public function will_only_send_email_to_users_with_unprocessed_order(): void
     {
         Mail::fake();
 
@@ -74,7 +74,7 @@ class FetchCancellableOrdersTest extends TestCase
     }
 
     /** @test */
-    public function willOnlySendEmailToMerchantsWithUnprocessedOrder(): void
+    public function will_only_send_email_to_merchants_with_unprocessed_order(): void
     {
         Mail::fake();
 

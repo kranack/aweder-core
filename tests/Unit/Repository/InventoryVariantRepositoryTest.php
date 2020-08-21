@@ -35,7 +35,7 @@ class InventoryVariantRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canAddVariantToInventory(): void
+    public function can_add_variant_to_inventory(): void
     {
         $inventoryItem = $this->createAndReturnInventoryItem(['title' => 'Laptop']);
 
@@ -58,7 +58,7 @@ class InventoryVariantRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function canRemoveVariantFromInventory(): void
+    public function can_remove_variant_from_inventory(): void
     {
         $inventoryItem = $this->createAndReturnInventoryItem(['title' => 'Laptop']);
 

@@ -16,7 +16,7 @@ class CreateOrderTableField extends Migration
         if (!Schema::hasTable('orders')) {
             Schema::create('orders', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('merchant_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
+                $table->foreignId('merchant_id')->constrained('merchants')->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->string('status')->nullable();
                 $table->tinyInteger('is_delivery')->default(0);
                 $table->string('customer_name')->nullable();

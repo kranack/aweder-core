@@ -25,7 +25,7 @@ class ShowOrderTest extends TestCase
     /**
      * @test
      */
-    public function canViewOrder(): void
+    public function can_view_order(): void
     {
         $order = $this->createAndReturnOrderForStatus('Fulfilled');
 
@@ -41,7 +41,7 @@ class ShowOrderTest extends TestCase
     /**
      * @test
      */
-    public function cannotViewOrder(): void
+    public function cannot_view_order(): void
     {
         $order = $this->createAndReturnOrderForStatus('Fulfilled');
 

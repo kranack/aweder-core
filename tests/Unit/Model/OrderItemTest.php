@@ -40,7 +40,7 @@ class OrderItemTest extends TestCase
     /**
      * @test
      */
-    public function canFindOrderItemsWithMissingVariantIds(): void
+    public function can_find_order_items_with_missing_variant_ids(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
         $orderItem1 = $this->createAndReturnOrderItem([
@@ -61,7 +61,7 @@ class OrderItemTest extends TestCase
     /**
      * @test
      */
-    public function cannotFindMissingVariantIdInOrderItems(): void
+    public function cannot_find_missing_variant_id_in_order_items(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
         $inventoryVariant = $this->createAndReturnInventoryVariant();
@@ -82,7 +82,7 @@ class OrderItemTest extends TestCase
     /**
      * @test
      */
-    public function canGetItemByOrderAndId(): void
+    public function can_get_item_by_order_and_id(): void
     {
         $order = $this->createAndReturnOrderForStatus('Purchased Order');
         $orderItem = $this->createAndReturnOrderItem([
@@ -97,7 +97,7 @@ class OrderItemTest extends TestCase
     /**
      * @test
      */
-    public function checkQuantityScope(): void
+    public function check_quantity_scope(): void
     {
         $inventory1 = factory(Inventory::class)->create();
         $inventory2 = factory(Inventory::class)->create();

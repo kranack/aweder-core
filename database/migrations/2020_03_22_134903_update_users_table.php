@@ -25,15 +25,14 @@ class UpdateUsersTable extends Migration
                 }
             });
         } else {
-            Log::error('the table ' . self::TABLE_NAME . ' does not exist');
+            Log::error('The table ' . self::TABLE_NAME . ' does not exist.');
         }
 
 
         if (!Schema::hasTable('merchant_users')) {
             Schema::create('merchant_users', function (Blueprint $table) {
-                $table->foreignId('user_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
-                $table->foreignId('merchant_id')
-                    ->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
+                $table->foreignId('user_id')->constrained('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+                $table->foreignId('merchant_id')->constrained('merchants')->onUpdate('CASCADE')->onDelete('CASCADE');
             });
         }
     }
@@ -52,7 +51,7 @@ class UpdateUsersTable extends Migration
                 }
             });
         } else {
-            Log::error('the table ' . self::TABLE_NAME . ' does not exist');
+            Log::error('The table ' . self::TABLE_NAME . ' does not exist.');
         }
 
         if (Schema::hasTable('merchant_users')) {

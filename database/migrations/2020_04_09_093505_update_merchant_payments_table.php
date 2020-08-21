@@ -26,11 +26,11 @@ class UpdateMerchantPaymentsTable extends Migration
                 }
                 if (!Schema::hasColumn('merchant_payment', 'merchant_id')) {
                     $table->foreignId('merchant_id')
-                        ->after('data')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
+                        ->after('data')->constrained('merchants')->onUpdate('CASCADE')->onDelete('CASCADE');
                 }
                 if (!Schema::hasColumn('merchant_payment', 'provider_id')) {
                     $table->foreignId('provider_id')
-                        ->after('merchant_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
+                        ->after('merchant_id')->constrained('providers')->onUpdate('CASCADE')->onDelete('CASCADE');
                 }
             });
         }

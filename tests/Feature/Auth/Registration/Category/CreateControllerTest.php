@@ -60,7 +60,7 @@ class CreateControllerTest extends TestCase
         foreach ($categories['categories'] as $key => $category) {
             $this->assertDatabaseHas('categories', [
                 'merchant_id' => $merchant->id,
-                'category_id' => (int) $key + 1,
+                'order' => (int) $key + 1,
                 'title' => $category
             ]);
         }
@@ -98,7 +98,7 @@ class CreateControllerTest extends TestCase
                 'categories',
                 [
                     'merchant_id' => $merchant->id,
-                    'category_id' => (int) $key + 1,
+                    'order' => (int) $key + 1,
                     'title' => $category
                 ]
             );

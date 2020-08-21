@@ -24,7 +24,7 @@ class SendOrderReminderTest extends TestCase
     use InteractsWithEmails;
 
     /** @test */
-    public function willOnlySendReminderEmailToOrderInSpecifiedTimeSince(): void
+    public function will_only_send_reminder_email_to_order_in_specified_time_since(): void
     {
         Mail::fake();
 
@@ -64,7 +64,7 @@ class SendOrderReminderTest extends TestCase
     }
 
     /** @test */
-    public function willOnlySendReminderToOrderThatDoesntHaveAPreviousEmailReminderForTimeSent(): void
+    public function will_only_send_reminder_to_order_that_doesnt_have_a_previous_email_reminder_for_time_sent(): void
     {
         Mail::fake();
 

@@ -30,7 +30,7 @@ class MerchantRepositoryTest extends TestCase
         $this->repository = app()->make(MerchantContract::class);
     }
 
-    public function testCreateMerchantWillMakeMerchant(): void
+    public function test_create_merchant_will_make_merchant(): void
     {
         $user = factory(User::class)->create([
             'email' => 'test@test.com',
@@ -68,7 +68,7 @@ class MerchantRepositoryTest extends TestCase
         $this->assertInstanceOf(Merchant::class, $merchant);
     }
 
-    public function testUpdateMerchantWillUpdateMerchant(): void
+    public function test_update_merchant_will_update_merchant(): void
     {
         $user = factory(User::class)->create([
             'email' => 'test@test.com',
@@ -125,7 +125,8 @@ class MerchantRepositoryTest extends TestCase
 
         $this->assertTrue($merchant);
     }
-    public function testUpdateMerchantWithAlreadyExistingDeliveryCostBeingUpdated(): void
+
+    public function test_update_merchant_with_already_existing_delivery_cost_being_updated(): void
     {
         $user = factory(User::class)->create([
             'email' => 'test@test.com',
@@ -175,7 +176,8 @@ class MerchantRepositoryTest extends TestCase
 
         $this->assertTrue($merchant);
     }
-    public function testUpdateMerchantWithAlreadyExistingDeliveryCostNotBeingUpdated(): void
+
+    public function test_update_merchant_with_already_existing_delivery_cost_not_being_updated(): void
     {
         $user = factory(User::class)->create([
             'email' => 'test@test.com',

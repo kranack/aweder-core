@@ -33,7 +33,7 @@ class AddVariantIdToOrderItemsTest extends TestCase
     /**
      * @test
      */
-    public function noVariantIdsToAdd(): void
+    public function no_variant_ids_to_add(): void
     {
         $this->artisan('orders:add-variants-to-order-items')
             ->expectsOutput('No order items to update')
@@ -43,7 +43,7 @@ class AddVariantIdToOrderItemsTest extends TestCase
     /**
      * @test
      */
-    public function addsVariantIdToOrderItem(): void
+    public function adds_variant_id_to_order_item(): void
     {
         $inventory = $this->createAndReturnInventoryItem();
         $inventoryVariant = $this->createAndReturnInventoryVariant(['inventory_id' => $inventory->id]);

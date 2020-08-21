@@ -55,7 +55,7 @@ class CategoriesRepositoryTest extends TestCase
         foreach ($response as $category) {
             $this->assertDatabaseHas('categories', [
                 'merchant_id' => $merchant_id,
-                'category_id' => $category->category_id,
+                'order' => $category->order,
                 'title' => $category->title
             ]);
         }
@@ -84,7 +84,7 @@ class CategoriesRepositoryTest extends TestCase
         foreach ($response as $category) {
             $this->assertDatabaseHas('categories', [
                 'merchant_id' => $merchant_id,
-                'category_id' => $category->category_id,
+                'order' => $category->order,
                 'title' => $category->title
             ]);
         }
@@ -107,7 +107,7 @@ class CategoriesRepositoryTest extends TestCase
         foreach ($response as $category) {
             $this->assertDatabaseHas('categories', [
                 'merchant_id' => $merchant_id,
-                'category_id' => $category->category_id,
+                'order' => $category->order,
                 'title' => ''
             ]);
         }
@@ -214,6 +214,7 @@ class CategoriesRepositoryTest extends TestCase
             ]);
         }
     }
+
     /**
      * @test
      */
@@ -251,5 +252,108 @@ class CategoriesRepositoryTest extends TestCase
                 'title' => $category
             ]);
         }
+    }
+
+    /**
+     * @test
+     */
+    public function can_add_category_to_merchant(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+
+        $category = $this->createAndReturnCategory();
+        $this->repository->addCategoryToMerchant($merchant, $category);
+        $this->assertCount(2, $merchant->categories()->get());
+    }
+
+    /**
+     * @test
+     */
+    public function can_add_sub_category_to_merchant(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+
+        $category = $this->createAndReturnCategory(['merchant_id' => $merchant->id]);
+        $subCategory = $this->createAndReturnCategory(['title' => 'Blurnsball']);
+
+        $this->repository->addSubCategoryToCategory($category, $subCategory);
+        $relatedCategory = $merchant->categories()->where('id', $category->id)->first();
+        $this->assertEquals(
+            'Blurnsball',
+            $relatedCategory->subcategories()->first()->title
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function can_remove_sub_category_for_merchant_but_still_view_items(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+
+        $category = $this->createAndReturnCategory(['merchant_id' => $merchant->id]);
+        $subCategory = $this->createAndReturnCategory(['title' => 'Blurnsball']);
+
+        $this->repository->addSubCategoryToCategory($category, $subCategory);
+        $relatedCategory = $merchant->categories()->where('id', $category->id)->first();
+        $this->assertEquals(
+            'Blurnsball',
+            $relatedCategory->subcategories()->first()->title
+        );
+
+        $inventoryItem = $this->createAndReturnInventoryItem(
+            [
+                'merchant_id' => $merchant->id,
+                'category_id' => $subCategory->id,
+                'title' => 'Blurnsball'
+            ]
+        );
+
+        $this->assertEquals('Blurnsball', $subCategory->inventories()->first()->title);
+        $this->repository->deleteCategory($subCategory);
+
+        $this->assertDatabaseMissing(
+            'categories',
+            [
+                'id' => $subCategory->id,
+                'deleted_at' => null
+            ]
+        );
+
+        $this->assertEquals(
+            'Blurnsball',
+            $merchant->inventories()->where('title', '=', 'Blurnsball')->first()->title
+        );
+    }
+
+    public function cascade_delete_sub_categories_when_deleting_category(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $this->assertCount(1, $merchant->categories()->get());
+
+        $category = $this->createAndReturnCategory(['merchant_id' => $merchant->id]);
+        $subCategory = $this->createAndReturnCategory();
+        $this->repository->addSubCategoryToCategory($category, $subCategory);
+
+        $this->repository->deleteCategory($category);
+
+        $this->assertDatabaseHas(
+            'categories',
+            [
+                'id' => $category->id,
+                'deleted_at' => !null
+            ]
+        );
+
+        $this->assertDatabaseHas(
+            'categories',
+            [
+                'id' => $subCategory->id,
+                'deleted_at' => !null
+            ]
+        );
     }
 }

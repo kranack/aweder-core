@@ -25,7 +25,7 @@ class HasUserCompletedCurrentStageTest extends TestCase
     /**
      * @test
      */
-    public function willPassThroughMiddlewareWhenFullySignedUpAndAccessNonRegistrationRoute()
+    public function will_pass_through_middleware_when_fully_signed_up_and_access_non_registration_route(): void
     {
         $user = factory(User::class)->create();
 
@@ -55,7 +55,7 @@ class HasUserCompletedCurrentStageTest extends TestCase
      * @dataProvider registrationRoutesProvider
      * @test
      */
-    public function willPreventAccessToRegistrationWhenFullySignedUp(string $route)
+    public function will_prevent_access_to_registration_when_fully_signed_up(string $route): void
     {
         $user = factory(User::class)->create();
 
@@ -83,7 +83,7 @@ class HasUserCompletedCurrentStageTest extends TestCase
      * @dataProvider validStageProvider
      * @test
      */
-    public function willNotRedirectUserWhenItIsTheirCurrentStage(array $providedData)
+    public function will_not_redirect_user_when_it_is_their_current_stage(array $providedData): void
     {
         $user = factory(User::class)->create();
 
@@ -124,7 +124,7 @@ class HasUserCompletedCurrentStageTest extends TestCase
      * @dataProvider invalidStageProvider
      * @test
      */
-    public function willCorrectlyPreventUserAccessingStageTheyAreNotOn(array $providedData)
+    public function will_correctly_prevent_user_accessing_stage_they_are_not_on(array $providedData): void
     {
         $user = factory(User::class)->create();
 
