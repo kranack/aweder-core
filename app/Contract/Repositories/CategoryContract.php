@@ -14,10 +14,11 @@ use Illuminate\Support\Collection as SupportCollection;
 interface CategoryContract
 {
     /**
+     * Creates a single empty category for the merchant to build out their inventory
      * @param int $merchantId
      * @return SupportCollection
      */
-    public function createEmptyCategories(int $merchantId): SupportCollection;
+    public function createEmptyCategory(int $merchantId): SupportCollection;
 
     /**
      * Creates categories in the db

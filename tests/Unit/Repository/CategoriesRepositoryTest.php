@@ -100,7 +100,7 @@ class CategoriesRepositoryTest extends TestCase
             'id' => $merchant_id
         ]);
 
-        $response = $this->repository->createEmptyCategories($merchant_id);
+        $response = $this->repository->createEmptyCategory($merchant_id);
 
         $this->assertInstanceOf(Collection::class, $response);
 
