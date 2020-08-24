@@ -223,7 +223,11 @@ class Merchant extends Model
      */
     public function getTemporaryLogoLink(): string
     {
-        if (substr($this->logo, 0, 4) === 'http') {
+        if (!$this->logo) {
+            return '';
+        }
+
+        if (strpos($this->logo, 'http') === 0) {
             return $this->logo;
         }
 

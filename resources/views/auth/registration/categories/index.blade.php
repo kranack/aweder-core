@@ -32,7 +32,7 @@
                                 <input type="text"
                                        name="existing_categories[{{ $category->id }}]"
                                        id="category_{{ $i }}"
-                                       placeholder="{{ $defaultCategories[$i] }}"
+                                       placeholder="Category Name"
                                        value="{{ old('existing_categories.' . $category->id, $category->title) }}"/>
                             </div>
                             @php
@@ -40,21 +40,16 @@
                             @endphp
                         @endforeach
                     @endif
-                    @while($i < 5)
-                        <div class="field">
-                            <label for="category_{{ $i }}">Category {{ $i }}</label>
-                            <input type="text"
-                                   name="categories[]"
-                                   id="category_{{ $i }}"
-                                   placeholder="{{ $defaultCategories[$i] }}"
-                                   value="{{ old('categories.' . $i) }}"/>
-                        </div>
-                        @php
-                            $i++;
-                        @endphp
-                    @endwhile
+                    <div class="field">
+                        <label for="category_{{ $i }}">Category</label>
+                        <input type="text"
+                               name="categories[]"
+                               id="category_{{ $i }}"
+                               placeholder="Name your category"
+                               value="{{ old('categories.' . $i) }}"/>
+                    </div>
                     @error('categories')
-                    <p class="form__general-error">{{ $message }}</p>
+                        <p class="form__general-error">{{ $message }}</p>
                     @enderror
                     <div class="field field--buttons">
                         <button type="submit" class="button button--icon-right button--filled button--filled-carnation button--end">

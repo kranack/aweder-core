@@ -13,27 +13,24 @@ class SetupController extends Controller
      * Handle the incoming request.
      *
      * @param AuthManager $auth
-     * @param CategoryContract $categoryRepo
+     * @param CategoryContract $categoryRepository
      * @return Response
      */
-    public function __invoke(AuthManager $auth, CategoryContract $categoryRepo): Response
+    public function __invoke(AuthManager $auth, CategoryContract $categoryRepository): Response
     {
         $merchant = $auth->user()->merchants()->first();
 
-        $categories = $categoryRepo->getCategoryAndInventoryListForUser($merchant->id);
+        $categories = $categoryRepository->getCategoryAndInventoryListForUser($merchant->id);
 
         if ($categories->isEmpty()) {
-            $categories = $categoryRepo->createEmptyCategories($merchant->id);
+            $categories = $categoryRepository->createEmptyCategory($merchant->id);
         }
-
-        $defaultCategories = config('categories.default');
 
         return response()->view(
             'admin.categories.index',
             [
                 'merchant' => $merchant,
                 'categories' => $categories,
-                'defaultCategories' => $defaultCategories,
             ]
         );
     }

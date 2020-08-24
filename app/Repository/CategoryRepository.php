@@ -31,16 +31,9 @@ class CategoryRepository implements CategoryContract
         $this->logger = $logger;
     }
 
-    public function createEmptyCategories(int $merchantId): SupportCollection
+    public function createEmptyCategory(int $merchantId): SupportCollection
     {
-        $newCategories = [
-            '',
-            '',
-            '',
-            '',
-        ];
-
-        return $this->createCategories($newCategories, $merchantId);
+        return $this->createCategories([''], $merchantId);
     }
 
     /**

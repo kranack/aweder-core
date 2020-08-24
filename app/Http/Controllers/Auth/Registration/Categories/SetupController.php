@@ -22,13 +22,10 @@ class SetupController extends Controller
 
         $categories = $merchant->categories;
 
-        $defaultCategories = config('categories.default');
-
         return response()->view(
             'auth.registration.categories.index',
             [
                 'categories' => $categories,
-                'defaultCategories' => $defaultCategories,
             ]
         );
     }
