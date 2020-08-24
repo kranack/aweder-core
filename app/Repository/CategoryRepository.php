@@ -70,7 +70,10 @@ class CategoryRepository implements CategoryContract
     public function updateCategories(array $categories, int $merchantId): bool
     {
         foreach ($categories as $key => $category) {
-            $categoryModel = $this->getModel()->where('id', $key)->first();
+            $categoryModel = $this->getModel()
+                ->where('order', $key)
+                ->where('merchant_id', $merchantId)
+                ->first();
 
             if ($categoryModel instanceof Category) {
                 $categoryModel->update([
@@ -93,6 +96,17 @@ class CategoryRepository implements CategoryContract
     public function addCategoryToMerchant(Merchant $merchant, Category $category): bool
     {
         return (bool) $merchant->categories()->save($category);
+    }
+
+    public function addCategoryByStringToMerchant(Merchant $merchant, string $categoryTitle): bool
+    {
+        $maxOrder = $merchant->categories()->max('order');
+        $category = new Category([
+            'title' => $categoryTitle,
+            'order' => $maxOrder + 1
+        ]);
+
+        return $this->addCategoryToMerchant($merchant, $category);
     }
 
     public function addSubCategoryToCategory(Category $category, Category $subCategory): bool
