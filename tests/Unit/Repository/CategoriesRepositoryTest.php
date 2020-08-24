@@ -104,13 +104,12 @@ class CategoriesRepositoryTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $response);
 
-        foreach ($response as $category) {
-            $this->assertDatabaseHas('categories', [
-                'merchant_id' => $merchant_id,
-                'order' => $category->order,
-                'title' => ''
-            ]);
-        }
+        $this->assertDatabaseHas('categories', [
+            'merchant_id' => $merchant_id,
+            'id' => $response->first()->id,
+            'order' => $response->first()->order,
+            'title' => ''
+        ]);
     }
     /**
      * @test
