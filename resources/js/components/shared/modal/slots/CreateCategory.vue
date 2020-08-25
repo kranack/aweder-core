@@ -6,12 +6,16 @@
   >
     <form
       class="flex flex-col"
+      action="/admin/inventory/category"
+      method="POST"
+      enctype="multipart/form-data"
     >
+      <csrf-field/>
       <header class="modal__header flex align-items-end">
         <input
           class="modal__input"
           type="text"
-          name="add_category_name"
+          name="title"
           placeholder="Category name"
         />
         <div
@@ -19,9 +23,10 @@
         >
           <input
             id="visibility"
+            name="visibility"
+            v-model="checked"
             type="checkbox"
             class="hidden toggle-input"
-            checked
           />
           <label
             class="toggle"
@@ -32,18 +37,19 @@
               <span class="toggle__thumb" />
             </span>
           </label>
+          <input type="hidden" id="visible" name="visible" v-bind:value="checked">
         </div>
       </header>
       <div class="field field--upload">
         <input
-            id="logo"
+            id="image"
             class="upload-input"
             type="file"
-            name="logo"
+            name="image"
         />
         <label
           class="upload"
-          for="logo"
+          for="image"
         >
           <span class="upload__trigger">
             <span class="upload__icon">
@@ -51,7 +57,7 @@
             </span>
           </span>
         </label>
-        <span class="upload__label upload__label--input">No file chose</span>
+        <span class="upload__label upload__label--input">No file chosen</span>
       </div>
       <span class="body-medium width-full shrink-0 margin-bottom-30">
         This category will be available for&hellip;
@@ -106,6 +112,8 @@
       <span class="field__note margin-bottom-20">
         Add sub categories to your menu and hit enter to add a new one.
       </span>
+      <input type="hidden" name="subCategories" id="subCategories" :value="tags"/>
+      <input type="hidden" name="merchant" id="merchant" :value="merchant"/>
       <div class="field field--tags">
         <input-tag
           v-model="tags"
@@ -138,6 +146,7 @@ import Modal from '@/js/components/shared/modal/Modal';
 import Upload from '@/js/components/svgs/Upload';
 import Delivery from '@/js/components/svgs/Delivery';
 import Table from '@/js/components/svgs/Table';
+import CsrfField from '@/js/components/shared/form/CsrfField';
 
 export default {
   name: 'CreateCategory',
@@ -146,12 +155,26 @@ export default {
     Upload,
     Delivery,
     Table,
+    CsrfField,
   },
   props: {
     isActive: {
       type: Boolean,
       default: false,
     },
+    merchant: {
+      type: String,
+      default: '',
+    },
+  },
+  mounted() {
+    this.checked = true;
+  },
+  data() {
+    return {
+      tags: [],
+      checked: '',
+    };
   },
   methods: {
     close() {

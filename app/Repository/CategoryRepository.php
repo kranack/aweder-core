@@ -98,12 +98,16 @@ class CategoryRepository implements CategoryContract
         return (bool) $merchant->categories()->save($category);
     }
 
+    public function getCategoryMaxOrderForMerchant(Merchant $merchant): int
+    {
+        return $merchant->categories()->max('order');
+    }
+
     public function addCategoryByStringToMerchant(Merchant $merchant, string $categoryTitle): bool
     {
-        $maxOrder = $merchant->categories()->max('order');
         $category = new Category([
             'title' => $categoryTitle,
-            'order' => $maxOrder + 1
+            'order' => $this->getCategoryMaxOrderForMerchant($merchant) + 1
         ]);
 
         return $this->addCategoryToMerchant($merchant, $category);

@@ -38,6 +38,12 @@ interface CategoryContract
     public function updateCategories(array $categories, int $merchantId): bool;
 
     /**
+     * @param Merchant $merchant
+     * @return int
+     */
+    public function getCategoryMaxOrderForMerchant(Merchant $merchant): int;
+
+    /**
      * @param int $merchantId
      * @return Collection
      */
