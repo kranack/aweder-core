@@ -8294,13 +8294,17 @@ textarea.textarea-input {
   width: 50px;
   height: 50px; }
 
+.radio--standard .radio__icon--large:before {
+  width: 42px;
+  height: 42px; }
+
 .radio--standard .radio__icon--medium {
   width: 30px;
   height: 30px; }
 
-.radio--standard .radio__icon--large:before {
-  width: 42px;
-  height: 42px; }
+.radio--standard .radio__icon--medium:before {
+  width: 24px;
+  height: 24px; }
 
 .upload-input {
   width: 100%;

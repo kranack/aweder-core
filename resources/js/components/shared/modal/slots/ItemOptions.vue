@@ -75,7 +75,9 @@
               :for="item.name + item.id"
               class="checkbox checkbox--standard"
             >
-              <span class="checkbox__icon checkbox__icon--medium" />
+              <span class="checkbox__icon checkbox__icon--medium">
+                <Tick />
+              </span>
               <span class="checkbox__label checkbox__label--large flex align-items-center">
                 {{ item.name }}
                 <span class="separator separator--small" />
@@ -122,6 +124,7 @@ import Modal from '@/js/components/shared/modal/Modal';
 import orderApi from '@/js/api/order/order';
 import Add from '@/js/components/svgs/Add';
 import Minus from '@/js/components/svgs/Minus';
+import Tick from '@/js/components/svgs/Tick';
 import { mapState } from 'vuex';
 
 export default {
@@ -129,6 +132,7 @@ export default {
     Modal,
     Add,
     Minus,
+    Tick,
   },
   props: {
     merchant: {
