@@ -5,11 +5,63 @@
     :is-active="!!product"
     @close="close()"
   >
-    <div>
-      <h2 class="item-options__heading">
+    <header class="modal__header flex">
+      <h2 class="body-xlarge">
         {{ product.title }}
       </h2>
-
+    </header>
+    <div class="modal__content">
+      <div
+        v-if="product.variants.length"
+        class="order-options"
+      >
+        <h3 class="order-options__title body-large">
+          Variants
+        </h3>
+        <div
+          v-for="variant in product.variants"
+          :key="variant.id"
+          class="field field--radio"
+        >
+          <input
+            :id="variant.name"
+            v-model="selectedVariant"
+            :value="variant"
+            type="radio"
+            :name="variant.name"
+            class="radio-input hidden"
+          >
+          <label
+            class="radio radio--standard radio--icon radio--icon-small"
+            :for="variant.name"
+          >
+            <span
+              class="radio__icon radio__icon--medium"
+            />
+            <span class="radio__label checkbox__label--large">
+              {{ variant.name }}
+              <span class="separator separator--small" />
+              {{ variant.price | currency }}
+            </span>
+          </label>
+        </div>
+        <div
+          v-if="product.option_groups.length && options.length"
+          class="order-options"
+        >
+          <div
+            v-for="(group, index) in product.option_groups"
+            class="order-options__groups"
+            :key="group.id"
+          >
+            <h3 class="order-options__title body-large">
+              {{ group.title }}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
       <!-- Product variants -->
       <div
         v-if="product.variants.length"

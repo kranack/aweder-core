@@ -47,7 +47,14 @@
   height: 50px;
 }
 
+.radio--standard .radio__icon--medium {
+  @extend .margin-right-20;
+  width: 30px;
+  height: 30px;
+}
+
 .radio--standard .radio__icon--large:before {
   width: 42px;
   height: 42px;
 }
+
