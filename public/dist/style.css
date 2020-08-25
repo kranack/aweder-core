@@ -1378,7 +1378,7 @@ button {
 .margin-right-5, .cart__subtitle .icon svg {
   margin-right: 5px; }
 
-.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .field--select-button .select-icon, .checkbox--standard .checkbox__icon--small, .toggle__label, .radio--standard .radio__icon--small, .separator--small, .cart__title .icon, .status, .single-order select {
+.margin-right-10, .button__icon--left, .site-nav__burger:before, .hero__merchant-delivery .icon, .field--select-button .select-icon, .checkbox--standard .checkbox__icon--small, .toggle__label, .radio--standard .radio__icon--small, .separator--small, .cart-service .icon, .cart__title .icon, .status, .single-order select {
   margin-right: 10px; }
 
 @media (max-width: 1440px) {
@@ -1388,7 +1388,7 @@ button {
 .margin-right-15 {
   margin-right: 15px; }
 
-.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--standard .checkbox__icon--large, .checkbox--icon .checkbox__icon, .radio__icon, .radio--standard .radio__icon--large, .separator--large, .inventory__image, .service-button:nth-child(odd), .service-button__icon, .modal--inventory .field--buttons button:first-child, .cart-service svg, .service-time .icon, .checkout__delivery .icon {
+.margin-right-20, .button__icon--left, .admin-menu__icon, .checkbox--standard .checkbox__icon--large, .checkbox--icon .checkbox__icon, .radio__icon, .radio--standard .radio__icon--large, .separator--large, .inventory__image, .service-button:nth-child(odd), .service-button__icon, .modal--inventory .field--buttons button:first-child, .service-time .icon, .checkout__delivery .icon {
   margin-right: 20px; }
 
 @media (max-width: 768px) {
@@ -3238,7 +3238,7 @@ tr td:last-child .table__cell, .single-order__items {
 .flex, .button__content, section, .site-nav, .site-menu, .site-menu__item, .site-menu__button, .site-nav__burger:before, .site-nav__burger-wrapper, .site-nav__burger-wrapper span, .site-nav__burger-wrapper span:before,
 .site-nav__burger-wrapper span:after, .site-header, .branding, .site-footer, .site-footer__menu, .site-footer__branding .bowl, .site-footer__branding .icon--bowl svg, .admin-menu__link, .admin__burger, .admin__burger:before,
 .admin__burger:after, .merchant-times__icon, .merchant-times__timetable, .timetable__time, .hero__merchant-delivery, .hero__merchant-delivery p, .hero__merchant-delivery .icon, .feature__buttons, .steps .row, .field, .field .icon, .checkbox, .checkbox__icon, .toggle, .toggle__container, .toggle__thumb, .radio, .radio__icon, .radio__icon:before, .upload, .upload__trigger, .upload__icon, .field--tags .vue-input-tag-wrapper .input-tag, .input-tag:before,
-.input-tag:after, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__category-name, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .inventory__editable-add, .modal, .modal__service-types, .service-button, .cart__order, .cart__item, .cart__options, .subtotal,
+.input-tag:after, .tab-menu, .field.opening-time, .opening-time__group, .separator, .avatar, .notification, .menu__categories, .menu__cat-list, .menu__cat-item, .menu__cat-link, .menu__cat-link:before, .inventory__category-name, .inventory__item, .inventory__item:before, .inventory__image, .inventory__header, .inventory__details, .inventory__button, .inventory__editable-add, .modal, .modal__service-types, .service-button, .cart-service .icon, .cart__order, .cart__item, .cart__options, .subtotal,
 .total, .button.menu__view .button__icon, .menu__view.item-options__submit .button__icon, .increment, .increment__type, .increment__value, .metric__item, .metric__count, .table__cell, .status, .orders__customer, .orders__arrow, .single-order__header, .single-order__title, .single-order__title h2, .single-order__details, .single-order__item, .single-order__image, .single-order__options, .service-time, .checkout__merchant-image, .checkout__delivery, .checkout--form {
   display: flex; }
 
@@ -5709,7 +5709,7 @@ textarea.textarea-input, .field--price:before, .select, .upload__label--input, .
   font-weight: 400;
   font-display: swap; }
 
-.font-gibson-med, .button__content, .merchant-times__status, .field--tags .vue-input-tag-wrapper .input-tag .remove:empty:before, .opening-time__day, .menu__cart p, .inventory__category__title, .inventory__title, .inventory__price, .inventory__add, .inventory__add-category, .modal__addition-link, .modal__input, .cart-service__content, .cart__title,
+.font-gibson-med, .button__content, .merchant-times__status, .field--tags .vue-input-tag-wrapper .input-tag .remove:empty:before, .opening-time__day, .menu__cart p, .inventory__category__title, .inventory__title, .inventory__price, .inventory__add, .inventory__add-category, .modal__addition-link, .modal__input, .cart-service__content, .cart-service__button, .cart__title,
 .cart__price, .cart__option-title, .subtotal__title, .total__item .total__title, .increment--small .increment__value, .increment--large .increment__value, .metric__count, th, .orders__name, .single-order select, .single-order__line p,
 .single-order__qty, .single-order__price, .single-order__options-title, .service-time .form-control, .service-time__button, .checkout__delivery p {
   font-family: "canada-type-gibson", sans-serif;
@@ -5813,13 +5813,13 @@ textarea.textarea-input.textarea-input--small, .select.select--button, .toggle__
   font-size: 1.6rem;
   line-height: 1.5; }
 
-.body-small, .button--small .button__content, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .modal__addition-link, .cart-service__content, .cart__title,
+.body-small, .button--small .button__content, .site-footer__statement p, .timetable__day, .timetable__time, .hero__merchant-delivery p, .steps__title, .checkbox__label--small, .radio__label--small, .upload__label, .field__note, .menu__cat-link, .inventory__description, .inventory__price, .modal__addition-link, .cart__title,
 .cart__price, .cart__subtitle, .subtotal__title, .increment--small .increment__value, td, .orders__date {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5; }
 
-.body-xsmall, .field__error, .label.label--float {
+.body-xsmall, .field__error, .label.label--float, .cart-service__content, .cart-service__button {
   font-size: 12px;
   font-size: 1.2rem;
   line-height: 1.5; }
@@ -5945,7 +5945,7 @@ textarea.textarea-input, .field--price:before, .select, .upload__label--input, .
 .font-500 {
   font-weight: 500; }
 
-.font-600, .cart-service__content, .cart-service__button {
+.font-600 {
   font-weight: 600; }
 
 .font-700 {
