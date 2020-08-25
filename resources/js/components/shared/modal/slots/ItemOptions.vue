@@ -6,7 +6,7 @@
     @close="close()"
   >
     <header class="modal__header flex">
-      <h2 class="body-xlarge">
+      <h2 class="header">
         {{ product.title }}
       </h2>
     </header>
@@ -45,76 +45,23 @@
             </span>
           </label>
         </div>
-        <div
-          v-if="product.option_groups.length && options.length"
-          class="order-options"
-        >
-          <div
-            v-for="(group, index) in product.option_groups"
-            class="order-options__groups"
-            :key="group.id"
-          >
-            <h3 class="order-options__title body-large">
-              {{ group.title }}
-            </h3>
-          </div>
-        </div>
       </div>
-    </div>
-    <div>
-      <!-- Product variants -->
-      <div
-        v-if="product.variants.length"
-        class="item-options__field"
-      >
-        <h3 class="item-options__field-title">
-          Variants
-        </h3>
-
-        <div
-          v-for="variant in product.variants"
-          :key="variant.id"
-          class="field field--radio margin-top-10"
-        >
-          <input
-            :id="variant.name"
-            v-model="selectedVariant"
-            :value="variant"
-            type="radio"
-            :name="variant.name"
-            class="radio-input hidden"
-          >
-          <label
-            :for="variant.name"
-            class="radio radio--standard"
-          >
-            <span class="radio__icon radio__icon--large" />
-            <span class="radio__label radio__label--large flex align-items-center">
-              {{ variant.name }}
-              <span class="separator separator--small" />
-              {{ variant.price | currency }}
-            </span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Product options -->
       <div
         v-if="product.option_groups.length && options.length"
-        class="item-options__field"
+        class="order-options"
       >
         <div
           v-for="(group, index) in product.option_groups"
+          class="order-options__groups"
           :key="group.id"
         >
-          <h3 class="item-options__field-title">
+          <h3 class="order-options__title body-large">
             {{ group.title }}
           </h3>
-
           <div
             v-for="item in group.items"
             :key="item.id"
-            class="field margin-top-10"
+            class="field field--checkbox"
           >
             <input
               :id="item.name + item.id"
@@ -128,7 +75,7 @@
               :for="item.name + item.id"
               class="checkbox checkbox--standard"
             >
-              <span class="checkbox__icon checkbox__icon--large" />
+              <span class="checkbox__icon checkbox__icon--medium" />
               <span class="checkbox__label checkbox__label--large flex align-items-center">
                 {{ item.name }}
                 <span class="separator separator--small" />
@@ -139,11 +86,7 @@
         </div>
       </div>
     </div>
-    <div>
-      <h3 class="item-options__field-title">
-        Quantity
-      </h3>
-
+    <div class="modal__buttons flex modal__buttons--qty">
       <div class="increment increment--large">
         <button
           class="increment__type increment__type--down"
@@ -165,7 +108,7 @@
       </div>
       <button
         ref="add_item"
-        class="item-options__submit"
+        class="button button-solid--carnation"
         @click="add()"
       >
         <span class="button__content">Add item</span>
