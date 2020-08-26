@@ -110,7 +110,6 @@
                                                 <span class="cart__price text-right">{{ $item->getFormattedUKPriceAttribute($item->inventory->price) }}</span>
                                             </div>
                                             <div class="cart__options">
-                                                <h5 class="cart__option-title">Sauces</h5>
                                                 <div class="cart__option-item">
                                                     <p class="cart__subtitle">
                                                         <span class="icon icon-add">@svg('add', 'fill-cloud-burst')</span>
