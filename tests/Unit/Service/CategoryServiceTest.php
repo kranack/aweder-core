@@ -144,4 +144,34 @@ class CategoryServiceTest extends TestCase
             $i++;
         }
     }
+
+    public function can_synchronize_subcategories(): void
+    {
+        $merchant = $this->createAndReturnMerchant();
+        $category = $merchant->categories()->first();
+
+        $subcategoryOne = $this->createAndReturnCategory([
+            'title' => 'Old Title One',
+            'parent_category_id' => $category->id
+        ]);
+
+        $subcategoryTwo = $this->createAndReturnCategory([
+            'title' => 'Old Title Two',
+            'parent_category_id' => $category->id
+        ]);
+
+        $newSubcategoryStrings = [
+            'New Category One',
+            'New Category Two'
+        ];
+
+        $this->assertEquals('Old Title One', $merchant->categories()->first()->subcategories()->first()->title);
+        $this->assertEquals('Old Title Two', $merchant->categories()->first()->subcategories()->slice(2, 1)->title);
+
+        $this->categoryService->synchronizeCategorySubcategories($category, $newSubcategoryStrings);
+
+        $this->assertEquals('New Category One', $merchant->categories()->first()->subcategories()->first()->title);
+        $this->assertEquals('New Category Two', $merchant->categories()->first()->subcategories()->slice(2, 1)->title);
+        $this->assertCount(0, $merchant->categories()->first()->subcategories()->where('title', 'Old Title One'));
+    }
 }
