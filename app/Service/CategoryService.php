@@ -39,10 +39,12 @@ class CategoryService implements CategoryContract
             return false;
         }
 
-        if ($payload['image'] instanceof UploadedFile) {
-            if ($this->addImageToCategory($category, $payload['image'])) {
-                DB::rollBack();
-                return false;
+        if (isset($payload['image'])) {
+            if ($payload['image'] instanceof UploadedFile) {
+                if ($this->addImageToCategory($category, $payload['image'])) {
+                    DB::rollBack();
+                    return false;
+                }
             }
         }
 
