@@ -16,7 +16,7 @@
         class="order-options"
       >
         <h3 class="order-options__title body-large">
-          Variants
+          Options
         </h3>
         <div
           v-for="variant in product.variants"
@@ -56,7 +56,7 @@
           :key="group.id"
         >
           <h3 class="order-options__title body-large">
-            {{ group.title }}
+            {{ group.name }}
           </h3>
           <div
             v-for="item in group.items"

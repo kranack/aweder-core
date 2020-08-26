@@ -44,7 +44,7 @@
         >
           <div class="cart__line">
             <p class="cart__title">
-              {{ item.variant.name }} - {{ item.product.title }}
+              {{ item.product.title }}
             </p>
             <div class="increment increment--small">
               <span
@@ -68,14 +68,24 @@
             <span class="cart__price text-right">{{ item.variant.price| currency }}</span>
           </div>
           <div
+            v-if="item.variant.price"
+            class="cart__options"
+          >
+            <div
+              class="cart__option-item"
+            >
+              <p class="cart__subtitle">
+                <span class="icon icon-add"><Add /></span>
+                {{ item.variant.name }}
+              </p>
+            </div>
+          </div>
+          <div
             v-for="group in item.options"
             v-show="group.items.length"
             :key="group.group"
             class="cart__options"
           >
-            <h5 class="cart__option-title">
-              {{ group.group }}
-            </h5>
             <div
               v-for="option in group.items"
               :key="option.id"
@@ -85,7 +95,6 @@
                 <span class="icon icon-add"><Add /></span>
                 {{ option.name }}
               </p>
-              <span class="cart__price text-right">{{ option.price_modified | currency }}</span>
             </div>
           </div>
         </div>

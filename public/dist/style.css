@@ -3923,7 +3923,7 @@ tr td:last-child .table__cell, .single-order__items {
   .s-align-content-stretch {
     align-content: stretch; } }
 
-.justify-content-start, .feature__buttons, .toggle-input:checked ~ .toggle .toggle__thumb, .service-button {
+.justify-content-start, .feature__buttons, .toggle-input:checked ~ .toggle .toggle__thumb, .service-button, .checkout__cart .increment__value {
   justify-content: flex-start; }
 
 @media (max-width: 1440px) {
@@ -5655,7 +5655,7 @@ tr td:last-child .table__cell, .single-order__items {
 
 .color-cloud-burst, body, input.text-input,
 textarea.textarea-input, .field--price:before, .select, .upload__label--input, .field--tags .vue-input-tag-wrapper .new-tag, .input-tag span, .opening-time__group:before, .menu__cat-link, .modal__addition-link, .modal__input, .total__item .total__title,
-.total__item--light .cart__price {
+.total__item--light .cart__price, .checkout__merchant-phone a {
   color: #243752; }
 
 .color-silver {
@@ -5693,7 +5693,7 @@ textarea.textarea-input, .field--price:before, .select, .upload__label--input, .
   color: rgba(36, 55, 82, 0.3); }
 
 /* TEXT DECORATION MIXINS ============================================================================= */
-.text-underline, .site-footer__statement p a, .modal__addition-link, .dashboard-header p a {
+.text-underline, .site-footer__statement p a, .modal__addition-link, .dashboard-header p a, .checkout__merchant-phone a {
   text-decoration: underline; }
 
 .text-line-through {

@@ -40,8 +40,7 @@ describe('MiniCart', () => {
   it('shows item variant', async () => {
     const wrapper = createWrapper(productsWithVariantState);
 
-    expect(wrapper.find('.cart__title').text()).toContain('Variant - Nachos,Cheese & Chilli');
-    expect(wrapper.find('.cart__price').text()).toContain('£11.00');
+    expect(wrapper.find('.cart__title').text()).toContain('Nachos,Cheese & Chilli');
   });
 
   it('shows the totals', async () => {
