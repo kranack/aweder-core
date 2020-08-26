@@ -64,6 +64,13 @@ interface CategoryContract
     public function addSubCategoryToCategory(Category $category, Category $subCategory): bool;
 
     /**
+     * @param Category $category
+     * @param string $subCategoryTitle
+     * @return bool
+     */
+    public function addSubCategoryToCategoryByString(Category $category, string $subCategoryTitle): bool;
+
+    /**
      * Adds a Category to a Merchant by it's title and handles the ordering
      *
      * @param Merchant $merchant

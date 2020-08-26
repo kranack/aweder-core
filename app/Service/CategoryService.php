@@ -27,6 +27,36 @@ class CategoryService implements CategoryContract
         $this->fileSystemManager = $fileSystemManager;
     }
 
+    public function updateCategoriesAndSubCategoriesByMerchantFromPayload(Merchant $merchant, array $payload): bool
+    {
+        DB::beginTransaction();
+        $category = $this->categoryRepository->getCategoryByOrderAndMerchant($merchant, $payload['order']);
+
+        $category->fill($payload);
+
+        if (!$category->save()) {
+            DB::rollBack();
+            return false;
+        }
+
+        if ($payload['image'] instanceof UploadedFile) {
+            if ($this->addImageToCategory($category, $payload['image'])) {
+                DB::rollBack();
+                return false;
+            }
+        }
+
+        if (isset($payload['subCategories'])) {
+            if (!$this->synchronizeCategorySubcategories($category, $payload['subCategories'])) {
+                DB::rollBack();
+                return false;
+            }
+        }
+
+        DB::commit();
+        return true;
+    }
+
     public function addCategoriesAndSubCategoriesToMerchantFromPayload(Merchant $merchant, array $payload): bool
     {
         DB::beginTransaction();
@@ -75,5 +105,18 @@ class CategoryService implements CategoryContract
         }
 
         return $category->update(['image' => $path]);
+    }
+
+    public function synchronizeCategorySubcategories(Category $category, array $subCategories): bool
+    {
+        $category->subcategories()->delete();
+
+        foreach ($subCategories as $subCategoryTitle) {
+            if (!$this->categoryRepository->addSubCategoryToCategoryByString($category, $subCategoryTitle)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

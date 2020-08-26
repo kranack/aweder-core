@@ -286,6 +286,21 @@ class CategoriesRepositoryTest extends TestCase
         );
     }
 
+    public function can_add_subcategory_to_category_by_string(): void
+    {
+
+    }
+
+    public function cannot_add_subcategory_to_category_when_not_string(): void
+    {
+
+    }
+
+    public function can_synchronize_subcategories(): void
+    {
+
+    }
+
     /**
      * @test
      */

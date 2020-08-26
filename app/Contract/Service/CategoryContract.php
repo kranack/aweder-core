@@ -17,8 +17,22 @@ interface CategoryContract
 
     /**
      * @param Category $category
+     * @param array $subCategories
+     * @return bool
+     */
+    public function synchronizeCategorySubcategories(Category $category, array $subCategories): bool;
+
+    /**
+     * @param Category $category
      * @param UploadedFile $imageFile
      * @return bool
      */
     public function addImageToCategory(Category $category, UploadedFile $imageFile): bool;
+
+    /**
+     * @param Merchant $merchant
+     * @param array $payload
+     * @return bool
+     */
+    public function updateCategoriesAndSubCategoriesByMerchantFromPayload(Merchant $merchant, array $payload): bool;
 }

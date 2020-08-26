@@ -118,6 +118,15 @@ class CategoryRepository implements CategoryContract
         return (bool) $category->subcategories()->save($subCategory);
     }
 
+    public function addSubCategoryToCategoryByString(Category $category, string $subCategoryTitle): bool
+    {
+        $subcategory = new Category([
+            'title' => $subCategoryTitle
+        ]);
+
+        return $this->addSubCategoryToCategory($category, $subcategory);
+    }
+
     public function deleteCategory(Category $category): bool
     {
         return $category->delete();
