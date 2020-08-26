@@ -142,7 +142,7 @@
                                         <div class="total__item">
                                             <p class="total__title">Total</p>
                                             <span class="cart__price text-right">
-                                                {{ $order->getFormattedUKPriceAttribute($order->total_cost, $merchant->delivery_cost) }}
+                                                £{{ $order->getFormattedUKPriceAttribute($order->total_cost, $merchant->delivery_cost) }}
                                             </span>
                                         </div>
                                     </div>
