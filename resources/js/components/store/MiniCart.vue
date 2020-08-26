@@ -69,7 +69,7 @@
           </div>
           <div
             v-if="item.variant.price"
-            class="cart__options"
+            class="cart__options cart__options--variant"
           >
             <div
               class="cart__option-item"
@@ -84,7 +84,7 @@
             v-for="group in item.options"
             v-show="group.items.length"
             :key="group.group"
-            class="cart__options"
+            class="cart__options cart__options--option"
           >
             <div
               v-for="option in group.items"
