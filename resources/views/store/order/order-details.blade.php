@@ -107,7 +107,7 @@
                                             <div class="cart__line">
                                                 <span class="increment__value">{{ $item->inventory->quantity }}</span>
                                                 <p class="cart__title">{{ $item->inventory->title }}</p>
-                                                <span class="cart__price text-right">{{ $item->getFormattedUKPriceAttribute($item->inventory->price) }}</span>
+                                                <span class="cart__price text-right">£{{ $item->getFormattedUKPriceAttribute($item->inventory->price) }}</span>
                                             </div>
                                             <div class="cart__options">
                                                 <div class="cart__option-item">
