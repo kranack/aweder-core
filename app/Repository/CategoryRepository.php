@@ -132,7 +132,7 @@ class CategoryRepository implements CategoryContract
         return $category->delete();
     }
 
-    public function getCategoryByOrderAndMerchant(Merchant $merchant, $order): ?Category
+    public function getCategoryByOrderAndMerchant(Merchant $merchant, int $order): ?Category
     {
         return $this->getModel()
             ->where('merchant_id', $merchant->id)

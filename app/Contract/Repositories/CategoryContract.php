@@ -87,8 +87,8 @@ interface CategoryContract
 
     /**
      * @param Merchant $merchant
-     * @param $order
-     * @return mixed
+     * @param int $order
+     * @return Category|null
      */
-    public function getCategoryByOrderAndMerchant(Merchant $merchant, $order): ?Category;
+    public function getCategoryByOrderAndMerchant(Merchant $merchant, int $order): ?Category;
 }

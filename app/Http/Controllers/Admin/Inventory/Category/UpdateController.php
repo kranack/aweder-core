@@ -18,12 +18,12 @@ class UpdateController extends Controller
             return redirect()->to(route('admin.inventory'));
         }
 
-        if ($categoryService->updateCategoriesAndSubCategoriesByMerchantFromPayload($merchant, $payload)) {
-            $request->session()->flash('success', 'Category Updated');
+        if (!$categoryService->updateCategoriesAndSubCategoriesByMerchantFromPayload($merchant, $payload)) {
+            $request->session()->flash('error', 'There was an error adding this category');
             return redirect()->to(route('admin.inventory'));
         }
 
-        $request->session()->flash('error', 'There was an error adding this category');
+        $request->session()->flash('success', 'Category Updated');
         return redirect()->to(route('admin.inventory'));
     }
 }

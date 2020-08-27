@@ -228,4 +228,62 @@ class CategoryServiceTest extends TestCase
 
         $this->assertCount(3, $category->subcategories()->get());
     }
+
+    /**
+     * @test
+     */
+    public function can_update_category_image(): void
+    {
+        Storage::fake('s3');
+
+        $merchant = $this->createAndReturnMerchant();
+        $category = $this->createAndReturnCategory(
+            [
+                'title' => 'Szechuan Sauce',
+                'merchant_id' => $merchant->id,
+                'order' => 2,
+                'image' => 'IWantThatSzechuanSauceMorty.jpg'
+            ]
+        );
+
+        $this->assertDatabaseHas('categories', [
+            'title' => 'Szechuan Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+            'visible' => true
+        ]);
+
+        $payload = [
+            'title' => 'Dipping Sauce',
+            'merchant' => $merchant->url_slug,
+            'order' => 2,
+            'visible' => "false",
+            'image' => UploadedFile::fake()->image('testimage.png', 100, 100)->size(100),
+        ];
+
+        $this->categoryService->updateCategoriesAndSubCategoriesByMerchantFromPayload($merchant, $payload);
+
+        $this->assertDatabaseMissing('categories', [
+            'title' => 'Szechuan Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+            'visible' => true
+        ]);
+
+        $this->assertDatabaseHas('categories', [
+            'title' => 'Dipping Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'visible' => false
+        ]);
+
+        $this->assertDatabaseMissing('categories', [
+            'title' => 'Dipping Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+        ]);
+    }
 }
