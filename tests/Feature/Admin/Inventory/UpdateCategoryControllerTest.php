@@ -64,4 +64,49 @@ class UpdateCategoryControllerTest extends TestCase
             'visible' => true
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function cannot_update_entire_category_without_merchant(): void
+    {
+        $user = factory(User::class)->create();
+
+        $merchant = $this->createAndReturnMerchant([]);
+        $category = $this->createAndReturnCategory(
+            [
+                'title' => 'Szechuan Sauce',
+                'merchant_id' => $merchant->id,
+                'order' => 2,
+                'image' => 'IWantThatSzechuanSauceMorty.jpg'
+            ]
+        );
+
+        $this->assertDatabaseHas('categories', [
+            'title' => 'Szechuan Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+            'visible' => true
+        ]);
+
+        $this->actingAs($user);
+
+        $response = $this->patch(route('admin.inventory.category.update', [
+            'title' => 'Dipping Sauce',
+            'order' => 2,
+            'visible' => "false",
+            'subCategories' => 'Car,Person,TV'
+        ]));
+
+        $response->assertStatus(Response::HTTP_FOUND);
+
+        $this->assertDatabaseHas('categories', [
+            'title' => 'Szechuan Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+            'visible' => true
+        ]);
+    }
 }
