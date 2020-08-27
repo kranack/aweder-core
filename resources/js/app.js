@@ -16,6 +16,7 @@ import AddCategory from '@/js/components/admin/inventory/AddCategory';
 import AddItem from '@/js/components/admin/inventory/AddItem';
 import Categories from '@/js/components/admin/inventory/Categories';
 import Notification from '@/js/components/shared/Notification';
+import OpeningHours from '@/js/components/admin/opening-hours/OpeningHours';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueMoment from 'vue-moment';
@@ -78,6 +79,7 @@ new Vue({
     AddItem,
     Categories,
     Notification,
+    OpeningHours,
   },
   store,
 }).$mount('#app');

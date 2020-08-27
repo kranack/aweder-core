@@ -16,6 +16,8 @@ class SetupController extends Controller
      */
     public function __invoke(Request $request): Response
     {
-        return response()->view('auth.registration.openingHours.index');
+        $merchant = $request->user()->merchants->first();
+
+        return response()->view('auth.registration.openingHours.index', compact('merchant'));
     }
 }
