@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin\Inventory\Category;
 
 use App\Contract\Service\CategoryContract;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Inventory\Category\CreateNewCategoryRequest;
+use App\Http\Requests\Admin\Inventory\Category\UpdateCategoryRequest;
 
 class UpdateController extends Controller
 {
-    public function __invoke(CreateNewCategoryRequest $request, CategoryContract $categoryService)
+    public function __invoke(UpdateCategoryRequest $request, CategoryContract $categoryService)
     {
         $payload = $request->validated();
         $merchant = $request->getMerchant();

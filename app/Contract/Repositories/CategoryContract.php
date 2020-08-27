@@ -84,4 +84,11 @@ interface CategoryContract
      * @return bool
      */
     public function deleteCategory(Category $category): bool;
+
+    /**
+     * @param Merchant $merchant
+     * @param $order
+     * @return mixed
+     */
+    public function getCategoryByOrderAndMerchant(Merchant $merchant, $order): ?Category;
 }

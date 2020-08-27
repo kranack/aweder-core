@@ -55,7 +55,7 @@ Route::middleware(['auth', 'has-user-completed-registration-stage:0'])
         $router->post('/inventory/category', ['uses' => 'Inventory\\Category\\CreateController'])
             ->name('admin.inventory.category.post');
         $router->patch('/inventory/category', ['uses' => 'Inventory\\Category\\UpdateController'])
-            ->name('admin.inventory.category.patch');
+            ->name('admin.inventory.category.update');
 
         $router->get(
             '/payment/stripe/oauth',

@@ -6,12 +6,15 @@ use App\Category;
 use App\Contract\Repositories\CategoryContract as CategoryRepository;
 use App\Contract\Service\CategoryContract;
 use App\Merchant;
+use App\Traits\HelperTrait;
 use DB;
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Http\UploadedFile;
 
 class CategoryService implements CategoryContract
 {
+    use HelperTrait;
+
     /**
      * @var CategoryRepository
      */
@@ -31,6 +34,15 @@ class CategoryService implements CategoryContract
     {
         DB::beginTransaction();
         $category = $this->categoryRepository->getCategoryByOrderAndMerchant($merchant, $payload['order']);
+
+        if (!$category) {
+            DB::rollBack();
+            return false;
+        }
+
+        if (isset($payload['visible'])) {
+            $payload['visible'] = $this->convertBooleanStringToInteger($payload['visible']);
+        }
 
         $category->fill($payload);
 
