@@ -27,7 +27,9 @@ class ApiCreateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'merchant' => ['required', 'string']
+            'merchant' => ['required', 'string'],
+            'table_number' => ['string', 'nullable'],
+            'is_table_service' => ['boolean', 'nullable']
         ];
     }
 }
