@@ -174,4 +174,58 @@ class CategoryServiceTest extends TestCase
         $this->assertEquals('New Category Two', $merchant->categories()->first()->subcategories()->slice(2, 1)->title);
         $this->assertCount(0, $merchant->categories()->first()->subcategories()->where('title', 'Old Title One'));
     }
+
+    /**
+     * @test
+     */
+    public function can_update_categories_from_payload(): void
+    {
+        $merchant = $this->createAndReturnMerchant([]);
+        $category = $this->createAndReturnCategory(
+            [
+                'title' => 'Szechuan Sauce',
+                'merchant_id' => $merchant->id,
+                'order' => 2,
+                'image' => 'IWantThatSzechuanSauceMorty.jpg'
+            ]
+        );
+
+        $this->assertDatabaseHas('categories', [
+            'title' => 'Szechuan Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+            'visible' => true
+        ]);
+
+        $this->assertCount(0, $category->subcategories()->get());
+
+        $payload = [
+            'title' => 'Dipping Sauce',
+            'merchant' => $merchant->url_slug,
+            'order' => 2,
+            'visible' => "false",
+            'subCategories' => explode(',', 'Car,Person,TV')
+        ];
+
+        $this->categoryService->updateCategoriesAndSubCategoriesByMerchantFromPayload($merchant, $payload);
+
+        $this->assertDatabaseMissing('categories', [
+            'title' => 'Szechuan Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+            'visible' => true
+        ]);
+
+        $this->assertDatabaseHas('categories', [
+            'title' => 'Dipping Sauce',
+            'merchant_id' => $merchant->id,
+            'order' => 2,
+            'image' => 'IWantThatSzechuanSauceMorty.jpg',
+            'visible' => false
+        ]);
+
+        $this->assertCount(3, $category->subcategories()->get());
+    }
 }
