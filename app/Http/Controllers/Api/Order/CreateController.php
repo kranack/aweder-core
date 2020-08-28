@@ -31,12 +31,12 @@ class CreateController extends Controller
             $orderService->setTableNumberOnOrder($order, $request->get('table_number'));
         }
 
-        if ($order instanceof Order) {
-            return response()->json($order->fresh(), Response::HTTP_CREATED);
+        if (!$order instanceof Order) {
+            return response()->json([
+                'message' => 'Could not create order for merchant.'
+            ], Response::HTTP_BAD_REQUEST);
         }
 
-        return response()->json([
-            'message' => 'Could not create order for merchant.'
-        ], Response::HTTP_BAD_REQUEST);
+        return response()->json($order->fresh(), Response::HTTP_CREATED);
     }
 }
