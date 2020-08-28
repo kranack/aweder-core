@@ -286,4 +286,26 @@ class CategoryServiceTest extends TestCase
             'image' => 'IWantThatSzechuanSauceMorty.jpg',
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function can_add_image_to_category(): void
+    {
+        Storage::fake('s3');
+        $category = $this->createAndReturnCategory();
+
+        $this->assertDatabaseHas('categories', [
+            'id' => $category->id,
+            'image' => null
+        ]);
+
+        $image = UploadedFile::fake()->image('testimage.png', 100, 100)->size(100);
+        $this->categoryService->addImageToCategory($category, $image);
+
+        $this->assertDatabaseMissing('categories', [
+            'id' => $category->id,
+            'image' => null
+        ]);
+    }
 }
