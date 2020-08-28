@@ -50,8 +50,8 @@ class ContactDetailsPostControllerTest extends TestCase
         $this->actingAs($user);
 
         $contactDetails = [
-            'mobile-number' => "",
-            'customer-phone-number' => ""
+            'mobile-number' => '',
+            'customer-phone-number' => ''
         ];
 
         $response = $this->from(route('register.contact-details'))
@@ -71,7 +71,7 @@ class ContactDetailsPostControllerTest extends TestCase
         $this->actingAs($user);
 
         $contactDetails = [
-            'mobile-number' => "0778a2054654",
+            'mobile-number' => '0778a2054654',
             'customer-phone-number' => $this->faker->phoneNumber
         ];
 
@@ -93,7 +93,7 @@ class ContactDetailsPostControllerTest extends TestCase
 
         $contactDetails = [
             'mobile-number' => $this->faker->phoneNumber,
-            'customer-phone-number' => "0121 4A3 2135"
+            'customer-phone-number' => '0121 4A3 2135'
         ];
 
         $response = $this->from(route('register.contact-details'))
