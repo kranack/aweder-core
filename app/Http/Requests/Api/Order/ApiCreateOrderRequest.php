@@ -29,7 +29,9 @@ class ApiCreateOrderRequest extends FormRequest
     {
         return [
             'merchant' => ['required', 'string'],
-            'is_table_service' => ['boolean', 'nullable'],
+            'is_table_service' => ['boolean', Rule::requiredIf(function () {
+                return $this->request->has('table_number');
+            })],
             'table_number' => Rule::requiredIf(function () {
                 return $this->request->has('is_table_service');
             })

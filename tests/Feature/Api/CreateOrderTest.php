@@ -136,7 +136,7 @@ class CreateOrderTest extends TestCase
             $orderItemPayload
         );
 
-        $response->assertStatus(Response::HTTP_BAD_REQUEST);
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
         $this->assertDatabaseMissing('orders', [
             'merchant_id' => $merchant->id,
