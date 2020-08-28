@@ -34,22 +34,16 @@ class CreateController extends Controller
             }
         }
 
-        if (isset($payload['table_number']) && !$order->isTableService()) {
-            return response()->json([
-                'message' => 'Cannot create order with table number unless Order is Table Service.'
-            ], Response::HTTP_BAD_REQUEST);
-        }
-
-        if (isset($payload['table_number']) && $order->isTableService()) {
+        if ($order->isTableService()) {
             $orderService->setTableNumberOnOrder($order, $payload['table_number']);
         }
 
-        if ($order instanceof Order) {
-            return response()->json($order->fresh(), Response::HTTP_CREATED);
+        if (!$order instanceof Order) {
+            return response()->json([
+                'message' => 'Could not create order for merchant.'
+            ], Response::HTTP_BAD_REQUEST);
         }
 
-        return response()->json([
-            'message' => 'Could not create order for merchant.'
-        ], Response::HTTP_BAD_REQUEST);
+        return response()->json($order->fresh(), Response::HTTP_CREATED);
     }
 }

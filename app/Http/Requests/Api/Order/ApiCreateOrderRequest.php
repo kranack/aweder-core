@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\Order;
 
 use App\Traits\RequestGetMerchantTrait;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ApiCreateOrderRequest extends FormRequest
 {
@@ -28,8 +29,10 @@ class ApiCreateOrderRequest extends FormRequest
     {
         return [
             'merchant' => ['required', 'string'],
-            'table_number' => ['string', 'nullable'],
-            'is_table_service' => ['boolean', 'nullable']
+            'is_table_service' => ['boolean', 'nullable'],
+            'table_number' => Rule::requiredIf(function () {
+                return $this->request->has('is_table_service');
+            })
         ];
     }
 }
