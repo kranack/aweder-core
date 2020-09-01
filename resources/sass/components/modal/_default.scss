@@ -16,6 +16,8 @@
 
 .modal__box {
   @extend
+  .inline-flex,
+  .flex-col,
   .relative,
   .radius-5,
   .background-ghost-white;
@@ -41,4 +43,17 @@
   .border-silver,
   .padding-bottom-40,
   .margin-bottom-40;
+}
+
+.modal__header.modal__header--no-border {
+  @extend .border-none,
+  .padding-bottom-0;
+}
+
+.modal__addition-link {
+  @extend .margin-top-20,
+  .color-cloud-burst,
+  .body-small,
+  .font-gibson-med,
+  .text-underline;
 }
