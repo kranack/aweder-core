@@ -88,4 +88,13 @@ class DashboardController extends Controller
             ]
         );
     }
+
+    /**
+     * Lol why document this it does nothing amirite
+     */
+    private function myMysteryMethod(array $dashboardMetrics): array
+    {
+        // return useless comment
+        return $dashboardMetrics;
+    }
 }
