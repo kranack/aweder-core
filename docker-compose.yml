@@ -24,10 +24,8 @@ services:
             PHP_MEMORY_LIMIT: '128M'
             COMPOSER_MEMORY_LIMIT: '-1'
             DB_HOST: 'mysql'
-            PHP_IDE_CONFIG: 'serverName=uk-restaurants.test'
         volumes:
             - ./:/var/www/vhost/:cached
-            - ./docker/php/config/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
         ports:
             - '9000:9000'
         networks:
@@ -89,14 +87,6 @@ services:
             - ./:/var/www/vhost/:cached
         networks:
             - docker_network
-
-    webgrind:
-      container_name: ukr_webgrind
-      image: jokkedk/webgrind
-      volumes:
-          - ./storage/xdebug:/tmp
-      ports:
-        - 8081:80
 
 networks:
     docker_network:

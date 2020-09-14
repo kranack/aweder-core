@@ -20,7 +20,6 @@ RUN apt-get clean && apt-get update && apt-get upgrade -y && apt-get install -y 
 
 RUN docker-php-source extract && \
     pecl install redis && \
-    pecl install xdebug && \
     pecl install imagick && \
     docker-php-ext-enable imagick && \
     docker-php-ext-enable redis && \
