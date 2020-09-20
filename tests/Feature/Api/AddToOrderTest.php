@@ -97,7 +97,6 @@ class AddToOrderTest extends TestCase
         $orderItemPayload = [
             'merchant' => $merchant->url_slug,
             'inventory_id' => $inventory->id,
-            'variant_id' => $inventoryVariant->id,
             'inventory_options' => [
                 $inventoryOptionGroupItem->id,
                 $inventoryOptionGroupItem2->id
