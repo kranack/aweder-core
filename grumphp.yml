@@ -28,6 +28,7 @@ parameters:
       max_body_width: 400
       max_subject_width: 300
       enforce_no_subject_trailing_period: false
+      enforce_capitalized_subject: false
       matchers: [/^(build:|chore:|ci:|docs:|feat:|fix:|perf:|refactor:|revert:|style:|test:|Merge|update:|delete:).+/]
     git_branch_name:
       whitelist: [/^(feature\/|bugfix\/|hotfix\/|release\/).+/]
