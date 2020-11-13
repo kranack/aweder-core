@@ -67,14 +67,6 @@
                             <p class="form__validation-error">{{ $message }}</p>
                             @enderror
                         </div>
-                        @if ($merchant->hasStripePaymentsIntegration())
-                            <x-stripe-payment
-                                :order="$order"
-                                :merchant="$merchant"
-                                :stripeMerchantAccountId="$stripeMerchantAccountId"
-                                :stripeConnectAccountId="$stripeConnectAccountId"
-                            />
-                        @endif
                         <div class="field field--button">
                             <input type="hidden" name="order_no" value="{{ $order->url_slug }}"/>
                             <button type="submit" @if ($intentSecret !== null) id="submit_button" data-secret="{{ $intentSecret }}" @endif class="button button--icon-right button--filled button--filled-carnation">
