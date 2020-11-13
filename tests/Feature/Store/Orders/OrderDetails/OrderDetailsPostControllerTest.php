@@ -18,7 +18,7 @@ class OrderDetailsPostControllerTest extends TestCase
     /**
      * @test
      */
-    public function testPaymentCompletesWithFullDetails()
+    public function paymentCompletesWithFullDetails()
     {
         Mail::fake();
 
@@ -42,7 +42,7 @@ class OrderDetailsPostControllerTest extends TestCase
             ]
         );
 
-        $thanksPageRoute = route(
+        $thanksRoute = route(
             'store.menu.order-thank-you',
             [
                 'merchant' => $merchant->url_slug,
@@ -54,7 +54,7 @@ class OrderDetailsPostControllerTest extends TestCase
 
         $postDetails = [
             'customer_name' => $this->faker->name,
-            'customer_email' => $this->faker->safeEmail,
+            'customer_email' => $this->faker->email,
             'customer_address' => $this->faker->address,
             'customer_phone' => $this->faker->phoneNumber,
             'collection_type' => 'delivery',
@@ -67,7 +67,7 @@ class OrderDetailsPostControllerTest extends TestCase
 
         $response = $this->from($orderDetailsRoute)->post($postOrderDetailsRoute, $postDetails);
 
-        $response->assertRedirect($thanksPageRoute);
+        $response->assertRedirect($thanksRoute);
 
         $this->assertDatabaseHas(
             'orders',
