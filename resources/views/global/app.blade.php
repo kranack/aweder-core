@@ -38,5 +38,8 @@
             function(e){ LiveAgent.createButton('rxj6nsq9', e); });
     </script>
 @endif
+@if (env('JIVO_WIDGET_ID'))
+    <script src="//code.jivosite.com/widget/{{ env('JIVO_WIDGET_ID') }}" async></script>
+@endif
 </body>
 </html>
