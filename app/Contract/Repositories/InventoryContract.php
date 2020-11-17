@@ -22,25 +22,25 @@ interface InventoryContract
 
     /**
      * @param int $itemId
-     * @return Inventory
+     * @return Inventory|null
      */
     public function toggleAllergyById(int $itemId): ?Inventory;
 
     /**
      * @param int $itemId
-     * @return Inventory
+     * @return Inventory|null
      */
     public function toggleGlutenFreeById(int $itemId): ?Inventory;
 
     /**
      * @param int $itemId
-     * @return Inventory
+     * @return Inventory|null
      */
     public function toggleVeganById(int $itemId): ?Inventory;
 
     /**
      * @param int $itemId
-     * @return Inventory
+     * @return Inventory|null
      */
     public function toggleVegetarianById(int $itemId): ?Inventory;
 
