@@ -110,6 +110,10 @@
   height: auto;
 }
 
+.button--icon .icon--large svg {
+  max-width: 15px;
+}
+
 .button--add .icon {
   border-color: $casablanca;
 }
@@ -138,6 +142,23 @@
 .button--remove .icon:focus,
 .button--remove .icon:hover {
   background: $carnation;
+}
+
+.button--allergy .icon {
+  border-color: $lime;
+}
+
+.button--allergy .icon line {
+  stroke: $lime;
+}
+
+.button--allergy .active {
+  background: $lime;
+}
+
+.button--allergy .icon:focus,
+.button--allergy .icon:hover {
+  background: $lime;
 }
 
 .button--remove .icon:focus line,

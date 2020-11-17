@@ -84,6 +84,8 @@ Route::middleware(['auth', 'has-user-completed-registration-stage:0'])
             ->name('admin.inventory.post');
         $router->get('/inventory/delete/{id}', ['uses' => 'Inventory\\DeleteController'])
             ->name('admin.inventory.delete');
+        $router->get('/inventory/allergy/{id}', ['uses' => 'Inventory\\AllergyController'])
+            ->name('admin.inventory.allergy');
         $router->get('/inventory/status/{id}', ['uses' => 'Inventory\\StatusController'])
             ->name('admin.inventory.status');
         $router->put('/inventory/{inventory}/update', ['uses' => 'Inventory\\UpdateController'])

@@ -30,7 +30,25 @@ class InventoryRepository implements InventoryContract
     }
 
     /**
-     * @param int $id
+     * @param int $itemId
+     * @return Inventory|null
+     */
+    public function toggleAllergyById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->allergy = !$inventory->allergy;
+        $inventory->save();
+
+        return $inventory;
+    }
+
+    /**
+     * @param int $itemId
      * @return int
      */
     public function toggleInventoryItemStatusById(int $itemId): int
