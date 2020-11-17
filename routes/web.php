@@ -86,6 +86,12 @@ Route::middleware(['auth', 'has-user-completed-registration-stage:0'])
             ->name('admin.inventory.delete');
         $router->get('/inventory/allergy/{id}', ['uses' => 'Inventory\\AllergyController'])
             ->name('admin.inventory.allergy');
+        $router->get('/inventory/gluten-free/{id}', ['uses' => 'Inventory\\GlutenFreeController'])
+            ->name('admin.inventory.gluten-free');
+        $router->get('/inventory/vegetarian/{id}', ['uses' => 'Inventory\\VegetarianController'])
+            ->name('admin.inventory.vegetarian');
+        $router->get('/inventory/vegan/{id}', ['uses' => 'Inventory\\VeganController'])
+            ->name('admin.inventory.vegan');
         $router->get('/inventory/status/{id}', ['uses' => 'Inventory\\StatusController'])
             ->name('admin.inventory.status');
         $router->put('/inventory/{inventory}/update', ['uses' => 'Inventory\\UpdateController'])
