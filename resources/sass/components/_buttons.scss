@@ -118,6 +118,10 @@
   border-color: $casablanca;
 }
 
+.button--add .selected {
+  background-color: $casablanca;
+}
+
 .button--icon .icon--add svg {
   max-width: 12px;
 }
@@ -142,23 +146,6 @@
 .button--remove .icon:focus,
 .button--remove .icon:hover {
   background: $carnation;
-}
-
-.button--allergy .icon {
-  border-color: $lime;
-}
-
-.button--allergy .icon line {
-  stroke: $lime;
-}
-
-.button--allergy .active {
-  background: $lime;
-}
-
-.button--allergy .icon:focus,
-.button--allergy .icon:hover {
-  background: $lime;
 }
 
 .button--remove .icon:focus line,

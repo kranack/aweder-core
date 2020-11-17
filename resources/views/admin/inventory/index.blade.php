@@ -146,19 +146,50 @@
                                                        @svg('remove')
                                                    </span>
                                                 </a>
-                                                <a
-                                                    href="{{ route('admin.inventory.allergy', ['id' => $item->id]) }}"
-                                                    class="button button--icon button--outline button--allergy"
-                                                    title="This item is prepared in an environment where nuts are present. There is no guarantee that this item will not contain trace items." >
-                                                    @if ($item->allergy)
-                                                        <span class="icon icon--large icon--allergy active">
-                                                            @svg('biohazard')
+                                                <a href="{{ route('admin.inventory.allergy', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Nut allergy warning">
+                                                    @if(!$item->allergy)
+                                                        <span class="icon icon--add">
+                                                           n
                                                         </span>
-                                                   @else
-                                                        <span class="icon icon--large icon--allergy">
-                                                            @svg('biohazard')
+                                                    @else
+                                                        <span class="icon icon--add selected">
+                                                           n
                                                         </span>
-                                                   @endif
+                                                    @endif
+                                                </a>
+                                                <a href="{{ route('admin.inventory.vegetarian', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Is Vegetarian">
+                                                    @if(!$item->is_vegetarian)
+                                                        <span class="icon icon--add">
+                                                           v
+                                                        </span>
+                                                    @else
+                                                        <span class="icon icon--add selected">
+                                                           v
+                                                        </span>
+                                                    @endif
+                                                </a>
+                                                <a href="{{ route('admin.inventory.vegan', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Is Vegan">
+                                                    @if(!$item->is_vegan)
+                                                        <span class="icon icon--add">
+                                                           ve
+                                                        </span>
+                                                    @else
+                                                        <span class="icon icon--add selected">
+                                                           ve
+                                                        </span>
+                                                    @endif
+                                                </a>
+                                                <a href="{{ route('admin.inventory.gluten-free', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Is Gluten Free">
+                                                    @if(!$item->is_gluten_free)
+                                                        <span class="icon icon--add">
+                                                           gf
+                                                        </span>
+                                                    @else
+                                                        <span class="icon icon--add selected">
+                                                           gf
+                                                        </span>
+                                                    @endif
+                                                </a>
                                                 </a>
                                                 <button type="submit" class="button button--icon button--add" title="Save item">
                                                     <span class="icon icon--add">@svg('tick')</span>
