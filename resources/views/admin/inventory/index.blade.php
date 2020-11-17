@@ -146,6 +146,20 @@
                                                        @svg('remove')
                                                    </span>
                                                 </a>
+                                                <a
+                                                    href="{{ route('admin.inventory.allergy', ['id' => $item->id]) }}"
+                                                    class="button button--icon button--outline button--allergy"
+                                                    title="This item is prepared in an environment where nuts are present. There is no guarantee that this item will not contain trace items." >
+                                                    @if ($item->allergy)
+                                                        <span class="icon icon--large icon--allergy active">
+                                                            @svg('biohazard')
+                                                        </span>
+                                                   @else
+                                                        <span class="icon icon--large icon--allergy">
+                                                            @svg('biohazard')
+                                                        </span>
+                                                   @endif
+                                                </a>
                                                 <button type="submit" class="button button--icon button--add" title="Save item">
                                                     <span class="icon icon--add">@svg('tick')</span>
                                                 </button>
