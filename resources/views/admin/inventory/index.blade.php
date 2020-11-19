@@ -132,13 +132,13 @@
                                             <div class="actions__wrapper">
                                                 <a href="{{ route('admin.inventory.status', ['id' => $item->id]) }}" class="button button--icon button--visibility" title="Show or hide item from customers’">
                                                     @if ($item->available)
-                                                    <span class="icon icon--visibility">
-                                                        @svg('visible')
-                                                    </span>
+                                                        <span class="icon icon--visibility">
+                                                            @svg('visible')
+                                                        </span>
                                                     @else
-                                                    <span class="icon icon--visibility icon--visibility-hidden">
-                                                        @svg('hide-visibility')
-                                                    </span>
+                                                        <span class="icon icon--visibility icon--visibility-hidden">
+                                                            @svg('hide-visibility')
+                                                        </span>
                                                     @endif
                                                 </a>
                                                 <a href="{{ route('admin.inventory.delete', ['id' => $item->id]) }}" class="button button--icon button--outline button--remove" title="Remove item">
@@ -151,7 +151,6 @@
                                                         @if ($item->allergy)
                                                             selected
                                                         @endif
-                                                    ">
                                                        n
                                                     </span>
                                                 </a>
