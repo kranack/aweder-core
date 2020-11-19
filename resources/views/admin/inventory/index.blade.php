@@ -151,7 +151,6 @@
                                                         @if ($item->allergy)
                                                             selected
                                                         @endif
-                                                        ">
                                                        n
                                                     </span>
                                                 </a>
