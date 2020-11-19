@@ -20,7 +20,7 @@ class OrderDetailsPostControllerTest extends TestCase
      */
     public function paymentCompletesWithFullDetails()
     {
-        $this->markTestSkipped('TODO: Fix this flakey test.');
+        Carbon::setTestNow(Carbon::createFromTime(9, 0));
 
         Mail::fake();
 
@@ -51,8 +51,6 @@ class OrderDetailsPostControllerTest extends TestCase
                 'order' => $order->url_slug
             ]
         );
-
-        Carbon::setTestNow(Carbon::createFromTime(9, 0));
 
         $postDetails = [
             'customer_name' => $this->faker->name,
