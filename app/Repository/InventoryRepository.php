@@ -108,4 +108,46 @@ class InventoryRepository implements InventoryContract
     {
         return $this->model;
     }
+
+    public function toggleGlutenFreeById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->is_gluten_free = !$inventory->is_gluten_free;
+        $inventory->save();
+
+        return $inventory;
+    }
+
+    public function toggleVeganById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->is_vegan = !$inventory->is_vegan;
+        $inventory->save();
+
+        return $inventory;
+    }
+
+    public function toggleVegetarianById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->is_vegetarian = !$inventory->is_vegetarian;
+        $inventory->save();
+
+        return $inventory;
+    }
 }
