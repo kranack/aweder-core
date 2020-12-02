@@ -30,7 +30,25 @@ class InventoryRepository implements InventoryContract
     }
 
     /**
-     * @param int $id
+     * @param int $itemId
+     * @return Inventory|null
+     */
+    public function toggleAllergyById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->allergy = !$inventory->allergy;
+        $inventory->save();
+
+        return $inventory;
+    }
+
+    /**
+     * @param int $itemId
      * @return int
      */
     public function toggleInventoryItemStatusById(int $itemId): int
@@ -89,5 +107,47 @@ class InventoryRepository implements InventoryContract
     protected function getModel(): Inventory
     {
         return $this->model;
+    }
+
+    public function toggleGlutenFreeById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->is_gluten_free = !$inventory->is_gluten_free;
+        $inventory->save();
+
+        return $inventory;
+    }
+
+    public function toggleVeganById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->is_vegan = !$inventory->is_vegan;
+        $inventory->save();
+
+        return $inventory;
+    }
+
+    public function toggleVegetarianById(int $itemId): ?Inventory
+    {
+        $inventory = $this->getModel()->find($itemId);
+
+        if (!$inventory) {
+            return null;
+        }
+
+        $inventory->is_vegetarian = !$inventory->is_vegetarian;
+        $inventory->save();
+
+        return $inventory;
     }
 }

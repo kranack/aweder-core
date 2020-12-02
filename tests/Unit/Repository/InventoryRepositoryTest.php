@@ -100,6 +100,33 @@ class InventoryRepositoryTest extends TestCase
     /**
      * @test
      */
+    public function canToggleAllergy()
+    {
+        $inventory = $this->createAndReturnInventoryItem();
+
+        $this->assertDatabaseHas('inventories', [
+            'id' => $inventory->id,
+            'allergy' => 0
+        ]);
+
+        $this->repository->toggleAllergyById($inventory->id);
+
+        $this->assertDatabaseHas('inventories', [
+            'id' => $inventory->id,
+            'allergy' => 1
+        ]);
+
+        $this->repository->toggleAllergyById($inventory->id);
+
+        $this->assertDatabaseHas('inventories', [
+            'id' => $inventory->id,
+            'allergy' => 0
+        ]);
+    }
+
+    /**
+     * @test
+     */
     public function doesntSaveWithInvalidData(): void
     {
         $this->expectException(ErrorException::class);

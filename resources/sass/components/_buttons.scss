@@ -110,8 +110,16 @@
   height: auto;
 }
 
+.button--icon .icon--large svg {
+  max-width: 15px;
+}
+
 .button--add .icon {
   border-color: $casablanca;
+}
+
+.button--add .selected {
+  background-color: $casablanca;
 }
 
 .button--icon .icon--add svg {

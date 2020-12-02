@@ -21,6 +21,30 @@ interface InventoryContract
     public function getItemById(int $itemId): Inventory;
 
     /**
+     * @param int $itemId
+     * @return Inventory|null
+     */
+    public function toggleAllergyById(int $itemId): ?Inventory;
+
+    /**
+     * @param int $itemId
+     * @return Inventory|null
+     */
+    public function toggleGlutenFreeById(int $itemId): ?Inventory;
+
+    /**
+     * @param int $itemId
+     * @return Inventory|null
+     */
+    public function toggleVeganById(int $itemId): ?Inventory;
+
+    /**
+     * @param int $itemId
+     * @return Inventory|null
+     */
+    public function toggleVegetarianById(int $itemId): ?Inventory;
+
+    /**
      * creates a new inventory item in the system
      * @param int $merchantId
      * @param array $inventoryDetails

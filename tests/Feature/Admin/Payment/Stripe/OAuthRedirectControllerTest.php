@@ -151,8 +151,6 @@ class OAuthRedirectControllerTest extends TestCase
                 ->shouldReceive('getOAuthTokenFromStripeWithCode')->once()->andReturn(new StripeObject());
         });
 
-        $this->createAndReturnPaymentProvider(['id' => 1]);
-
         $response = $this->get(route('admin.stripe-oauth.redirect', ['state' => $state, 'code' => $code]));
 
         $response->assertRedirect(route('admin.details.edit'));

@@ -88,7 +88,7 @@ class UserDetailsPostControllerTest extends TestCase
         $password = $this->faker->password(12);
 
         $userPostDetails = [
-            'email' => $this->faker->safeEmail,
+            'email' => $this->faker->email,
             'password' => $password,
             'password-confirmed' => $password,
         ];

@@ -4,6 +4,7 @@ $black: #000000;
 
 //Brand Colours
 $carnation:#F25851;
+$lime:#00CC33;
 $ecruwhite:#F2EDDC;
 $casablanca:#F5B24D;
 $cloudburst: #243752;
@@ -26,6 +27,10 @@ $error: #E32431;
 
 .color--cloudburst {
   color: $cloudburst;
+}
+
+.color--lime {
+  color: $lime;
 }
 
 .color--silver {

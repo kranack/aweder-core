@@ -132,19 +132,54 @@
                                             <div class="actions__wrapper">
                                                 <a href="{{ route('admin.inventory.status', ['id' => $item->id]) }}" class="button button--icon button--visibility" title="Show or hide item from customers’">
                                                     @if ($item->available)
-                                                    <span class="icon icon--visibility">
-                                                        @svg('visible')
-                                                    </span>
+                                                        <span class="icon icon--visibility">
+                                                            @svg('visible')
+                                                        </span>
                                                     @else
-                                                    <span class="icon icon--visibility icon--visibility-hidden">
-                                                        @svg('hide-visibility')
-                                                    </span>
+                                                        <span class="icon icon--visibility icon--visibility-hidden">
+                                                            @svg('hide-visibility')
+                                                        </span>
                                                     @endif
                                                 </a>
                                                 <a href="{{ route('admin.inventory.delete', ['id' => $item->id]) }}" class="button button--icon button--outline button--remove" title="Remove item">
                                                    <span class="icon icon--remove">
                                                        @svg('remove')
                                                    </span>
+                                                </a>
+                                                <a href="{{ route('admin.inventory.allergy', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Nut allergy warning">
+                                                    <span class="icon icon--add
+                                                        @if ($item->allergy)
+                                                            selected
+                                                        @endif
+                                                       n
+                                                    </span>
+                                                </a>
+                                                <a href="{{ route('admin.inventory.vegetarian', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Is Vegetarian">
+                                                    <span class="icon icon--add
+                                                        @if ($item->is_vegetarian)
+                                                            selected
+                                                        @endif
+                                                        ">
+                                                       v
+                                                    </span>
+                                                </a>
+                                                <a href="{{ route('admin.inventory.vegan', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Is Vegan">
+                                                    <span class="icon icon--add
+                                                        @if ($item->is_vegan)
+                                                            selected
+                                                        @endif
+                                                        ">
+                                                       ve
+                                                    </span>
+                                                </a>
+                                                <a href="{{ route('admin.inventory.gluten-free', ['id' => $item->id]) }}" class="button button--icon button--outline button--add" title="Is Gluten Free">
+                                                    <span class="icon icon--add
+                                                        @if ($item->is_gluten_free)
+                                                            selected
+                                                        @endif
+                                                        ">
+                                                       gf
+                                                    </span>
                                                 </a>
                                                 <button type="submit" class="button button--icon button--add" title="Save item">
                                                     <span class="icon icon--add">@svg('tick')</span>
